@@ -20,7 +20,8 @@
     EXAMS: 'TN_TOAN_EXAM_REPOSITORY_V1',
     TASKS: 'TN_TOAN_ASSIGNMENT_TASKS_V1',
     SUBMISSIONS: 'TN_TOAN_STUDENT_SUBMISSIONS_V1',
-    ACTIVE_STUDENT: 'TN_TOAN_ACTIVE_STUDENT_SESSION_V1'
+    ACTIVE_STUDENT: 'TN_TOAN_ACTIVE_STUDENT_SESSION_V1',
+    CLASS_HISTORY: 'TN_TOAN_CLASS_HISTORY_V1'
   };
 
   const SYNC_CHANNEL_NAME = 'TN_TOAN_EXAM_BROADCAST_CHANNEL';
@@ -3399,6 +3400,801 @@
       ]
     }
   ]
+},
+{
+  "id": "EXAM-K8-DE6",
+  "code": "DE-K8-C2-01",
+  "title": "Đề số 6: Hằng đẳng thức đáng nhớ & Phân tích đa thức thành nhân tử",
+  "grade": 8,
+  "subject": "Toán học 8 (KNTT)",
+  "chapter": "Chương II: Hằng đẳng thức đáng nhớ & Ứng dụng",
+  "topic": "7 Hằng đẳng thức & Nhân tử",
+  "timeMinutes": 45,
+  "levelTarget": "standard",
+  "description": "7 hằng đẳng thức đáng nhớ, phân tích đa thức thành nhân tử và ứng dụng",
+  "createdAt": "2026-09-18T08:00:00.000Z",
+  "createdBy": "Tổ Toán THCS",
+  "questions": [
+    {
+      "id": "11_1",
+      "number": 1,
+      "type": "mcq",
+      "level": "NB",
+      "lessonId": "K8_C2_B6",
+      "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+      "chapter": 2,
+      "content": "Khai triển hằng đẳng thức $(A + B)^2$ ta được kết quả là:",
+      "options": [
+        {
+          "key": "A",
+          "text": "$A^2 + B^2$"
+        },
+        {
+          "key": "B",
+          "text": "$A^2 + 2AB + B^2$"
+        },
+        {
+          "key": "C",
+          "text": "$A^2 - 2AB + B^2$"
+        },
+        {
+          "key": "D",
+          "text": "$A^2 + AB + B^2$"
+        }
+      ],
+      "correctAnswer": "B",
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "Theo hằng đẳng thức bình phương của một tổng: $(A + B)^2 = A^2 + 2AB + B^2$.",
+      "hint": "Bình phương số thứ nhất cộng 2 lần tích cộng bình phương số thứ hai."
+    },
+    {
+      "id": "11_2",
+      "number": 2,
+      "type": "mcq",
+      "level": "NB",
+      "lessonId": "K8_C2_B6",
+      "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+      "chapter": 2,
+      "content": "Biểu thức $x^2 - 16$ được viết dưới dạng tích là:",
+      "options": [
+        {
+          "key": "A",
+          "text": "$(x - 4)(x + 4)$"
+        },
+        {
+          "key": "B",
+          "text": "$(x - 16)(x + 16)$"
+        },
+        {
+          "key": "C",
+          "text": "$(x - 4)^2$"
+        },
+        {
+          "key": "D",
+          "text": "$(x + 4)^2$"
+        }
+      ],
+      "correctAnswer": "A",
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "Áp dụng hằng đẳng thức hiệu hai bình phương $A^2 - B^2 = (A - B)(A + B)$ với $16 = 4^2$.",
+      "hint": "Nhận dạng $A^2 - B^2$ với $B = 4$."
+    },
+    {
+      "id": "11_3",
+      "number": 3,
+      "type": "mcq",
+      "level": "TH",
+      "lessonId": "K8_C2_B6",
+      "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+      "chapter": 2,
+      "content": "Rút gọn biểu thức $M = (x + 3)^2 - (x - 3)^2$ ta được:",
+      "options": [
+        {
+          "key": "A",
+          "text": "$6x$"
+        },
+        {
+          "key": "B",
+          "text": "$12x$"
+        },
+        {
+          "key": "C",
+          "text": "$18$"
+        },
+        {
+          "key": "D",
+          "text": "$2x^2 + 18$"
+        }
+      ],
+      "correctAnswer": "B",
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "Ta có: $M = (x^2 + 6x + 9) - (x^2 - 6x + 9) = 6x - (-6x) = 12x$.",
+      "hint": "Khai triển từng bình phương rồi trừ các hạng tử đồng dạng."
+    },
+    {
+      "id": "11_4",
+      "number": 4,
+      "type": "mcq",
+      "level": "TH",
+      "lessonId": "K8_C2_B9",
+      "lessonName": "Bài 9: Phân tích đa thức thành nhân tử",
+      "chapter": 2,
+      "content": "Phân tích đa thức $x^2 - 4x + 4$ thành nhân tử được kết quả là:",
+      "options": [
+        {
+          "key": "A",
+          "text": "$(x + 2)^2$"
+        },
+        {
+          "key": "B",
+          "text": "$(x - 2)^2$"
+        },
+        {
+          "key": "C",
+          "text": "$(x - 4)^2$"
+        },
+        {
+          "key": "D",
+          "text": "$(x - 2)(x + 2)$"
+        }
+      ],
+      "correctAnswer": "B",
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "Ta có: $x^2 - 2 \\cdot x \\cdot 2 + 2^2 = (x - 2)^2$.",
+      "hint": "Nhận dạng hằng đẳng thức bình phương của một hiệu $(A - B)^2$."
+    },
+    {
+      "id": "11_5",
+      "number": 5,
+      "type": "mcq",
+      "level": "VD",
+      "lessonId": "K8_C2_B6",
+      "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+      "chapter": 2,
+      "content": "Tính nhanh giá trị của biểu thức $99^2 - 1$ ta được:",
+      "options": [
+        {
+          "key": "A",
+          "text": "$9800$"
+        },
+        {
+          "key": "B",
+          "text": "$9900$"
+        },
+        {
+          "key": "C",
+          "text": "$9700$"
+        },
+        {
+          "key": "D",
+          "text": "$9600$"
+        }
+      ],
+      "correctAnswer": "A",
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "$99^2 - 1^2 = (99 - 1)(99 + 1) = 98 \\cdot 100 = 9800$.",
+      "hint": "Áp dụng $a^2 - b^2 = (a - b)(a + b)$ với $a = 99, b = 1$."
+    },
+    {
+      "id": "11_6",
+      "number": 6,
+      "type": "tf",
+      "level": "TH",
+      "lessonId": "K8_C2_B7",
+      "lessonName": "Bài 7: Lập phương của một tổng. Lập phương của một hiệu",
+      "chapter": 2,
+      "content": "Cho biểu thức $P = (x + 2)^3$. Xét tính đúng/sai của các khẳng định sau:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tất cả các ý đều đúng"
+        },
+        {
+          "key": "B",
+          "text": "Xem đánh giá chi tiết a, b, c, d"
+        }
+      ],
+      "items": [
+        {
+          "key": "a",
+          "label": "a",
+          "text": "Khai triển của $P$ là $x^3 + 6x^2 + 12x + 8$.",
+          "correctAnswer": "Đ",
+          "explanation": "$(x + 2)^3 = x^3 + 3x^2(2) + 3x(2^2) + 2^3 = x^3 + 6x^2 + 12x + 8$."
+        },
+        {
+          "key": "b",
+          "label": "b",
+          "text": "Hệ số của hạng tử chứa $x^2$ trong khai triển bằng $6$.",
+          "correctAnswer": "Đ",
+          "explanation": "Hạng tử chứa $x^2$ là $6x^2$, hệ số là 6."
+        },
+        {
+          "key": "c",
+          "label": "c",
+          "text": "Bậc của đa thức $P$ sau khai triển là $4$.",
+          "correctAnswer": "S",
+          "explanation": "Bậc cao nhất là $3$, không phải $4$."
+        },
+        {
+          "key": "d",
+          "label": "d",
+          "text": "Tại $x = -2$, giá trị của biểu thức $P$ bằng $0$.",
+          "correctAnswer": "Đ",
+          "explanation": "Thay $x = -2 \\Rightarrow (-2 + 2)^3 = 0$."
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "",
+      "hint": ""
+    },
+    {
+      "id": "11_7",
+      "number": 7,
+      "type": "tf",
+      "level": "VD",
+      "lessonId": "K8_C2_B8",
+      "lessonName": "Bài 8: Tổng và hiệu hai lập phương",
+      "chapter": 2,
+      "content": "Cho hai biểu thức $A = x^3 - 8$ và $B = (x - 2)(x^2 + 2x + 4)$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tất cả các ý đều đúng"
+        },
+        {
+          "key": "B",
+          "text": "Xem đánh giá chi tiết a, b, c, d"
+        }
+      ],
+      "items": [
+        {
+          "key": "a",
+          "label": "a",
+          "text": "Hai biểu thức $A$ và $B$ luôn bằng nhau với mọi giá trị của $x$.",
+          "correctAnswer": "Đ",
+          "explanation": "Đây là hằng đẳng thức hiệu hai lập phương: $x^3 - 2^3 = (x - 2)(x^2 + 2x + 4)$."
+        },
+        {
+          "key": "b",
+          "label": "b",
+          "text": "Biểu thức $x^2 + 2x + 4$ được gọi là bình phương thiếu của một tổng.",
+          "correctAnswer": "Đ",
+          "explanation": "Đúng theo quy ước tên gọi trong SGK KNTT."
+        },
+        {
+          "key": "c",
+          "label": "c",
+          "text": "Giá trị của $x^2 + 2x + 4$ luôn dương với mọi số thực $x$.",
+          "correctAnswer": "Đ",
+          "explanation": "$x^2 + 2x + 4 = (x + 1)^2 + 3 > 0$ với mọi $x$."
+        },
+        {
+          "key": "d",
+          "label": "d",
+          "text": "Tại $x = 2$, giá trị của $A$ và $B$ đều bằng $4$.",
+          "correctAnswer": "S",
+          "explanation": "Tại $x = 2$, $A = B = 2^3 - 8 = 0$."
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "",
+      "hint": ""
+    },
+    {
+      "id": "11_8",
+      "number": 8,
+      "type": "tf",
+      "level": "VD",
+      "lessonId": "K8_C2_B9",
+      "lessonName": "Bài 9: Phân tích đa thức thành nhân tử",
+      "chapter": 2,
+      "content": "Xét việc phân tích đa thức $K = x^2 - 2xy + y^2 - 9$ thành nhân tử:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tất cả các ý đều đúng"
+        },
+        {
+          "key": "B",
+          "text": "Xem đánh giá chi tiết a, b, c, d"
+        }
+      ],
+      "items": [
+        {
+          "key": "a",
+          "label": "a",
+          "text": "Ba hạng tử đầu tạo thành bình phương của một hiệu: $(x - y)^2$.",
+          "correctAnswer": "Đ",
+          "explanation": "$x^2 - 2xy + y^2 = (x - y)^2$."
+        },
+        {
+          "key": "b",
+          "label": "b",
+          "text": "Đa thức $K$ được viết lại là $(x - y)^2 - 3^2$.",
+          "correctAnswer": "Đ",
+          "explanation": "$9 = 3^2$, do đó $K = (x - y)^2 - 3^2$."
+        },
+        {
+          "key": "c",
+          "label": "c",
+          "text": "Kết quả phân tích thành nhân tử là $(x - y - 3)(x - y + 3)$.",
+          "correctAnswer": "Đ",
+          "explanation": "Áp dụng $A^2 - B^2 = (A - B)(A + B)$."
+        },
+        {
+          "key": "d",
+          "label": "d",
+          "text": "Tại $x = 5, y = 2$, giá trị của biểu thức $K$ bằng $16$.",
+          "correctAnswer": "S",
+          "explanation": "Thay $x = 5, y = 2 \\Rightarrow K = (5 - 2)^2 - 9 = 9 - 9 = 0$."
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "",
+      "hint": ""
+    },
+    {
+      "id": "11_9",
+      "number": 9,
+      "type": "short",
+      "level": "VD",
+      "lessonId": "K8_C2_B6",
+      "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+      "chapter": 2,
+      "content": "Tìm giá trị nhỏ nhất của biểu thức $A = x^2 - 6x + 10$.",
+      "options": [
+        {
+          "key": "Đáp số",
+          "text": "1"
+        }
+      ],
+      "correctAnswer": "1",
+      "correctAnswers": [
+        "1"
+      ],
+      "explanation": "Ta biến đổi: $A = (x^2 - 6x + 9) + 1 = (x - 3)^2 + 1 \\ge 1$. Dấu '=' xảy ra khi $x = 3$. Vậy GTNN là 1.",
+      "hint": "Đưa về dạng $(x - a)^2 + m$."
+    },
+    {
+      "id": "11_10",
+      "number": 10,
+      "type": "short",
+      "level": "VD",
+      "lessonId": "K8_C2_B6",
+      "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+      "chapter": 2,
+      "content": "Tìm số thực dương $x$ thỏa mãn phương trình: $x^2 - 25 = 0$.",
+      "options": [
+        {
+          "key": "Đáp số",
+          "text": "5"
+        }
+      ],
+      "correctAnswer": "5",
+      "correctAnswers": [
+        "5"
+      ],
+      "explanation": "$x^2 - 25 = 0 \\Leftrightarrow (x - 5)(x + 5) = 0 \\Leftrightarrow x = 5$ hoặc $x = -5$. Do $x > 0$ nên $x = 5$.",
+      "hint": "Dùng hằng đẳng thức hiệu hai bình phương và chú ý điều kiện $x > 0$."
+    }
+  ]
+},
+{
+  "id": "EXAM-K8-DE7",
+  "code": "DE-K8-C3-01",
+  "title": "Đề số 7: Tứ giác & Các hình thang, hình bình hành, hình chữ nhật",
+  "grade": 8,
+  "subject": "Toán học 8 (KNTT)",
+  "chapter": "Chương III: Tứ giác",
+  "topic": "Tứ giác & Các hình",
+  "timeMinutes": 45,
+  "levelTarget": "standard",
+  "description": "Định lý tổng các góc tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông",
+  "createdAt": "2026-09-18T08:00:00.000Z",
+  "createdBy": "Tổ Toán THCS",
+  "questions": [
+    {
+      "id": "12_1",
+      "number": 1,
+      "type": "mcq",
+      "level": "NB",
+      "lessonId": "K8_C3_B10",
+      "lessonName": "Bài 10: Tứ giác",
+      "chapter": 3,
+      "content": "Tổng số đo các góc trong một tứ giác lồi luôn bằng:",
+      "options": [
+        {
+          "key": "A",
+          "text": "$180^\\circ$"
+        },
+        {
+          "key": "B",
+          "text": "$360^\\circ$"
+        },
+        {
+          "key": "C",
+          "text": "$270^\\circ$"
+        },
+        {
+          "key": "D",
+          "text": "$540^\\circ$"
+        }
+      ],
+      "correctAnswer": "B",
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "Theo định lý: Tổng các góc của một tứ giác bằng $360^\\circ$.",
+      "hint": "Nhớ định lý tổng các góc trong một tứ giác."
+    },
+    {
+      "id": "12_2",
+      "number": 2,
+      "type": "mcq",
+      "level": "NB",
+      "lessonId": "K8_C3_B11",
+      "lessonName": "Bài 11: Hình thang cân",
+      "chapter": 3,
+      "content": "Hình thang cân là hình thang có:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hai góc kề một đáy bằng nhau"
+        },
+        {
+          "key": "B",
+          "text": "Hai cạnh đáy bằng nhau"
+        },
+        {
+          "key": "C",
+          "text": "Hai góc đối bằng nhau"
+        },
+        {
+          "key": "D",
+          "text": "Hai cạnh bên song song"
+        }
+      ],
+      "correctAnswer": "A",
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "Định nghĩa: Hình thang cân là hình thang có hai góc kề một đáy bằng nhau.",
+      "hint": "Xem lại định nghĩa hình thang cân trong SGK KNTT."
+    },
+    {
+      "id": "12_3",
+      "number": 3,
+      "type": "mcq",
+      "level": "TH",
+      "lessonId": "K8_C3_B10",
+      "lessonName": "Bài 10: Tứ giác",
+      "chapter": 3,
+      "content": "Cho tứ giác $ABCD$ có $\\widehat{A} = 70^\\circ, \\widehat{B} = 80^\\circ, \\widehat{C} = 100^\\circ$. Số đo góc $D$ là:",
+      "options": [
+        {
+          "key": "A",
+          "text": "$100^\\circ$"
+        },
+        {
+          "key": "B",
+          "text": "$110^\\circ$"
+        },
+        {
+          "key": "C",
+          "text": "$120^\\circ$"
+        },
+        {
+          "key": "D",
+          "text": "$90^\\circ$"
+        }
+      ],
+      "correctAnswer": "B",
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "Ta có: $\\widehat{D} = 360^\\circ - (70^\\circ + 80^\\circ + 100^\\circ) = 360^\\circ - 250^\\circ = 110^\\circ$.",
+      "hint": "Lấy $360^\\circ$ trừ tổng ba góc đã biết."
+    },
+    {
+      "id": "12_4",
+      "number": 4,
+      "type": "mcq",
+      "level": "TH",
+      "lessonId": "K8_C3_B12",
+      "lessonName": "Bài 12: Hình bình hành",
+      "chapter": 3,
+      "content": "Khẳng định nào sau đây KHÔNG PHẢI là tính chất của hình bình hành?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Các cạnh đối bằng nhau"
+        },
+        {
+          "key": "B",
+          "text": "Các góc đối bằng nhau"
+        },
+        {
+          "key": "C",
+          "text": "Hai đường chéo vuông góc với nhau"
+        },
+        {
+          "key": "D",
+          "text": "Hai đường chéo cắt nhau tại trung điểm của mỗi đường"
+        }
+      ],
+      "correctAnswer": "C",
+      "correctAnswers": [
+        "C"
+      ],
+      "explanation": "Hình bình hành nói chung hai đường chéo cắt nhau tại trung điểm mỗi đường chứ không bắt buộc vuông góc (chỉ hình thoi và hình vuông mới vuông góc).",
+      "hint": "Hai đường chéo vuông góc là đặc trưng của hình thoi hoặc hình vuông."
+    },
+    {
+      "id": "12_5",
+      "number": 5,
+      "type": "mcq",
+      "level": "VD",
+      "lessonId": "K8_C3_B14",
+      "lessonName": "Bài 14: Hình thoi và hình vuông",
+      "chapter": 3,
+      "content": "Hình chữ nhật có hai đường chéo vuông góc với nhau là:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hình bình hành"
+        },
+        {
+          "key": "B",
+          "text": "Hình vuông"
+        },
+        {
+          "key": "C",
+          "text": "Hình thang cân"
+        },
+        {
+          "key": "D",
+          "text": "Hình thoi"
+        }
+      ],
+      "correctAnswer": "B",
+      "correctAnswers": [
+        "B"
+      ],
+      "explanation": "Dấu hiệu nhận biết: Hình chữ nhật có hai đường chéo vuông góc với nhau là hình vuông.",
+      "hint": "Hình chữ nhật có thêm tính chất của hình thoi thì trở thành hình gì?"
+    },
+    {
+      "id": "12_6",
+      "number": 6,
+      "type": "tf",
+      "level": "TH",
+      "lessonId": "K8_C3_B10",
+      "lessonName": "Bài 10: Tứ giác",
+      "chapter": 3,
+      "content": "Cho tứ giác lồi $ABCD$. Xét tính đúng/sai của các khẳng định sau:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tất cả các ý đều đúng"
+        },
+        {
+          "key": "B",
+          "text": "Xem đánh giá chi tiết a, b, c, d"
+        }
+      ],
+      "items": [
+        {
+          "key": "a",
+          "label": "a",
+          "text": "Tứ giác $ABCD$ có thể có $4$ góc nhọn.",
+          "correctAnswer": "S",
+          "explanation": "Nếu cả 4 góc đều nhọn thì tổng 4 góc nhỏ hơn $4 \\times 90^\\circ = 360^\\circ$ (vô lý)."
+        },
+        {
+          "key": "b",
+          "label": "b",
+          "text": "Tứ giác $ABCD$ có thể có $4$ góc vuông.",
+          "correctAnswer": "Đ",
+          "explanation": "Khi 4 góc đều bằng $90^\\circ$, tứ giác là hình chữ nhật."
+        },
+        {
+          "key": "c",
+          "label": "c",
+          "text": "Tổng các góc ngoài (mỗi đỉnh lấy một góc) của tứ giác bằng $360^\\circ$.",
+          "correctAnswer": "Đ",
+          "explanation": "Định lý: Tổng các góc ngoài của một đa giác lồi luôn bằng $360^\\circ$."
+        },
+        {
+          "key": "d",
+          "label": "d",
+          "text": "Tứ giác $ABCD$ có nhiều nhất $3$ góc tù.",
+          "correctAnswer": "Đ",
+          "explanation": "Nếu có 4 góc tù thì tổng lớn hơn $360^\\circ$, do đó có tối đa 3 góc tù."
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "",
+      "hint": ""
+    },
+    {
+      "id": "12_7",
+      "number": 7,
+      "type": "tf",
+      "level": "VD",
+      "lessonId": "K8_C3_B12",
+      "lessonName": "Bài 12: Hình bình hành",
+      "chapter": 3,
+      "content": "Cho hình bình hành $ABCD$ có $AB = 8\\text{ cm}, BC = 5\\text{ cm}$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tất cả các ý đều đúng"
+        },
+        {
+          "key": "B",
+          "text": "Xem đánh giá chi tiết a, b, c, d"
+        }
+      ],
+      "items": [
+        {
+          "key": "a",
+          "label": "a",
+          "text": "Độ dài cạnh $CD = 8\\text{ cm}$ và $AD = 5\\text{ cm}$.",
+          "correctAnswer": "Đ",
+          "explanation": "Vì trong hình bình hành các cạnh đối bằng nhau: $CD = AB = 8\\text{ cm}, AD = BC = 5\\text{ cm}$."
+        },
+        {
+          "key": "b",
+          "label": "b",
+          "text": "Chu vi của hình bình hành $ABCD$ bằng $26\\text{ cm}$.",
+          "correctAnswer": "Đ",
+          "explanation": "Chu vi $P = 2(AB + BC) = 2(8 + 5) = 26\\text{ cm}$."
+        },
+        {
+          "key": "c",
+          "label": "c",
+          "text": "Hai đường chéo $AC$ và $BD$ luôn bằng nhau.",
+          "correctAnswer": "S",
+          "explanation": "Hình bình hành nói chung hai đường chéo không bằng nhau (chỉ bằng nhau khi là hình chữ nhật)."
+        },
+        {
+          "key": "d",
+          "label": "d",
+          "text": "Góc $\\widehat{A}$ và góc $\\widehat{B}$ là hai góc bù nhau (tổng bằng $180^\\circ$).",
+          "correctAnswer": "Đ",
+          "explanation": "Vì $AD \\parallel BC$ nên hai góc trong cùng phía $\\widehat{A} + \\widehat{B} = 180^\\circ$."
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "",
+      "hint": ""
+    },
+    {
+      "id": "12_8",
+      "number": 8,
+      "type": "tf",
+      "level": "VD",
+      "lessonId": "K8_C3_B13",
+      "lessonName": "Bài 13: Hình chữ nhật",
+      "chapter": 3,
+      "content": "Cho tam giác $ABC$ vuông tại $A$, có trung tuyến $AM$. Gọi $D$ là điểm đối xứng với $A$ qua $M$.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tất cả các ý đều đúng"
+        },
+        {
+          "key": "B",
+          "text": "Xem đánh giá chi tiết a, b, c, d"
+        }
+      ],
+      "items": [
+        {
+          "key": "a",
+          "label": "a",
+          "text": "Tứ giác $ABDC$ có hai đường chéo cắt nhau tại trung điểm của mỗi đường.",
+          "correctAnswer": "Đ",
+          "explanation": "$M$ là trung điểm của $BC$ (gt) và $M$ là trung điểm của $AD$ (do đối xứng)."
+        },
+        {
+          "key": "b",
+          "label": "b",
+          "text": "Tứ giác $ABDC$ là một hình bình hành.",
+          "correctAnswer": "Đ",
+          "explanation": "Tứ giác có hai đường chéo cắt nhau tại trung điểm mỗi đường là hình bình hành."
+        },
+        {
+          "key": "c",
+          "label": "c",
+          "text": "Tứ giác $ABDC$ là một hình chữ nhật.",
+          "correctAnswer": "Đ",
+          "explanation": "Hình bình hành có một góc vuông ($\\widehat{A} = 90^\\circ$) là hình chữ nhật."
+        },
+        {
+          "key": "d",
+          "label": "d",
+          "text": "Độ dài đoạn thẳng $AM$ bằng một nửa độ dài cạnh $BC$.",
+          "correctAnswer": "Đ",
+          "explanation": "Trong tam giác vuông, đường trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền: $AM = \\frac{1}{2}BC$."
+        }
+      ],
+      "correctAnswers": [
+        "A"
+      ],
+      "explanation": "",
+      "hint": ""
+    },
+    {
+      "id": "12_9",
+      "number": 9,
+      "type": "short",
+      "level": "TH",
+      "lessonId": "K8_C3_B11",
+      "lessonName": "Bài 11: Hình thang cân",
+      "chapter": 3,
+      "content": "Cho hình thang cân $ABCD$ ($AB \\parallel CD$) có góc $\\widehat{D} = 70^\\circ$. Tính số đo góc $\\widehat{A}$ (đơn vị: độ).",
+      "options": [
+        {
+          "key": "Đáp số",
+          "text": "110"
+        }
+      ],
+      "correctAnswer": "110",
+      "correctAnswers": [
+        "110",
+        "110 độ",
+        "110°"
+      ],
+      "explanation": "Vì $AB \\parallel CD$ nên hai góc trong cùng phía bù nhau: $\\widehat{A} + \\widehat{D} = 180^\\circ \\Rightarrow \\widehat{A} = 180^\\circ - 70^\\circ = 110^\\circ$.",
+      "hint": "Hai góc trong cùng phía có tổng bằng $180^\\circ$."
+    },
+    {
+      "id": "12_10",
+      "number": 10,
+      "type": "short",
+      "level": "VD",
+      "lessonId": "K8_C3_B13",
+      "lessonName": "Bài 13: Hình chữ nhật",
+      "chapter": 3,
+      "content": "Một mảnh vườn hình chữ nhật có chiều dài là $8\\text{ m}$ và chiều rộng là $6\\text{ m}$. Tính độ dài đường chéo của mảnh vườn đó (đơn vị: mét).",
+      "options": [
+        {
+          "key": "Đáp số",
+          "text": "10"
+        }
+      ],
+      "correctAnswer": "10",
+      "correctAnswers": [
+        "10",
+        "10m",
+        "10 m",
+        "10 mét"
+      ],
+      "explanation": "Theo định lý Pythagore trong tam giác vuông tạo bởi hai kích thước: $d = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10\\text{ m}$.",
+      "hint": "Dùng định lý Pythagore: $c = \\sqrt{a^2 + b^2}$."
+    }
+  ]
 }
 ];
 
@@ -3592,7 +4388,7 @@
       return true;
     },
 
-    // 2. BỘ TẠO ĐỀ TỰ ĐỘNG THÔNG MINH (AUTO EXAM MATRIX GENERATOR)
+        // 2. BỘ TẠO ĐỀ TỰ ĐỘNG THÔNG MINH (AUTO EXAM MATRIX GENERATOR)
     generateAutoExam: function(options) {
       const grade = Number(options.grade) || 8;
       const nbCount = Number(options.nbCount) || 3;
@@ -3604,6 +4400,14 @@
       const title = options.title || `Đề kiểm tra tự động Toán ${grade} - KNTT`;
       const createdBy = options.createdBy || "Bộ Tạo Đề Thông Minh AI";
       const targetChapter = (options.chapter || '').toLowerCase().trim();
+      const targetLessonId = (options.lessonId && options.lessonId !== 'ALL') ? options.lessonId : null;
+      const targetClass = options.targetClass || null;
+      const dedupClass = !!options.dedupClass;
+
+      let classUsedIds = new Set();
+      if (dedupClass && targetClass) {
+        classUsedIds = new Set(this.getClassQuestionHistory(targetClass));
+      }
 
       let questionPool = [];
 
@@ -3615,6 +4419,8 @@
           level: (q.level || 'NB').toUpperCase(),
           grade: grade,
           chapter: q.chapter || (sourceExam ? sourceExam.chapter : null) || 1,
+          lessonId: q.lessonId || (sourceExam ? sourceExam.lessonId : null) || null,
+          lessonName: q.lessonName || (sourceExam ? sourceExam.lessonName : null) || '',
           topic: q.lessonName || (sourceExam ? (sourceExam.topic || sourceExam.title) : ''),
           content: q.content || q.prompt || "",
           options: q.options || [],
@@ -3669,9 +4475,19 @@
         }
       });
 
-      // 3. Lọc theo Chương / Chủ đề nếu có
+      // 3. Lọc theo Bài học cụ thể nếu giáo viên chọn
       let activePool = questionPool;
-      if (targetChapter && !targetChapter.includes('tổng hợp') && !targetChapter.includes('toàn bộ') && !targetChapter.includes('all')) {
+      if (targetLessonId) {
+        const lessonFiltered = questionPool.filter(q => {
+          if (q.lessonId && q.lessonId === targetLessonId) return true;
+          if (q.id && q.id.includes(targetLessonId)) return true;
+          return false;
+        });
+        if (lessonFiltered.length > 0) {
+          activePool = lessonFiltered;
+        }
+      } else if (targetChapter && !targetChapter.includes('tổng hợp') && !targetChapter.includes('toàn bộ') && !targetChapter.includes('all')) {
+        // Lọc theo Chương / Chủ đề
         const keywords = [];
         if (targetChapter.includes('đa thức')) keywords.push('đa thức', 'đơn thức');
         if (targetChapter.includes('hằng đẳng thức')) keywords.push('hằng đẳng thức', 'bình phương', 'lập phương');
@@ -3714,10 +4530,29 @@
         vdcPool = vdcPool.concat(moreVdc);
       }
 
+      // Hàm bốc câu hỏi có hỗ trợ chống trùng lớp học (class deduplication)
       function pickWithoutReplacement(sourceArr, count, usedSet) {
         if (!sourceArr || sourceArr.length === 0 || count <= 0) return [];
         const available = sourceArr.filter(q => !usedSet.has(q.id));
-        const shuffled = available.slice().sort(() => Math.random() - 0.5);
+
+        let unassignedForClass = available;
+        if (dedupClass && classUsedIds.size > 0) {
+          const fresh = available.filter(q => !classUsedIds.has(q.id));
+          if (fresh.length >= count) {
+            unassignedForClass = fresh;
+          } else if (fresh.length > 0) {
+            // Lấy tất cả câu chưa giao trước, phần còn lại lấy từ câu đã giao
+            const pickedFresh = fresh.slice().sort(() => Math.random() - 0.5);
+            pickedFresh.forEach(q => usedSet.add(q.id));
+            const stillNeed = count - pickedFresh.length;
+            const remainingPool = available.filter(q => !usedSet.has(q.id));
+            const pickedRest = remainingPool.slice().sort(() => Math.random() - 0.5).slice(0, stillNeed);
+            pickedRest.forEach(q => usedSet.add(q.id));
+            return pickedFresh.concat(pickedRest);
+          }
+        }
+
+        const shuffled = unassignedForClass.slice().sort(() => Math.random() - 0.5);
         const picked = shuffled.slice(0, count);
         picked.forEach(q => usedSet.add(q.id));
         return picked;
@@ -3758,7 +4593,8 @@
         grade: grade,
         subject: `Toán học ${grade} (KNTT)`,
         chapter: options.chapter || "Chương trình GDPT 2018",
-        topic: options.topic || "Tổng hợp kiến thức",
+        lessonId: targetLessonId || null,
+        topic: options.topic || (targetLessonId || "Tổng hợp kiến thức"),
         timeMinutes: timeMinutes,
         levelTarget: (vdcCount > 0 || vdCount >= 4) ? "advanced" : "standard",
         description: `Đề thi tự động chuẩn KNTT gồm ${finalQuestions.length} câu: ${nbCount} NB, ${thCount} TH, ${vdCount} VD, ${vdcCount} VDC.`,
@@ -3768,6 +4604,110 @@
       };
 
       return newExam;
+    },
+
+    // 2.1. ĐỔI CÂU HỎI KHÁC TRỰC TIẾP TRÊN BẢN XEM TRƯỚC (REROLL QUESTION)
+    rerollQuestion: function(exam, questionIndex) {
+      if (!exam || !Array.isArray(exam.questions) || questionIndex < 0 || questionIndex >= exam.questions.length) {
+        return { success: false, message: 'Dữ liệu đề thi hoặc vị trí câu hỏi không hợp lệ.' };
+      }
+
+      const currentQ = exam.questions[questionIndex];
+      const grade = Number(exam.grade) || (exam.subject && exam.subject.includes('8') ? 8 : 6);
+      const level = (currentQ.level || 'NB').toUpperCase();
+      const type = currentQ.type || 'mcq';
+      const existingIds = new Set(exam.questions.map(q => q.id));
+
+      // Lấy toàn bộ câu hỏi khả dụng từ kho đề
+      const allExams = this.getAllExams();
+      let candidates = [];
+
+      allExams.forEach(e => {
+        const eGrade = Number(e.grade) || (e.subject && e.subject.includes('8') ? 8 : 6);
+        if (eGrade !== grade) return;
+
+        if (Array.isArray(e.questions)) {
+          e.questions.forEach(q => {
+            if (existingIds.has(q.id)) return;
+            if (q.content && q.content.trim() === currentQ.content.trim()) return;
+
+            // Ưu tiên 1: Cùng mức độ và cùng loại
+            if (q.level === level && q.type === type) {
+              candidates.push(q);
+            }
+          });
+        }
+      });
+
+      // Nếu không có câu cùng loại thì nới lỏng: chỉ cần cùng mức độ
+      if (candidates.length === 0) {
+        allExams.forEach(e => {
+          const eGrade = Number(e.grade) || (e.subject && e.subject.includes('8') ? 8 : 6);
+          if (eGrade !== grade) return;
+
+          if (Array.isArray(e.questions)) {
+            e.questions.forEach(q => {
+              if (existingIds.has(q.id)) return;
+              if (q.level === level) {
+                candidates.push(q);
+              }
+            });
+          }
+        });
+      }
+
+      if (candidates.length === 0) {
+        return { success: false, message: 'Không còn câu hỏi thay thế cùng mức độ trong ngân hàng.' };
+      }
+
+      // Bốc ngẫu nhiên 1 câu
+      const picked = candidates[Math.floor(Math.random() * candidates.length)];
+      const replacedQ = {
+        ...picked,
+        number: questionIndex + 1
+      };
+
+      exam.questions[questionIndex] = replacedQ;
+
+      // Nếu đề này đã lưu trong kho, đồng bộ cập nhật lại
+      const existingExam = this.getExamById(exam.id);
+      if (existingExam) {
+        this.saveExam(exam);
+      }
+
+      return {
+        success: true,
+        newQuestion: replacedQ,
+        exam: exam
+      };
+    },
+
+    // 2.2. QUẢN LÝ LỊCH SỬ CÂU HỎI THEO LỚP (CLASS DEDUPLICATION ENGINE)
+    getClassQuestionHistory: function(classCode) {
+      if (!classCode) return [];
+      const historyMap = getStorage(STORAGE_KEYS.CLASS_HISTORY, {});
+      return historyMap[classCode] || [];
+    },
+
+    recordClassAssignment: function(classCode, questionIds) {
+      if (!classCode || !Array.isArray(questionIds) || questionIds.length === 0) return [];
+      const historyMap = getStorage(STORAGE_KEYS.CLASS_HISTORY, {});
+      const existing = new Set(historyMap[classCode] || []);
+      questionIds.forEach(id => { if (id) existing.add(id); });
+      historyMap[classCode] = Array.from(existing);
+      setStorage(STORAGE_KEYS.CLASS_HISTORY, historyMap);
+      return historyMap[classCode];
+    },
+
+    clearClassHistory: function(classCode) {
+      const historyMap = getStorage(STORAGE_KEYS.CLASS_HISTORY, {});
+      if (classCode) {
+        delete historyMap[classCode];
+      } else {
+        for (const k in historyMap) delete historyMap[k];
+      }
+      setStorage(STORAGE_KEYS.CLASS_HISTORY, historyMap);
+      return true;
     },
 
     // 3. QUẢN LÝ GIAO NHIỆM VỤ (ASSIGNMENT HUB)
@@ -3792,6 +4732,23 @@
 
       tasks.unshift(taskData);
       setStorage(STORAGE_KEYS.TASKS, tasks);
+
+      // Tự động ghi nhận danh sách ID câu hỏi vào lịch sử của lớp để chống trùng lặp
+      if (taskData.assignedClass) {
+        let qIds = [];
+        if (Array.isArray(taskData.questionIds) && taskData.questionIds.length > 0) {
+          qIds = taskData.questionIds;
+        } else if (taskData.examId) {
+          const targetEx = this.getExamById(taskData.examId);
+          if (targetEx && Array.isArray(targetEx.questions)) {
+            qIds = targetEx.questions.map(q => q.id);
+          }
+        }
+        if (qIds.length > 0) {
+          this.recordClassAssignment(taskData.assignedClass, qIds);
+        }
+      }
+
       broadcast('TASK_CREATED', taskData);
       return taskData;
     },

@@ -1,92 +1,75 @@
-# KHO TRI THỨC BÀI HỌC & BỘ 5 ĐỀ ÔN TẬP TOÁN 6 (CHƯƠNG I)
-*Tài liệu tri thức chuẩn GDPT 2018 — Bám sát Bài 1 đến Bài 4*
+# KHO TRI THỨC BÀI HỌC & CHUYÊN MÔN (KNOWLEDGE BASE)
 
 ---
 
-## I. TÓM TẮT KIẾN THỨC TRỌNG TÂM (BÀI 1 ĐẾN BÀI 4)
+## 1. GIÁO ÁN MẦM NON: SỰ KỲ DIỆU CỦA ĐƯỜNG (KPKH)
+- **Lĩnh vực**: Phát triển nhận thức - Khám phá khoa học (KPKH)
+- **Đề tài**: Sự kỳ diệu của đường
+- **Lứa tuổi**: Mẫu giáo lớn (5 - 6 tuổi)
+- **Thời gian thực hiện**: 30 - 35 phút
 
-### 1. Bài 1: Tập hợp. Phần tử của tập hợp
-- **Khái niệm:** Một tập hợp (gọi tắt là tập) bao gồm các đối tượng có cùng một hoặc một số đặc điểm. Các đối tượng tạo nên tập hợp gọi là các phần tử của tập hợp đó.
-- **Kí hiệu:** Người ta thường dùng các chữ cái in hoa để đặt tên cho tập hợp: $A, B, X, Y, \dots$
-  - Kí hiệu $a \in A$: Phần tử $a$ thuộc tập hợp $A$.
-  - Kí hiệu $b \notin A$: Phần tử $b$ không thuộc tập hợp $A$.
-- **Cách viết tập hợp:**
-  - *Cách 1: Liệt kê các phần tử.* Viết các phần tử trong dấu ngoặc nhọn $\{\}$, ngăn cách nhau bởi dấu chấm phẩy ";". Mỗi phần tử chỉ được liệt kê một lần, thứ tự liệt kê tùy ý.
-  - *Cách 2: Chỉ ra dấu hiệu đặc trưng.* Nêu rõ tính chất chung của tất cả các phần tử trong tập hợp.
+### I. Mục đích - Yêu cầu:
+1. **Kiến thức**:
+   - Trẻ biết đường là gia vị có vị ngọt, màu trắng (hoặc vàng/nâu), tan được trong nước.
+   - Trẻ hiểu nguyên lý tỷ trọng cơ bản: Dung dịch nước đường đậm đặc (nhiều đường) sẽ nặng hơn và chìm xuống dưới, dung dịch loãng hơn sẽ nhẹ và nổi lên trên (hiện tượng phân tầng màu sắc).
+   - Trẻ biết các ứng dụng của đường trong cuộc sống: pha nước cam/chanh, làm bánh kẹo, nấu chè, gia vị nấu ăn.
+2. **Kỹ năng**:
+   - Rèn kỹ năng quan sát, so sánh, dự đoán và thực hành thí nghiệm khoa học theo nhóm.
+   - Rèn kỹ năng vận động tinh: dùng thìa xúc đường, đong nước, khuấy tan và dùng ống hút nhỏ giọt (dropper).
+   - Phát triển ngôn ngữ mạch lạc, biết trình bày kết quả quan sát của mình.
+3. **Thái độ**:
+   - Trẻ hào hứng, tích cực tham gia các hoạt động khám phá khoa học.
+   - Biết hợp tác cùng bạn trong nhóm và giữ gìn vệ sinh đồ dùng học tập.
 
-### 2. Bài 2: Tập hợp các số tự nhiên. Ghi số tự nhiên
-- **Tập hợp số tự nhiên:**
-  - $\mathbb{N} = \{0; 1; 2; 3; 4; \dots\}$ (Tập hợp các số tự nhiên, bắt đầu từ số 0).
-  - $\mathbb{N}^* = \{1; 2; 3; 4; \dots\}$ (Tập hợp các số tự nhiên khác 0).
-  - *Lưu ý quan trọng:* $0 \in \mathbb{N}$ nhưng $0 \notin \mathbb{N}^*$.
-- **Ghi số trong hệ thập phân:**
-  - Dùng 10 chữ số: $0, 1, 2, 3, 4, 5, 6, 7, 8, 9$.
-  - Giá trị của mỗi chữ số phụ thuộc vào vị trí (hàng) của nó trong số đó: hàng đơn vị, hàng chục, hàng trăm, hàng nghìn,...
-  - Cấu tạo số: $\overline{ab} = 10a + b$ ($a \neq 0$); $\overline{abc} = 100a + 10b + c$ ($a \neq 0$).
-- **Ghi số La Mã:**
-  - Kí tự cơ bản: $\text{I} = 1$; $\text{V} = 5$; $\text{X} = 10$.
-  - Quy tắc thêm vào bên phải (phép cộng): $\text{VI} = 6$, $\text{VII} = 7$, $\text{VIII} = 8$, $\text{XI} = 11$, $\text{XV} = 15$, $\text{XX} = 20$, $\text{XXIV} = 24$, $\text{XXVI} = 26$.
-  - Quy tắc viết vào bên trái (phép trừ): $\text{IV} = 4$ ($5 - 1$), $\text{IX} = 9$ ($10 - 1$), $\text{XIX} = 19$, $\text{XXIX} = 29$.
-  - *Đặc biệt:* Hệ La Mã không có kí tự biểu diễn số 0.
+### II. Chuẩn bị:
+- **Đồ dùng của cô**: 
+  - Bài giảng điện tử tương tác, nhạc bài hát "Bé thích ăn kẹo", "Đội kèn tí hon".
+  - Trang phục ảo thuật gia, lọ thủy tinh lớn, nước lọc, đường kính trắng, các lọ phẩm màu thực phẩm (Đỏ, Vàng, Xanh dương).
+- **Đồ dùng của trẻ (theo 4 nhóm)**:
+  - Khay thí nghiệm: 4 cốc nhựa trong suốt đánh số 1, 2, 3, 4.
+  - Thìa con, bát đựng đường, chai nước lọc, ống hút nhỏ giọt.
+  - Bảng ghi chép kết quả thí nghiệm bằng hình vẽ Sticker.
 
-### 3. Bài 3: Thứ tự trong tập hợp các số tự nhiên
-- Trong hai số tự nhiên khác nhau, luôn có một số nhỏ hơn số kia. Nếu $a$ nhỏ hơn $b$, ta viết $a < b$ hoặc $b > a$.
-- **Biểu diễn trên tia số nằm ngang:** Chiều từ trái sang phải là chiều tăng dần. Nếu $a < b$ thì điểm $a$ nằm bên trái điểm $b$. Gốc $O$ ứng với số 0.
-- **Tính chất bắc cầu:** Nếu $a < b$ và $b < c$ thì $a < c$.
-- **Số liền trước, số liền sau:**
-  - Hai số tự nhiên liên tiếp hơn kém nhau 1 đơn vị.
-  - Số tự nhiên liền sau của $n$ là $n + 1$.
-  - Với $n \in \mathbb{N}^*$, số tự nhiên liền trước của $n$ là $n - 1$.
-  - Số 0 là số tự nhiên nhỏ nhất và không có số liền trước trong $\mathbb{N}$. Không có số tự nhiên lớn nhất.
-
-### 4. Bài 4: Phép cộng và phép trừ số tự nhiên
-- **Phép cộng:** $a + b = c$ ($a, b$ là số hạng; $c$ là tổng).
-  - Giao hoán: $a + b = b + a$.
-  - Kết hợp: $(a + b) + c = a + (b + c)$.
-  - Cộng với số 0: $a + 0 = 0 + a = a$.
-- **Phép trừ:** $a - b = c$ ($a$ là số bị trừ; $b$ là số trừ; $c$ là hiệu).
-  - *Điều kiện thực hiện phép trừ trong $\mathbb{N}$:* Số bị trừ phải lớn hơn hoặc bằng số trừ ($a \ge b$).
-  - Quan hệ giữa cộng và trừ: Số bị trừ = Số trừ + Hiệu; Số trừ = Số bị trừ - Hiệu.
-- **Kỹ thuật tính nhanh, tính nhẩm:**
-  - Nhóm các số hạng có tổng tròn chục, tròn trăm: $(15 + 85) + 49 = 100 + 49 = 149$.
-  - Thêm - bớt cùng một số trong phép trừ: $a - b = (a + k) - (b + k)$ (ví dụ: $2026 - 199 = 2027 - 200 = 1827$).
-  - Chuyển số hạng trong phép cộng: $a + b = (a + k) + (b - k)$ (ví dụ: $199 + 45 = 200 + 44 = 244$).
+### III. Tiến trình hoạt động:
+1. **Ổn định tổ chức & Gây hứng thú (3 - 5 phút)**:
+   - Cô giáo hóa thân thành "Ảo thuật gia kỳ diệu", biểu diễn ảo thuật biến hạt đường tinh thể biến mất trong ly nước.
+   - Dẫn dắt tạo tò mò: "Đường đã trốn đi đâu rồi các con nhỉ?"
+2. **Nội dung chính (22 - 25 phút)**:
+   - *Hoạt động 1: Khám phá đặc điểm của đường* -> Cho trẻ quan sát, sờ, nếm thử vị ngọt của đường.
+   - *Hoạt động 2: Thí nghiệm "Đường trốn đi đâu?"* -> Trẻ tự tay múc đường vào cốc nước lọc, khuấy đều và quan sát hiện tượng tan.
+   - *Hoạt động 3: Thí nghiệm "Cầu vồng sắc màu trong ly nước"* -> Pha 4 cốc nước với lượng đường khác nhau (Cốc 1: 1 thìa, Cốc 2: 2 thìa, Cốc 3: 3 thìa, Cốc 4: 4 thìa) nhuộm màu khác nhau và nhỏ nhẹ từng lớp để tạo ly nước cầu vồng phân tầng.
+3. **Kết thúc (2 - 3 phút)**:
+   - Củng cố bài học: Nhắc nhở trẻ ăn ngọt vừa phải, súc miệng đánh răng sau khi ăn đồ ngọt để bảo vệ răng.
+   - Hát múa vận động nhẹ nhàng chuyển hoạt động.
 
 ---
 
-## II. BỘ DỮ LIỆU ĐỀ THI VÀ ĐÁP ÁN CHI TIẾT (5 ĐỀ)
+## 2. BÀI HỌC TOÁN 9: HỆ THỨC VI-ÉT VÀ ỨNG DỤNG
+- **Môn học**: Toán học lớp 9 (Đại số - Chương trình GDPT 2018)
+- **Chủ đề**: Phương trình bậc hai một ẩn & Hệ thức Vi-ét
 
-### ĐỀ SỐ 1
-- **Phần 1 (Trắc nghiệm 4 lựa chọn):**
-  - Câu 1: Cho $A = \{1; 2; 3; 4\}$. Khẳng định đúng là: **C. $2 \in A$**.
-  - Câu 2: Số liền sau của 199 là: **B. 200**.
-  - Câu 3: Số 250, chữ số 5 có giá trị: **B. 50**.
-  - Câu 4: Số La Mã XIX biểu diễn: **A. 19**.
-  - Câu 5: Kết quả $15 + 49 + 85$: **B. 149** (vì $(15+85)+49=100+49$).
-  - Câu 6: Tìm $x$, biết $x - 15 = 20$: **C. $x = 35$** (vì $20+15=35$).
-- **Phần 2 (Đúng / Sai):**
-  - Câu 7: $M = \{1; 2; 3; 4\}$. a) Đ | b) S (vì $0 \notin M$) | c) Đ (4 phần tử) | d) S (thiếu 0, thừa 4).
-  - Câu 8: Tính chất phép tính: a) Đ ($a+b=b+a$) | b) Đ (kết hợp) | c) S ($15-20$ không trừ được trong $\mathbb{N}$) | d) Đ ($a+0=a$).
-- **Phần 3 (Trả lời ngắn):**
-  - Câu 9: 49 học sinh, mỗi bạn 2 vỏ hộp: **98** (vỏ hộp).
-  - Câu 10: Tính nhanh $2026 - 199$: **1827** (thêm 1 vào cả hai số: $2027 - 200 = 1827$).
+### I. Định lý Vi-ét:
+Cho phương trình bậc hai một ẩn:
+$$ax^2 + bx + c = 0 \quad (a \neq 0)$$
+Nếu phương trình có nghiệm ($ \Delta \ge 0 $ hoặc $ \Delta' \ge 0 $), gọi $x_1, x_2$ là hai nghiệm thì:
+$$\begin{cases} S = x_1 + x_2 = -\dfrac{b}{a} \\ P = x_1 \cdot x_2 = \dfrac{c}{a} \end{cases}$$
 
-### ĐỀ SỐ 2
-- **Phần 1:** 1.A (X={T; O; A; N}) | 2.B ($\mathbb{N}^*$ không chứa 0) | 3.C (XXIV) | 4.B ($12 < 15 < 19 < 20$) | 5.A ($100 - 60 = 40$) | 6.B ($x = 20 - 5 = 15$).
-- **Phần 2:** Câu 7: a) Đ | b) S | c) Đ | d) S. Câu 8: a) Đ | b) Đ | c) S (hàng trăm có giá trị 300) | d) Đ.
-- **Phần 3:** Câu 9: **24** ($x < 25$ lớn nhất). Câu 10: **298** ($(37+63)+198 = 298$).
+### II. Các ứng dụng quan trọng:
+1. **Nhẩm nghiệm nhanh của phương trình bậc hai**:
+   - Nếu $a + b + c = 0$ thì phương trình có 2 nghiệm: $x_1 = 1, \; x_2 = \dfrac{c}{a}$.
+   - Nếu $a - b + c = 0$ thì phương trình có 2 nghiệm: $x_1 = -1, \; x_2 = -\dfrac{c}{a}$.
+2. **Tìm hai số khi biết tổng $S$ và tích $P$**:
+   - Nếu hai số có tổng bằng $S$ và tích bằng $P$ ($S^2 - 4P \ge 0$) thì hai số đó là nghiệm của phương trình bậc hai:
+     $$X^2 - SX + P = 0$$
+3. **Tính giá trị biểu thức đối xứng giữa các nghiệm**:
+   - $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P$
+   - $\dfrac{1}{x_1} + \dfrac{1}{x_2} = \dfrac{x_1 + x_2}{x_1x_2} = \dfrac{S}{P} \quad (P \neq 0)$
+   - $|x_1 - x_2| = \sqrt{(x_1+x_2)^2 - 4x_1x_2} = \sqrt{S^2 - 4P}$
 
-### ĐỀ SỐ 3
-- **Phần 1:** 1.B ($A=\{6; 7; 8\}$) | 2.B (5021) | 3.D (Không có số 0 La Mã) | 4.B (200) | 5.B (70) | 6.B ($x = 100 - 49 = 51$).
-- **Phần 2:** Câu 7: a) S | b) Đ | c) Đ | d) S. Câu 8: a) Đ | b) S ($b$ là số trừ) | c) Đ ($x=15$) | d) S.
-- **Phần 3:** Câu 9: **265** ($145 + 120$). Câu 10: **2199** ($(2026-26)+199 = 2199$).
+---
 
-### ĐỀ SỐ 4
-- **Phần 1:** 1.C ($b \in P$) | 2.D (12) | 3.C (29) | 4.B (102) | 5.A (145) | 6.B ($x = 49 + 15 = 64$).
-- **Phần 2:** Câu 7: a) Đ | b) S | c) Đ | d) S. Câu 8: a) S ($a < b$ thì $a$ nằm bên trái) | b) Đ | c) Đ | d) Đ.
-- **Phần 3:** Câu 9: **16** ($15 < x < 17$). Câu 10: **71** ($120 - 49 = 71$).
-
-### ĐỀ SỐ 5
-- **Phần 1:** 1.C ($\{0; 1; 2; 3\}$) | 2.C (99) | 3.B (XIV) | 4.C ($<$) | 5.B (100) | 6.C ($x = 50 - 10 = 40$).
-- **Phần 2:** Câu 7: a) Đ | b) S (Số bị trừ = Số trừ + Hiệu) | c) Đ | d) S (Số trừ = Số bị trừ - Hiệu). Câu 8: a) Đ | b) S (IX là 9) | c) Đ | d) S (XV là 15).
-- **Phần 3:** Câu 9: **9** ($49 : 5 = 9$ dư 4). Câu 10: **244** ($(199+1)+44 = 244$).
+## 3. BÀI HỌC KHOA HỌC TỰ NHIÊN: QUANG HỢP Ở THỰC VẬT
+- **Khái niệm**: Quang hợp là quá trình lá cây sử dụng năng lượng ánh sáng mặt trời đã được diệp lục hấp thụ để tổng hợp chất hữu cơ (glucose, tinh bột) từ nước và khí carbon dioxide ($CO_2$), đồng thời giải phóng khí oxygen ($O_2$).
+- **Phương trình chữ của quang hợp**:
+  $$\text{Nước} + \text{Khí Carbon dioxide} \xrightarrow[\text{Chất diệp lục}]{\text{Ánh sáng}} \text{Chất hữu cơ (Glucose)} + \text{Khí Oxygen}$$
+- **Ý nghĩa**: Cung cấp thức ăn cho sinh vật dị dưỡng, duy trì cân bằng $O_2$ và $CO_2$ trong khí quyển.

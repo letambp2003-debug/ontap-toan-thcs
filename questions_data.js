@@ -3628,6 +3628,764 @@ const EXAM_DATA = [
     }
   ]
 }
+,
+{
+  "id": 11,
+  "code": "DE-K8-C2-01",
+  "title": "Đề số 6: Hằng đẳng thức đáng nhớ & Phân tích đa thức thành nhân tử",
+  "subtitle": "7 hằng đẳng thức đáng nhớ, phân tích đa thức thành nhân tử và ứng dụng",
+  "grade": "Toán 8",
+  "gradeNum": 8,
+  "book": "KNTT",
+  "chapter": 2,
+  "timeMinutes": 45,
+  "topic": "7 Hằng đẳng thức & Nhân tử",
+  "levelTarget": "standard",
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Chọn một phương án đúng nhất.",
+      "questions": [
+        {
+          "id": "11_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B6",
+          "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+          "content": "Khai triển hằng đẳng thức $(A + B)^2$ ta được kết quả là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$A^2 + B^2$"
+            },
+            {
+              "key": "B",
+              "text": "$A^2 + 2AB + B^2$"
+            },
+            {
+              "key": "C",
+              "text": "$A^2 - 2AB + B^2$"
+            },
+            {
+              "key": "D",
+              "text": "$A^2 + AB + B^2$"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Theo hằng đẳng thức bình phương của một tổng: $(A + B)^2 = A^2 + 2AB + B^2$.",
+          "hint": "Bình phương số thứ nhất cộng 2 lần tích cộng bình phương số thứ hai.",
+          "xp": 10
+        },
+        {
+          "id": "11_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B6",
+          "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+          "content": "Biểu thức $x^2 - 16$ được viết dưới dạng tích là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$(x - 4)(x + 4)$"
+            },
+            {
+              "key": "B",
+              "text": "$(x - 16)(x + 16)$"
+            },
+            {
+              "key": "C",
+              "text": "$(x - 4)^2$"
+            },
+            {
+              "key": "D",
+              "text": "$(x + 4)^2$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Áp dụng hằng đẳng thức hiệu hai bình phương $A^2 - B^2 = (A - B)(A + B)$ với $16 = 4^2$.",
+          "hint": "Nhận dạng $A^2 - B^2$ với $B = 4$.",
+          "xp": 10
+        },
+        {
+          "id": "11_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B6",
+          "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+          "content": "Rút gọn biểu thức $M = (x + 3)^2 - (x - 3)^2$ ta được:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$6x$"
+            },
+            {
+              "key": "B",
+              "text": "$12x$"
+            },
+            {
+              "key": "C",
+              "text": "$18$"
+            },
+            {
+              "key": "D",
+              "text": "$2x^2 + 18$"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Ta có: $M = (x^2 + 6x + 9) - (x^2 - 6x + 9) = 6x - (-6x) = 12x$.",
+          "hint": "Khai triển từng bình phương rồi trừ các hạng tử đồng dạng.",
+          "xp": 20
+        },
+        {
+          "id": "11_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B9",
+          "lessonName": "Bài 9: Phân tích đa thức thành nhân tử",
+          "content": "Phân tích đa thức $x^2 - 4x + 4$ thành nhân tử được kết quả là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$(x + 2)^2$"
+            },
+            {
+              "key": "B",
+              "text": "$(x - 2)^2$"
+            },
+            {
+              "key": "C",
+              "text": "$(x - 4)^2$"
+            },
+            {
+              "key": "D",
+              "text": "$(x - 2)(x + 2)$"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Ta có: $x^2 - 2 \\cdot x \\cdot 2 + 2^2 = (x - 2)^2$.",
+          "hint": "Nhận dạng hằng đẳng thức bình phương của một hiệu $(A - B)^2$.",
+          "xp": 20
+        },
+        {
+          "id": "11_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B6",
+          "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+          "content": "Tính nhanh giá trị của biểu thức $99^2 - 1$ ta được:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$9800$"
+            },
+            {
+              "key": "B",
+              "text": "$9900$"
+            },
+            {
+              "key": "C",
+              "text": "$9700$"
+            },
+            {
+              "key": "D",
+              "text": "$9600$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "$99^2 - 1^2 = (99 - 1)(99 + 1) = 98 \\cdot 100 = 9800$.",
+          "hint": "Áp dụng $a^2 - b^2 = (a - b)(a + b)$ với $a = 99, b = 1$.",
+          "xp": 30
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "11_6",
+          "number": 1,
+          "type": "tf",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B7",
+          "lessonName": "Bài 7: Lập phương của một tổng. Lập phương của một hiệu",
+          "content": "Cho biểu thức $P = (x + 2)^3$. Xét tính đúng/sai của các khẳng định sau:",
+          "prompt": "Cho biểu thức $P = (x + 2)^3$. Xét tính đúng/sai của các khẳng định sau:",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Khai triển của $P$ là $x^3 + 6x^2 + 12x + 8$.",
+              "correctAnswer": "Đ",
+              "explanation": "$(x + 2)^3 = x^3 + 3x^2(2) + 3x(2^2) + 2^3 = x^3 + 6x^2 + 12x + 8$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Hệ số của hạng tử chứa $x^2$ trong khai triển bằng $6$.",
+              "correctAnswer": "Đ",
+              "explanation": "Hạng tử chứa $x^2$ là $6x^2$, hệ số là 6."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Bậc của đa thức $P$ sau khai triển là $4$.",
+              "correctAnswer": "S",
+              "explanation": "Bậc cao nhất là $3$, không phải $4$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tại $x = -2$, giá trị của biểu thức $P$ bằng $0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Thay $x = -2 \\Rightarrow (-2 + 2)^3 = 0$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "11_7",
+          "number": 2,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B8",
+          "lessonName": "Bài 8: Tổng và hiệu hai lập phương",
+          "content": "Cho hai biểu thức $A = x^3 - 8$ và $B = (x - 2)(x^2 + 2x + 4)$.",
+          "prompt": "Cho hai biểu thức $A = x^3 - 8$ và $B = (x - 2)(x^2 + 2x + 4)$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Hai biểu thức $A$ và $B$ luôn bằng nhau với mọi giá trị của $x$.",
+              "correctAnswer": "Đ",
+              "explanation": "Đây là hằng đẳng thức hiệu hai lập phương: $x^3 - 2^3 = (x - 2)(x^2 + 2x + 4)$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Biểu thức $x^2 + 2x + 4$ được gọi là bình phương thiếu của một tổng.",
+              "correctAnswer": "Đ",
+              "explanation": "Đúng theo quy ước tên gọi trong SGK KNTT."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Giá trị của $x^2 + 2x + 4$ luôn dương với mọi số thực $x$.",
+              "correctAnswer": "Đ",
+              "explanation": "$x^2 + 2x + 4 = (x + 1)^2 + 3 > 0$ với mọi $x$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tại $x = 2$, giá trị của $A$ và $B$ đều bằng $4$.",
+              "correctAnswer": "S",
+              "explanation": "Tại $x = 2$, $A = B = 2^3 - 8 = 0$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "11_8",
+          "number": 3,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B9",
+          "lessonName": "Bài 9: Phân tích đa thức thành nhân tử",
+          "content": "Xét việc phân tích đa thức $K = x^2 - 2xy + y^2 - 9$ thành nhân tử:",
+          "prompt": "Xét việc phân tích đa thức $K = x^2 - 2xy + y^2 - 9$ thành nhân tử:",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Ba hạng tử đầu tạo thành bình phương của một hiệu: $(x - y)^2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$x^2 - 2xy + y^2 = (x - y)^2$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Đa thức $K$ được viết lại là $(x - y)^2 - 3^2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$9 = 3^2$, do đó $K = (x - y)^2 - 3^2$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Kết quả phân tích thành nhân tử là $(x - y - 3)(x - y + 3)$.",
+              "correctAnswer": "Đ",
+              "explanation": "Áp dụng $A^2 - B^2 = (A - B)(A + B)$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tại $x = 5, y = 2$, giá trị của biểu thức $K$ bằng $16$.",
+              "correctAnswer": "S",
+              "explanation": "Thay $x = 5, y = 2 \\Rightarrow K = (5 - 2)^2 - 9 = 9 - 9 = 0$."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "11_9",
+          "number": 1,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B6",
+          "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+          "content": "Tìm giá trị nhỏ nhất của biểu thức $A = x^2 - 6x + 10$.",
+          "correctAnswers": [
+            "1"
+          ],
+          "correctAnswer": "1",
+          "explanation": "Ta biến đổi: $A = (x^2 - 6x + 9) + 1 = (x - 3)^2 + 1 \\ge 1$. Dấu '=' xảy ra khi $x = 3$. Vậy GTNN là 1.",
+          "hint": "Đưa về dạng $(x - a)^2 + m$.",
+          "xp": 40
+        },
+        {
+          "id": "11_10",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K8_C2_B6",
+          "lessonName": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu",
+          "content": "Tìm số thực dương $x$ thỏa mãn phương trình: $x^2 - 25 = 0$.",
+          "correctAnswers": [
+            "5"
+          ],
+          "correctAnswer": "5",
+          "explanation": "$x^2 - 25 = 0 \\Leftrightarrow (x - 5)(x + 5) = 0 \\Leftrightarrow x = 5$ hoặc $x = -5$. Do $x > 0$ nên $x = 5$.",
+          "hint": "Dùng hằng đẳng thức hiệu hai bình phương và chú ý điều kiện $x > 0$.",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": 12,
+  "code": "DE-K8-C3-01",
+  "title": "Đề số 7: Tứ giác & Các hình thang, hình bình hành, hình chữ nhật",
+  "subtitle": "Định lý tổng các góc tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông",
+  "grade": "Toán 8",
+  "gradeNum": 8,
+  "book": "KNTT",
+  "chapter": 3,
+  "timeMinutes": 45,
+  "topic": "Tứ giác & Các hình",
+  "levelTarget": "standard",
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Chọn một phương án đúng nhất.",
+      "questions": [
+        {
+          "id": "12_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B10",
+          "lessonName": "Bài 10: Tứ giác",
+          "content": "Tổng số đo các góc trong một tứ giác lồi luôn bằng:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$180^\\circ$"
+            },
+            {
+              "key": "B",
+              "text": "$360^\\circ$"
+            },
+            {
+              "key": "C",
+              "text": "$270^\\circ$"
+            },
+            {
+              "key": "D",
+              "text": "$540^\\circ$"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Theo định lý: Tổng các góc của một tứ giác bằng $360^\\circ$.",
+          "hint": "Nhớ định lý tổng các góc trong một tứ giác.",
+          "xp": 10
+        },
+        {
+          "id": "12_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B11",
+          "lessonName": "Bài 11: Hình thang cân",
+          "content": "Hình thang cân là hình thang có:",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hai góc kề một đáy bằng nhau"
+            },
+            {
+              "key": "B",
+              "text": "Hai cạnh đáy bằng nhau"
+            },
+            {
+              "key": "C",
+              "text": "Hai góc đối bằng nhau"
+            },
+            {
+              "key": "D",
+              "text": "Hai cạnh bên song song"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Định nghĩa: Hình thang cân là hình thang có hai góc kề một đáy bằng nhau.",
+          "hint": "Xem lại định nghĩa hình thang cân trong SGK KNTT.",
+          "xp": 10
+        },
+        {
+          "id": "12_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B10",
+          "lessonName": "Bài 10: Tứ giác",
+          "content": "Cho tứ giác $ABCD$ có $\\widehat{A} = 70^\\circ, \\widehat{B} = 80^\\circ, \\widehat{C} = 100^\\circ$. Số đo góc $D$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$100^\\circ$"
+            },
+            {
+              "key": "B",
+              "text": "$110^\\circ$"
+            },
+            {
+              "key": "C",
+              "text": "$120^\\circ$"
+            },
+            {
+              "key": "D",
+              "text": "$90^\\circ$"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Ta có: $\\widehat{D} = 360^\\circ - (70^\\circ + 80^\\circ + 100^\\circ) = 360^\\circ - 250^\\circ = 110^\\circ$.",
+          "hint": "Lấy $360^\\circ$ trừ tổng ba góc đã biết.",
+          "xp": 20
+        },
+        {
+          "id": "12_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B12",
+          "lessonName": "Bài 12: Hình bình hành",
+          "content": "Khẳng định nào sau đây KHÔNG PHẢI là tính chất của hình bình hành?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Các cạnh đối bằng nhau"
+            },
+            {
+              "key": "B",
+              "text": "Các góc đối bằng nhau"
+            },
+            {
+              "key": "C",
+              "text": "Hai đường chéo vuông góc với nhau"
+            },
+            {
+              "key": "D",
+              "text": "Hai đường chéo cắt nhau tại trung điểm của mỗi đường"
+            }
+          ],
+          "correctAnswer": "C",
+          "explanation": "Hình bình hành nói chung hai đường chéo cắt nhau tại trung điểm mỗi đường chứ không bắt buộc vuông góc (chỉ hình thoi và hình vuông mới vuông góc).",
+          "hint": "Hai đường chéo vuông góc là đặc trưng của hình thoi hoặc hình vuông.",
+          "xp": 20
+        },
+        {
+          "id": "12_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B14",
+          "lessonName": "Bài 14: Hình thoi và hình vuông",
+          "content": "Hình chữ nhật có hai đường chéo vuông góc với nhau là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "Hình bình hành"
+            },
+            {
+              "key": "B",
+              "text": "Hình vuông"
+            },
+            {
+              "key": "C",
+              "text": "Hình thang cân"
+            },
+            {
+              "key": "D",
+              "text": "Hình thoi"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Dấu hiệu nhận biết: Hình chữ nhật có hai đường chéo vuông góc với nhau là hình vuông.",
+          "hint": "Hình chữ nhật có thêm tính chất của hình thoi thì trở thành hình gì?",
+          "xp": 30
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "12_6",
+          "number": 1,
+          "type": "tf",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B10",
+          "lessonName": "Bài 10: Tứ giác",
+          "content": "Cho tứ giác lồi $ABCD$. Xét tính đúng/sai của các khẳng định sau:",
+          "prompt": "Cho tứ giác lồi $ABCD$. Xét tính đúng/sai của các khẳng định sau:",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Tứ giác $ABCD$ có thể có $4$ góc nhọn.",
+              "correctAnswer": "S",
+              "explanation": "Nếu cả 4 góc đều nhọn thì tổng 4 góc nhỏ hơn $4 \\times 90^\\circ = 360^\\circ$ (vô lý)."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Tứ giác $ABCD$ có thể có $4$ góc vuông.",
+              "correctAnswer": "Đ",
+              "explanation": "Khi 4 góc đều bằng $90^\\circ$, tứ giác là hình chữ nhật."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Tổng các góc ngoài (mỗi đỉnh lấy một góc) của tứ giác bằng $360^\\circ$.",
+              "correctAnswer": "Đ",
+              "explanation": "Định lý: Tổng các góc ngoài của một đa giác lồi luôn bằng $360^\\circ$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tứ giác $ABCD$ có nhiều nhất $3$ góc tù.",
+              "correctAnswer": "Đ",
+              "explanation": "Nếu có 4 góc tù thì tổng lớn hơn $360^\\circ$, do đó có tối đa 3 góc tù."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "12_7",
+          "number": 2,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B12",
+          "lessonName": "Bài 12: Hình bình hành",
+          "content": "Cho hình bình hành $ABCD$ có $AB = 8\\text{ cm}, BC = 5\\text{ cm}$.",
+          "prompt": "Cho hình bình hành $ABCD$ có $AB = 8\\text{ cm}, BC = 5\\text{ cm}$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Độ dài cạnh $CD = 8\\text{ cm}$ và $AD = 5\\text{ cm}$.",
+              "correctAnswer": "Đ",
+              "explanation": "Vì trong hình bình hành các cạnh đối bằng nhau: $CD = AB = 8\\text{ cm}, AD = BC = 5\\text{ cm}$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Chu vi của hình bình hành $ABCD$ bằng $26\\text{ cm}$.",
+              "correctAnswer": "Đ",
+              "explanation": "Chu vi $P = 2(AB + BC) = 2(8 + 5) = 26\\text{ cm}$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Hai đường chéo $AC$ và $BD$ luôn bằng nhau.",
+              "correctAnswer": "S",
+              "explanation": "Hình bình hành nói chung hai đường chéo không bằng nhau (chỉ bằng nhau khi là hình chữ nhật)."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Góc $\\widehat{A}$ và góc $\\widehat{B}$ là hai góc bù nhau (tổng bằng $180^\\circ$).",
+              "correctAnswer": "Đ",
+              "explanation": "Vì $AD \\parallel BC$ nên hai góc trong cùng phía $\\widehat{A} + \\widehat{B} = 180^\\circ$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "12_8",
+          "number": 3,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B13",
+          "lessonName": "Bài 13: Hình chữ nhật",
+          "content": "Cho tam giác $ABC$ vuông tại $A$, có trung tuyến $AM$. Gọi $D$ là điểm đối xứng với $A$ qua $M$.",
+          "prompt": "Cho tam giác $ABC$ vuông tại $A$, có trung tuyến $AM$. Gọi $D$ là điểm đối xứng với $A$ qua $M$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Tứ giác $ABDC$ có hai đường chéo cắt nhau tại trung điểm của mỗi đường.",
+              "correctAnswer": "Đ",
+              "explanation": "$M$ là trung điểm của $BC$ (gt) và $M$ là trung điểm của $AD$ (do đối xứng)."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Tứ giác $ABDC$ là một hình bình hành.",
+              "correctAnswer": "Đ",
+              "explanation": "Tứ giác có hai đường chéo cắt nhau tại trung điểm mỗi đường là hình bình hành."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Tứ giác $ABDC$ là một hình chữ nhật.",
+              "correctAnswer": "Đ",
+              "explanation": "Hình bình hành có một góc vuông ($\\widehat{A} = 90^\\circ$) là hình chữ nhật."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Độ dài đoạn thẳng $AM$ bằng một nửa độ dài cạnh $BC$.",
+              "correctAnswer": "Đ",
+              "explanation": "Trong tam giác vuông, đường trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền: $AM = \\frac{1}{2}BC$."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "12_9",
+          "number": 1,
+          "type": "short",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B11",
+          "lessonName": "Bài 11: Hình thang cân",
+          "content": "Cho hình thang cân $ABCD$ ($AB \\parallel CD$) có góc $\\widehat{D} = 70^\\circ$. Tính số đo góc $\\widehat{A}$ (đơn vị: độ).",
+          "correctAnswers": [
+            "110",
+            "110 độ",
+            "110°"
+          ],
+          "correctAnswer": "110",
+          "explanation": "Vì $AB \\parallel CD$ nên hai góc trong cùng phía bù nhau: $\\widehat{A} + \\widehat{D} = 180^\\circ \\Rightarrow \\widehat{A} = 180^\\circ - 70^\\circ = 110^\\circ$.",
+          "hint": "Hai góc trong cùng phía có tổng bằng $180^\\circ$.",
+          "xp": 40
+        },
+        {
+          "id": "12_10",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 3,
+          "lessonId": "K8_C3_B13",
+          "lessonName": "Bài 13: Hình chữ nhật",
+          "content": "Một mảnh vườn hình chữ nhật có chiều dài là $8\\text{ m}$ và chiều rộng là $6\\text{ m}$. Tính độ dài đường chéo của mảnh vườn đó (đơn vị: mét).",
+          "correctAnswers": [
+            "10",
+            "10m",
+            "10 m",
+            "10 mét"
+          ],
+          "correctAnswer": "10",
+          "explanation": "Theo định lý Pythagore trong tam giác vuông tạo bởi hai kích thước: $d = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10\\text{ m}$.",
+          "hint": "Dùng định lý Pythagore: $c = \\sqrt{a^2 + b^2}$.",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+}
 ];
 
 const KNTT_CURRICULUM_TREE = {
@@ -3825,7 +4583,7 @@ const KNTT_CURRICULUM_TREE = {
       }
     ]
   },
-  "8": {
+    "8": {
     "gradeName": "Toán 8 (Kết nối tri thức với cuộc sống)",
     "chapters": [
       {
@@ -3833,16 +4591,34 @@ const KNTT_CURRICULUM_TREE = {
         "title": "Chương I: Đa thức",
         "description": "Đơn thức, đa thức nhiều biến và các phép toán",
         "lessons": [
-          {
-            "lessonId": "K8_C1_B1",
-            "name": "Bài 1: Đơn thức",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K8_C1_B2",
-            "name": "Bài 2: Đa thức",
-            "questionCount": 0
-          }
+          { "lessonId": "K8_C1_B1", "name": "Bài 1: Đơn thức", "questionCount": 10 },
+          { "lessonId": "K8_C1_B2", "name": "Bài 2: Đa thức", "questionCount": 10 },
+          { "lessonId": "K8_C1_B3", "name": "Bài 3: Phép cộng và phép trừ đa thức", "questionCount": 8 },
+          { "lessonId": "K8_C1_B4", "name": "Bài 4: Phép nhân đa thức", "questionCount": 8 },
+          { "lessonId": "K8_C1_B5", "name": "Bài 5: Phép chia đa thức cho đơn thức", "questionCount": 6 }
+        ]
+      },
+      {
+        "chapterId": 2,
+        "title": "Chương II: Hằng đẳng thức đáng nhớ & Ứng dụng",
+        "description": "7 hằng đẳng thức đáng nhớ, phân tích đa thức thành nhân tử",
+        "lessons": [
+          { "lessonId": "K8_C2_B6", "name": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu", "questionCount": 10 },
+          { "lessonId": "K8_C2_B7", "name": "Bài 7: Lập phương của một tổng. Lập phương của một hiệu", "questionCount": 8 },
+          { "lessonId": "K8_C2_B8", "name": "Bài 8: Tổng và hiệu hai lập phương", "questionCount": 8 },
+          { "lessonId": "K8_C2_B9", "name": "Bài 9: Phân tích đa thức thành nhân tử", "questionCount": 12 }
+        ]
+      },
+      {
+        "chapterId": 3,
+        "title": "Chương III: Tứ giác",
+        "description": "Tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông",
+        "lessons": [
+          { "lessonId": "K8_C3_B10", "name": "Bài 10: Tứ giác", "questionCount": 10 },
+          { "lessonId": "K8_C3_B11", "name": "Bài 11: Hình thang cân", "questionCount": 10 },
+          { "lessonId": "K8_C3_B12", "name": "Bài 12: Hình bình hành", "questionCount": 10 },
+          { "lessonId": "K8_C3_B13", "name": "Bài 13: Hình chữ nhật", "questionCount": 10 },
+          { "lessonId": "K8_C3_B14", "name": "Bài 14: Hình thoi và hình vuông", "questionCount": 10 }
         ]
       }
     ]

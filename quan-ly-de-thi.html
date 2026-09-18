@@ -51,6 +51,7 @@
   <!-- Questions Data & Exam Sync Engine -->
   <script src="questions_data.js"></script>
   <script src="exam_sync_engine.js"></script>
+  <script src="gemini_exam_service.js"></script>
 
   <style>
     body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
@@ -91,6 +92,10 @@
 
       <!-- Quick Nav Action Buttons -->
       <div class="flex items-center gap-2 flex-wrap">
+        <button onclick="openGeminiConfigModal()" class="px-3 py-1.5 text-xs font-bold rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-800 transition flex items-center gap-1.5 shadow-2xs">
+          <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>
+          <span>Cấu Hình Gemini AI</span>
+        </button>
         <a href="hoc-sinh.html" target="_blank" class="px-3.5 py-1.5 text-xs font-black rounded-xl bg-blue-600 hover:bg-blue-700 text-white transition flex items-center gap-1.5 shadow-sm shadow-blue-200">
           <i data-lucide="external-link" class="w-4 h-4"></i>
           <span>Mở Cổng Học Sinh Làm Bài</span>
@@ -214,12 +219,49 @@
           <!-- Chủ đề / Chương học -->
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Chương / Chủ Đề SGK</label>
-            <select id="genChapter" class="w-full text-xs rounded-xl border border-slate-200 p-2.5 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
+            <select id="genChapter" onchange="onGeneratorChapterChange()" class="w-full text-xs rounded-xl border border-slate-200 p-2.5 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
               <option value="Chương I: Đa thức">Chương I: Đa thức (Đơn thức, Đa thức nhiều biến, Phép tính)</option>
               <option value="Chương II: Hằng đẳng thức đáng nhớ">Chương II: Hằng đẳng thức đáng nhớ & Ứng dụng</option>
               <option value="Chương III: Tứ giác">Chương III: Tứ giác (Hình thang, Hình bình hành, Hình chữ nhật)</option>
               <option value="Tổng hợp toàn bộ chương trình">Tổng hợp toàn bộ chương trình</option>
             </select>
+          </div>
+
+          <!-- Bài học cụ thể -->
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-xs font-bold text-slate-700">Bài Học Cụ Thể</label>
+              <span class="text-[10px] text-slate-400 font-normal">Tùy chọn tạo đề 15p riêng từng bài</span>
+            </div>
+            <select id="genLesson" class="w-full text-xs rounded-xl border border-slate-200 p-2.5 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
+              <option value="ALL">-- Toàn bộ chương (Tổng hợp) --</option>
+            </select>
+          </div>
+
+          <!-- Lớp mục tiêu & Chống trùng câu hỏi -->
+          <div class="bg-indigo-50/60 border border-indigo-100 rounded-xl p-3 flex flex-col gap-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-indigo-950 flex items-center gap-1.5">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-indigo-600"></i>
+                Cơ Chế Chống Trùng Đề
+              </span>
+              <span class="text-[10px] font-bold text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-md">Smart Dedup</span>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-600 mb-1">Lớp Dự Kiến Giao</label>
+              <select id="genTargetClass" class="w-full text-xs rounded-lg border border-indigo-200 p-2 bg-white font-semibold text-slate-800">
+                <option value="">-- Dùng chung (Không giới hạn lớp) --</option>
+                <option value="8A1">Lớp 8A1</option>
+                <option value="8A2">Lớp 8A2</option>
+                <option value="8A3">Lớp 8A3</option>
+                <option value="6A1">Lớp 6A1</option>
+                <option value="6A2">Lớp 6A2</option>
+              </select>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer select-none text-xs font-bold text-indigo-950">
+              <input type="checkbox" id="genDedupClass" checked class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+              <span>Ưu tiên câu hỏi chưa từng giao cho lớp này</span>
+            </label>
           </div>
 
           <!-- Ma trận câu hỏi theo 4 mức độ nhận thức -->
@@ -272,10 +314,16 @@
           </div>
 
           <!-- Nút sinh đề -->
-          <button onclick="triggerAutoGenerateExam()" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-black text-xs transition flex items-center justify-center gap-2 shadow-md shadow-indigo-200">
-            <i data-lucide="zap" class="w-4 h-4"></i>
-            <span>TỰ ĐỘNG SINH ĐỀ THEO MA TRẬN</span>
-          </button>
+          <div class="flex flex-col gap-2.5">
+            <button onclick="triggerAutoGenerateExam()" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-black text-xs transition flex items-center justify-center gap-2 shadow-md shadow-indigo-200">
+              <i data-lucide="zap" class="w-4 h-4"></i>
+              <span>TỰ ĐỘNG SINH ĐỀ THEO MA TRẬN (KHO NỘI BỘ)</span>
+            </button>
+            <button id="btnGeminiGenerate" onclick="triggerGeminiGenerateExam()" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition flex items-center justify-center gap-2 shadow-xs border border-slate-800">
+              <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+              <span>🤖 SINH ĐỀ THÔNG MINH BẰNG GEMINI AI (VÔ HẠN)</span>
+            </button>
+          </div>
         </div>
 
         <!-- Right: Generated Exam Preview (7 cols) -->
@@ -776,7 +824,8 @@
     }
 
     // =========================================================================
-    // TAB 2: BỘ TẠO ĐỀ TỰ ĐỘNG
+    // =========================================================================
+    // TAB 2: BỘ TẠO ĐỀ TỰ ĐỘNG & GEMINI AI INTEGRATION
     // =========================================================================
     function updateTotalGenCount() {
       const nb = Number(document.getElementById('genNbCount').value) || 0;
@@ -787,6 +836,35 @@
       document.getElementById('genTotalQuestionCount').innerText = total + ' câu';
     }
 
+    function updateLessonDropdown() {
+      const grade = document.getElementById('genGrade').value;
+      const chapterSelect = document.getElementById('genChapter');
+      const lessonSelect = document.getElementById('genLesson');
+      if (!lessonSelect) return;
+
+      const currentChapter = chapterSelect.value;
+      let lessons = [];
+
+      if (typeof KNTT_CURRICULUM_TREE !== 'undefined' && KNTT_CURRICULUM_TREE[grade]) {
+        const gradeTree = KNTT_CURRICULUM_TREE[grade];
+        const foundChap = gradeTree.chapters.find(c => currentChapter.includes(c.title) || c.title.includes(currentChapter) || (currentChapter.includes('Chương I') && c.chapterId === 1) || (currentChapter.includes('Chương II') && c.chapterId === 2) || (currentChapter.includes('Chương III') && c.chapterId === 3));
+        if (foundChap && Array.isArray(foundChap.lessons)) {
+          lessons = foundChap.lessons;
+        }
+      }
+
+      let optionsHtml = '<option value="ALL">-- Toàn bộ chương (Tổng hợp) --</option>';
+      lessons.forEach(l => {
+        optionsHtml += `<option value="${l.lessonId}">${l.name}</option>`;
+      });
+
+      lessonSelect.innerHTML = optionsHtml;
+    }
+
+    function onGeneratorChapterChange() {
+      updateLessonDropdown();
+    }
+
     function onGeneratorGradeChange() {
       const grade = document.getElementById('genGrade').value;
       const chapterSelect = document.getElementById('genChapter');
@@ -794,7 +872,7 @@
 
       if (grade === '8') {
         chapterSelect.innerHTML = `
-          <option value="Chương I: Đa thức">Chương I: Đa thức (Đơn thức, Đa thức nhiều biến, Phép tính)</option>
+          <option value="Chương I: Đa thức" selected>Chương I: Đa thức (Đơn thức, Đa thức nhiều biến, Phép tính)</option>
           <option value="Chương II: Hằng đẳng thức đáng nhớ">Chương II: Hằng đẳng thức đáng nhớ & Ứng dụng</option>
           <option value="Chương III: Tứ giác">Chương III: Tứ giác (Hình thang, Hình bình hành, Hình chữ nhật)</option>
           <option value="Tổng hợp toàn bộ chương trình">Tổng hợp toàn bộ chương trình</option>
@@ -802,61 +880,41 @@
         titleInput.value = "Đề kiểm tra nhanh Toán 8: Đơn thức & Đa thức nhiều biến";
       } else if (grade === '6') {
         chapterSelect.innerHTML = `
-          <option value="Chương I: Tập hợp các số tự nhiên">Chương I: Tập hợp các số tự nhiên (Bài 1 - Bài 4)</option>
+          <option value="Chương I: Tập hợp các số tự nhiên" selected>Chương I: Tập hợp các số tự nhiên (Bài 1 - Bài 4)</option>
           <option value="Chương II: Tính chia hết trong tập hợp các số tự nhiên">Chương II: Tính chia hết trong số tự nhiên</option>
           <option value="Tổng hợp ôn thi giữa kỳ">Tổng hợp ôn thi giữa kỳ</option>
         `;
         titleInput.value = "Đề tổng ôn Toán 6: Tập hợp & Số tự nhiên";
       } else {
         chapterSelect.innerHTML = `
-          <option value="Chương I: Kiến thức trọng tâm">Chương I: Kiến thức trọng tâm KNTT</option>
+          <option value="Chương I: Kiến thức trọng tâm" selected>Chương I: Kiến thức trọng tâm KNTT</option>
           <option value="Tổng hợp toàn bộ chương trình">Tổng hợp toàn bộ chương trình</option>
         `;
         titleInput.value = `Đề kiểm tra định kỳ Toán ${grade} - KNTT`;
       }
+
+      updateLessonDropdown();
     }
 
-    function triggerAutoGenerateExam() {
-      const grade = document.getElementById('genGrade').value;
-      const title = document.getElementById('genTitle').value.trim();
-      const chapter = document.getElementById('genChapter').value;
-      const nb = Number(document.getElementById('genNbCount').value) || 0;
-      const th = Number(document.getElementById('genThCount').value) || 0;
-      const vd = Number(document.getElementById('genVdCount').value) || 0;
-      const vdc = Number(document.getElementById('genVdcCount').value) || 0;
-      const timeMinutes = Number(document.getElementById('genTime').value) || 15;
-      const teacherName = document.getElementById('genTeacherName').value.trim() || 'Thầy Gem';
+    // Hiển thị nội dung xem trước đề vừa sinh
+    function renderPreviewContent() {
+      if (!currentGeneratedExam || !Array.isArray(currentGeneratedExam.questions)) return;
 
-      const generated = ExamSyncEngine.generateAutoExam({
-        grade: grade,
-        title: title,
-        chapter: chapter,
-        nbCount: nb,
-        thCount: th,
-        vdCount: vd,
-        vdcCount: vdc,
-        timeMinutes: timeMinutes,
-        createdBy: teacherName
-      });
-
-      currentGeneratedExam = generated;
-
-      // Render xem trước
       const container = document.getElementById('genPreviewContainer');
       const actionBtns = document.getElementById('genActionBtns');
       const subTitle = document.getElementById('genPreviewSub');
 
-      subTitle.innerText = `${generated.title} - ${generated.questions.length} câu - Thời gian: ${generated.timeMinutes} phút`;
+      subTitle.innerText = `${currentGeneratedExam.title} - ${currentGeneratedExam.questions.length} câu - Thời gian: ${currentGeneratedExam.timeMinutes} phút`;
       actionBtns.style.display = 'flex';
 
-      container.innerHTML = generated.questions.map((q, idx) => {
-        const levelBadgeMap = {
-          'NB': '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-50 text-emerald-700">Nhận biết</span>',
-          'TH': '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-blue-50 text-blue-700">Thông hiểu</span>',
-          'VD': '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-amber-50 text-amber-700">Vận dụng</span>',
-          'VDC': '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-rose-50 text-rose-700">Vận dụng cao</span>'
-        };
+      const levelBadgeMap = {
+        'NB': '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-50 text-emerald-700">Nhận biết</span>',
+        'TH': '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-blue-50 text-blue-700">Thông hiểu</span>',
+        'VD': '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-amber-50 text-amber-700">Vận dụng</span>',
+        'VDC': '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-rose-50 text-rose-700">Vận dụng cao</span>'
+      };
 
+      container.innerHTML = currentGeneratedExam.questions.map((q, idx) => {
         const qContent = window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.content) : q.content;
         const qExpl = q.explanation ? (window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.explanation) : q.explanation) : '';
 
@@ -864,7 +922,7 @@
         let bodyHtml = '';
 
         if (q.type === 'tf' || (q.items && q.items.length > 0)) {
-          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Đúng / Sai</span>';
+          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">Đúng / Sai</span>';
           bodyHtml = `
             <div class="space-y-1.5 mt-1.5">
               ${(q.items || []).map(it => {
@@ -919,14 +977,20 @@
         }
 
         return `
-          <div class="border border-slate-200 rounded-xl p-4 bg-white flex flex-col gap-2">
-            <div class="flex items-center justify-between">
+          <div class="border border-slate-200 rounded-xl p-4 bg-white flex flex-col gap-2 hover:border-slate-300 transition">
+            <div class="flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-2">
                 <span class="text-xs font-black text-slate-800">Câu ${idx + 1}:</span>
                 ${levelBadgeMap[q.level] || ''}
                 ${typeBadge}
               </div>
-              ${q.type === 'mcq' && q.correctAnswer ? `<span class="text-[10px] font-bold text-emerald-700">Đáp án: ${q.correctAnswer}</span>` : ''}
+              <div class="flex items-center gap-2">
+                ${q.type === 'mcq' && q.correctAnswer ? `<span class="text-[10px] font-bold text-emerald-700 mr-1">Đáp án: ${q.correctAnswer}</span>` : ''}
+                <button onclick="rerollPreviewQuestion(${idx})" title="Đổi câu hỏi khác cùng mức độ" class="px-2.5 py-1 rounded-lg border border-slate-200 hover:border-indigo-400 hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 text-[11px] font-bold transition flex items-center gap-1 shadow-2xs">
+                  <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                  <span>Đổi câu khác</span>
+                </button>
+              </div>
             </div>
             <p class="text-xs font-medium text-slate-800">${qContent}</p>
             ${bodyHtml}
@@ -941,9 +1005,226 @@
 
       renderMath(container);
       lucide.createIcons();
+    }
+
+    // Đổi câu hỏi khác trực tiếp trên bản xem trước (Reroll)
+    function rerollPreviewQuestion(idx) {
+      if (!currentGeneratedExam || !Array.isArray(currentGeneratedExam.questions)) return;
+
+      const res = ExamSyncEngine.rerollQuestion(currentGeneratedExam, idx);
+      if (!res.success) {
+        showNotificationToast(`⚠️ ${res.message || 'Không thể đổi câu hỏi'}`);
+        return;
+      }
+
+      renderPreviewContent();
+      showNotificationToast(`🔄 Đã đổi <strong>Câu ${idx + 1}</strong> thành công câu hỏi tương đương mới!`);
+    }
+
+    // Sinh đề tự động theo kho dữ liệu ma trận nội bộ
+    function triggerAutoGenerateExam() {
+      const grade = document.getElementById('genGrade').value;
+      const title = document.getElementById('genTitle').value.trim();
+      const chapter = document.getElementById('genChapter').value;
+      const lessonSelect = document.getElementById('genLesson');
+      const lessonId = lessonSelect ? lessonSelect.value : 'ALL';
+      const targetClassSelect = document.getElementById('genTargetClass');
+      const targetClass = targetClassSelect ? targetClassSelect.value : '';
+      const dedupClassCheckbox = document.getElementById('genDedupClass');
+      const dedupClass = dedupClassCheckbox ? dedupClassCheckbox.checked : false;
+
+      const nb = Number(document.getElementById('genNbCount').value) || 0;
+      const th = Number(document.getElementById('genThCount').value) || 0;
+      const vd = Number(document.getElementById('genVdCount').value) || 0;
+      const vdc = Number(document.getElementById('genVdcCount').value) || 0;
+      const timeMinutes = Number(document.getElementById('genTime').value) || 15;
+      const teacherName = document.getElementById('genTeacherName').value.trim() || 'Thầy Gem';
+
+      const generated = ExamSyncEngine.generateAutoExam({
+        grade: grade,
+        title: title,
+        chapter: chapter,
+        lessonId: lessonId,
+        targetClass: targetClass,
+        dedupClass: dedupClass,
+        nbCount: nb,
+        thCount: th,
+        vdCount: vd,
+        vdcCount: vdc,
+        timeMinutes: timeMinutes,
+        createdBy: teacherName
+      });
+
+      currentGeneratedExam = generated;
+      renderPreviewContent();
 
       // Hiệu ứng pháo hoa nhẹ
       confetti({ particleCount: 35, spread: 50, origin: { y: 0.6 } });
+    }
+
+    // Sinh đề thông minh bằng Google Gemini AI
+    async function triggerGeminiGenerateExam() {
+      if (typeof GeminiExamService === 'undefined') {
+        alert('Module Gemini AI chưa sẵn sàng. Vui lòng tải lại trang.');
+        return;
+      }
+
+      if (!GeminiExamService.hasApiKey()) {
+        openGeminiConfigModal();
+        alert('Thầy/Cô vui lòng nhập Google Gemini API Key để sử dụng tính năng sinh đề AI không giới hạn!');
+        return;
+      }
+
+      const grade = document.getElementById('genGrade').value;
+      const title = document.getElementById('genTitle').value.trim();
+      const chapter = document.getElementById('genChapter').value;
+      const lessonSelect = document.getElementById('genLesson');
+      const lessonText = (lessonSelect && lessonSelect.selectedIndex >= 0) ? lessonSelect.options[lessonSelect.selectedIndex].text : 'Toàn bộ chương';
+      const nb = Number(document.getElementById('genNbCount').value) || 3;
+      const th = Number(document.getElementById('genThCount').value) || 3;
+      const vd = Number(document.getElementById('genVdCount').value) || 3;
+      const vdc = Number(document.getElementById('genVdcCount').value) || 1;
+      const timeMinutes = Number(document.getElementById('genTime').value) || 15;
+
+      const btn = document.getElementById('btnGeminiGenerate');
+      const originalBtnHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin text-amber-400"></i><span>Gemini AI đang biên soạn đề thi GDPT 2018...</span>`;
+      lucide.createIcons();
+
+      try {
+        const generated = await GeminiExamService.generateExam({
+          grade: grade,
+          title: title,
+          chapter: chapter,
+          lesson: lessonText,
+          nbCount: nb,
+          thCount: th,
+          vdCount: vd,
+          vdcCount: vdc,
+          timeMinutes: timeMinutes
+        });
+
+        currentGeneratedExam = generated;
+        renderPreviewContent();
+        showNotificationToast('✨ <strong>Google Gemini AI</strong> đã biên soạn xong đề thi mới theo đúng chuẩn GDPT 2018!');
+        confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
+      } catch (err) {
+        console.error('Lỗi sinh đề Gemini:', err);
+        showNotificationToast(`⚠️ Không thể tạo đề bằng AI: ${err.message || 'Lỗi không xác định'}`);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalBtnHtml;
+        lucide.createIcons();
+      }
+    }
+
+    // =========================================================================
+    // GOOGLE GEMINI AI MODAL HELPERS
+    // =========================================================================
+    function openGeminiConfigModal() {
+      const modal = document.getElementById('geminiConfigModal');
+      const input = document.getElementById('geminiApiKeyInput');
+      const status = document.getElementById('geminiKeyStatus');
+
+      if (typeof GeminiExamService !== 'undefined') {
+        input.value = GeminiExamService.getApiKey() || '';
+      }
+      status.className = 'hidden';
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeGeminiConfigModal() {
+      document.getElementById('geminiConfigModal').classList.add('hidden');
+    }
+
+    function toggleGeminiKeyVisibility() {
+      const input = document.getElementById('geminiApiKeyInput');
+      const icon = document.getElementById('eyeKeyIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.setAttribute('data-lucide', 'eye-off');
+      } else {
+        input.type = 'password';
+        icon.setAttribute('data-lucide', 'eye');
+      }
+      lucide.createIcons();
+    }
+
+    function saveGeminiApiKey() {
+      const input = document.getElementById('geminiApiKeyInput');
+      const val = input.value.trim();
+      const status = document.getElementById('geminiKeyStatus');
+
+      if (!val) {
+        alert('Vui lòng nhập API Key trước khi lưu.');
+        return;
+      }
+
+      if (typeof GeminiExamService !== 'undefined') {
+        GeminiExamService.setApiKey(val);
+      }
+
+      status.className = 'p-2.5 rounded-xl text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200';
+      status.innerHTML = '✓ Đã lưu API Key thành công vào trình duyệt! Thầy/Cô có thể bắt đầu sinh đề bằng AI ngay.';
+      showNotificationToast('Đã lưu cấu hình Google Gemini AI!');
+      setTimeout(() => { closeGeminiConfigModal(); }, 1200);
+    }
+
+    function clearGeminiApiKey() {
+      if (confirm('Thầy/Cô có chắc chắn muốn xóa API Key khỏi trình duyệt không?')) {
+        if (typeof GeminiExamService !== 'undefined') {
+          GeminiExamService.setApiKey('');
+        }
+        document.getElementById('geminiApiKeyInput').value = '';
+        const status = document.getElementById('geminiKeyStatus');
+        status.className = 'p-2.5 rounded-xl text-[11px] font-semibold bg-slate-100 text-slate-700';
+        status.innerText = 'Đã xóa API Key.';
+        showNotificationToast('Đã xóa API Key Google Gemini.');
+      }
+    }
+
+    async function testGeminiApiConnection() {
+      const input = document.getElementById('geminiApiKeyInput');
+      const val = input.value.trim();
+      const status = document.getElementById('geminiKeyStatus');
+      const btn = document.getElementById('btnTestGemini');
+
+      if (!val || val.length < 10) {
+        status.className = 'p-2.5 rounded-xl text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200';
+        status.innerText = '⚠️ API Key không hợp lệ hoặc quá ngắn.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = 'Đang kiểm tra...';
+      status.className = 'p-2.5 rounded-xl text-[11px] font-semibold bg-blue-50 text-blue-800 border border-blue-200';
+      status.innerText = 'Đang gửi yêu cầu kiểm tra kết nối tới Google AI...';
+
+      try {
+        const testRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${val}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: 'Trả lời đúng 1 chữ: OK' }] }]
+          })
+        });
+
+        if (!testRes.ok) {
+          const errJson = await testRes.json().catch(() => ({}));
+          throw new Error(errJson.error ? errJson.error.message : `HTTP ${testRes.status}`);
+        }
+
+        status.className = 'p-2.5 rounded-xl text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200';
+        status.innerText = '✓ Kết nối thành công! API Key hoạt động chính xác và sẵn sàng sử dụng.';
+      } catch (err) {
+        status.className = 'p-2.5 rounded-xl text-[11px] font-semibold bg-rose-50 text-rose-800 border border-rose-200';
+        status.innerText = `✗ Kết nối thất bại: ${err.message}`;
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Kiểm Tra';
+      }
     }
 
     function saveCurrentGeneratedExam(assignImmediately) {
@@ -1168,8 +1449,8 @@
         let bodyHtml = '';
 
         if (q.type === 'tf' || (q.items && q.items.length > 0)) {
-          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Đúng / Sai</span>';
-          answerBadge = '<span class="text-[10px] font-bold text-purple-700">4 ý a, b, c, d</span>';
+          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">Đúng / Sai</span>';
+          answerBadge = '<span class="text-[10px] font-bold text-indigo-700">4 ý a, b, c, d</span>';
           bodyHtml = `
             <div class="space-y-2 mt-2">
               ${(q.items || []).map(it => {
@@ -1341,5 +1622,72 @@
       document.getElementById('submissionDetailModal').classList.add('hidden');
     }
   </script>
+
+  <!-- MODAL: CẤU HÌNH GOOGLE GEMINI AI -->
+  <div id="geminiConfigModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 flex flex-col gap-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold">
+            <i data-lucide="sparkles" class="w-5 h-5 text-amber-500"></i>
+          </div>
+          <div>
+            <h3 class="text-sm font-black text-slate-900">Cấu Hình Google Gemini AI</h3>
+            <p class="text-[11px] text-slate-500">Sinh đề thi toán tự động không giới hạn theo SGK KNTT</p>
+          </div>
+        </div>
+        <button onclick="closeGeminiConfigModal()" class="w-8 h-8 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 flex items-center justify-center">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-3 text-xs">
+        <div class="p-3 bg-blue-50/70 border border-blue-200 rounded-xl text-blue-900 leading-relaxed">
+          <p class="font-bold flex items-center gap-1.5 text-blue-950 mb-1">
+            <i data-lucide="info" class="w-4 h-4 text-blue-600"></i>
+            Hướng dẫn nhận API Key Google Gemini miễn phí:
+          </p>
+          <ol class="list-decimal list-inside space-y-1 text-[11px]">
+            <li>Truy cập <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-700 font-bold underline">Google AI Studio (aistudio.google.com)</a>.</li>
+            <li>Đăng nhập bằng tài khoản Gmail của Thầy/Cô.</li>
+            <li>Bấm <strong>"Create API Key"</strong> &rarr; Sao chép mã và dán vào ô bên dưới.</li>
+          </ol>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Google Gemini API Key:</label>
+          <div class="relative">
+            <input type="password" id="geminiApiKeyInput" placeholder="AIzaSy..." class="w-full text-xs font-mono p-2.5 pr-10 border border-slate-200 rounded-xl bg-slate-50 focus:ring-2 focus:ring-blue-500">
+            <button type="button" onclick="toggleGeminiKeyVisibility()" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+              <i data-lucide="eye" id="eyeKeyIcon" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <p class="text-[10px] text-slate-400 mt-1">
+            🔒 Khóa được lưu an toàn tại trình duyệt của Thầy/Cô (LocalStorage), không lưu lên máy chủ.
+          </p>
+        </div>
+
+        <div id="geminiKeyStatus" class="hidden p-2.5 rounded-xl text-[11px] font-semibold"></div>
+      </div>
+
+      <div class="flex items-center justify-between pt-3 border-t border-slate-100 gap-2">
+        <button onclick="clearGeminiApiKey()" class="px-3 py-2 rounded-xl border border-rose-200 hover:bg-rose-50 text-rose-600 text-xs font-bold transition flex items-center gap-1">
+          <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+          <span>Xóa Key</span>
+        </button>
+        <div class="flex items-center gap-2">
+          <button onclick="testGeminiApiConnection()" id="btnTestGemini" class="px-3 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold transition flex items-center gap-1">
+            <i data-lucide="activity" class="w-3.5 h-3.5"></i>
+            <span>Kiểm Tra</span>
+          </button>
+          <button onclick="saveGeminiApiKey()" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-black transition flex items-center gap-1.5 shadow-xs">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            <span>Lưu Cấu Hình</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
