@@ -52,6 +52,8 @@
   <script src="questions_data.js"></script>
   <script src="exam_sync_engine.js"></script>
   <script src="gemini_exam_service.js"></script>
+  <script src="geometry_svg_engine.js"></script>
+  <script src="exam_export_engine.js"></script>
 
   <style>
     body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
@@ -92,6 +94,10 @@
 
       <!-- Quick Nav Action Buttons -->
       <div class="flex items-center gap-2 flex-wrap">
+        <button onclick="openGoogleSheetsModal()" class="px-3 py-1.5 text-xs font-bold rounded-xl border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 transition flex items-center gap-1.5 shadow-2xs">
+          <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-600"></i>
+          <span>📊 Bảng Điểm Google Sheets</span>
+        </button>
         <button onclick="openGeminiConfigModal()" class="px-3 py-1.5 text-xs font-bold rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-800 transition flex items-center gap-1.5 shadow-2xs">
           <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>
           <span>Cấu Hình Gemini AI</span>
@@ -336,7 +342,19 @@
               </h3>
               <p class="text-xs text-slate-500 mt-0.5" id="genPreviewSub">Bấm nút "Tự động sinh đề" để tạo đề thi hoàn chỉnh</p>
             </div>
-            <div class="flex items-center gap-2" id="genActionBtns" style="display: none;">
+            <div class="flex items-center gap-2 flex-wrap" id="genActionBtns" style="display: none;">
+              <button onclick="exportCurrentGeneratedToWord()" class="px-2.5 py-1.5 text-xs font-bold rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 transition flex items-center gap-1 shadow-2xs">
+                <i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-600"></i>
+                <span>Tải Word (.docx)</span>
+              </button>
+              <button onclick="printCurrentGeneratedPdf()" class="px-2.5 py-1.5 text-xs font-bold rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 transition flex items-center gap-1 shadow-2xs">
+                <i data-lucide="printer" class="w-3.5 h-3.5 text-slate-600"></i>
+                <span>In / PDF</span>
+              </button>
+              <button onclick="openPermutedFromCurrentGenerated()" class="px-2.5 py-1.5 text-xs font-bold rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 transition flex items-center gap-1 shadow-2xs">
+                <i data-lucide="shuffle" class="w-3.5 h-3.5 text-amber-600"></i>
+                <span>Tạo 4 Mã Đề</span>
+              </button>
               <button onclick="saveCurrentGeneratedExam(false)" class="px-3 py-1.5 text-xs font-bold rounded-xl border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 transition flex items-center gap-1.5">
                 <i data-lucide="save" class="w-3.5 h-3.5"></i>
                 <span>Lưu Vào Kho Đề</span>
@@ -529,18 +547,28 @@
         <!-- Rendered by JS -->
       </div>
 
-      <div class="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
-        <button onclick="window.print()" class="px-4 py-2 text-xs font-bold rounded-xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="printer" class="w-4 h-4"></i>
-          <span>In Đề Thi</span>
-        </button>
+      <div class="p-4 border-t border-slate-100 bg-slate-50 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2 flex-wrap">
+          <button onclick="exportViewingToWord()" class="px-3 py-2 text-xs font-bold rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 transition flex items-center gap-1.5 shadow-2xs">
+            <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i>
+            <span>Tải Bản Word (.docx)</span>
+          </button>
+          <button onclick="printViewingPdf()" class="px-3 py-2 text-xs font-bold rounded-xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 shadow-2xs">
+            <i data-lucide="printer" class="w-4 h-4 text-slate-600"></i>
+            <span>In / PDF Chuẩn Bộ</span>
+          </button>
+          <button onclick="openPermutedFromViewing()" class="px-3 py-2 text-xs font-bold rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 transition flex items-center gap-1.5 shadow-2xs">
+            <i data-lucide="shuffle" class="w-4 h-4 text-amber-600"></i>
+            <span>Tạo 4 Mã Đề Hoán Vị</span>
+          </button>
+        </div>
         <div class="flex items-center gap-2">
           <button onclick="closePreviewModal()" class="px-4 py-2 text-xs font-bold rounded-xl text-slate-600 hover:bg-slate-200 transition">
             Đóng
           </button>
-          <button id="modalAssignBtn" onclick="" class="px-4 py-2 text-xs font-bold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition flex items-center gap-1.5">
+          <button id="modalAssignBtn" onclick="" class="px-4 py-2 text-xs font-bold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition flex items-center gap-1.5 shadow-xs">
             <i data-lucide="send" class="w-4 h-4"></i>
-            <span>Giao Đề Này Cho Lớp</span>
+            <span>Giao Đề Cho Lớp</span>
           </button>
         </div>
       </div>
@@ -642,6 +670,9 @@
     let currentGradeFilter = 'all';
     let currentGeneratedExam = null;
     let selectedTaskId = null;
+    let currentViewingExam = null;
+    let currentPermutedData = null;
+    let currentPermutedActiveTab = 'key';
 
     // Khởi tạo
     document.addEventListener('DOMContentLoaded', function() {
@@ -795,7 +826,18 @@
               </div>
             </div>
 
-            <div class="flex items-center gap-2 pt-3 border-t border-slate-100">
+            <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+              <button onclick="exportExamIdToWord('${exam.id}')" class="py-1.5 px-2 text-[11px] font-bold rounded-lg border border-blue-200 bg-blue-50/70 hover:bg-blue-100 text-blue-700 transition flex items-center justify-center gap-1">
+                <i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-600"></i>
+                <span>Tải Word (.docx)</span>
+              </button>
+              <button onclick="openPermutedForExamId('${exam.id}')" class="py-1.5 px-2 text-[11px] font-bold rounded-lg border border-amber-200 bg-amber-50/70 hover:bg-amber-100 text-amber-800 transition flex items-center justify-center gap-1">
+                <i data-lucide="shuffle" class="w-3.5 h-3.5 text-amber-600"></i>
+                <span>4 Mã Đề (101-104)</span>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-2 pt-1">
               <button onclick="previewExam('${exam.id}')" class="flex-1 py-2 text-xs font-bold rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 transition flex items-center justify-center gap-1">
                 <i data-lucide="eye" class="w-3.5 h-3.5"></i>
                 <span>Xem Đề</span>
@@ -993,6 +1035,7 @@
               </div>
             </div>
             <p class="text-xs font-medium text-slate-800">${qContent}</p>
+            ${(typeof GeometrySvgEngine !== 'undefined' ? (GeometrySvgEngine.getDiagramForQuestion(q) || '') : '')}
             ${bodyHtml}
             ${qExpl ? `
               <div class="mt-2 p-2.5 bg-slate-50 border-l-2 border-indigo-500 text-[11px] text-slate-600">
@@ -1434,6 +1477,7 @@
     function previewExam(examId) {
       const exam = ExamSyncEngine.getExamById(examId);
       if (!exam) return;
+      currentViewingExam = exam;
 
       document.getElementById('modalExamGradeBadge').innerText = `Toán ${exam.grade} - KNTT`;
       document.getElementById('modalExamTitle').innerText = exam.title;
@@ -1516,6 +1560,7 @@
               ${answerBadge}
             </div>
             <p class="text-xs font-medium text-slate-800">${qContent}</p>
+            ${(typeof GeometrySvgEngine !== 'undefined' ? (GeometrySvgEngine.getDiagramForQuestion(q) || '') : '')}
             ${bodyHtml}
             ${qExpl ? `
               <div class="mt-2 p-2.5 bg-slate-50 border-l-2 border-indigo-500 text-[11px] text-slate-600">
@@ -1621,6 +1666,509 @@
     function closeSubmissionDetailModal() {
       document.getElementById('submissionDetailModal').classList.add('hidden');
     }
+
+    // =========================================================================
+    // XUẤT ĐỀ THI WORD (.DOCX) & IN ẤN PDF CHUẨN BỘ GIÁO DỤC & ĐÀO TẠO
+    // =========================================================================
+    function exportExamIdToWord(examId) {
+      const exam = ExamSyncEngine.getExamById(examId);
+      if (!exam) return;
+      if (typeof ExamExportEngine !== 'undefined') {
+        ExamExportEngine.exportToWordDocx(exam);
+        showNotificationToast(`Đã xuất đề thi <strong>${exam.title}</strong> ra file Word (.docx) chuẩn Bộ GD&ĐT!`);
+      }
+    }
+
+    function exportViewingToWord() {
+      if (!currentViewingExam) return;
+      if (typeof ExamExportEngine !== 'undefined') {
+        ExamExportEngine.exportToWordDocx(currentViewingExam);
+        showNotificationToast(`Đã xuất đề thi <strong>${currentViewingExam.title}</strong> ra file Word (.docx) chuẩn Bộ GD&ĐT!`);
+      }
+    }
+
+    function printViewingPdf() {
+      if (!currentViewingExam) return;
+      if (typeof ExamExportEngine !== 'undefined') {
+        ExamExportEngine.printExamPdf(currentViewingExam);
+      }
+    }
+
+    function exportCurrentGeneratedToWord() {
+      if (!currentGeneratedExam) {
+        alert('Chưa có đề thi nào được sinh. Hãy bấm Tự Động Sinh Đề trước.');
+        return;
+      }
+      if (typeof ExamExportEngine !== 'undefined') {
+        ExamExportEngine.exportToWordDocx(currentGeneratedExam);
+        showNotificationToast(`Đã xuất đề thi vừa sinh ra file Word (.docx) chuẩn Bộ GD&ĐT!`);
+      }
+    }
+
+    function printCurrentGeneratedPdf() {
+      if (!currentGeneratedExam) {
+        alert('Chưa có đề thi nào được sinh. Hãy bấm Tự Động Sinh Đề trước.');
+        return;
+      }
+      if (typeof ExamExportEngine !== 'undefined') {
+        ExamExportEngine.printExamPdf(currentGeneratedExam);
+      }
+    }
+
+    // =========================================================================
+    // TẠO 4 MÃ ĐỀ HOÁN VỊ (101 - 102 - 103 - 104) & BẢNG SOI ĐÁP ÁN NHANH
+    // =========================================================================
+    function openPermutedForExamId(examId) {
+      const exam = ExamSyncEngine.getExamById(examId);
+      if (!exam) return;
+      openPermutedModalForExam(exam);
+    }
+
+    function openPermutedFromViewing() {
+      if (!currentViewingExam) return;
+      openPermutedModalForExam(currentViewingExam);
+    }
+
+    function openPermutedFromCurrentGenerated() {
+      if (!currentGeneratedExam) {
+        alert('Chưa có đề thi nào được sinh.');
+        return;
+      }
+      openPermutedModalForExam(currentGeneratedExam);
+    }
+
+    function openPermutedModalForExam(exam) {
+      if (!exam || !Array.isArray(exam.questions)) {
+        alert('Đề thi không có câu hỏi hợp lệ để sinh mã đề hoán vị.');
+        return;
+      }
+      
+      currentPermutedData = ExamSyncEngine.generatePermutedExams(exam, ['101', '102', '103', '104']);
+      currentPermutedActiveTab = 'key';
+      
+      document.getElementById('permutedBaseTitle').innerText = exam.title;
+      document.getElementById('permutedGradeBadge').innerText = `Toán ${exam.grade} - KNTT`;
+      
+      switchPermutedTab('key');
+      document.getElementById('permutedExamsModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closePermutedModal() {
+      document.getElementById('permutedExamsModal').classList.add('hidden');
+    }
+
+    function switchPermutedTab(tabKey) {
+      currentPermutedActiveTab = tabKey;
+      
+      document.querySelectorAll('.perm-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-xs');
+        btn.classList.add('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+      });
+      const activeBtn = document.getElementById(`permTab-${tabKey}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-100', 'text-slate-700', 'hover:bg-slate-200');
+        activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-xs');
+      }
+
+      const btnExportCurrent = document.getElementById('btnPermExportCurrent');
+      const btnPrintCurrent = document.getElementById('btnPermPrintCurrent');
+      if (tabKey === 'key') {
+        if (btnExportCurrent) btnExportCurrent.style.display = 'none';
+        if (btnPrintCurrent) btnPrintCurrent.innerHTML = `<i data-lucide="printer" class="w-3.5 h-3.5"></i><span>In Phiếu Soi Đáp Án</span>`;
+      } else {
+        if (btnExportCurrent) {
+          btnExportCurrent.style.display = 'flex';
+          btnExportCurrent.innerHTML = `<i data-lucide="file-text" class="w-3.5 h-3.5"></i><span>Tải Word Mã ${tabKey}</span>`;
+        }
+        if (btnPrintCurrent) {
+          btnPrintCurrent.innerHTML = `<i data-lucide="printer" class="w-3.5 h-3.5"></i><span>In Mã Đề ${tabKey}</span>`;
+        }
+      }
+
+      renderPermutedContent();
+      lucide.createIcons();
+    }
+
+    function renderPermutedContent() {
+      if (!currentPermutedData) return;
+      const container = document.getElementById('permutedContentArea');
+      
+      if (currentPermutedActiveTab === 'key') {
+        const keys = currentPermutedData.answerMatrixKey || [];
+        const mcqKeys = keys.filter(k => k.type === 'mcq');
+        const otherKeys = keys.filter(k => k.type !== 'mcq');
+        
+        let tableRows = mcqKeys.map((item, idx) => `
+          <tr class="hover:bg-slate-50 transition border-b border-slate-100">
+            <td class="p-2.5 text-center font-black text-slate-800 bg-slate-50/70 border-r border-slate-200 w-16">Câu ${item.questionNumber}</td>
+            <td class="p-2.5 text-center font-black text-indigo-700 text-sm border-r border-slate-200 bg-indigo-50/30">${item.keys['101'] || '-'}</td>
+            <td class="p-2.5 text-center font-black text-blue-700 text-sm border-r border-slate-200 bg-blue-50/30">${item.keys['102'] || '-'}</td>
+            <td class="p-2.5 text-center font-black text-emerald-700 text-sm border-r border-slate-200 bg-emerald-50/30">${item.keys['103'] || '-'}</td>
+            <td class="p-2.5 text-center font-black text-amber-700 text-sm bg-amber-50/30">${item.keys['104'] || '-'}</td>
+          </tr>
+        `).join('');
+
+        container.innerHTML = `
+          <div class="flex flex-col gap-4">
+            <div class="p-4 bg-indigo-50/70 border border-indigo-200 rounded-2xl flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <h4 class="text-xs font-black text-indigo-950 uppercase tracking-wide flex items-center gap-1.5">
+                  <i data-lucide="table-2" class="w-4 h-4 text-indigo-600"></i>
+                  BẢNG MA TRẬN SOI ĐÁP ÁN NHANH (MÃ 101 - 102 - 103 - 104)
+                </h4>
+                <p class="text-[11px] text-indigo-800/80 mt-0.5">Dành cho Giáo viên chấm bài trắc nghiệm cực nhanh, chống nhìn bài hiệu quả.</p>
+              </div>
+              <span class="text-[11px] font-bold text-indigo-700 bg-white px-3 py-1 rounded-xl border border-indigo-200 shadow-2xs">
+                Tổng cộng: ${mcqKeys.length} câu trắc nghiệm
+              </span>
+            </div>
+
+            <div class="overflow-x-auto border border-slate-200 rounded-2xl shadow-xs">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-slate-100/80 text-slate-700 font-bold border-b border-slate-200 uppercase text-[11px]">
+                  <tr>
+                    <th class="p-3 text-center border-r border-slate-200">Câu Số</th>
+                    <th class="p-3 text-center border-r border-slate-200 text-indigo-800">Mã Đề 101</th>
+                    <th class="p-3 text-center border-r border-slate-200 text-blue-800">Mã Đề 102</th>
+                    <th class="p-3 text-center border-r border-slate-200 text-emerald-800">Mã Đề 103</th>
+                    <th class="p-3 text-center text-amber-800">Mã Đề 104</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${tableRows}
+                </tbody>
+              </table>
+            </div>
+
+            ${otherKeys.length > 0 ? `
+              <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-[11px] text-slate-600">
+                <strong>Lưu ý:</strong> Đề thi có thêm <strong>${otherKeys.length} câu</strong> thuộc phần Đúng/Sai và Trả lời ngắn. Bấm chọn các tab mã đề 101, 102, 103, 104 để xem và xuất từng đề hoàn chỉnh.
+              </div>
+            ` : ''}
+          </div>
+        `;
+      } else {
+        const currentExam = currentPermutedData.exams[currentPermutedActiveTab];
+        if (!currentExam) {
+          container.innerHTML = '<p class="text-xs text-slate-400 p-4">Không tìm thấy mã đề.</p>';
+          return;
+        }
+
+        const qHtml = (currentExam.questions || []).map((q, idx) => {
+          const qContent = window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.content) : q.content;
+          const svgDiagram = (typeof GeometrySvgEngine !== 'undefined') ? (GeometrySvgEngine.getDiagramForQuestion(q) || '') : '';
+          
+          let optsHtml = '';
+          if (q.options && q.options.length > 0) {
+            optsHtml = `
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
+                ${q.options.map(opt => {
+                  const optText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(opt.text) : opt.text;
+                  const isCorrect = opt.key === q.correctAnswer;
+                  return `
+                    <div class="p-2 rounded-lg border text-xs flex items-center gap-2 ${isCorrect ? 'bg-emerald-50 border-emerald-300 font-bold' : 'bg-slate-50 border-slate-200'}">
+                      <span class="w-5 h-5 rounded-full ${isCorrect ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'} flex items-center justify-center text-[10px] font-bold">
+                        ${opt.key}
+                      </span>
+                      <span>${optText}</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            `;
+          } else if (q.items && q.items.length > 0) {
+            optsHtml = `
+              <div class="space-y-1.5 mt-2">
+                ${q.items.map(it => `
+                  <div class="p-2 rounded-lg border border-slate-200 bg-slate-50 text-xs flex items-center justify-between">
+                    <span class="font-medium"><strong>${it.key || it.label})</strong> ${it.text}</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded ${it.correctAnswer === 'Đ' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${it.correctAnswer === 'Đ' ? 'Đúng' : 'Sai'}</span>
+                  </div>
+                `).join('')}
+              </div>
+            `;
+          }
+
+          return `
+            <div class="border border-slate-200 rounded-xl p-4 bg-white flex flex-col gap-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-black text-slate-900">Câu ${idx + 1} (${q.level || 'NB'}):</span>
+                ${q.correctAnswer ? `<span class="text-[10px] font-bold text-emerald-700">Đáp án: ${q.correctAnswer}</span>` : ''}
+              </div>
+              <p class="text-xs font-medium text-slate-800">${qContent}</p>
+              ${svgDiagram}
+              ${optsHtml}
+            </div>
+          `;
+        }).join('');
+
+        container.innerHTML = `
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center justify-between p-3.5 bg-slate-50 border border-slate-200 rounded-2xl flex-wrap gap-2">
+              <div>
+                <h4 class="text-xs font-black text-slate-900 uppercase">Mã Đề Thi: ${currentExam.examCode}</h4>
+                <p class="text-[11px] text-slate-500 mt-0.5">Các câu hỏi và phương án A, B, C, D đã được xáo trộn tự động.</p>
+              </div>
+              <button onclick="exportCurrentPermutedWord()" class="px-3 py-1.5 text-xs font-bold rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 transition flex items-center gap-1.5 shadow-2xs">
+                <i data-lucide="download" class="w-3.5 h-3.5 text-blue-600"></i>
+                <span>Tải Word Mã ${currentExam.examCode}</span>
+              </button>
+            </div>
+            <div class="flex flex-col gap-3">
+              ${qHtml}
+            </div>
+          </div>
+        `;
+      }
+
+      renderMath(container);
+      lucide.createIcons();
+    }
+
+    function exportCurrentPermutedWord() {
+      if (!currentPermutedData) return;
+      if (currentPermutedActiveTab === 'key') {
+        alert('Vui lòng chọn tab một mã đề cụ thể (101, 102, 103, 104) để tải Word, hoặc bấm "Tải Cả 4 Đề Word"!');
+        return;
+      }
+      const exam = currentPermutedData.exams[currentPermutedActiveTab];
+      if (exam && typeof ExamExportEngine !== 'undefined') {
+        ExamExportEngine.exportToWordDocx(exam);
+        showNotificationToast(`Đã xuất <strong>Mã đề ${exam.examCode}</strong> ra file Word!`);
+      }
+    }
+
+    function exportAllPermutedWords() {
+      if (!currentPermutedData) return;
+      if (typeof ExamExportEngine === 'undefined') return;
+      
+      const codes = currentPermutedData.codes || ['101', '102', '103', '104'];
+      showNotificationToast(`Đang tải lần lượt 4 file Word cho các mã đề ${codes.join(', ')}...`);
+      
+      codes.forEach((code, i) => {
+        setTimeout(() => {
+          const exam = currentPermutedData.exams[code];
+          if (exam) {
+            ExamExportEngine.exportToWordDocx(exam);
+          }
+        }, i * 400);
+      });
+    }
+
+    function printCurrentPermutedPdf() {
+      if (!currentPermutedData) return;
+      if (currentPermutedActiveTab === 'key') {
+        printAnswerMatrixKey(currentPermutedData);
+      } else {
+        const exam = currentPermutedData.exams[currentPermutedActiveTab];
+        if (exam && typeof ExamExportEngine !== 'undefined') {
+          ExamExportEngine.printExamPdf(exam);
+        }
+      }
+    }
+
+    function printAnswerMatrixKey(data) {
+      const keys = data.answerMatrixKey || [];
+      const mcqKeys = keys.filter(k => k.type === 'mcq');
+      const baseExam = ExamSyncEngine.getExamById(data.baseExamId) || {};
+      
+      const rowsHtml = mcqKeys.map(k => `
+        <tr>
+          <td style="border: 1px solid #334155; padding: 6px; text-align: center; font-weight: bold;">Câu ${k.questionNumber}</td>
+          <td style="border: 1px solid #334155; padding: 6px; text-align: center; font-weight: bold; color: #1e3a8a;">${k.keys['101'] || '-'}</td>
+          <td style="border: 1px solid #334155; padding: 6px; text-align: center; font-weight: bold; color: #1e3a8a;">${k.keys['102'] || '-'}</td>
+          <td style="border: 1px solid #334155; padding: 6px; text-align: center; font-weight: bold; color: #1e3a8a;">${k.keys['103'] || '-'}</td>
+          <td style="border: 1px solid #334155; padding: 6px; text-align: center; font-weight: bold; color: #1e3a8a;">${k.keys['104'] || '-'}</td>
+        </tr>
+      `).join('');
+
+      const printWindow = window.open('', '_blank', 'width=800,height=900');
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="vi">
+        <head>
+          <meta charset="UTF-8">
+          <title>Bảng Soi Đáp Án Nhanh 4 Mã Đề</title>
+          <style>
+            body { font-family: 'Times New Roman', serif; margin: 20mm; color: #0f172a; }
+            table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+            th { border: 1px solid #334155; background-color: #f1f5f9; padding: 8px; font-size: 13pt; }
+            td { font-size: 12pt; }
+            .header { text-align: center; margin-bottom: 20px; }
+            @media print { .no-print { display: none; } }
+          </style>
+        </head>
+        <body>
+          <div class="no-print" style="margin-bottom: 15px;">
+            <button onclick="window.print()" style="padding: 8px 16px; font-weight: bold; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer;">🖨️ In Phiếu Đáp Án</button>
+          </div>
+          <div class="header">
+            <h2 style="margin: 0; text-transform: uppercase;">PHIẾU SOI ĐÁP ÁN NHANH CÁC MÃ ĐỀ</h2>
+            <p style="margin: 5px 0 0 0; font-size: 12pt; font-style: italic;">Đề: ${baseExam.title || 'Đề Kiểm Tra'} &bull; Năm học 2025 - 2026</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>CÂU SỐ</th>
+                <th>MÃ ĐỀ 101</th>
+                <th>MÃ ĐỀ 102</th>
+                <th>MÃ ĐỀ 103</th>
+                <th>MÃ ĐỀ 104</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+          <div style="margin-top: 30px; display: flex; justify-content: flex-end;">
+            <div style="text-align: center;">
+              <p style="font-style: italic; margin: 0;">Ngày ..... tháng ..... năm 2026</p>
+              <p style="font-weight: bold; margin-top: 5px;">GIÁO VIÊN CHẤM THI</p>
+              <p style="margin-top: 50px; font-style: italic;">(Ký và ghi rõ họ tên)</p>
+            </div>
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+    }
+
+    // =========================================================================
+    // ĐỒNG BỘ BẢNG ĐIỂM HỌC SINH VỀ GOOGLE SHEETS (WEBHOOK APPS SCRIPT)
+    // =========================================================================
+    function openGoogleSheetsModal() {
+      const modal = document.getElementById('googleSheetsModal');
+      const input = document.getElementById('sheetsWebhookUrlInput');
+      const status = document.getElementById('sheetsWebhookStatus');
+
+      if (typeof ExamSyncEngine !== 'undefined') {
+        input.value = ExamSyncEngine.getSheetsWebhookUrl() || '';
+      }
+      status.className = 'hidden';
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeGoogleSheetsModal() {
+      document.getElementById('googleSheetsModal').classList.add('hidden');
+    }
+
+    function saveGoogleSheetsWebhook() {
+      const input = document.getElementById('sheetsWebhookUrlInput');
+      const val = input.value.trim();
+      const status = document.getElementById('sheetsWebhookStatus');
+
+      if (!val) {
+        alert('Vui lòng nhập URL Google Apps Script Webhook trước khi lưu.');
+        return;
+      }
+
+      if (!val.startsWith('https://script.google.com/')) {
+        if (!confirm('URL này không bắt đầu bằng https://script.google.com/macros/s/...\nThầy/Cô vẫn muốn tiếp tục lưu?')) {
+          return;
+        }
+      }
+
+      if (typeof ExamSyncEngine !== 'undefined') {
+        ExamSyncEngine.setSheetsWebhookUrl(val);
+      }
+
+      status.className = 'p-3 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200';
+      status.innerHTML = '✓ Đã lưu Webhook Google Sheets thành công! Điểm số học sinh khi nộp sẽ tự động đồng bộ về Sheet.';
+      showNotificationToast('Đã lưu kết nối Google Sheets thành công!');
+      setTimeout(() => { closeGoogleSheetsModal(); }, 1200);
+    }
+
+    function clearGoogleSheetsWebhook() {
+      if (confirm('Thầy/Cô có chắc chắn muốn ngắt kết nối Google Sheets không?')) {
+        if (typeof ExamSyncEngine !== 'undefined') {
+          ExamSyncEngine.setSheetsWebhookUrl('');
+        }
+        document.getElementById('sheetsWebhookUrlInput').value = '';
+        const status = document.getElementById('sheetsWebhookStatus');
+        status.className = 'p-3 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700';
+        status.innerText = 'Đã hủy kết nối Webhook Google Sheets.';
+        showNotificationToast('Đã ngắt kết nối Google Sheets.');
+      }
+    }
+
+    async function testGoogleSheetsWebhook() {
+      const input = document.getElementById('sheetsWebhookUrlInput');
+      const val = input.value.trim();
+      const status = document.getElementById('sheetsWebhookStatus');
+      const btn = document.getElementById('btnTestSheets');
+
+      if (!val) {
+        status.className = 'p-3 rounded-xl text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200';
+        status.innerText = '⚠️ Vui lòng nhập URL Webhook trước khi kiểm tra.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = 'Đang gửi dữ liệu mẫu...';
+      status.className = 'p-3 rounded-xl text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200';
+      status.innerText = 'Đang gửi bản ghi kiểm tra tới Google Sheets qua Webhook...';
+
+      const testPayload = {
+        submissionId: 'TEST-' + Date.now(),
+        taskId: 'TASK-TEST',
+        studentName: 'Học Sinh Thử Nghiệm (Test)',
+        className: '8A1',
+        score: 10.0,
+        correctCount: 10,
+        totalQuestions: 10,
+        timeSpentSeconds: 120,
+        submittedAt: new Date().toISOString(),
+        aiFeedback: 'Dữ liệu kiểm tra kết nối từ hệ thống Khảo Thí THCS.'
+      };
+
+      try {
+        await fetch(val, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(testPayload)
+        });
+
+        status.className = 'p-3 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200';
+        status.innerHTML = '✓ Đã gửi bản ghi kiểm tra thành công! Thầy/Cô hãy mở Google Sheet xem dòng mới xuất hiện.';
+        showNotificationToast('Đã gửi bản ghi kiểm tra tới Google Sheet!');
+      } catch (err) {
+        status.className = 'p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200';
+        status.innerText = `✗ Không thể gửi tới Webhook: ${err.message}`;
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Kiểm Tra Kết Nối';
+      }
+    }
+
+    function copyAppsScriptCode() {
+      const code = `function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(["Thời gian", "Mã Nhiệm Vụ", "Lớp", "Họ và Tên", "Điểm Số", "Số Câu Đúng", "Thời Gian Làm (giây)", "Đánh Giá AI"]);
+  }
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([
+    new Date(),
+    data.taskId || "",
+    data.className || "",
+    data.studentName || "",
+    data.score || 0,
+    (data.correctCount || 0) + "/" + (data.totalQuestions || 0),
+    data.timeSpentSeconds || 0,
+    data.aiFeedback || ""
+  ]);
+  return ContentService.createTextOutput(JSON.stringify({result: "success"})).setMimeType(ContentService.MimeType.JSON);
+}`;
+
+      navigator.clipboard.writeText(code).then(() => {
+        showNotificationToast('✓ Đã sao chép mã Google Apps Script vào bộ nhớ tạm!');
+      }).catch(() => {
+        alert('Không thể sao chép tự động, Thầy/Cô vui lòng bôi đen đoạn mã bên dưới.');
+      });
+    }
   </script>
 
   <!-- MODAL: CẤU HÌNH GOOGLE GEMINI AI -->
@@ -1686,6 +2234,199 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL: BỘ 4 MÃ ĐỀ HOÁN VỊ (101-104) & BẢNG SOI ĐÁP ÁN NHANH -->
+  <!-- ===================================================================== -->
+  <div id="permutedExamsModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      
+      <!-- Header -->
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold">
+            <i data-lucide="shuffle" class="w-5 h-5 text-amber-600"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="permutedGradeBadge" class="text-[10px] font-bold text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-md">Toán 8 - KNTT</span>
+              <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-full">4 Mã Đề Chuẩn GDPT 2018</span>
+            </div>
+            <h3 id="permutedBaseTitle" class="text-base font-black text-slate-900 mt-0.5">Bộ Đề Thi Hoán Vị</h3>
+          </div>
+        </div>
+        <button onclick="closePermutedModal()" class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-500 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Tabs for 4 codes + Answer Matrix Key -->
+      <div class="px-5 py-2.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar">
+          <button onclick="switchPermutedTab('key')" id="permTab-key" class="perm-tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition bg-indigo-600 text-white shadow-xs">
+            <i data-lucide="table-2" class="w-3.5 h-3.5"></i>
+            <span>Bảng Soi Đáp Án</span>
+          </button>
+          <button onclick="switchPermutedTab('101')" id="permTab-101" class="perm-tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+            <i data-lucide="file-check-2" class="w-3.5 h-3.5"></i>
+            <span>Mã 101</span>
+          </button>
+          <button onclick="switchPermutedTab('102')" id="permTab-102" class="perm-tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+            <i data-lucide="file-check-2" class="w-3.5 h-3.5"></i>
+            <span>Mã 102</span>
+          </button>
+          <button onclick="switchPermutedTab('103')" id="permTab-103" class="perm-tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+            <i data-lucide="file-check-2" class="w-3.5 h-3.5"></i>
+            <span>Mã 103</span>
+          </button>
+          <button onclick="switchPermutedTab('104')" id="permTab-104" class="perm-tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+            <i data-lucide="file-check-2" class="w-3.5 h-3.5"></i>
+            <span>Mã 104</span>
+          </button>
+        </div>
+
+        <button onclick="exportAllPermutedWords()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-black transition flex items-center gap-1.5 shadow-sm shadow-blue-200">
+          <i data-lucide="archive" class="w-3.5 h-3.5"></i>
+          <span>Tải Cả 4 Đề Word (.docx)</span>
+        </button>
+      </div>
+
+      <!-- Content Area -->
+      <div id="permutedContentArea" class="p-6 overflow-y-auto custom-scrollbar flex-1 max-h-[60vh]">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <button id="btnPermExportCurrent" onclick="exportCurrentPermutedWord()" class="px-3.5 py-2 text-xs font-bold rounded-xl border border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-700 transition flex items-center gap-1.5 shadow-2xs">
+            <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i>
+            <span>Tải Word Mã Này</span>
+          </button>
+          <button id="btnPermPrintCurrent" onclick="printCurrentPermutedPdf()" class="px-3.5 py-2 text-xs font-bold rounded-xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 shadow-2xs">
+            <i data-lucide="printer" class="w-4 h-4 text-slate-600"></i>
+            <span>In / PDF</span>
+          </button>
+        </div>
+        <button onclick="closePermutedModal()" class="px-4 py-2 text-xs font-bold rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 transition">
+          Đóng
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL: CẤU HÌNH ĐỒNG BỘ GOOGLE SHEETS TỰ ĐỘNG (WEBHOOK APPS SCRIPT) -->
+  <!-- ===================================================================== -->
+  <div id="googleSheetsModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      
+      <!-- Header -->
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold">
+            <i data-lucide="file-spreadsheet" class="w-5 h-5 text-emerald-600"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-black text-slate-900">Đồng Bộ Bảng Điểm Tức Thì Về Google Sheets</h3>
+            <p class="text-[11px] text-slate-500">Mỗi khi học sinh nộp bài, điểm số và chi tiết sẽ được tự động ghi vào Google Sheets</p>
+          </div>
+        </div>
+        <button onclick="closeGoogleSheetsModal()" class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-500 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="p-6 overflow-y-auto custom-scrollbar flex flex-col gap-4 text-xs">
+        
+        <!-- Input URL Webhook -->
+        <div class="bg-emerald-50/50 border border-emerald-200 rounded-2xl p-4 flex flex-col gap-2">
+          <label class="font-black text-emerald-950 flex items-center gap-1.5">
+            <i data-lucide="link" class="w-4 h-4 text-emerald-600"></i>
+            URL Webhook Google Apps Script (Web App URL):
+          </label>
+          <input type="text" id="sheetsWebhookUrlInput" placeholder="https://script.google.com/macros/s/AKfycb.../exec" class="w-full text-xs font-mono p-3 rounded-xl border border-emerald-300 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+          <p class="text-[11px] text-slate-500">
+            Dán URL triển khai dưới dạng <strong>Web App (Ứng dụng web)</strong> từ Google Apps Script của Thầy/Cô.
+          </p>
+        </div>
+
+        <div id="sheetsWebhookStatus" class="hidden p-3 rounded-xl text-xs font-semibold"></div>
+
+        <!-- Hướng dẫn 4 bước cài đặt Apps Script -->
+        <div class="border border-slate-200 rounded-2xl p-4 bg-slate-50 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <h4 class="font-black text-slate-900 flex items-center gap-1.5">
+              <i data-lucide="help-circle" class="w-4 h-4 text-indigo-600"></i>
+              Hướng Dẫn Thiết Lập Google Apps Script (Chỉ mất 30 giây):
+            </h4>
+            <button type="button" onclick="copyAppsScriptCode()" class="px-2.5 py-1 text-[11px] font-bold rounded-lg border border-indigo-200 bg-white hover:bg-indigo-50 text-indigo-700 transition flex items-center gap-1 shadow-2xs">
+              <i data-lucide="copy" class="w-3 h-3 text-indigo-600"></i>
+              <span>Sao Chép Mã Script</span>
+            </button>
+          </div>
+
+          <ol class="list-decimal list-inside space-y-1.5 text-slate-600 text-[11px] leading-relaxed">
+            <li>Tạo một file <strong>Google Sheets (Trang tính)</strong> mới trên Google Drive của Thầy/Cô.</li>
+            <li>Trên thanh menu, chọn <strong>Tiện ích mở rộng (Extensions) &rarr; Apps Script</strong>.</li>
+            <li>Xóa mã cũ, dán đoạn mã bên dưới vào và bấm <strong>Lưu (Ctrl + S)</strong>.</li>
+            <li>Bấm nút <strong>Triển khai (Deploy) &rarr; Tùy chọn triển khai mới (New deployment)</strong>:
+              <ul class="list-disc list-inside pl-4 text-slate-500 mt-1 space-y-0.5">
+                <li>Chọn loại: <strong>Ứng dụng web (Web app)</strong></li>
+                <li>Ai có quyền truy cập (Who has access): <strong>Bất kỳ ai (Anyone)</strong></li>
+              </ul>
+            </li>
+            <li>Bấm <strong>Triển khai</strong> &rarr; Sao chép <strong>URL ứng dụng web</strong> và dán vào ô bên trên.</li>
+          </ol>
+
+          <!-- Code snippet block -->
+          <div class="relative">
+            <pre class="bg-slate-900 text-emerald-400 p-3 rounded-xl text-[11px] font-mono overflow-x-auto max-h-40 custom-scrollbar select-all">function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(["Thời gian", "Mã Nhiệm Vụ", "Lớp", "Họ và Tên", "Điểm Số", "Số Câu Đúng", "Thời Gian Làm (giây)", "Đánh Giá AI"]);
+  }
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([
+    new Date(),
+    data.taskId || "",
+    data.className || "",
+    data.studentName || "",
+    data.score || 0,
+    (data.correctCount || 0) + "/" + (data.totalQuestions || 0),
+    data.timeSpentSeconds || 0,
+    data.aiFeedback || ""
+  ]);
+  return ContentService.createTextOutput(JSON.stringify({result: "success"})).setMimeType(ContentService.MimeType.JSON);
+}</pre>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="p-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between flex-wrap gap-2">
+        <button onclick="clearGoogleSheetsWebhook()" class="px-3 py-2 text-xs font-bold rounded-xl border border-rose-200 hover:bg-rose-50 text-rose-600 transition flex items-center gap-1">
+          <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+          <span>Hủy Kết Nối</span>
+        </button>
+
+        <div class="flex items-center gap-2">
+          <button onclick="testGoogleSheetsWebhook()" id="btnTestSheets" class="px-3.5 py-2 text-xs font-bold rounded-xl border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5 shadow-2xs">
+            <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Kiểm Tra Kết Nối</span>
+          </button>
+          <button onclick="saveGoogleSheetsWebhook()" class="px-4 py-2 text-xs font-black rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white transition flex items-center gap-1.5 shadow-xs">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            <span>Lưu Cấu Hình</span>
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 

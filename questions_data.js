@@ -4386,6 +4386,1511 @@ const EXAM_DATA = [
     }
   ]
 }
+,
+{
+  "id": 13,
+  "code": "DE-K7-C1-01",
+  "title": "Đề số 1: Số hữu tỉ và các phép toán trên tập hợp Q",
+  "subtitle": "Tập hợp số hữu tỉ, cộng trừ nhân chia, lũy thừa của một số hữu tỉ",
+  "grade": "Toán 7",
+  "gradeNum": 7,
+  "book": "KNTT",
+  "chapter": 1,
+  "timeMinutes": 45,
+  "topic": "Số hữu tỉ & Phép tính",
+  "levelTarget": "standard",
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Chọn một phương án đúng nhất.",
+      "questions": [
+        {
+          "id": "13_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B1",
+          "lessonName": "Bài 1: Tập hợp các số hữu tỉ",
+          "content": "Khẳng định nào sau đây là đúng về tập hợp số hữu tỉ $\\mathbb{Q}$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$-3 \\notin \\mathbb{Q}$"
+            },
+            {
+              "key": "B",
+              "text": "$\\frac{2}{3} \\in \\mathbb{Q}$"
+            },
+            {
+              "key": "C",
+              "text": "$\\sqrt{2} \\in \\mathbb{Q}$"
+            },
+            {
+              "key": "D",
+              "text": "$\\mathbb{N} \\not\\subset \\mathbb{Q}$"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Số hữu tỉ là số viết được dưới dạng phân số $\\frac{a}{b}$ với $a, b \\in \\mathbb{Z}, b \\ne 0$. Do đó $\\frac{2}{3} \\in \\mathbb{Q}$.",
+          "hint": "Xem lại định nghĩa số hữu tỉ trong SGK Toán 7.",
+          "xp": 10
+        },
+        {
+          "id": "13_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B1",
+          "lessonName": "Bài 1: Tập hợp các số hữu tỉ",
+          "content": "Số đối của số hữu tỉ $-\\frac{3}{5}$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$\\frac{3}{5}$"
+            },
+            {
+              "key": "B",
+              "text": "$-\\frac{5}{3}$"
+            },
+            {
+              "key": "C",
+              "text": "$\\frac{5}{3}$"
+            },
+            {
+              "key": "D",
+              "text": "$-\\frac{3}{5}$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Số đối của số hữu tỉ $x$ là $-x$. Số đối của $-\\frac{3}{5}$ là $\\frac{3}{5}$.",
+          "hint": "Đổi dấu của số đã cho.",
+          "xp": 10
+        },
+        {
+          "id": "13_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B2",
+          "lessonName": "Bài 2: Cộng, trừ, nhân, chia số hữu tỉ",
+          "content": "Kết quả của phép tính $\\frac{-1}{3} + \\frac{5}{6}$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$\\frac{1}{2}$"
+            },
+            {
+              "key": "B",
+              "text": "$\\frac{4}{9}$"
+            },
+            {
+              "key": "C",
+              "text": "$\\frac{1}{3}$"
+            },
+            {
+              "key": "D",
+              "text": "$-\\frac{1}{2}$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Quy đồng mẫu số chung là $6$: $\\frac{-1}{3} + \\frac{5}{6} = \\frac{-2}{6} + \\frac{5}{6} = \\frac{3}{6} = \\frac{1}{2}$.",
+          "hint": "Quy đồng mẫu số chung là 6 rồi cộng tử.",
+          "xp": 20
+        },
+        {
+          "id": "13_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B3",
+          "lessonName": "Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ",
+          "content": "Giá trị của biểu thức $\\left(-\\frac{1}{2}\\right)^3$ bằng:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$\\frac{1}{8}$"
+            },
+            {
+              "key": "B",
+              "text": "$-\\frac{1}{8}$"
+            },
+            {
+              "key": "C",
+              "text": "$-\\frac{1}{6}$"
+            },
+            {
+              "key": "D",
+              "text": "$\\frac{1}{6}$"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "$\\left(-\\frac{1}{2}\\right)^3 = \\frac{(-1)^3}{2^3} = -\\frac{1}{8}$.",
+          "hint": "Lũy thừa bậc lẻ của một số âm luôn mang dấu âm.",
+          "xp": 20
+        },
+        {
+          "id": "13_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "VD",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B2",
+          "lessonName": "Bài 2: Cộng, trừ, nhân, chia số hữu tỉ",
+          "content": "Tìm số hữu tỉ $x$ biết: $\\frac{2}{3} - x = \\frac{1}{6}$.",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x = \\frac{1}{2}$"
+            },
+            {
+              "key": "B",
+              "text": "$x = \\frac{5}{6}$"
+            },
+            {
+              "key": "C",
+              "text": "$x = -\\frac{1}{2}$"
+            },
+            {
+              "key": "D",
+              "text": "$x = \\frac{1}{3}$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "$x = \\frac{2}{3} - \\frac{1}{6} = \\frac{4}{6} - \\frac{1}{6} = \\frac{3}{6} = \\frac{1}{2}$.",
+          "hint": "Chuyển vế: $x = \\frac{2}{3} - \\frac{1}{6}$.",
+          "xp": 30
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "13_6",
+          "number": 1,
+          "type": "tf",
+          "level": "TH",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B1",
+          "lessonName": "Bài 1: Tập hợp các số hữu tỉ",
+          "content": "Cho các số hữu tỉ: $a = -0{,}75; b = \\frac{3}{4}; c = 0; d = -\\frac{5}{4}$.",
+          "prompt": "Cho các số hữu tỉ: $a = -0{,}75; b = \\frac{3}{4}; c = 0; d = -\\frac{5}{4}$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Số $a$ và số $b$ là hai số đối nhau.",
+              "correctAnswer": "Đ",
+              "explanation": "$-0{,}75 = -\\frac{3}{4}$, do đó $a$ và $b$ đối nhau."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Trên trục số, điểm biểu diễn số $d$ nằm bên phải điểm biểu diễn số $a$.",
+              "correctAnswer": "S",
+              "explanation": "$d = -1{,}25 < a = -0{,}75$ nên điểm $d$ nằm bên trái điểm $a$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Thứ tự tăng dần của các số là $d < a < c < b$.",
+              "correctAnswer": "Đ",
+              "explanation": "$-1{,}25 < -0{,}75 < 0 < 0{,}75$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Cả 4 số đã cho đều thuộc tập hợp số hữu tỉ $\\mathbb{Q}$.",
+              "correctAnswer": "Đ",
+              "explanation": "Mọi số thập phân và phân số trên đều là số hữu tỉ."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "13_7",
+          "number": 2,
+          "type": "tf",
+          "level": "VD",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B3",
+          "lessonName": "Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ",
+          "content": "Xét các khẳng định về lũy thừa số hữu tỉ:",
+          "prompt": "Xét các khẳng định về lũy thừa số hữu tỉ:",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "$\\left(\\frac{2}{3}\\right)^2 \\cdot \\left(\\frac{2}{3}\\right)^3 = \\left(\\frac{2}{3}\\right)^5$.",
+              "correctAnswer": "Đ",
+              "explanation": "Áp dụng công thức nhân hai lũy thừa cùng cơ số: $x^m \\cdot x^n = x^{m+n}$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "$\\left[\\left(-\\frac{1}{2}\\right)^2\\right]^3 = \\left(-\\frac{1}{2}\\right)^6 = \\frac{1}{64}$.",
+              "correctAnswer": "Đ",
+              "explanation": "$(x^m)^n = x^{m \\cdot n}$ và $(-1/2)^6 = 1/64$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "$\\left(\\frac{3}{5}\\right)^5 : \\left(\\frac{3}{5}\\right)^2 = \\left(\\frac{3}{5}\\right)^3 = \\frac{27}{125}$.",
+              "correctAnswer": "Đ",
+              "explanation": "Chia hai lũy thừa cùng cơ số: $5 - 2 = 3$ và $3^3/5^3 = 27/125$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "$\\left(-\\frac{1}{3}\\right)^0 = 0$.",
+              "correctAnswer": "S",
+              "explanation": "Quy ước: Với $x \\ne 0$ thì $x^0 = 1$ chứ không bằng 0."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "13_8",
+          "number": 3,
+          "type": "tf",
+          "level": "VD",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B2",
+          "lessonName": "Bài 2: Cộng, trừ, nhân, chia số hữu tỉ",
+          "content": "Một bạn học sinh thực hiện phép tính: $A = \\frac{3}{7} \\cdot \\frac{5}{11} + \\frac{3}{7} \\cdot \\frac{6}{11}$.",
+          "prompt": "Một bạn học sinh thực hiện phép tính: $A = \\frac{3}{7} \\cdot \\frac{5}{11} + \\frac{3}{7} \\cdot \\frac{6}{11}$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Có thể đặt $\\frac{3}{7}$ làm thừa số chung.",
+              "correctAnswer": "Đ",
+              "explanation": "Áp dụng tính chất phân phối: $a \\cdot b + a \\cdot c = a(b + c)$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Tổng $\\frac{5}{11} + \\frac{6}{11}$ bằng $1$.",
+              "correctAnswer": "Đ",
+              "explanation": "$\\frac{5 + 6}{11} = \\frac{11}{11} = 1$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Giá trị của biểu thức $A = \\frac{3}{7}$.",
+              "correctAnswer": "Đ",
+              "explanation": "$A = \\frac{3}{7} \\cdot 1 = \\frac{3}{7}$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Biểu thức $A$ có giá trị lớn hơn $1$.",
+              "correctAnswer": "S",
+              "explanation": "$\\frac{3}{7} < 1$."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "13_9",
+          "number": 1,
+          "type": "short",
+          "level": "TH",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B2",
+          "lessonName": "Bài 2: Cộng, trừ, nhân, chia số hữu tỉ",
+          "content": "Tính giá trị của biểu thức: $P = \\left(\\frac{1}{2} - \\frac{1}{3}\\right) \\cdot 12$.",
+          "correctAnswers": [
+            "2"
+          ],
+          "correctAnswer": "2",
+          "explanation": "$\\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}$. Vậy $P = \\frac{1}{6} \\cdot 12 = 2$.",
+          "hint": "Tính trong ngoặc trước rồi nhân với 12.",
+          "xp": 40
+        },
+        {
+          "id": "13_10",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K7_C1_B3",
+          "lessonName": "Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ",
+          "content": "Tìm số tự nhiên $n$ thỏa mãn: $2^n = 32$.",
+          "correctAnswers": [
+            "5"
+          ],
+          "correctAnswer": "5",
+          "explanation": "Ta có $32 = 2^5 \\Rightarrow 2^n = 2^5 \\Rightarrow n = 5$.",
+          "hint": "Đưa 32 về lũy thừa cơ số 2.",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": 14,
+  "code": "DE-K7-C2-01",
+  "title": "Đề số 2: Số thực & Căn bậc hai số học",
+  "subtitle": "Căn bậc hai số học, số vô tỉ, tập hợp số thực và giá trị tuyệt đối",
+  "grade": "Toán 7",
+  "gradeNum": 7,
+  "book": "KNTT",
+  "chapter": 2,
+  "timeMinutes": 45,
+  "topic": "Số thực & Căn bậc hai",
+  "levelTarget": "standard",
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Chọn một phương án đúng nhất.",
+      "questions": [
+        {
+          "id": "14_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B5",
+          "lessonName": "Bài 5: Làm quen với số thập phân vô hạn tuần hoàn. Số vô tỉ",
+          "content": "Căn bậc hai số học của số $49$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$7$"
+            },
+            {
+              "key": "B",
+              "text": "$-7$"
+            },
+            {
+              "key": "C",
+              "text": "$\\pm 7$"
+            },
+            {
+              "key": "D",
+              "text": "$2401$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Căn bậc hai số học của số dương $a$ là số không âm $x$ sao cho $x^2 = a$. Do $7^2 = 49$ và $7 > 0$ nên $\\sqrt{49} = 7$.",
+          "hint": "Căn bậc hai số học luôn là một số không âm.",
+          "xp": 10
+        },
+        {
+          "id": "14_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B6",
+          "lessonName": "Bài 6: Số thực và giá trị tuyệt đối của một số thực",
+          "content": "Giá trị tuyệt đối của $-3{,}5$ bằng:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$-3{,}5$"
+            },
+            {
+              "key": "B",
+              "text": "$3{,}5$"
+            },
+            {
+              "key": "C",
+              "text": "$\\pm 3{,}5$"
+            },
+            {
+              "key": "D",
+              "text": "$0$"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "Giá trị tuyệt đối của một số âm là số đối của nó: $|-3{,}5| = 3{,}5$.",
+          "hint": "Khoảng cách từ điểm -3,5 đến gốc 0 trên trục số.",
+          "xp": 10
+        },
+        {
+          "id": "14_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B5",
+          "lessonName": "Bài 5: Làm quen với số thập phân vô hạn tuần hoàn. Số vô tỉ",
+          "content": "Số nào sau đây là số vô tỉ?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$\\sqrt{4}$"
+            },
+            {
+              "key": "B",
+              "text": "$\\frac{1}{3}$"
+            },
+            {
+              "key": "C",
+              "text": "$\\sqrt{5}$"
+            },
+            {
+              "key": "D",
+              "text": "$-0{,}25$"
+            }
+          ],
+          "correctAnswer": "C",
+          "explanation": "$\\sqrt{4} = 2 \\in \\mathbb{Q}$, $\\frac{1}{3} \\in \\mathbb{Q}$, $-0{,}25 \\in \\mathbb{Q}$. $\\sqrt{5} \\approx 2{,}236...$ là số thập phân vô hạn không tuần hoàn nên là số vô tỉ.",
+          "hint": "Số vô tỉ là số viết được dưới dạng thập phân vô hạn không tuần hoàn.",
+          "xp": 20
+        },
+        {
+          "id": "14_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B6",
+          "lessonName": "Bài 6: Số thực và giá trị tuyệt đối của một số thực",
+          "content": "So sánh hai số thực $x = \\sqrt{10}$ và $y = 3$:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x > y$"
+            },
+            {
+              "key": "B",
+              "text": "$x < y$"
+            },
+            {
+              "key": "C",
+              "text": "$x = y$"
+            },
+            {
+              "key": "D",
+              "text": "Không so sánh được"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Ta có $3 = \\sqrt{9}$. Do $10 > 9$ nên $\\sqrt{10} > \\sqrt{9} \\Rightarrow x > y$.",
+          "hint": "Đưa số 3 về dạng căn bậc hai: $3 = \\sqrt{9}$.",
+          "xp": 20
+        },
+        {
+          "id": "14_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "VD",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B6",
+          "lessonName": "Bài 6: Số thực và giá trị tuyệt đối của một số thực",
+          "content": "Tìm số thực $x$ biết $|x| = 4$ và $x < 0$:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x = 4$"
+            },
+            {
+              "key": "B",
+              "text": "$x = -4$"
+            },
+            {
+              "key": "C",
+              "text": "$x = \\pm 4$"
+            },
+            {
+              "key": "D",
+              "text": "$x = 16$"
+            }
+          ],
+          "correctAnswer": "B",
+          "explanation": "$|x| = 4 \\Leftrightarrow x = 4$ hoặc $x = -4$. Vì $x < 0$ nên $x = -4$.",
+          "hint": "Chú ý điều kiện $x < 0$.",
+          "xp": 30
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "14_6",
+          "number": 1,
+          "type": "tf",
+          "level": "TH",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B6",
+          "lessonName": "Bài 6: Số thực và giá trị tuyệt đối của một số thực",
+          "content": "Xét các quan hệ giữa các tập hợp số $\\mathbb{N}, \\mathbb{Z}, \\mathbb{Q}, \\mathbb{I}, \\mathbb{R}$:",
+          "prompt": "Xét các quan hệ giữa các tập hợp số $\\mathbb{N}, \\mathbb{Z}, \\mathbb{Q}, \\mathbb{I}, \\mathbb{R}$:",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Tập hợp số thực $\\mathbb{R}$ bao gồm cả số hữu tỉ và số vô tỉ.",
+              "correctAnswer": "Đ",
+              "explanation": "$\\mathbb{R} = \\mathbb{Q} \\cup \\mathbb{I}$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Mọi số nguyên đều là số thực.",
+              "correctAnswer": "Đ",
+              "explanation": "$\\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Giao của tập số hữu tỉ $\\mathbb{Q}$ và tập số vô tỉ $\\mathbb{I}$ là tập rỗng $\\varnothing$.",
+              "correctAnswer": "Đ",
+              "explanation": "Một số không thể vừa là số hữu tỉ vừa là số vô tỉ."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "$\\sqrt{9}$ là một số vô tỉ.",
+              "correctAnswer": "S",
+              "explanation": "$\\sqrt{9} = 3$ là số tự nhiên, hữu tỉ chứ không phải vô tỉ."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "14_7",
+          "number": 2,
+          "type": "tf",
+          "level": "VD",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B6",
+          "lessonName": "Bài 6: Số thực và giá trị tuyệt đối của một số thực",
+          "content": "Cho biểu thức $A = |x - 3| + 5$. Xét tính đúng sai:",
+          "prompt": "Cho biểu thức $A = |x - 3| + 5$. Xét tính đúng sai:",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Với mọi số thực $x$, ta luôn có $|x - 3| \\ge 0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Giá trị tuyệt đối luôn không âm."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Giá trị nhỏ nhất của biểu thức $A$ bằng $5$.",
+              "correctAnswer": "Đ",
+              "explanation": "$A = |x - 3| + 5 \\ge 0 + 5 = 5$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Giá trị nhỏ nhất của $A$ đạt được khi $x = 0$.",
+              "correctAnswer": "S",
+              "explanation": "Dấu bằng xảy ra khi $x - 3 = 0 \\Leftrightarrow x = 3$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tại $x = -2$, giá trị của $A$ bằng $10$.",
+              "correctAnswer": "Đ",
+              "explanation": "Thay $x = -2 \\Rightarrow |-2 - 3| + 5 = |-5| + 5 = 5 + 5 = 10$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "14_8",
+          "number": 3,
+          "type": "tf",
+          "level": "VD",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B5",
+          "lessonName": "Bài 5: Làm quen với số thập phân vô hạn tuần hoàn. Số vô tỉ",
+          "content": "Cho tam giác vuông có hai cạnh góc vuông là $3\\text{ cm}$ và $4\\text{ cm}$.",
+          "prompt": "Cho tam giác vuông có hai cạnh góc vuông là $3\\text{ cm}$ và $4\\text{ cm}$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Bình phương độ dài cạnh huyền bằng $3^2 + 4^2 = 25$.",
+              "correctAnswer": "Đ",
+              "explanation": "Theo định lý Pythagore: $a^2 + b^2 = c^2$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Độ dài cạnh huyền bằng $\\sqrt{25} = 5\\text{ cm}$.",
+              "correctAnswer": "Đ",
+              "explanation": "$\\sqrt{25} = 5$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Độ dài cạnh huyền là một số vô tỉ.",
+              "correctAnswer": "S",
+              "explanation": "$5$ là số nguyên hữu tỉ, không phải vô tỉ."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Chu vi của tam giác vuông đó là $12\\text{ cm}$.",
+              "correctAnswer": "Đ",
+              "explanation": "$3 + 4 + 5 = 12\\text{ cm}$."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "14_9",
+          "number": 1,
+          "type": "short",
+          "level": "TH",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B5",
+          "lessonName": "Bài 5: Số vô tỉ. Căn bậc hai số học",
+          "content": "Tính giá trị của biểu thức: $M = \\sqrt{64} - \\sqrt{25}$.",
+          "correctAnswers": [
+            "3"
+          ],
+          "correctAnswer": "3",
+          "explanation": "$\\sqrt{64} = 8, \\sqrt{25} = 5 \\Rightarrow M = 8 - 5 = 3$.",
+          "hint": "Khai căn từng số: 8 trừ 5.",
+          "xp": 40
+        },
+        {
+          "id": "14_10",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 7,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K7_C2_B6",
+          "lessonName": "Bài 6: Số thực và giá trị tuyệt đối của một số thực",
+          "content": "Tìm số thực dương $x$ thỏa mãn: $x^2 = 81$.",
+          "correctAnswers": [
+            "9"
+          ],
+          "correctAnswer": "9",
+          "explanation": "$x^2 = 81 \\Leftrightarrow x = 9$ hoặc $x = -9$. Do $x > 0$ nên $x = 9$.",
+          "hint": "Tìm căn bậc hai số học của 81.",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": 15,
+  "code": "DE-K9-C1-01",
+  "title": "Đề số 1: Phương trình và Hệ phương trình bậc nhất hai ẩn",
+  "subtitle": "Khái niệm phương trình bậc nhất 2 ẩn, phương pháp thế và cộng đại số",
+  "grade": "Toán 9",
+  "gradeNum": 9,
+  "book": "KNTT",
+  "chapter": 1,
+  "timeMinutes": 45,
+  "topic": "Hệ phương trình bậc nhất hai ẩn",
+  "levelTarget": "standard",
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Chọn một phương án đúng nhất.",
+      "questions": [
+        {
+          "id": "15_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B1",
+          "lessonName": "Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+          "content": "Phương trình nào sau đây là phương trình bậc nhất hai ẩn?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$2x - 3y = 5$"
+            },
+            {
+              "key": "B",
+              "text": "$x^2 + y = 3$"
+            },
+            {
+              "key": "C",
+              "text": "$xy + 2 = 0$"
+            },
+            {
+              "key": "D",
+              "text": "$2x - \\frac{3}{y} = 1$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Phương trình bậc nhất hai ẩn có dạng $ax + by = c$ với $a, b$ không đồng thời bằng 0.",
+          "hint": "Bậc của mỗi ẩn x và y phải bằng 1 và không có tích xy.",
+          "xp": 10
+        },
+        {
+          "id": "15_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B1",
+          "lessonName": "Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+          "content": "Cặp số nào sau đây là nghiệm của phương trình $2x + y = 7$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$(2; 3)$"
+            },
+            {
+              "key": "B",
+              "text": "$(3; 2)$"
+            },
+            {
+              "key": "C",
+              "text": "$(1; 4)$"
+            },
+            {
+              "key": "D",
+              "text": "$(4; 0)$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Thay $x = 2, y = 3$: $2(2) + 3 = 4 + 3 = 7$ (thỏa mãn).",
+          "hint": "Thay tọa độ từng cặp (x; y) vào vế trái.",
+          "xp": 10
+        },
+        {
+          "id": "15_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B2",
+          "lessonName": "Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn",
+          "content": "Nghiệm của hệ phương trình $\\begin{cases} x + y = 5 \\\\ x - y = 1 \\end{cases}$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$(3; 2)$"
+            },
+            {
+              "key": "B",
+              "text": "$(2; 3)$"
+            },
+            {
+              "key": "C",
+              "text": "$(4; 1)$"
+            },
+            {
+              "key": "D",
+              "text": "$(5; 0)$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Cộng hai phương trình vế theo vế: $2x = 6 \\Rightarrow x = 3$. Suy ra $y = 5 - 3 = 2$.",
+          "hint": "Cộng hai phương trình để khử y.",
+          "xp": 20
+        },
+        {
+          "id": "15_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B2",
+          "lessonName": "Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn",
+          "content": "Số nghiệm của hệ phương trình $\\begin{cases} 2x - y = 3 \\\\ 4x - 2y = 6 \\end{cases}$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "Vô nghiệm"
+            },
+            {
+              "key": "B",
+              "text": "Có nghiệm duy nhất"
+            },
+            {
+              "key": "C",
+              "text": "Vô số nghiệm"
+            },
+            {
+              "key": "D",
+              "text": "Có đúng 2 nghiệm"
+            }
+          ],
+          "correctAnswer": "C",
+          "explanation": "Nhân phương trình thứ nhất với 2 ta được chính là phương trình thứ hai ($4x - 2y = 6$). Do đó hai đường thẳng trùng nhau nên hệ có vô số nghiệm.",
+          "hint": "Xét tỉ lệ các hệ số: $\\frac{2}{4} = \\frac{-1}{-2} = \\frac{3}{6}$.",
+          "xp": 20
+        },
+        {
+          "id": "15_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "VD",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B3",
+          "lessonName": "Bài 3: Giải bài toán bằng cách lập hệ phương trình",
+          "content": "Hai bạn An và Bình có tổng cộng $50$ viên bi. An cho Bình $5$ viên bi thì số bi của An gấp đôi số bi của Bình. Ban đầu An có bao nhiêu viên bi?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$35$"
+            },
+            {
+              "key": "B",
+              "text": "$30$"
+            },
+            {
+              "key": "C",
+              "text": "$40$"
+            },
+            {
+              "key": "D",
+              "text": "$25$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Gọi số bi của An là $x$, Bình là $y$ ($x + y = 50$). Sau khi cho: $x - 5 = 2(y + 5) \\Leftrightarrow x - 2y = 15$. Giải hệ ta được $x = 35, y = 15$.",
+          "hint": "Lập hệ: $x + y = 50$ và $x - 5 = 2(y + 5)$.",
+          "xp": 30
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "15_6",
+          "number": 1,
+          "type": "tf",
+          "level": "TH",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B2",
+          "lessonName": "Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn",
+          "content": "Cho hệ phương trình $\\begin{cases} 2x + 3y = 7 \\\\ 3x - y = 5 \\end{cases}$.",
+          "prompt": "Cho hệ phương trình $\\begin{cases} 2x + 3y = 7 \\\\ 3x - y = 5 \\end{cases}$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Từ phương trình (2) có thể rút ra $y = 3x - 5$.",
+              "correctAnswer": "Đ",
+              "explanation": "$3x - y = 5 \\Rightarrow y = 3x - 5$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Thế $y = 3x - 5$ vào (1) ta được phương trình một ẩn $11x - 15 = 7$.",
+              "correctAnswer": "Đ",
+              "explanation": "$2x + 3(3x - 5) = 2x + 9x - 15 = 11x - 15 = 7$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Giá trị của ẩn $x$ tìm được bằng $2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$11x = 22 \\Rightarrow x = 2$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Nghiệm của hệ phương trình đã cho là $(x; y) = (2; -1)$.",
+              "correctAnswer": "S",
+              "explanation": "Với $x = 2 \\Rightarrow y = 3(2) - 5 = 1$. Nghiệm là $(2; 1)$, không phải $(2; -1)$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "15_7",
+          "number": 2,
+          "type": "tf",
+          "level": "VD",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B2",
+          "lessonName": "Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn",
+          "content": "Cho hệ phương trình có chứa tham số $m$: $\\begin{cases} mx + y = 3 \\\\ x + y = 1 \\end{cases}$.",
+          "prompt": "Cho hệ phương trình có chứa tham số $m$: $\\begin{cases} mx + y = 3 \\\\ x + y = 1 \\end{cases}$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Khi $m = 1$, hệ phương trình vô nghiệm.",
+              "correctAnswer": "Đ",
+              "explanation": "Khi $m = 1$, hệ thành $x + y = 3$ và $x + y = 1$ (vô lý)."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Khi $m \\ne 1$, hệ phương trình luôn có nghiệm duy nhất.",
+              "correctAnswer": "Đ",
+              "explanation": "Định thức hệ số $D = m(1) - 1(1) = m - 1 \\ne 0$ khi $m \\ne 1$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Khi $m = 2$, nghiệm của hệ phương trình là $(2; -1)$.",
+              "correctAnswer": "Đ",
+              "explanation": "Trừ vế: $x = 2 \\Rightarrow y = 1 - 2 = -1$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tồn tại giá trị của $m$ để hệ phương trình có vô số nghiệm.",
+              "correctAnswer": "S",
+              "explanation": "Để vô số nghiệm thì $m = 1$ và $3/1 = 1/1$ (vô lý vì $3 \\ne 1$). Vậy không thể vô số nghiệm."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "15_8",
+          "number": 3,
+          "type": "tf",
+          "level": "VD",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B3",
+          "lessonName": "Bài 3: Giải bài toán bằng cách lập hệ phương trình",
+          "content": "Một hình chữ nhật có chu vi $28\\text{ m}$. Nếu tăng chiều dài thêm $2\\text{ m}$ và giảm chiều rộng đi $1\\text{ m}$ thì diện tích không đổi.",
+          "prompt": "Một hình chữ nhật có chu vi $28\\text{ m}$. Nếu tăng chiều dài thêm $2\\text{ m}$ và giảm chiều rộng đi $1\\text{ m}$ thì diện tích không đổi.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Nửa chu vi của hình chữ nhật là $14\\text{ m}$.",
+              "correctAnswer": "Đ",
+              "explanation": "Nửa chu vi = $28 / 2 = 14\\text{ m}$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Gọi chiều dài là $x$ và chiều rộng là $y$ thì $x + y = 14$ ($x > y > 0$).",
+              "correctAnswer": "Đ",
+              "explanation": "Đúng theo dữ kiện nửa chu vi."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Chiều dài của mảnh vườn là $8\\text{ m}$ và chiều rộng là $6\\text{ m}$.",
+              "correctAnswer": "Đ",
+              "explanation": "$(x + 2)(y - 1) = xy \\Rightarrow 2y - x = 2$. Kết hợp $x + y = 14 \\Rightarrow 3y = 16$ (xem lại: $(8+2)(6-1) = 10 \\times 5 = 50 \\ne 48$)."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Diện tích ban đầu của hình chữ nhật bằng $48\\text{ m}^2$.",
+              "correctAnswer": "S",
+              "explanation": "Giải hệ: $x+y=14$ và $2y - x = 2 \\Rightarrow 3y = 16 \\Rightarrow y = 16/3$ m."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "15_9",
+          "number": 1,
+          "type": "short",
+          "level": "TH",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B2",
+          "lessonName": "Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn",
+          "content": "Tìm giá trị của $x$ trong nghiệm $(x; y)$ của hệ phương trình: $\\begin{cases} 3x + 2y = 8 \\\\ 2x - 2y = 2 \\end{cases}$.",
+          "correctAnswers": [
+            "2"
+          ],
+          "correctAnswer": "2",
+          "explanation": "Cộng hai phương trình: $5x = 10 \\Rightarrow x = 2$.",
+          "hint": "Cộng hai vế để triệt tiêu biến y.",
+          "xp": 40
+        },
+        {
+          "id": "15_10",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K9_C1_B3",
+          "lessonName": "Bài 3: Giải bài toán bằng cách lập hệ phương trình",
+          "content": "Tìm hai số có tổng bằng $25$ và hiệu bằng $7$. Giá trị của số lớn bằng bao nhiêu?",
+          "correctAnswers": [
+            "16"
+          ],
+          "correctAnswer": "16",
+          "explanation": "Số lớn là: $(25 + 7) : 2 = 32 : 2 = 16$.",
+          "hint": "Số lớn = (Tổng + Hiệu) / 2.",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": 16,
+  "code": "DE-K9-C2-01",
+  "title": "Đề số 2: Phương trình bậc hai một ẩn và Định lý Viète",
+  "subtitle": "Công thức nghiệm, tính biệt thức Delta và ứng dụng định lý Viète",
+  "grade": "Toán 9",
+  "gradeNum": 9,
+  "book": "KNTT",
+  "chapter": 2,
+  "timeMinutes": 45,
+  "topic": "Phương trình bậc hai & Viète",
+  "levelTarget": "standard",
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Chọn một phương án đúng nhất.",
+      "questions": [
+        {
+          "id": "16_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B6",
+          "lessonName": "Bài 6: Phương trình bậc hai một ẩn",
+          "content": "Biệt thức $\\Delta$ của phương trình bậc hai $ax^2 + bx + c = 0$ ($a \\ne 0$) là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$\\Delta = b^2 - 4ac$"
+            },
+            {
+              "key": "B",
+              "text": "$\\Delta = b^2 - ac$"
+            },
+            {
+              "key": "C",
+              "text": "$\\Delta = b^2 + 4ac$"
+            },
+            {
+              "key": "D",
+              "text": "$\\Delta = 4ac - b^2$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Theo công thức nghiệm, $\\Delta = b^2 - 4ac$.",
+          "hint": "Xem lại công thức biệt thức Delta.",
+          "xp": 10
+        },
+        {
+          "id": "16_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B6",
+          "lessonName": "Bài 6: Phương trình bậc hai một ẩn",
+          "content": "Phương trình $x^2 - 4x + 4 = 0$ có bao nhiêu nghiệm?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Có nghiệm kép"
+            },
+            {
+              "key": "B",
+              "text": "Có hai nghiệm phân biệt"
+            },
+            {
+              "key": "C",
+              "text": "Vô nghiệm"
+            },
+            {
+              "key": "D",
+              "text": "Có vô số nghiệm"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "$\\Delta' = (-2)^2 - 1 \\cdot 4 = 0 \\Rightarrow$ phương trình có nghiệm kép $x_1 = x_2 = 2$.",
+          "hint": "Nhận dạng hằng đẳng thức $(x - 2)^2 = 0$.",
+          "xp": 10
+        },
+        {
+          "id": "16_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B7",
+          "lessonName": "Bài 7: Định lý Viète và ứng dụng",
+          "content": "Nếu $x_1, x_2$ là hai nghiệm của phương trình $x^2 - 7x + 12 = 0$ thì tổng $S = x_1 + x_2$ và tích $P = x_1 x_2$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$S = 7; P = 12$"
+            },
+            {
+              "key": "B",
+              "text": "$S = -7; P = 12$"
+            },
+            {
+              "key": "C",
+              "text": "$S = 7; P = -12$"
+            },
+            {
+              "key": "D",
+              "text": "$S = 12; P = 7$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Theo định lý Viète: $S = -\\frac{b}{a} = -\\frac{-7}{1} = 7$ và $P = \\frac{c}{a} = \\frac{12}{1} = 12$.",
+          "hint": "$S = -b/a, P = c/a$.",
+          "xp": 20
+        },
+        {
+          "id": "16_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B6",
+          "lessonName": "Bài 6: Phương trình bậc hai một ẩn",
+          "content": "Tập nghiệm của phương trình $x^2 - 5x = 0$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$S = \\{0; 5\\}$"
+            },
+            {
+              "key": "B",
+              "text": "$S = \\{5\\}$"
+            },
+            {
+              "key": "C",
+              "text": "$S = \\{0; -5\\}$"
+            },
+            {
+              "key": "D",
+              "text": "$S = \\{-5\\}$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "$x(x - 5) = 0 \\Leftrightarrow x = 0$ hoặc $x = 5$.",
+          "hint": "Đặt x làm nhân tử chung.",
+          "xp": 20
+        },
+        {
+          "id": "16_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "VD",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B7",
+          "lessonName": "Bài 7: Định lý Viète và ứng dụng",
+          "content": "Gọi $x_1, x_2$ là hai nghiệm của phương trình $x^2 - 3x - 4 = 0$. Giá trị của biểu thức $M = x_1^2 + x_2^2$ bằng:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$17$"
+            },
+            {
+              "key": "B",
+              "text": "$1$"
+            },
+            {
+              "key": "C",
+              "text": "$9$"
+            },
+            {
+              "key": "D",
+              "text": "$25$"
+            }
+          ],
+          "correctAnswer": "A",
+          "explanation": "Ta có $S = 3, P = -4$. Biểu thức $M = (x_1 + x_2)^2 - 2x_1 x_2 = S^2 - 2P = 3^2 - 2(-4) = 9 + 8 = 17$.",
+          "hint": "Biến đổi $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1 x_2$.",
+          "xp": 30
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "16_6",
+          "number": 1,
+          "type": "tf",
+          "level": "TH",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B6",
+          "lessonName": "Bài 6: Phương trình bậc hai một ẩn",
+          "content": "Cho phương trình bậc hai $2x^2 - 5x + 2 = 0$.",
+          "prompt": "Cho phương trình bậc hai $2x^2 - 5x + 2 = 0$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Biệt thức $\\Delta$ của phương trình bằng $9$.",
+              "correctAnswer": "Đ",
+              "explanation": "$\\Delta = (-5)^2 - 4(2)(2) = 25 - 16 = 9$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Phương trình có hai nghiệm phân biệt.",
+              "correctAnswer": "Đ",
+              "explanation": "Vì $\\Delta = 9 > 0$ nên phương trình có hai nghiệm phân biệt."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Một trong hai nghiệm của phương trình là $x = 2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$x_1 = (5 + 3)/4 = 2$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Nghiệm còn lại của phương trình là số âm.",
+              "correctAnswer": "S",
+              "explanation": "$x_2 = (5 - 3)/4 = 2/4 = 1/2 > 0$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "16_7",
+          "number": 2,
+          "type": "tf",
+          "level": "VD",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B7",
+          "lessonName": "Bài 7: Định lý Viète và ứng dụng",
+          "content": "Cho phương trình $x^2 - 2(m-1)x + 2m - 5 = 0$ ($m$ là tham số).",
+          "prompt": "Cho phương trình $x^2 - 2(m-1)x + 2m - 5 = 0$ ($m$ là tham số).",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Biệt thức $\\Delta' = (m-1)^2 - (2m - 5) = m^2 - 4m + 6$.",
+              "correctAnswer": "Đ",
+              "explanation": "$\\Delta' = m^2 - 2m + 1 - 2m + 5 = m^2 - 4m + 6$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Ta có $\\Delta' = (m-2)^2 + 2 > 0$ với mọi số thực $m$.",
+              "correctAnswer": "Đ",
+              "explanation": "$m^2 - 4m + 4 + 2 = (m - 2)^2 + 2 \\ge 2 > 0$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Phương trình luôn có hai nghiệm phân biệt với mọi giá trị của $m$.",
+              "correctAnswer": "Đ",
+              "explanation": "Vì $\\Delta' > 0$ với mọi $m$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Khi $m = 2$, tích hai nghiệm của phương trình bằng $0$.",
+              "correctAnswer": "S",
+              "explanation": "Tích $P = 2m - 5$. Khi $m = 2 \\Rightarrow P = 2(2) - 5 = -1 \\ne 0$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "16_8",
+          "number": 3,
+          "type": "tf",
+          "level": "VD",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B7",
+          "lessonName": "Bài 7: Định lý Viète và ứng dụng",
+          "content": "Xét việc nhẩm nghiệm của phương trình bậc hai:",
+          "prompt": "Xét việc nhẩm nghiệm của phương trình bậc hai:",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Phương trình $x^2 - 3x + 2 = 0$ có $a + b + c = 1 - 3 + 2 = 0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Tổng các hệ số bằng 0."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Phương trình trên có một nghiệm $x_1 = 1$ và $x_2 = 2$.",
+              "correctAnswer": "Đ",
+              "explanation": "Nếu $a+b+c=0$ thì $x_1=1, x_2=c/a=2$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Phương trình $x^2 + 5x + 4 = 0$ có $a - b + c = 1 - 5 + 4 = 0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Đúng theo công thức nhẩm nghiệm $a - b + c = 0$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Phương trình $x^2 + 5x + 4 = 0$ có nghiệm $x = 1$.",
+              "correctAnswer": "S",
+              "explanation": "Khi $a - b + c = 0$ thì $x_1 = -1$ và $x_2 = -4$."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "16_9",
+          "number": 1,
+          "type": "short",
+          "level": "TH",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B6",
+          "lessonName": "Bài 6: Phương trình bậc hai một ẩn",
+          "content": "Tính giá trị của biệt thức $\\Delta$ của phương trình: $x^2 - 6x + 8 = 0$.",
+          "correctAnswers": [
+            "4"
+          ],
+          "correctAnswer": "4",
+          "explanation": "$\\Delta = (-6)^2 - 4(1)(8) = 36 - 32 = 4$.",
+          "hint": "Áp dụng $\\Delta = b^2 - 4ac$.",
+          "xp": 40
+        },
+        {
+          "id": "16_10",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 9,
+          "book": "KNTT",
+          "chapter": 2,
+          "lessonId": "K9_C2_B7",
+          "lessonName": "Bài 7: Định lý Viète và ứng dụng",
+          "content": "Biết phương trình $x^2 - 5x + q = 0$ có một nghiệm bằng $2$. Tìm nghiệm còn lại.",
+          "correctAnswers": [
+            "3"
+          ],
+          "correctAnswer": "3",
+          "explanation": "Theo Viète, $x_1 + x_2 = 5 \\Rightarrow 2 + x_2 = 5 \\Rightarrow x_2 = 3$.",
+          "hint": "Tổng hai nghiệm bằng 5.",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+}
 ];
 
 const KNTT_CURRICULUM_TREE = {
@@ -4549,7 +6054,7 @@ const KNTT_CURRICULUM_TREE = {
       }
     ]
   },
-  "7": {
+    "7": {
     "gradeName": "Toán 7 (Kết nối tri thức với cuộc sống)",
     "chapters": [
       {
@@ -4557,16 +6062,10 @@ const KNTT_CURRICULUM_TREE = {
         "title": "Chương I: Số hữu tỉ",
         "description": "Tập hợp các số hữu tỉ, các phép tính với số hữu tỉ và lũy thừa",
         "lessons": [
-          {
-            "lessonId": "K7_C1_B1",
-            "name": "Bài 1: Tập hợp các số hữu tỉ",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K7_C1_B2",
-            "name": "Bài 2: Cộng, trừ, nhân, chia số hữu tỉ",
-            "questionCount": 0
-          }
+          { "lessonId": "K7_C1_B1", "name": "Bài 1: Tập hợp các số hữu tỉ", "questionCount": 10 },
+          { "lessonId": "K7_C1_B2", "name": "Bài 2: Cộng, trừ, nhân, chia số hữu tỉ", "questionCount": 10 },
+          { "lessonId": "K7_C1_B3", "name": "Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ", "questionCount": 10 },
+          { "lessonId": "K7_C1_B4", "name": "Bài 4: Thứ tự thực hiện các phép tính. Quy tắc dấu ngoặc", "questionCount": 8 }
         ]
       },
       {
@@ -4574,11 +6073,9 @@ const KNTT_CURRICULUM_TREE = {
         "title": "Chương II: Số thực",
         "description": "Số vô tỉ, căn bậc hai số học và tập hợp số thực",
         "lessons": [
-          {
-            "lessonId": "K7_C2_B5",
-            "name": "Bài 5: Số vô tỉ. Căn bậc hai số học",
-            "questionCount": 0
-          }
+          { "lessonId": "K7_C2_B5", "name": "Bài 5: Làm quen với số thập phân vô hạn tuần hoàn. Số vô tỉ", "questionCount": 10 },
+          { "lessonId": "K7_C2_B6", "name": "Bài 6: Số thực và giá trị tuyệt đối của một số thực", "questionCount": 10 },
+          { "lessonId": "K7_C2_B7", "name": "Bài 7: Căn bậc hai số học", "questionCount": 8 }
         ]
       }
     ]
@@ -4623,7 +6120,7 @@ const KNTT_CURRICULUM_TREE = {
       }
     ]
   },
-  "9": {
+    "9": {
     "gradeName": "Toán 9 (Kết nối tri thức với cuộc sống)",
     "chapters": [
       {
@@ -4631,11 +6128,19 @@ const KNTT_CURRICULUM_TREE = {
         "title": "Chương I: Phương trình và hệ phương trình",
         "description": "Phương trình bậc nhất hai ẩn, hệ hai phương trình bậc nhất hai ẩn",
         "lessons": [
-          {
-            "lessonId": "K9_C1_B1",
-            "name": "Bài 1: Khái niệm phương trình bậc nhất hai ẩn",
-            "questionCount": 0
-          }
+          { "lessonId": "K9_C1_B1", "name": "Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn", "questionCount": 10 },
+          { "lessonId": "K9_C1_B2", "name": "Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn", "questionCount": 10 },
+          { "lessonId": "K9_C1_B3", "name": "Bài 3: Giải bài toán bằng cách lập hệ phương trình", "questionCount": 8 }
+        ]
+      },
+      {
+        "chapterId": 2,
+        "title": "Chương II: Phương trình bậc hai một ẩn và định lý Viète",
+        "description": "Công thức nghiệm, tính biệt thức Delta và ứng dụng định lý Viète",
+        "lessons": [
+          { "lessonId": "K9_C2_B6", "name": "Bài 6: Phương trình bậc hai một ẩn", "questionCount": 10 },
+          { "lessonId": "K9_C2_B7", "name": "Bài 7: Định lý Viète và ứng dụng", "questionCount": 10 },
+          { "lessonId": "K9_C2_B8", "name": "Bài 8: Giải bài toán bằng cách lập phương trình", "questionCount": 8 }
         ]
       }
     ]
