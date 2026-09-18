@@ -3599,67 +3599,153 @@
       const thCount = Number(options.thCount) || 3;
       const vdCount = Number(options.vdCount) || 3;
       const vdcCount = Number(options.vdcCount) || 1;
+      const totalRequested = nbCount + thCount + vdCount + vdcCount;
       const timeMinutes = Number(options.timeMinutes) || 15;
       const title = options.title || `Đề kiểm tra tự động Toán ${grade} - KNTT`;
       const createdBy = options.createdBy || "Bộ Tạo Đề Thông Minh AI";
+      const targetChapter = (options.chapter || '').toLowerCase().trim();
 
       let questionPool = [];
 
-      // Lấy từ EXAM_DATA có sẵn trong window nếu đã load questions_data.js
-      if (typeof window !== 'undefined' && window.EXAM_DATA && Array.isArray(window.EXAM_DATA)) {
-        window.EXAM_DATA.forEach(exam => {
-          if (exam.parts) {
-            exam.parts.forEach(p => {
-              if (p.questions) {
-                p.questions.forEach(q => {
-                  questionPool.push({
-                    id: q.id || ("Q_" + Math.random().toString(36).substr(2, 9)),
-                    level: (q.level || 'NB').toUpperCase(),
-                    content: q.content,
-                    options: q.options || [],
-                    correctAnswer: q.correctAnswer || (q.options && q.options[0] ? q.options[0].key : "A"),
-                    hint: q.hint || "Hãy quan sát kĩ dữ kiện đầu bài và áp dụng công thức tương ứng.",
-                    explanation: q.explanation || "Thực hiện các bước biến đổi theo quy tắc bài học."
-                  });
-                });
-              }
-            });
-          }
-        });
+      function formatQuestion(q, sourceExam) {
+        return {
+          id: q.id || ("Q_" + Math.random().toString(36).substr(2, 9)),
+          number: q.number,
+          type: q.type || 'mcq',
+          level: (q.level || 'NB').toUpperCase(),
+          grade: grade,
+          chapter: q.chapter || (sourceExam ? sourceExam.chapter : null) || 1,
+          topic: q.lessonName || (sourceExam ? (sourceExam.topic || sourceExam.title) : ''),
+          content: q.content || q.prompt || "",
+          options: q.options || [],
+          items: q.items || [],
+          correctAnswer: q.correctAnswer || (q.options && q.options[0] ? q.options[0].key : "A"),
+          correctAnswers: q.correctAnswers || (q.correctAnswer ? [q.correctAnswer] : ["A"]),
+          hint: q.hint || "Hãy quan sát kĩ dữ kiện đầu bài và áp dụng quy tắc bài học.",
+          explanation: q.explanation || "Thực hiện các bước biến đổi theo định nghĩa và công thức SGK Kết nối tri thức."
+        };
       }
 
-      // Thêm câu hỏi từ kho đề mặc định
-      DEFAULT_EXAMS.forEach(e => {
-        if (e.questions) {
-          e.questions.forEach(q => questionPool.push(q));
+      // 1. Lấy từ EXAM_DATA (ĐÃ LỌC CHẶT CHẼ THEO GRADE)
+      let examDataSource = [];
+      if (typeof window !== 'undefined' && window.EXAM_DATA && Array.isArray(window.EXAM_DATA)) {
+        examDataSource = window.EXAM_DATA;
+      } else if (typeof EXAM_DATA !== 'undefined' && Array.isArray(EXAM_DATA)) {
+        examDataSource = EXAM_DATA;
+      }
+
+      examDataSource.forEach(exam => {
+        const examGrade = Number(exam.gradeNum) || (exam.grade && exam.grade.includes('8') ? 8 : 6);
+        if (examGrade !== grade) return; // BỎ QUA KHỐI KHÁC!
+
+        if (exam.parts) {
+          exam.parts.forEach(p => {
+            if (p.questions) {
+              p.questions.forEach(q => {
+                if (q.grade && Number(q.grade) !== grade) return;
+                const formatted = formatQuestion(q, exam);
+                if (!questionPool.some(x => x.id === formatted.id || (x.content && x.content.trim() === formatted.content.trim()))) {
+                  questionPool.push(formatted);
+                }
+              });
+            }
+          });
         }
       });
 
-      // Lọc câu hỏi theo mức độ
-      const nbPool = questionPool.filter(q => q.level === 'NB');
-      const thPool = questionPool.filter(q => q.level === 'TH');
-      const vdPool = questionPool.filter(q => q.level === 'VD');
-      const vdcPool = questionPool.filter(q => q.level === 'VDC');
+      // 2. Lấy từ DEFAULT_EXAMS (ĐÃ LỌC CHẶT CHẼ THEO GRADE)
+      DEFAULT_EXAMS.forEach(e => {
+        const defGrade = Number(e.grade) || (e.subject && e.subject.includes('8') ? 8 : 6);
+        if (defGrade !== grade) return; // BỎ QUA KHỐI KHÁC!
 
-      function pickRandom(arr, count) {
-        if (!arr || arr.length === 0) return [];
-        const shuffled = arr.slice().sort(() => Math.random() - 0.5);
-        if (shuffled.length >= count) return shuffled.slice(0, count);
-        const res = [];
-        for (let i = 0; i < count; i++) {
-          res.push(shuffled[i % shuffled.length]);
+        if (e.questions) {
+          e.questions.forEach(q => {
+            if (q.grade && Number(q.grade) !== grade) return;
+            const formatted = formatQuestion(q, e);
+            if (!questionPool.some(x => x.id === formatted.id || (x.content && x.content.trim() === formatted.content.trim()))) {
+              questionPool.push(formatted);
+            }
+          });
         }
-        return res;
+      });
+
+      // 3. Lọc theo Chương / Chủ đề nếu có
+      let activePool = questionPool;
+      if (targetChapter && !targetChapter.includes('tổng hợp') && !targetChapter.includes('toàn bộ') && !targetChapter.includes('all')) {
+        const keywords = [];
+        if (targetChapter.includes('đa thức')) keywords.push('đa thức', 'đơn thức');
+        if (targetChapter.includes('hằng đẳng thức')) keywords.push('hằng đẳng thức', 'bình phương', 'lập phương');
+        if (targetChapter.includes('tứ giác')) keywords.push('tứ giác', 'hình thang', 'hình bình hành');
+        if (targetChapter.includes('tập hợp')) keywords.push('tập hợp', 'số tự nhiên');
+        if (targetChapter.includes('chia hết')) keywords.push('chia hết', 'nguyên tố', 'ước chung', 'bội chung');
+
+        const chapterFiltered = questionPool.filter(q => {
+          const chapterStr = (q.chapter ? String(q.chapter) : '').toLowerCase();
+          const topicStr = (q.topic || '').toLowerCase();
+          const contentStr = (q.content || '').toLowerCase();
+          return keywords.some(kw => chapterStr.includes(kw) || topicStr.includes(kw) || contentStr.includes(kw));
+        });
+
+        if (chapterFiltered.length >= Math.min(6, totalRequested)) {
+          activePool = chapterFiltered;
+        }
       }
 
-      const selectedQuestions = [
-        ...pickRandom(nbPool, nbCount),
-        ...pickRandom(thPool, thCount),
-        ...pickRandom(vdPool, vdCount),
-        ...pickRandom(vdcPool, vdcCount)
-      ];
+      // Phân chia theo mức độ
+      let nbPool = activePool.filter(q => q.level === 'NB');
+      let thPool = activePool.filter(q => q.level === 'TH');
+      let vdPool = activePool.filter(q => q.level === 'VD');
+      let vdcPool = activePool.filter(q => q.level === 'VDC');
 
-      // Đánh lại số thứ tự câu
+      if (nbPool.length < nbCount) {
+        const moreNb = questionPool.filter(q => q.level === 'NB' && !nbPool.includes(q));
+        nbPool = nbPool.concat(moreNb);
+      }
+      if (thPool.length < thCount) {
+        const moreTh = questionPool.filter(q => q.level === 'TH' && !thPool.includes(q));
+        thPool = thPool.concat(moreTh);
+      }
+      if (vdPool.length < vdCount) {
+        const moreVd = questionPool.filter(q => q.level === 'VD' && !vdPool.includes(q));
+        vdPool = vdPool.concat(moreVd);
+      }
+      if (vdcPool.length < vdcCount) {
+        const moreVdc = questionPool.filter(q => q.level === 'VDC' && !vdcPool.includes(q));
+        vdcPool = vdcPool.concat(moreVdc);
+      }
+
+      function pickWithoutReplacement(sourceArr, count, usedSet) {
+        if (!sourceArr || sourceArr.length === 0 || count <= 0) return [];
+        const available = sourceArr.filter(q => !usedSet.has(q.id));
+        const shuffled = available.slice().sort(() => Math.random() - 0.5);
+        const picked = shuffled.slice(0, count);
+        picked.forEach(q => usedSet.add(q.id));
+        return picked;
+      }
+
+      const usedIds = new Set();
+      const selectedQuestions = [];
+
+      selectedQuestions.push(...pickWithoutReplacement(nbPool, nbCount, usedIds));
+      selectedQuestions.push(...pickWithoutReplacement(thPool, thCount, usedIds));
+      selectedQuestions.push(...pickWithoutReplacement(vdPool, vdCount, usedIds));
+
+      let pickedVdc = pickWithoutReplacement(vdcPool, vdcCount, usedIds);
+      if (pickedVdc.length < vdcCount) {
+        const fallbackVd = pickWithoutReplacement(vdPool, vdcCount - pickedVdc.length, usedIds);
+        pickedVdc.push(...fallbackVd);
+      }
+      selectedQuestions.push(...pickedVdc);
+
+      if (selectedQuestions.length < totalRequested) {
+        const remainingNeeded = totalRequested - selectedQuestions.length;
+        selectedQuestions.push(...pickWithoutReplacement(activePool, remainingNeeded, usedIds));
+      }
+      if (selectedQuestions.length < totalRequested) {
+        const remainingNeeded = totalRequested - selectedQuestions.length;
+        selectedQuestions.push(...pickWithoutReplacement(questionPool, remainingNeeded, usedIds));
+      }
+
       const finalQuestions = selectedQuestions.map((q, idx) => ({
         ...q,
         number: idx + 1
@@ -3675,7 +3761,7 @@
         topic: options.topic || "Tổng hợp kiến thức",
         timeMinutes: timeMinutes,
         levelTarget: (vdcCount > 0 || vdCount >= 4) ? "advanced" : "standard",
-        description: `Đề thi tự động gồm ${finalQuestions.length} câu: ${nbCount} NB, ${thCount} TH, ${vdCount} VD, ${vdcCount} VDC.`,
+        description: `Đề thi tự động chuẩn KNTT gồm ${finalQuestions.length} câu: ${nbCount} NB, ${thCount} TH, ${vdCount} VD, ${vdcCount} VDC.`,
         createdAt: new Date().toISOString(),
         createdBy: createdBy,
         questions: finalQuestions

@@ -859,28 +859,77 @@
 
         const qContent = window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.content) : q.content;
         const qExpl = q.explanation ? (window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.explanation) : q.explanation) : '';
-        const optionsHtml = q.options.map(opt => {
-          const optText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(opt.text) : opt.text;
-          return `
-            <div class="p-2 rounded-lg border border-slate-200 bg-slate-50 text-xs flex items-center gap-2 ${opt.key === q.correctAnswer ? 'border-emerald-300 bg-emerald-50/60 font-bold' : ''}">
-              <span class="w-5 h-5 rounded-full ${opt.key === q.correctAnswer ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'} flex items-center justify-center text-[10px] font-bold shrink-0">
-                ${opt.key}
-              </span>
-              <span>${optText}</span>
+
+        let typeBadge = '';
+        let bodyHtml = '';
+
+        if (q.type === 'tf' || (q.items && q.items.length > 0)) {
+          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Đúng / Sai</span>';
+          bodyHtml = `
+            <div class="space-y-1.5 mt-1.5">
+              ${(q.items || []).map(it => {
+                const itText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(it.text) : it.text;
+                const itExpl = it.explanation ? (window.MathNormalizer ? window.MathNormalizer.normalizeMath(it.explanation) : it.explanation) : '';
+                const isDung = it.correctAnswer === 'Đ' || it.correctAnswer === 'Đúng';
+                return `
+                  <div class="p-2 rounded-lg border border-slate-200 bg-slate-50 text-xs flex flex-col gap-0.5">
+                    <div class="flex items-center justify-between gap-2">
+                      <div class="flex items-center gap-2">
+                        <span class="w-4 h-4 rounded bg-indigo-100 text-indigo-800 font-bold flex items-center justify-center text-[10px] shrink-0">${it.key || it.label})</span>
+                        <span class="font-medium text-slate-800">${itText}</span>
+                      </div>
+                      <span class="px-2 py-0.5 rounded text-[10px] font-black shrink-0 ${isDung ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'}">
+                        ${isDung ? 'Đúng (Đ)' : 'Sai (S)'}
+                      </span>
+                    </div>
+                    ${itExpl ? `<p class="text-[11px] text-slate-500 pl-6">↳ <em>${itExpl}</em></p>` : ''}
+                  </div>
+                `;
+              }).join('')}
             </div>
           `;
-        }).join('');
-
-        return `
-          <div class="border border-slate-200 rounded-xl p-4 bg-white flex flex-col gap-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-black text-slate-800">Câu ${idx + 1}:</span>
-              ${levelBadgeMap[q.level] || ''}
+        } else if (q.type === 'short' || q.correctAnswers) {
+          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Trả lời ngắn</span>';
+          const ansText = q.correctAnswers ? q.correctAnswers.join(' hoặc ') : (q.correctAnswer || '');
+          bodyHtml = `
+            <div class="mt-2 p-2.5 rounded-xl border border-emerald-200 bg-emerald-50 text-xs flex items-center gap-2">
+              <span class="font-bold text-emerald-800">Đáp số chuẩn:</span>
+              <span class="font-black text-emerald-900 bg-white px-2.5 py-0.5 rounded border border-emerald-200">${ansText}</span>
             </div>
-            <p class="text-xs font-medium text-slate-800">${qContent}</p>
+          `;
+        } else {
+          // MCQ
+          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Nhiều lựa chọn</span>';
+          const optionsHtml = (q.options || []).map(opt => {
+            const optText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(opt.text) : opt.text;
+            return `
+              <div class="p-2 rounded-lg border border-slate-200 bg-slate-50 text-xs flex items-center gap-2 ${opt.key === q.correctAnswer ? 'border-emerald-300 bg-emerald-50/60 font-bold' : ''}">
+                <span class="w-5 h-5 rounded-full ${opt.key === q.correctAnswer ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'} flex items-center justify-center text-[10px] font-bold shrink-0">
+                  ${opt.key}
+                </span>
+                <span>${optText}</span>
+              </div>
+            `;
+          }).join('');
+          bodyHtml = `
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
               ${optionsHtml}
             </div>
+          `;
+        }
+
+        return `
+          <div class="border border-slate-200 rounded-xl p-4 bg-white flex flex-col gap-2">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-black text-slate-800">Câu ${idx + 1}:</span>
+                ${levelBadgeMap[q.level] || ''}
+                ${typeBadge}
+              </div>
+              ${q.type === 'mcq' && q.correctAnswer ? `<span class="text-[10px] font-bold text-emerald-700">Đáp án: ${q.correctAnswer}</span>` : ''}
+            </div>
+            <p class="text-xs font-medium text-slate-800">${qContent}</p>
+            ${bodyHtml}
             ${qExpl ? `
               <div class="mt-2 p-2.5 bg-slate-50 border-l-2 border-indigo-500 text-[11px] text-slate-600">
                 <strong>Lời giải:</strong> ${qExpl}
