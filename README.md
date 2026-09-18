@@ -1,59 +1,65 @@
-# ỨNG DỤNG TRẮC NGHIỆM TƯƠNG TÁC TOÁN 6 — BỘ 5 ĐỀ ÔN TẬP CHƯƠNG I
+# HỆ THỐNG GIA SƯ AI VÀ ÔN TẬP TOÁN THCS (GDPT 2018)
 
-Ứng dụng web trắc nghiệm tương tác độc lập (Single Page Web Application) dành cho học sinh và giáo viên môn **Toán 6**, bám sát chương trình **GDPT 2018** (Bài 1 đến Bài 4 - Chương I: Tập hợp, Số tự nhiên, Thứ tự trong tập hợp các số tự nhiên, Phép cộng và phép trừ số tự nhiên).
-
----
-
-## 🌟 TÍNH NĂNG NỔI BẬT
-
-### 1. Chuẩn Hóa Cấu Trúc Đề Thi Mới (Bộ GD&ĐT)
-Mỗi đề gồm **10 câu hỏi**, chuẩn thang **10.0 điểm**, thời gian làm bài **20 phút**:
-- **Phần 1: Trắc nghiệm nhiều lựa chọn (6 câu = 3.0 điểm)** — 4 phương án A, B, C, D.
-- **Phần 2: Trắc nghiệm Đúng / Sai (2 câu = 4.0 điểm)** — Mỗi câu gồm 4 ý $a, b, c, d$. Chấm điểm lũy tiến chuẩn xác (1 ý đúng = 0.2đ, 2 ý = 0.5đ, 3 ý = 1.0đ, 4 ý = 2.0đ).
-- **Phần 3: Trắc nghiệm Trả lời ngắn (2 câu = 3.0 điểm)** — Học sinh tự tính toán và nhập đáp số, hệ thống tự động kiểm tra và chuẩn hóa câu trả lời.
-
-### 2. 3 Chế Độ Tương Tác Linh Hoạt
-1. ⏱️ **Chế độ Thi Thử (Exam Mode):**
-   - Đồng hồ bấm giờ đếm ngược 20 phút (tự động nộp khi hết giờ).
-   - Ẩn toàn bộ đáp án và lời giải trong quá trình làm bài.
-   - Nộp bài hiển thị bảng điểm chi tiết theo từng phần, đánh giá xếp loại năng lực, kèm hiệu ứng pháo hoa chúc mừng (*Canvas Confetti*) khi đạt điểm cao!
-2. 💡 **Chế độ Luyện Tập Tức Thì (Practice Mode):**
-   - Chọn phương án hoặc nhập câu trả lời đến đâu biết ngay đúng/sai đến đó.
-   - Hiển thị ngay lời giải chi tiết và mẹo làm bài nhanh để khắc sâu kiến thức.
-3. 👨‍🏫 **Chế độ Bản Giáo Viên (Teacher Mode):**
-   - Hiển thị đầy đủ đáp án chuẩn và lời giải cho toàn bộ 10 câu để giáo viên giảng dạy, trình chiếu trên tivi/máy chiếu hoặc chấm bài.
-
-### 3. Công Nghệ Hiển Thị Công Thức Toán & Đồ Họa Cao Cấp
-- Tích hợp thư viện toán học **KaTeX** hiển thị sắc nét các ký hiệu: $\in, \notin, \mathbb{N}, \mathbb{N}^*, \le, \ge, <, >, \{ \dots \}$.
-- Hỗ trợ giao diện **Sáng / Tối (Light Mode / Dark Mode)** dịu mắt, chống mỏi mắt khi học lâu.
-- Thiết kế **Responsive** 100% trên Điện thoại thông minh, Máy tính bảng (iPad), Laptop, PC và Màn hình tương tác.
-- Tự động lưu tiến độ vào **Local Storage** (không sợ mất bài làm khi lỡ tải lại trang).
-
-### 4. Hỗ Trợ In Ấn & Xuất File Word Tiện Lợi
-- 🖨️ **In Bản Học Sinh:** Đề thi được tối ưu cho in ấn A4 (ẩn đáp án, có khung thông tin trường lớp, khung điểm, lời phê giáo viên).
-- 📑 **In Bản Giáo Viên:** Có sẵn bảng đáp án và hướng dẫn chấm chi tiết.
-- 📥 **Xuất Word (.doc):** Tải file về máy chỉ bằng 1 cú click chuột, mở và chỉnh sửa trực tiếp trên Microsoft Word.
+Hệ thống ứng dụng tương tác đa nền tảng (Single Page Web Applications) độc lập 100%, phục vụ việc giảng dạy, ôn tập, bồi dưỡng môn **Toán THCS (Khối 6, 7, 8, 9)** theo chuẩn **Chương trình GDPT 2018**.
 
 ---
 
-## 📁 CẤU TRÚC THƯ MỤC DỰ ÁN
+## 🌟 BỘ BA ỨNG DỤNG TÍCH HỢP
+
+### 1. ⚙️ Cổng Quản Trị Giáo Viên (`quan-ly-giao-vien.html`)
+- **Phân loại theo Khối lớp**: Chuyển đổi linh hoạt giữa **Khối 6, Khối 7, Khối 8, Khối 9** và theo đối tượng học sinh (**Đại trà / Củng cố** hoặc **Nâng cao / Bồi dưỡng**).
+- **Bộ tạo câu hỏi trực quan 3 Dạng thức**:
+  - *Phần 1:* Trắc nghiệm nhiều lựa chọn (4 phương án $A, B, C, D$).
+  - *Phần 2:* Trắc nghiệm Đúng / Sai (4 ý khẳng định $a, b, c, d$).
+  - *Phần 3:* Trắc nghiệm Trả lời ngắn (kèm gợi ý từng bước Socratic).
+- **Xem trước công thức Toán tức thì (Live KaTeX Preview)**: Nhập công thức dạng `$x \in \mathbb{N}$` hiển thị ngay lập tức.
+- **Trích xuất tự động từ file Word (.docx) & văn bản thô**: Tích hợp công nghệ `mammoth.js` giúp giáo viên sao chép hoặc tải file Word lên là tự động bóc tách vào ngân hàng đề.
+- **Nạp tài liệu tri thức (`kt.md`) & Hồ sơ nhân cách (`tc.md`)**: Biên soạn hoặc tải file markdown/text trực tiếp vào hệ thống.
+- **Đồng bộ thời gian thực (Real-time LocalSync)**: Chỉ cần bấm **"Lưu & Kích Hoạt Ngay"**, toàn bộ câu hỏi và tài liệu mới được kích hoạt tức thì trên Chatbot của học sinh mà không cần tải lại máy chủ.
+- **Xuất dữ liệu**: Xuất tệp `questions_data.js`, `kt.md`, `tc.md` chỉ với 1 click.
+
+### 2. 🤖 Chatbot Gia Sư AI Tương Tác 100% (`index.html` / `chatbot.html`)
+- **Phương pháp Socratic sư phạm**: Không đưa đáp án ngay mà khéo léo gợi mở từng bước, kiên nhẫn đồng hành cùng học sinh.
+- **Âm thanh phản hồi trực quan (Web Audio API Synthesizer)**: Âm thanh vỗ tay chúc mừng khi làm đúng, chuông nhắc nhở nhẹ nhàng khi chọn sai.
+- **Thẻ Kết Quả Học Tập (Report Card)**: Tự động tổng hợp số câu đúng, phân loại năng lực và hỗ trợ xuất ảnh PNG để học sinh gửi bài cho giáo viên qua Zalo.
+- **Cá nhân hóa theo mã lớp**: Bản riêng biệt cho từng lớp như `lop-6a1.html` (Đại trà), `lop-6a2.html` (Nâng cao).
+
+### 3. 📝 Bảng Đề Thi & Bấm Giờ Trắc Nghiệm (`tracnghiem.html`)
+- **Đồng hồ bấm giờ 20 phút**: Tự động nộp bài và khóa đề khi hết giờ.
+- **3 Chế độ linh hoạt**: Thi Thử (ẩn đáp án), Luyện Tập (xem giải thích từng câu), Bản Giáo Viên (đầy đủ đáp án trình chiếu).
+- **Xuất file Word (.doc) & In ấn A4**: Thiết kế tinh gọn, có sẵn khung điểm, trường lớp và lời phê của giáo viên.
+
+---
+
+## 📁 CẤU TRÚC THƯ MỤC HỆ THỐNG
 
 ```
 d:/WEBAPP AI/CHATBOT/TN-TUONGTAC/
-├── index.html            # Ứng dụng Web chính (chạy độc lập, không cần cài đặt server)
-├── questions_data.js     # Cơ sở dữ liệu 5 bộ đề ôn tập có cấu trúc
-├── de_thi_goc.md         # Bản thảo tài liệu 5 đề thi định dạng Markdown chuẩn
-└── README.md             # Hướng dẫn sử dụng và tài liệu chi tiết
+├── index.html              # Ứng dụng Chatbot AI chính (Học sinh)
+├── chatbot.html            # Bản alias song song của Chatbot AI
+├── quan-ly-giao-vien.html  # CỔNG QUẢN TRỊ GIÁO VIÊN (Nạp học liệu, thêm câu hỏi Khối 6-9)
+├── tracnghiem.html         # Bảng đề thi trắc nghiệm bấm giờ 20 phút & xuất Word
+├── lop-6a1.html            # Trang đóng gói dành riêng cho lớp 6A1 (Đại trà)
+├── lop-6a2.html            # Trang đóng gói dành riêng cho lớp 6A2 (Nâng cao)
+├── questions_data.js       # Cơ sở dữ liệu 5 bộ đề ôn tập (50 câu hỏi)
+├── kt.md                   # Hồ sơ Tri thức & Kiến thức trọng tâm Toán 6
+├── tc.md                   # Hồ sơ Sư phạm & Nguyên tắc ứng xử của Gia Sư AI
+├── de_thi_goc.md           # Đề thi gốc bản đầy đủ định dạng Markdown
+└── README.md               # Tài liệu hướng dẫn sử dụng chi tiết
 ```
 
 ---
 
-## 🚀 HƯỚNG DẪN KHỞI CHẠY & SỬ DỤNG
+## 🚀 HƯỚNG DẪN KHỞI CHẠY VÀ SỬ DỤNG
 
-### Cách 1: Chạy trực tiếp trên máy tính (Offline 100%)
-1. Mở thư mục `d:\WEBAPP AI\CHATBOT\TN-TUONGTAC`.
-2. Click đúp chuột vào tệp `index.html`.
-3. Ứng dụng sẽ tự động mở trên trình duyệt mặc định (Google Chrome, Microsoft Edge, Cốc Cốc, v.v.) và sẵn sàng sử dụng ngay lập tức!
+### Dành Cho Giáo Viên
+1. Mở tệp `quan-ly-giao-vien.html` trên trình duyệt Chrome, Edge hoặc Cốc Cốc.
+2. Chọn **Khối lớp (Khối 6, 7, 8, 9)** và đối tượng (**Đại trà** hoặc **Nâng cao**).
+3. Nhập câu hỏi mới hoặc nạp tài liệu `kt.md`.
+4. Bấm **"Lưu & Kích Hoạt Ngay"** $\rightarrow$ Hệ thống tự động ghi nhớ và cập nhật cho Chatbot học sinh.
+5. Khi cần xuất dữ liệu để lưu trữ lâu dài hoặc nạp lại trên máy khác, bấm **"Xuất File questions_data.js"**.
 
-### Cách 2: Triển khai lên Web miễn phí (Netlify / Vercel / GitHub Pages)
-- **Netlify:** Kéo thả thư mục `TN-TUONGTAC` vào [app.netlify.com/drop](https://app.netlify.com/drop) là có ngay link web online chia sẻ cho học sinh toàn trường làm bài trên điện thoại!
+### Dành Cho Học Sinh
+1. Mở `index.html` (hoặc `lop-6a1.html`, `lop-6a2.html`).
+2. Nhập Họ và tên, sau đó tương tác giải bài cùng Gia Sư AI.
+3. Khi hoàn thành bài học, bấm **"🎖️ Thẻ Điểm"** $\rightarrow$ **"Tải Thẻ Điểm (PNG)"** để nộp bài cho thầy cô.
