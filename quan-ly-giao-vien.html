@@ -646,7 +646,18 @@
       try {
         const saved = localStorage.getItem(LS_KEY);
         if (saved) {
-          localExamsData = JSON.parse(saved);
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            localExamsData = parsed;
+            // Merge any missing default exams from EXAM_DATA (e.g. newly added Grade 8 exams)
+            if (typeof EXAM_DATA !== 'undefined' && Array.isArray(EXAM_DATA)) {
+              EXAM_DATA.forEach(defEx => {
+                if (!localExamsData.some(e => e.id === defEx.id || (e.title === defEx.title && e.gradeNum === defEx.gradeNum))) {
+                  localExamsData.push(JSON.parse(JSON.stringify(defEx)));
+                }
+              });
+            }
+          }
         }
       } catch (e) {
         console.warn(e);
@@ -675,6 +686,11 @@
         }
       }
       document.getElementById('input-class-code').value = `${grade}A1`;
+      const firstExamOfGrade = localExamsData.find(e => (e.gradeNum === grade) || (grade === 6 && !e.gradeNum));
+      if (firstExamOfGrade) {
+        activeExamId = firstExamOfGrade.id;
+      }
+      renderExamSelectorOptions();
       updateScopeBadge();
       renderQuestionList();
     }
@@ -747,7 +763,12 @@
     function renderExamSelectorOptions() {
       const select = document.getElementById('select-exam-id');
       select.innerHTML = '';
-      localExamsData.forEach(exam => {
+      const filteredByGrade = localExamsData.filter(e => {
+        if (!e.gradeNum) return currentGrade === 6;
+        return e.gradeNum === currentGrade;
+      });
+      const listToRender = filteredByGrade.length > 0 ? filteredByGrade : localExamsData;
+      listToRender.forEach(exam => {
         const opt = document.createElement('option');
         opt.value = exam.id;
         opt.textContent = `${exam.title}`;

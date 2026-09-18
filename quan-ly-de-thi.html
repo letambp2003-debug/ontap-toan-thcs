@@ -1113,31 +1113,83 @@
       contentDiv.innerHTML = (exam.questions || []).map((q, idx) => {
         const qContent = window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.content) : q.content;
         const qExpl = q.explanation ? (window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.explanation) : q.explanation) : '';
-        const opts = (q.options || []).map(o => {
-          const optText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(o.text) : o.text;
-          return `
-            <div class="p-2 rounded-lg border border-slate-200 text-xs flex items-center gap-2 ${o.key === q.correctAnswer ? 'bg-emerald-50 border-emerald-300 font-bold' : 'bg-slate-50'}">
-              <span class="w-5 h-5 rounded-full ${o.key === q.correctAnswer ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'} flex items-center justify-center text-[10px] font-bold">
-                ${o.key}
-              </span>
-              <span>${optText}</span>
+        
+        let typeBadge = '';
+        let answerBadge = '';
+        let bodyHtml = '';
+
+        if (q.type === 'tf' || (q.items && q.items.length > 0)) {
+          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Đúng / Sai</span>';
+          answerBadge = '<span class="text-[10px] font-bold text-purple-700">4 ý a, b, c, d</span>';
+          bodyHtml = `
+            <div class="space-y-2 mt-2">
+              ${(q.items || []).map(it => {
+                const itText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(it.text) : it.text;
+                const itExpl = it.explanation ? (window.MathNormalizer ? window.MathNormalizer.normalizeMath(it.explanation) : it.explanation) : '';
+                const isDung = it.correctAnswer === 'Đ' || it.correctAnswer === 'Đúng';
+                return `
+                  <div class="p-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs flex flex-col gap-1">
+                    <div class="flex items-center justify-between gap-2">
+                      <div class="flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-md bg-indigo-100 text-indigo-800 font-bold flex items-center justify-center text-[10px] shrink-0">${it.key || it.label})</span>
+                        <span class="font-medium text-slate-800">${itText}</span>
+                      </div>
+                      <span class="px-2 py-0.5 rounded text-[10px] font-black shrink-0 ${isDung ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'}">
+                        ${isDung ? 'Đúng (Đ)' : 'Sai (S)'}
+                      </span>
+                    </div>
+                    ${itExpl ? `<p class="text-[11px] text-slate-500 pl-7">↳ <em>${itExpl}</em></p>` : ''}
+                  </div>
+                `;
+              }).join('')}
             </div>
           `;
-        }).join('');
+        } else if (q.type === 'short' || q.correctAnswers) {
+          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Trả lời ngắn</span>';
+          const ansText = q.correctAnswers ? q.correctAnswers.join(' hoặc ') : (q.correctAnswer || '');
+          answerBadge = `<span class="text-[10px] font-bold text-emerald-700">Đáp án: ${ansText}</span>`;
+          bodyHtml = `
+            <div class="mt-2 p-3 rounded-xl border border-emerald-200 bg-emerald-50 text-xs flex items-center gap-2">
+              <span class="font-bold text-emerald-800">Đáp số chuẩn:</span>
+              <span class="font-black text-emerald-900 bg-white px-2.5 py-1 rounded-lg border border-emerald-200">${ansText}</span>
+            </div>
+          `;
+        } else {
+          // MCQ
+          typeBadge = '<span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Nhiều lựa chọn</span>';
+          answerBadge = `<span class="text-[10px] font-bold text-emerald-700">Đáp án: ${q.correctAnswer}</span>`;
+          const opts = (q.options || []).map(o => {
+            const optText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(o.text) : o.text;
+            return `
+              <div class="p-2 rounded-lg border border-slate-200 text-xs flex items-center gap-2 ${o.key === q.correctAnswer ? 'bg-emerald-50 border-emerald-300 font-bold' : 'bg-slate-50'}">
+                <span class="w-5 h-5 rounded-full ${o.key === q.correctAnswer ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'} flex items-center justify-center text-[10px] font-bold">
+                  ${o.key}
+                </span>
+                <span>${optText}</span>
+              </div>
+            `;
+          }).join('');
+          bodyHtml = `
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
+              ${opts}
+            </div>
+          `;
+        }
 
         return `
           <div class="border border-slate-200 rounded-xl p-4 bg-white flex flex-col gap-2">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-black text-slate-900">Câu ${idx + 1} (${q.level || 'NB'}):</span>
-              <span class="text-[10px] font-bold text-emerald-700">Đáp án: ${q.correctAnswer}</span>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-black text-slate-900">Câu ${idx + 1} (${q.level || 'NB'}):</span>
+                ${typeBadge}
+              </div>
+              ${answerBadge}
             </div>
             <p class="text-xs font-medium text-slate-800">${qContent}</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
-              ${opts}
-            </div>
+            ${bodyHtml}
             ${qExpl ? `
               <div class="mt-2 p-2.5 bg-slate-50 border-l-2 border-indigo-500 text-[11px] text-slate-600">
-                <strong>Giải thích:</strong> ${qExpl}
+                <strong>Giải thích chung:</strong> ${qExpl}
               </div>
             ` : ''}
           </div>

@@ -805,7 +805,7 @@
 
       if (!activeQuestions || activeQuestions.length === 0) {
         alert('Chưa có đủ câu hỏi cho bộ lọc này. Hệ thống sẽ mở rộng câu hỏi toàn khối ' + currentGrade);
-        activeQuestions = window.getQuestionsForArena({ grade: 6, limit: limit, shuffle: true });
+        activeQuestions = window.getQuestionsForArena({ grade: currentGrade, limit: limit, shuffle: true }) || [];
       }
 
       // Reset match state

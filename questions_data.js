@@ -1727,7 +1727,1907 @@ const EXAM_DATA = [
     "gradeNum": 6,
     "book": "KNTT",
     "chapter": 1
-  }
+  },
+{
+  "id": 6,
+  "code": "DE-K8-C1-01",
+  "title": "Đề số 1: Đơn thức và Đa thức nhiều biến (Bài 1 - Bài 4)",
+  "subtitle": "Khái niệm đơn thức, đa thức, phép cộng, trừ và nhân đa thức",
+  "grade": "Toán 8",
+  "gradeNum": 8,
+  "book": "KNTT",
+  "chapter": 1,
+  "timeMinutes": 45,
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Mỗi câu hỏi chỉ chọn một phương án đúng.",
+      "questions": [
+        {
+          "id": "6_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Đơn thức là biểu thức đại số chỉ gồm một số, một biến hoặc một tích giữa các số và các biến. $\\frac{x}{y}$ chứa phép chia cho biến nên không phải là đơn thức.",
+          "hint": "Đơn thức không chứa phép cộng, trừ giữa các biến và không chứa biến ở mẫu số.",
+          "content": "Trong các biểu thức sau, biểu thức nào là đơn thức?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x + y$"
+            },
+            {
+              "key": "B",
+              "text": "$2x^2y$"
+            },
+            {
+              "key": "C",
+              "text": "$\\frac{x}{y}$"
+            },
+            {
+              "key": "D",
+              "text": "$x - 2$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 10
+        },
+        {
+          "id": "6_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Hạng tử $x^3y$ có bậc là $3 + 1 = 4$; hạng tử $-2xy^2$ có bậc là $1 + 2 = 3$; số $5$ có bậc $0$. Bậc của đa thức là bậc cao nhất của các hạng tử trong dạng thu gọn, tức là $4$.",
+          "hint": "Bậc của đa thức là bậc của hạng tử có bậc cao nhất trong dạng thu gọn.",
+          "content": "Bậc của đa thức $P = x^3y - 2xy^2 + 5$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$3$"
+            },
+            {
+              "key": "B",
+              "text": "$4$"
+            },
+            {
+              "key": "C",
+              "text": "$5$"
+            },
+            {
+              "key": "D",
+              "text": "$2$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 10
+        },
+        {
+          "id": "6_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Ta cộng các hệ số và giữ nguyên phần biến: $3x^2y + 5x^2y = (3 + 5)x^2y = 8x^2y$.",
+          "hint": "Cộng hai đơn thức đồng dạng: cộng hệ số, giữ nguyên phần biến.",
+          "content": "Kết quả của phép tính $3x^2y + 5x^2y$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$8x^4y^2$"
+            },
+            {
+              "key": "B",
+              "text": "$8x^2y$"
+            },
+            {
+              "key": "C",
+              "text": "$15x^2y$"
+            },
+            {
+              "key": "D",
+              "text": "$8xy$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 20
+        },
+        {
+          "id": "6_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Áp dụng quy tắc nhân đơn thức với đa thức: $-2x(x^2 - 3x + 1) = (-2x) \\cdot x^2 - (-2x) \\cdot 3x + (-2x) \\cdot 1 = -2x^3 + 6x^2 - 2x$.",
+          "hint": "Lưu ý quy tắc dấu khi nhân: $(-2x) \\cdot (-3x) = +6x^2$.",
+          "content": "Kết quả của phép nhân $-2x(x^2 - 3x + 1)$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$-2x^3 - 6x^2 - 2x$"
+            },
+            {
+              "key": "B",
+              "text": "$-2x^3 + 6x^2 - 2x$"
+            },
+            {
+              "key": "C",
+              "text": "$-2x^3 + 6x^2 + 2x$"
+            },
+            {
+              "key": "D",
+              "text": "$2x^3 - 6x^2 - 2x$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 20
+        },
+        {
+          "id": "6_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Ta nhân đa thức với đa thức hoặc dùng hằng đẳng thức hiệu hai bình phương: $(x - 2)(x + 2) = x^2 + 2x - 2x - 4 = x^2 - 4$.",
+          "hint": "Áp dụng hằng đẳng thức $(a - b)(a + b) = a^2 - b^2$.",
+          "content": "Phép nhân hai đa thức $(x - 2)$ và $(x + 2)$ cho kết quả là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x^2 - 2$"
+            },
+            {
+              "key": "B",
+              "text": "$x^2 - 4$"
+            },
+            {
+              "key": "C",
+              "text": "$x^2 + 4$"
+            },
+            {
+              "key": "D",
+              "text": "$x^2 - 4x + 4$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 20
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "6_1",
+          "number": 1,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Cho biểu thức $A = 2x(x^2 - y) - 2x^3 + 3xy$.",
+          "prompt": "Cho biểu thức $A = 2x(x^2 - y) - 2x^3 + 3xy$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Biểu thức $A$ sau khi rút gọn là một đa thức bậc 2.",
+              "correctAnswer": "Đ",
+              "explanation": "Ta có $A = 2x^3 - 2xy - 2x^3 + 3xy = xy$, có bậc là $1 + 1 = 2$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Hệ số của hạng tử chứa $xy$ trong đa thức $A$ thu gọn là $1$.",
+              "correctAnswer": "Đ",
+              "explanation": "$A = 1xy$, hệ số bằng $1$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Giá trị của $A$ tại $x = 2, y = -1$ là $-2$.",
+              "correctAnswer": "Đ",
+              "explanation": "Thay $x = 2, y = -1 \\Rightarrow A = 2 \\cdot (-1) = -2$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Biểu thức $A$ luôn nhận giá trị dương với mọi $x, y > 0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Khi $x > 0$ và $y > 0$ thì tích $xy > 0$, do đó $A > 0$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "6_2",
+          "number": 2,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Xét các đa thức $M = 3x^2 - 2xy + y^2$ và $N = x^2 + 2xy - y^2$.",
+          "prompt": "Xét các đa thức $M = 3x^2 - 2xy + y^2$ và $N = x^2 + 2xy - y^2$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Đa thức tổng $M + N = 4x^2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - y^2) = 4x^2$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Đa thức hiệu $M - N = 2x^2 - 4xy + 2y^2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$M - N = (3x^2 - x^2) + (-2xy - 2xy) + [y^2 - (-y^2)] = 2x^2 - 4xy + 2y^2$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Bậc của đa thức $M + N$ là $4$.",
+              "correctAnswer": "S",
+              "explanation": "$M + N = 4x^2$, bậc của đa thức này là $2$, không phải $4$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tại $x = 1, y = 1$, giá trị của biểu thức $M - N$ bằng $0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Thay $x = 1, y = 1 \\Rightarrow 2(1)^2 - 4(1)(1) + 2(1)^2 = 2 - 4 + 2 = 0$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "6_3",
+          "number": 3,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Thực hiện phép nhân đa thức $P = (x - y)(x^2 + xy + y^2)$.",
+          "prompt": "Thực hiện phép nhân đa thức $P = (x - y)(x^2 + xy + y^2)$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Trong đa thức tích $P$ (sau thu gọn) có chứa hạng tử $x^2y$.",
+              "correctAnswer": "S",
+              "explanation": "Khai triển $P = x^3 + x^2y + xy^2 - x^2y - xy^2 - y^3 = x^3 - y^3$, các hạng tử chứa $x^2y$ triệt tiêu hết."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Kết quả thu gọn của phép nhân là đa thức $x^3 - y^3$.",
+              "correctAnswer": "Đ",
+              "explanation": "Đây chính là hằng đẳng thức hiệu hai lập phương: $(x - y)(x^2 + xy + y^2) = x^3 - y^3$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Bậc của đa thức $P$ là $3$.",
+              "correctAnswer": "Đ",
+              "explanation": "$x^3 - y^3$ có bậc cao nhất là $3$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Đa thức $P$ có chứa biến $xy$.",
+              "correctAnswer": "S",
+              "explanation": "Sau khi thu gọn, $P = x^3 - y^3$ không còn chứa biến $xy$."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "6_1",
+          "number": 1,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Ta có: $B = \\left(-\\frac{1}{2} \\cdot 4\\right) \\cdot (x^2 \\cdot x) \\cdot (y \\cdot y^3) = -2x^3y^4$. Vậy phần hệ số là $-2$.",
+          "hint": "Nhân hệ số với hệ số: $-\\frac{1}{2} \\cdot 4 = -2$.",
+          "content": "Tìm phần hệ số của đơn thức $B = \\left(-\\frac{1}{2}x^2y\\right) \\cdot (4xy^3)$ sau khi thu gọn.",
+          "correctAnswers": [
+            "-2"
+          ],
+          "correctAnswer": "-2",
+          "xp": 40
+        },
+        {
+          "id": "6_2",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Đặt nhân tử chung: $Q = (x - 1)(x - y)$. Thay $x = 10, y = 9$ vào: $Q = (10 - 1)(10 - 9) = 9 \\cdot 1 = 9$.",
+          "hint": "Nhóm nhân tử chung $(x - 1)$ trước khi thay số.",
+          "content": "Tính giá trị của biểu thức $Q = x(x - 1) - y(x - 1)$ tại $x = 10, y = 9$.",
+          "correctAnswers": [
+            "9"
+          ],
+          "correctAnswer": "9",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": 7,
+  "code": "DE-K8-C1-02",
+  "title": "Đề số 2: Đơn thức đồng dạng & Các phép toán đa thức",
+  "subtitle": "Rút gọn biểu thức, tính giá trị và xác định bậc đa thức",
+  "grade": "Toán 8",
+  "gradeNum": 8,
+  "book": "KNTT",
+  "chapter": 1,
+  "timeMinutes": 45,
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Mỗi câu hỏi chỉ chọn một phương án đúng.",
+      "questions": [
+        {
+          "id": "7_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Hai đơn thức đồng dạng là hai đơn thức có hệ số khác $0$ và có cùng phần biến. Đơn thức $-2x^2y$ có cùng phần biến là $x^2y$.",
+          "hint": "Tìm đơn thức có đúng phần biến $x^2y$.",
+          "content": "Trong các đơn thức sau, đơn thức nào đồng dạng với $5x^2y$?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$5xy^2$"
+            },
+            {
+              "key": "B",
+              "text": "$-2x^2y$"
+            },
+            {
+              "key": "C",
+              "text": "$5x^2y^2$"
+            },
+            {
+              "key": "D",
+              "text": "$x^2$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 10
+        },
+        {
+          "id": "7_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Hạng tử $-2x^2y^3$ có bậc là $2 + 3 = 5$, đây là hạng tử có bậc cao nhất của đa thức $M$. Vậy bậc của $M$ là $5$.",
+          "hint": "Tính tổng số mũ của các biến ở từng hạng tử: $2 + 3 = 5$.",
+          "content": "Bậc của đa thức $M = x^4 - 2x^2y^3 + 3x - 5$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$4$"
+            },
+            {
+              "key": "B",
+              "text": "$5$"
+            },
+            {
+              "key": "C",
+              "text": "$6$"
+            },
+            {
+              "key": "D",
+              "text": "$2$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 10
+        },
+        {
+          "id": "7_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Ta có: $3x^2y \\cdot (-2xy) = [3 \\cdot (-2)] \\cdot (x^2 \\cdot x) \\cdot (y \\cdot y) = -6x^3y^2$.",
+          "hint": "Nhân hệ số với hệ số, cộng các số mũ của cùng cơ số.",
+          "content": "Kết quả của phép tính $3x^2y \\cdot (-2xy)$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$-6x^3y^2$"
+            },
+            {
+              "key": "B",
+              "text": "$6x^3y^2$"
+            },
+            {
+              "key": "C",
+              "text": "$-6x^2y^2$"
+            },
+            {
+              "key": "D",
+              "text": "$-x^3y^2$"
+            }
+          ],
+          "correctAnswer": "A",
+          "xp": 20
+        },
+        {
+          "id": "7_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Ta có: $(x - 1)(x + 2) - x^2 = x^2 + 2x - x - 2 - x^2 = x - 2$.",
+          "hint": "Khai triển $(x - 1)(x + 2)$ rồi trừ đi $x^2$.",
+          "content": "Kết quả rút gọn của biểu thức $(x - 1)(x + 2) - x^2$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x - 2$"
+            },
+            {
+              "key": "B",
+              "text": "$3x - 2$"
+            },
+            {
+              "key": "C",
+              "text": "$-x - 2$"
+            },
+            {
+              "key": "D",
+              "text": "$x + 2$"
+            }
+          ],
+          "correctAnswer": "A",
+          "xp": 20
+        },
+        {
+          "id": "7_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Thay $x = 1, y = -2$ vào đa thức: $1 \\cdot (-2) + 2 \\cdot 1 = -2 + 2 = 0$.",
+          "hint": "Thay trực tiếp $x = 1$ và $y = -2$ vào biểu thức.",
+          "content": "Giá trị của đa thức $xy + 2x$ tại $x = 1, y = -2$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$0$"
+            },
+            {
+              "key": "B",
+              "text": "$1$"
+            },
+            {
+              "key": "C",
+              "text": "$2$"
+            },
+            {
+              "key": "D",
+              "text": "$-1$"
+            }
+          ],
+          "correctAnswer": "A",
+          "xp": 20
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "7_1",
+          "number": 1,
+          "type": "tf",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Thực hiện phép nhân $K = (x + y)(x - y)$.",
+          "prompt": "Thực hiện phép nhân $K = (x + y)(x - y)$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Đa thức kết quả sau khi thu gọn là $x^2 - y^2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$(x + y)(x - y) = x^2 - xy + xy - y^2 = x^2 - y^2$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Đa thức kết quả có chứa hạng tử $xy$.",
+              "correctAnswer": "S",
+              "explanation": "Hạng tử $xy$ và $-xy$ triệt tiêu lẫn nhau nên không còn chứa $xy$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Bậc của đa thức $K$ là $2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$x^2 - y^2$ có bậc cao nhất là $2$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tại $x = 2, y = 2$, giá trị của đa thức $K$ bằng $0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Tại $x = 2, y = 2 \\Rightarrow K = 2^2 - 2^2 = 0$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "7_2",
+          "number": 2,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Cho hai đa thức $A = 2x^2 + 3x - 1$ và $B = 2x^2 - x + 5$.",
+          "prompt": "Cho hai đa thức $A = 2x^2 + 3x - 1$ và $B = 2x^2 - x + 5$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Đa thức hiệu $A - B$ là một đa thức bậc 2.",
+              "correctAnswer": "S",
+              "explanation": "$A - B = (2x^2 - 2x^2) + [3x - (-x)] + (-1 - 5) = 4x - 6$, đây là đa thức bậc $1$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Hệ số của hạng tử bậc cao nhất trong đa thức $A - B$ là $4$.",
+              "correctAnswer": "Đ",
+              "explanation": "Hạng tử bậc cao nhất là $4x$, có hệ số bằng $4$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Đa thức $A - B$ có hạng tử tự do là $-6$.",
+              "correctAnswer": "Đ",
+              "explanation": "Hạng tử không chứa biến là $-6$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tại $x = 1$, giá trị của biểu thức $A - B$ bằng $-2$.",
+              "correctAnswer": "Đ",
+              "explanation": "Thay $x = 1 \\Rightarrow 4(1) - 6 = -2$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "7_3",
+          "number": 3,
+          "type": "tf",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Cho đơn thức $M = 3x^2y \\cdot (-2xy^2)$.",
+          "prompt": "Cho đơn thức $M = 3x^2y \\cdot (-2xy^2)$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Dạng thu gọn của $M$ là $-6x^3y^3$.",
+              "correctAnswer": "Đ",
+              "explanation": "$3 \\cdot (-2) = -6$, $x^2 \\cdot x = x^3$, $y \\cdot y^2 = y^3 \\Rightarrow -6x^3y^3$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Bậc của đơn thức $M$ là $5$.",
+              "correctAnswer": "S",
+              "explanation": "Bậc là $3 + 3 = 6$, không phải $5$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Phần hệ số của đơn thức $M$ là $-6$.",
+              "correctAnswer": "Đ",
+              "explanation": "Hệ số chính xác là $-6$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Giá trị của $M$ luôn âm với mọi $x > 0, y > 0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Do $x > 0, y > 0 \\Rightarrow x^3y^3 > 0$, nhân với $-6$ sẽ luôn nhận giá trị âm."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "7_1",
+          "number": 1,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Thu gọn: $P = (5x^4 - 5x^4) - 2x^3y + 20xy^3 + y^2 = -2x^3y + 20xy^3 + y^2$. Các hạng tử $-2x^3y$ và $20xy^3$ đều có bậc $3 + 1 = 1 + 3 = 4$. Vậy bậc của đa thức là $4$.",
+          "hint": "Thu gọn hạng tử đồng dạng $5x^4 - 5x^4 = 0$ trước khi xác định bậc.",
+          "content": "Tìm bậc của đa thức thu gọn $P = 5x^4 - 2x^3y + 20xy^3 - 5x^4 + y^2$.",
+          "correctAnswers": [
+            "4"
+          ],
+          "correctAnswer": "4",
+          "xp": 40
+        },
+        {
+          "id": "7_2",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Áp dụng hằng đẳng thức tổng hai lập phương: $H = x^3 + 1$. Thay $x = 2$ vào: $H = 2^3 + 1 = 8 + 1 = 9$.",
+          "hint": "Nhận biết hằng đẳng thức $(a + b)(a^2 - ab + b^2) = a^3 + b^3$.",
+          "content": "Tính giá trị của biểu thức $H = (x + 1)(x^2 - x + 1)$ tại $x = 2$.",
+          "correctAnswers": [
+            "9"
+          ],
+          "correctAnswer": "9",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": 8,
+  "code": "DE-K8-C1-03",
+  "title": "Đề số 3: Thu gọn đa thức & Nhân đa thức",
+  "subtitle": "Rèn luyện kĩ năng nhân đơn thức với đa thức, đa thức với đa thức",
+  "grade": "Toán 8",
+  "gradeNum": 8,
+  "book": "KNTT",
+  "chapter": 1,
+  "timeMinutes": 45,
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Mỗi câu hỏi chỉ chọn một phương án đúng.",
+      "questions": [
+        {
+          "id": "8_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Biểu thức $\\frac{1}{x} + y$ có chứa biến $x$ ở dưới mẫu thức nên không phải là đa thức.",
+          "hint": "Đa thức không được chứa biến ở mẫu số của phân thức.",
+          "content": "Biểu thức nào sau đây KHÔNG phải là đa thức?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x^2 - 3x$"
+            },
+            {
+              "key": "B",
+              "text": "$\\frac{1}{x} + y$"
+            },
+            {
+              "key": "C",
+              "text": "$\\frac{x + y}{2}$"
+            },
+            {
+              "key": "D",
+              "text": "$5$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 10
+        },
+        {
+          "id": "8_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "$(x^2 + 2y) + (x^2 - 2y) = (x^2 + x^2) + (2y - 2y) = 2x^2$.",
+          "hint": "Cộng các hạng tử đồng dạng: $2y + (-2y) = 0$.",
+          "content": "Tổng của hai đa thức $x^2 + 2y$ và $x^2 - 2y$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$2x^2 + 4y$"
+            },
+            {
+              "key": "B",
+              "text": "$2x^2$"
+            },
+            {
+              "key": "C",
+              "text": "$4y$"
+            },
+            {
+              "key": "D",
+              "text": "$0$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 10
+        },
+        {
+          "id": "8_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Ta có: $\\left(-\\frac{1}{2}x^2y\\right)^2 = \\left(-\\frac{1}{2}\\right)^2 \\cdot (x^2)^2 \\cdot y^2 = \\frac{1}{4}x^4y^2$. Hệ số là $\\frac{1}{4}$.",
+          "hint": "Bình phương một số âm là một số dương: $(-\\frac{1}{2})^2 = \\frac{1}{4}$.",
+          "content": "Hệ số của đơn thức $\\left(-\\frac{1}{2}x^2y\\right)^2$ sau khi thu gọn là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$-\\frac{1}{2}$"
+            },
+            {
+              "key": "B",
+              "text": "$\\frac{1}{4}$"
+            },
+            {
+              "key": "C",
+              "text": "$-\\frac{1}{4}$"
+            },
+            {
+              "key": "D",
+              "text": "$1$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 20
+        },
+        {
+          "id": "8_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "$(x - y)(x - y) = (x - y)^2 = x^2 - 2xy + y^2$.",
+          "hint": "Đây là hằng đẳng thức bình phương của một hiệu: $(a - b)^2 = a^2 - 2ab + b^2$.",
+          "content": "Phép nhân hai đa thức $(x - y)(x - y)$ có kết quả thu gọn là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x^2 - y^2$"
+            },
+            {
+              "key": "B",
+              "text": "$x^2 - 2xy + y^2$"
+            },
+            {
+              "key": "C",
+              "text": "$x^2 + 2xy + y^2$"
+            },
+            {
+              "key": "D",
+              "text": "$x^2 + y^2$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 20
+        },
+        {
+          "id": "8_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Nhóm các đơn thức đồng dạng: $(5 + 2 - 7)x^3y - 4xy^2 = 0x^3y - 4xy^2 = -4xy^2$.",
+          "hint": "Tính hệ số của $x^3y$: $5 + 2 - 7 = 0$.",
+          "content": "Đa thức $P = 5x^3y - 4xy^2 + 2x^3y - 7x^3y$ sau khi thu gọn là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$-4xy^2$"
+            },
+            {
+              "key": "B",
+              "text": "$14x^3y - 4xy^2$"
+            },
+            {
+              "key": "C",
+              "text": "$4xy^2$"
+            },
+            {
+              "key": "D",
+              "text": "$0$"
+            }
+          ],
+          "correctAnswer": "A",
+          "xp": 20
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "8_1",
+          "number": 1,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Cho biểu thức $P = x^2(x - y) + y(x^2 - y)$.",
+          "prompt": "Cho biểu thức $P = x^2(x - y) + y(x^2 - y)$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Đa thức $P$ sau khi thu gọn có $3$ hạng tử.",
+              "correctAnswer": "S",
+              "explanation": "Khai triển: $P = x^3 - x^2y + x^2y - y^2 = x^3 - y^2$, chỉ có $2$ hạng tử."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Bậc của đa thức $P$ thu gọn là $3$.",
+              "correctAnswer": "Đ",
+              "explanation": "Hạng tử $x^3$ có bậc là $3$, cao nhất."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Hệ số của phần biến $y^2$ trong $P$ là $-1$.",
+              "correctAnswer": "Đ",
+              "explanation": "Hạng tử là $-y^2 = (-1)y^2$ nên hệ số bằng $-1$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tại $x = 1, y = -1$, giá trị của biểu thức $P$ bằng $0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Thay $x = 1, y = -1 \\Rightarrow P = 1^3 - (-1)^2 = 1 - 1 = 0$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "8_2",
+          "number": 2,
+          "type": "tf",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Xét đơn thức $A = \\left(-\\frac{1}{3}x^2y^3\\right) \\cdot (-6x^3y)$.",
+          "prompt": "Xét đơn thức $A = \\left(-\\frac{1}{3}x^2y^3\\right) \\cdot (-6x^3y)$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Hệ số của đơn thức $A$ sau thu gọn là $2$.",
+              "correctAnswer": "Đ",
+              "explanation": "Hệ số: $(-\\frac{1}{3}) \\cdot (-6) = 2$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Bậc của đơn thức $A$ là $9$.",
+              "correctAnswer": "Đ",
+              "explanation": "$A = 2x^5y^4$, bậc là $5 + 4 = 9$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Phần biến của đơn thức $A$ là $x^5y^4$.",
+              "correctAnswer": "Đ",
+              "explanation": "$x^2 \\cdot x^3 = x^5$, $y^3 \\cdot y = y^4 \\Rightarrow x^5y^4$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Mọi đơn thức đồng dạng với $A$ đều có phần biến là $x^6y^3$.",
+              "correctAnswer": "S",
+              "explanation": "Đơn thức đồng dạng với $A$ phải có cùng phần biến là $x^5y^4$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "8_3",
+          "number": 3,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Cho biểu thức $Q = (2x - 1)(3x + 2)$.",
+          "prompt": "Cho biểu thức $Q = (2x - 1)(3x + 2)$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Hệ số của hạng tử chứa $x^2$ trong đa thức kết quả là $6$.",
+              "correctAnswer": "Đ",
+              "explanation": "$2x \\cdot 3x = 6x^2$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Hệ số của hạng tử chứa $x$ trong đa thức kết quả là $-1$.",
+              "correctAnswer": "S",
+              "explanation": "Khai triển: $4x - 3x = 1x$, hệ số của $x$ là $1$, không phải $-1$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Hạng tử tự do của đa thức kết quả là $-2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$(-1) \\cdot 2 = -2$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tổng các hệ số của đa thức $Q$ (sau khi khai triển và thu gọn) là $7$.",
+              "correctAnswer": "S",
+              "explanation": "$Q = 6x^2 + x - 2$, tổng hệ số là $6 + 1 - 2 = 5$."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "8_1",
+          "number": 1,
+          "type": "short",
+          "level": "VDC",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Ta có: $(x - y)(x + y)(x^2 + y^2) = (x^2 - y^2)(x^2 + y^2) = x^4 - y^4$. Đa thức kết quả không có hạng tử chứa $x^2y^2$, nên hệ số của nó bằng $0$.",
+          "hint": "Áp dụng liên tiếp hai lần hằng đẳng thức hiệu hai bình phương.",
+          "content": "Tìm hệ số của phần biến $x^2y^2$ trong đa thức kết quả của phép nhân $(x - y)(x + y)(x^2 + y^2)$.",
+          "correctAnswers": [
+            "0"
+          ],
+          "correctAnswer": "0",
+          "xp": 40
+        },
+        {
+          "id": "8_2",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Khai triển: $K = (x^2 - 4) - (x^2 - 9) = x^2 - 4 - x^2 + 9 = 5$. Kết quả không phụ thuộc vào $x$, nên tại $x = 2026$ giá trị vẫn bằng $5$.",
+          "hint": "Rút gọn biểu thức trước, nhận xét xem kết quả có phụ thuộc vào biến $x$ không.",
+          "content": "Tính giá trị biểu thức $K = (x - 2)(x + 2) - (x - 3)(x + 3)$ tại $x = 2026$.",
+          "correctAnswers": [
+            "5"
+          ],
+          "correctAnswer": "5",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": 9,
+  "code": "DE-K8-C1-04",
+  "title": "Đề số 4: Phép trừ đa thức & Giá trị biểu thức",
+  "subtitle": "Rèn luyện quy tắc đổi dấu khi bỏ ngoặc và tính giá trị biểu thức đa thức",
+  "grade": "Toán 8",
+  "gradeNum": 8,
+  "book": "KNTT",
+  "chapter": 1,
+  "timeMinutes": 45,
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Mỗi câu hỏi chỉ chọn một phương án đúng.",
+      "questions": [
+        {
+          "id": "9_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Đơn thức $A$ có phần hệ số là $3$ và phần biến là $x^2y^3z$.",
+          "hint": "Phần biến gồm tất cả các chữ cái cùng số mũ của chúng.",
+          "content": "Đơn thức $A = 3x^2y^3z$. Phần biến của đơn thức này là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$3$"
+            },
+            {
+              "key": "B",
+              "text": "$x^2y^3z$"
+            },
+            {
+              "key": "C",
+              "text": "$x^2y^3$"
+            },
+            {
+              "key": "D",
+              "text": "$z$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 10
+        },
+        {
+          "id": "9_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Bỏ dấu ngoặc có dấu '-' đằng trước: $2x^2 - xy - x^2 + 2xy = (2x^2 - x^2) + (-xy + 2xy) = x^2 + xy$.",
+          "hint": "Chú ý đổi dấu: $-(-2xy) = +2xy$.",
+          "content": "Kết quả của phép trừ đa thức $(2x^2 - xy) - (x^2 - 2xy)$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x^2 - 3xy$"
+            },
+            {
+              "key": "B",
+              "text": "$x^2 + xy$"
+            },
+            {
+              "key": "C",
+              "text": "$3x^2 + xy$"
+            },
+            {
+              "key": "D",
+              "text": "$x^2 - xy$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 20
+        },
+        {
+          "id": "9_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Nhân $x^2$ với từng hạng tử: $x^2 \\cdot 2x - x^2 \\cdot 3y = 2x^3 - 3x^2y$.",
+          "hint": "Lấy $x^2$ nhân với $2x$ và $x^2$ nhân với $-3y$.",
+          "content": "Kết quả của phép nhân đơn thức với đa thức $x^2(2x - 3y)$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$2x^3 - 3x^2y$"
+            },
+            {
+              "key": "B",
+              "text": "$2x^3 - 3xy$"
+            },
+            {
+              "key": "C",
+              "text": "$2x^2 - 3x^2y$"
+            },
+            {
+              "key": "D",
+              "text": "$2x^3 + 3x^2y$"
+            }
+          ],
+          "correctAnswer": "A",
+          "xp": 20
+        },
+        {
+          "id": "9_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Theo quy ước trong SGK Toán 8, số $0$ được gọi là đa thức không và không có bậc.",
+          "hint": "Số $0$ là một trường hợp đặc biệt không được gán bậc.",
+          "content": "Bậc của đa thức không (số $0$) là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$0$"
+            },
+            {
+              "key": "B",
+              "text": "$1$"
+            },
+            {
+              "key": "C",
+              "text": "Không có bậc"
+            },
+            {
+              "key": "D",
+              "text": "Bậc tuỳ ý"
+            }
+          ],
+          "correctAnswer": "C",
+          "xp": 10
+        },
+        {
+          "id": "9_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Cách 1: Thay trực tiếp $x = 2 \\Rightarrow 2^2 - 4(2) + 4 = 4 - 8 + 4 = 0$. Cách 2: $(x - 2)^2 = (2 - 2)^2 = 0$.",
+          "hint": "Nhận dạng hằng đẳng thức $(x - 2)^2$.",
+          "content": "Giá trị của biểu thức $x^2 - 4x + 4$ tại $x = 2$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$2$"
+            },
+            {
+              "key": "B",
+              "text": "$4$"
+            },
+            {
+              "key": "C",
+              "text": "$0$"
+            },
+            {
+              "key": "D",
+              "text": "$8$"
+            }
+          ],
+          "correctAnswer": "C",
+          "xp": 20
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "9_1",
+          "number": 1,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Rút gọn biểu thức $E = (x + y)(x + y) - 2xy$.",
+          "prompt": "Rút gọn biểu thức $E = (x + y)(x + y) - 2xy$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Đa thức $E$ sau khi thu gọn là $x^2 + y^2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$E = (x + y)^2 - 2xy = x^2 + 2xy + y^2 - 2xy = x^2 + y^2$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Đa thức $E$ có bậc là $4$.",
+              "correctAnswer": "S",
+              "explanation": "$x^2 + y^2$ có bậc cao nhất là $2$, không phải $4$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Đa thức $E$ luôn nhận giá trị không âm với mọi $x, y$.",
+              "correctAnswer": "Đ",
+              "explanation": "Vì $x^2 \\ge 0$ và $y^2 \\ge 0$ với mọi $x, y$ nên $x^2 + y^2 \\ge 0$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tại $x = 3, y = -4$, giá trị của $E$ là $25$.",
+              "correctAnswer": "Đ",
+              "explanation": "Thay số: $3^2 + (-4)^2 = 9 + 16 = 25$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "9_2",
+          "number": 2,
+          "type": "tf",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Cho hai đa thức $A = 5x^2y - 4xy^2$ và $B = -5x^2y + 4xy^2$.",
+          "prompt": "Cho hai đa thức $A = 5x^2y - 4xy^2$ và $B = -5x^2y + 4xy^2$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Hai đa thức $A$ và $B$ là hai đa thức đối nhau.",
+              "correctAnswer": "Đ",
+              "explanation": "$B = -(5x^2y - 4xy^2) = -A$, vậy $A$ và $B$ là hai đa thức đối nhau."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Đa thức tổng $A + B = 0$.",
+              "correctAnswer": "Đ",
+              "explanation": "Tổng của hai đa thức đối nhau luôn bằng $0$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Đa thức hiệu $A - B = 0$.",
+              "correctAnswer": "S",
+              "explanation": "$A - B = A - (-A) = 2A = 10x^2y - 8xy^2 \\ne 0$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Bậc của đa thức hiệu $A - B$ là $3$.",
+              "correctAnswer": "Đ",
+              "explanation": "$10x^2y - 8xy^2$ có các hạng tử bậc $2 + 1 = 1 + 2 = 3$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "9_3",
+          "number": 3,
+          "type": "tf",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Xét đơn thức $F = -5x^3y^2z$.",
+          "prompt": "Xét đơn thức $F = -5x^3y^2z$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Đơn thức $F$ có $3$ biến.",
+              "correctAnswer": "Đ",
+              "explanation": "Có 3 biến là $x, y, z$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Bậc của đơn thức $F$ là $6$.",
+              "correctAnswer": "Đ",
+              "explanation": "Bậc là tổng các số mũ: $3 + 2 + 1 = 6$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Giá trị của $F$ tại $x = 1, y = 1, z = -1$ là $5$.",
+              "correctAnswer": "Đ",
+              "explanation": "$-5 \\cdot 1^3 \\cdot 1^2 \\cdot (-1) = 5$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Bình phương của đơn thức $F$ có phần hệ số là $-25$.",
+              "correctAnswer": "S",
+              "explanation": "$F^2 = [(-5)x^3y^2z]^2 = 25x^6y^4z^2$, hệ số là $25$, không phải $-25$."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "9_1",
+          "number": 1,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Các hạng tử $x^3y^2$ có bậc $3+2=5$; $xy^4$ có bậc $1+4=5$; $-x^5$ có bậc $5$; số $5$ có bậc $0$. Bậc cao nhất là $5$.",
+          "hint": "Xem bậc lớn nhất của các hạng tử trong đa thức.",
+          "content": "Tìm bậc của đa thức $M = x^3y^2 + xy^4 - x^5 + 5$.",
+          "correctAnswers": [
+            "5"
+          ],
+          "correctAnswer": "5",
+          "xp": 40
+        },
+        {
+          "id": "9_2",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Thu gọn: $N = [\\frac{1}{2} \\cdot (-4)] \\cdot (x \\cdot x^2) \\cdot (y \\cdot y) = -2x^3y^2$. Thay $x = -1, y = 2 \\Rightarrow N = -2(-1)^3(2)^2 = -2(-1)(4) = 8$.",
+          "hint": "Thu gọn đơn thức về dạng $-2x^3y^2$ trước khi thay số.",
+          "content": "Tính giá trị của biểu thức $N = \\frac{1}{2}xy \\cdot (-4x^2y)$ tại $x = -1, y = 2$.",
+          "correctAnswers": [
+            "8"
+          ],
+          "correctAnswer": "8",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": 10,
+  "code": "DE-K8-C1-05",
+  "title": "Đề số 5: Tổng ôn tập toàn diện Chương I (Đa thức)",
+  "subtitle": "Đánh giá chuẩn năng lực Toán 8 KNTT theo ma trận GDPT 2018",
+  "grade": "Toán 8",
+  "gradeNum": 8,
+  "book": "KNTT",
+  "chapter": 1,
+  "timeMinutes": 45,
+  "parts": [
+    {
+      "partId": 1,
+      "title": "PHẦN 1: TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN (5 câu)",
+      "instruction": "Mỗi câu hỏi chỉ chọn một phương án đúng.",
+      "questions": [
+        {
+          "id": "10_1",
+          "number": 1,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Ta có thể viết $\\frac{2x^2y}{3} = \\frac{2}{3}x^2y$, đây là tích của số $\\frac{2}{3}$ với các biến $x, y$, do đó nó là một đơn thức.",
+          "hint": "Hệ số có thể là một phân số.",
+          "content": "Biểu thức $\\frac{2x^2y}{3}$ có phải là đơn thức không?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Có"
+            },
+            {
+              "key": "B",
+              "text": "Không"
+            },
+            {
+              "key": "C",
+              "text": "Chỉ khi $x = 0$"
+            },
+            {
+              "key": "D",
+              "text": "Chỉ khi $y = 0$"
+            }
+          ],
+          "correctAnswer": "A",
+          "xp": 10
+        },
+        {
+          "id": "10_2",
+          "number": 2,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Khai triển: $2x \\cdot x + 2x \\cdot 1 - 2x^2 = 2x^2 + 2x - 2x^2 = 2x$.",
+          "hint": "Thực hiện phép nhân $2x(x + 1) = 2x^2 + 2x$ rồi trừ đi $2x^2$.",
+          "content": "Rút gọn biểu thức $2x(x + 1) - 2x^2$ ta được đa thức:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$2x$"
+            },
+            {
+              "key": "B",
+              "text": "$4x^2 + 2x$"
+            },
+            {
+              "key": "C",
+              "text": "$-2x$"
+            },
+            {
+              "key": "D",
+              "text": "$2$"
+            }
+          ],
+          "correctAnswer": "A",
+          "xp": 20
+        },
+        {
+          "id": "10_3",
+          "number": 3,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Hạng tử $x^4$ có bậc $4$; hạng tử $3x^2y^2$ có bậc $2 + 2 = 4$; hạng tử $-y^4$ có bậc $4$. Bậc của đa thức là $4$.",
+          "hint": "Tính bậc của từng hạng tử: $2 + 2 = 4$.",
+          "content": "Đa thức $Q = x^4 + 3x^2y^2 - y^4$ có bậc là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$4$"
+            },
+            {
+              "key": "B",
+              "text": "$2$"
+            },
+            {
+              "key": "C",
+              "text": "$6$"
+            },
+            {
+              "key": "D",
+              "text": "$8$"
+            }
+          ],
+          "correctAnswer": "A",
+          "xp": 10
+        },
+        {
+          "id": "10_4",
+          "number": 4,
+          "type": "mcq",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Nhân $x$ với từng hạng tử: $x(x^2 - xy + y^2) = x \\cdot x^2 - x \\cdot xy + x \\cdot y^2 = x^3 - x^2y + xy^2$.",
+          "hint": "Nhân $x$ vào từng số hạng của đa thức.",
+          "content": "Tích của đa thức $x^2 - xy + y^2$ và đơn thức $x$ là:",
+          "options": [
+            {
+              "key": "A",
+              "text": "$x^3 - x^2y + y^2$"
+            },
+            {
+              "key": "B",
+              "text": "$x^3 - x^2y + xy^2$"
+            },
+            {
+              "key": "C",
+              "text": "$x^3 - xy + xy^2$"
+            },
+            {
+              "key": "D",
+              "text": "$x^2 - x^2y + xy^2$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 20
+        },
+        {
+          "id": "10_5",
+          "number": 5,
+          "type": "mcq",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Cặp đơn thức $-2x^2y$ và $5x^2y$ có hệ số khác $0$ và có cùng phần biến là $x^2y$ nên đồng dạng với nhau.",
+          "hint": "Tìm cặp đơn thức có đúng phần biến $x^2y$.",
+          "content": "Cặp đơn thức nào sau đây đồng dạng với nhau?",
+          "options": [
+            {
+              "key": "A",
+              "text": "$3xy$ và $3x^2y$"
+            },
+            {
+              "key": "B",
+              "text": "$-2x^2y$ và $5x^2y$"
+            },
+            {
+              "key": "C",
+              "text": "$xy^2$ và $x^2y$"
+            },
+            {
+              "key": "D",
+              "text": "$x^2$ và $y^2$"
+            }
+          ],
+          "correctAnswer": "B",
+          "xp": 10
+        }
+      ]
+    },
+    {
+      "partId": 2,
+      "title": "PHẦN 2: TRẮC NGHIỆM ĐÚNG SAI (3 câu)",
+      "instruction": "Trong mỗi ý a), b), c), d) ở mỗi câu, chọn đúng hoặc sai.",
+      "questions": [
+        {
+          "id": "10_1",
+          "number": 1,
+          "type": "tf",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Cho biểu thức $M = (2x^2y - 3xy^2) - (x^2y - 4xy^2)$.",
+          "prompt": "Cho biểu thức $M = (2x^2y - 3xy^2) - (x^2y - 4xy^2)$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Hệ số của hạng tử $x^2y$ trong đa thức thu gọn là $1$.",
+              "correctAnswer": "Đ",
+              "explanation": "$2x^2y - x^2y = 1x^2y$, hệ số là $1$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Hệ số của hạng tử $xy^2$ trong đa thức thu gọn là $-1$.",
+              "correctAnswer": "S",
+              "explanation": "$-3xy^2 - (-4xy^2) = -3xy^2 + 4xy^2 = 1xy^2$, hệ số là $1$, không phải $-1$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Bậc của đa thức $M$ là $3$.",
+              "correctAnswer": "Đ",
+              "explanation": "$x^2y + xy^2$ có bậc là $3$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Giá trị của $M$ luôn bằng $0$ khi $x = -y$.",
+              "correctAnswer": "Đ",
+              "explanation": "Thay $x = -y \\Rightarrow (-y)^2y + (-y)y^2 = y^3 - y^3 = 0$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "10_2",
+          "number": 2,
+          "type": "tf",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Thực hiện phép nhân đa thức $K = 2x(x^2 - xy + 1)$.",
+          "prompt": "Thực hiện phép nhân đa thức $K = 2x(x^2 - xy + 1)$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Đa thức tích $K$ có $3$ hạng tử.",
+              "correctAnswer": "Đ",
+              "explanation": "$K = 2x^3 - 2x^2y + 2x$, gồm đúng $3$ hạng tử."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Bậc của đa thức $K$ là $3$.",
+              "correctAnswer": "Đ",
+              "explanation": "Hạng tử $2x^3$ có bậc là $3$, cao nhất."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Trong đa thức $K$ có chứa hạng tử $-2x^2y$.",
+              "correctAnswer": "Đ",
+              "explanation": "$2x \\cdot (-xy) = -2x^2y$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Giá trị của đa thức $K$ tại $x = 1, y = 1$ là $2$.",
+              "correctAnswer": "Đ",
+              "explanation": "Thay $x = 1, y = 1 \\Rightarrow 2(1)^3 - 2(1)^2(1) + 2(1) = 2 - 2 + 2 = 2$."
+            }
+          ],
+          "xp": 35
+        },
+        {
+          "id": "10_3",
+          "number": 3,
+          "type": "tf",
+          "level": "TH",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "",
+          "hint": "",
+          "content": "Cho hai biểu thức $P = x^2 - y^2$ và $Q = x^2 + y^2$.",
+          "prompt": "Cho hai biểu thức $P = x^2 - y^2$ và $Q = x^2 + y^2$.",
+          "items": [
+            {
+              "key": "a",
+              "label": "a",
+              "text": "Đa thức tổng $P + Q = 2x^2$.",
+              "correctAnswer": "Đ",
+              "explanation": "$(x^2 - y^2) + (x^2 + y^2) = 2x^2$."
+            },
+            {
+              "key": "b",
+              "label": "b",
+              "text": "Đa thức hiệu $P - Q = 2y^2$.",
+              "correctAnswer": "S",
+              "explanation": "$P - Q = x^2 - y^2 - x^2 - y^2 = -2y^2$, không phải $2y^2$."
+            },
+            {
+              "key": "c",
+              "label": "c",
+              "text": "Bậc của đa thức tổng $P + Q$ luôn bằng $2$ với mọi $x \\ne 0$.",
+              "correctAnswer": "Đ",
+              "explanation": "$2x^2$ có bậc bằng $2$ khi $x \\ne 0$."
+            },
+            {
+              "key": "d",
+              "label": "d",
+              "text": "Tích $P \\cdot Q$ bằng $x^4 - y^4$.",
+              "correctAnswer": "Đ",
+              "explanation": "$(x^2 - y^2)(x^2 + y^2) = (x^2)^2 - (y^2)^2 = x^4 - y^4$."
+            }
+          ],
+          "xp": 35
+        }
+      ]
+    },
+    {
+      "partId": 3,
+      "title": "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+      "instruction": "Viết kết quả cuối cùng vào ô trống.",
+      "questions": [
+        {
+          "id": "10_1",
+          "number": 1,
+          "type": "short",
+          "level": "NB",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Hạng tử có bậc cao nhất là $2x^5$ (bậc $5$), hệ số của nó là $2$.",
+          "hint": "Tìm số mũ lớn nhất của $x$ rồi đọc hệ số đi kèm.",
+          "content": "Tìm hệ số của hạng tử có bậc cao nhất trong đa thức $5x^4 - 3x^3 + 2x^5 - 1$.",
+          "correctAnswers": [
+            "2"
+          ],
+          "correctAnswer": "2",
+          "xp": 40
+        },
+        {
+          "id": "10_2",
+          "number": 2,
+          "type": "short",
+          "level": "VD",
+          "grade": 8,
+          "book": "KNTT",
+          "chapter": 1,
+          "lessonId": "K8_C1_B1_4",
+          "lessonName": "Chương I: Đa thức nhiều biến (Bài 1 - Bài 4)",
+          "explanation": "Thu gọn: $A = (2 - 3 + 5)x^2y = 4x^2y$. Thay $x = 2, y = -1 \\Rightarrow A = 4 \\cdot (2)^2 \\cdot (-1) = 4 \\cdot 4 \\cdot (-1) = -16$.",
+          "hint": "Thu gọn các đơn thức đồng dạng trước: $2 - 3 + 5 = 4$.",
+          "content": "Tính giá trị của biểu thức $A = 2x^2y - 3x^2y + 5x^2y$ tại $x = 2, y = -1$.",
+          "correctAnswers": [
+            "-16"
+          ],
+          "correctAnswer": "-16",
+          "xp": 40
+        }
+      ]
+    }
+  ]
+}
 ];
 
 const KNTT_CURRICULUM_TREE = {
