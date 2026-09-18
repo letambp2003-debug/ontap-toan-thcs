@@ -54,6 +54,13 @@
   <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
+  <!-- Firebase SDK Compat for Google & Email Auth -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+
+  <!-- Teacher Auth & Cloud API Key Engine -->
+  <script src="teacher_auth_engine.js"></script>
+
   <style>
     body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -127,6 +134,8 @@
           <i data-lucide="download" class="w-4 h-4"></i>
           <span>Xuất File questions_data.js</span>
         </button>
+
+        <div id="teacherAuthSlot"></div>
       </div>
 
     </div>
@@ -550,7 +559,7 @@
         <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
           <div>
             <h3 class="font-bold text-slate-900 text-base flex items-center gap-2">
-              <i data-lucide="user-check" class="w-5 h-5 text-purple-600"></i>
+              <i data-lucide="user-check" class="w-5 h-5 text-indigo-600"></i>
               Hồ Sơ Tính Cách & Quy Chuẩn Sư Phạm (tc.md)
             </h3>
             <p class="text-xs text-slate-500">Thiết lập nhân cách, giọng văn, cách xưng hô và quy tắc hướng dẫn Socratic của Chatbot</p>
@@ -559,10 +568,10 @@
           <div class="flex items-center gap-2">
             <input type="file" id="tc-upload-input" accept=".docx,.doc,.md,.txt" onchange="handleTcFileUpload(event)" class="hidden">
             <button onclick="document.getElementById('tc-upload-input').click()" class="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
-              <i data-lucide="upload" class="w-4 h-4 text-purple-600"></i>
+              <i data-lucide="upload" class="w-4 h-4 text-indigo-600"></i>
               <span>Nạp từ File Word / Markdown</span>
             </button>
-            <button onclick="downloadTcFile()" class="px-3 py-1.5 rounded-xl bg-purple-50 text-purple-700 font-bold text-xs hover:bg-purple-100 transition flex items-center gap-1.5">
+            <button onclick="downloadTcFile()" class="px-3 py-1.5 rounded-xl bg-indigo-50 text-indigo-700 font-bold text-xs hover:bg-indigo-100 transition flex items-center gap-1.5">
               <i data-lucide="download" class="w-4 h-4"></i>
               <span>Tải file tc.md về máy</span>
             </button>
@@ -576,13 +585,13 @@
           <textarea 
             id="tc-editor" 
             rows="14" 
-            class="w-full p-4 font-mono text-xs bg-slate-50 border border-slate-300 rounded-2xl outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white transition custom-scrollbar"
+            class="w-full p-4 font-mono text-xs bg-slate-50 border border-slate-300 rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition custom-scrollbar"
             placeholder="Quy tắc tính cách và phương pháp sư phạm..."
           ></textarea>
         </div>
 
         <div class="flex justify-end pt-2">
-          <button onclick="savePersonality()" class="px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-200 transition flex items-center gap-1.5">
+          <button onclick="savePersonality()" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md shadow-indigo-200 transition flex items-center gap-1.5">
             <i data-lucide="save" class="w-4 h-4"></i>
             <span>Lưu Hồ Sơ Tính Cách (tc.md)</span>
           </button>
@@ -633,6 +642,11 @@
 
     // INIT
     window.addEventListener('DOMContentLoaded', () => {
+      // Kích hoạt Auth Guard bảo vệ Cổng Quản Trị Giáo Viên
+      if (typeof TeacherAuthEngine !== 'undefined') {
+        TeacherAuthEngine.initGuard({ badgeContainerId: 'teacherAuthSlot', enforceLogin: true });
+      }
+
       loadSavedData();
       initKnowledgeBase();
       initPersonality();

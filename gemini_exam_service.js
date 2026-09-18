@@ -20,6 +20,10 @@
   const Service = {
     // 1. QUẢN LÝ API KEY
     getApiKey: function() {
+      if (typeof TeacherAuthEngine !== 'undefined' && TeacherAuthEngine.getGeminiApiKey) {
+        const authKey = TeacherAuthEngine.getGeminiApiKey();
+        if (authKey) return authKey;
+      }
       try {
         if (typeof localStorage !== 'undefined') {
           return localStorage.getItem(STORAGE_KEY_API) || '';
@@ -31,6 +35,9 @@
     },
 
     setApiKey: function(apiKey) {
+      if (typeof TeacherAuthEngine !== 'undefined' && TeacherAuthEngine.saveGeminiApiKey) {
+        TeacherAuthEngine.saveGeminiApiKey(apiKey);
+      }
       try {
         if (typeof localStorage !== 'undefined') {
           if (apiKey && apiKey.trim()) {

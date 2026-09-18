@@ -6468,10 +6468,17 @@
 
     // 2.3. CẤU HÌNH GOOGLE SHEETS WEBHOOK
     getSheetsWebhookUrl: function() {
+      if (typeof TeacherAuthEngine !== 'undefined' && TeacherAuthEngine.getSheetsWebhookUrl) {
+        const authUrl = TeacherAuthEngine.getSheetsWebhookUrl();
+        if (authUrl) return authUrl;
+      }
       return getStorage(STORAGE_KEYS.SHEETS_WEBHOOK, '');
     },
 
     setSheetsWebhookUrl: function(url) {
+      if (typeof TeacherAuthEngine !== 'undefined' && TeacherAuthEngine.saveSheetsWebhookUrl) {
+        TeacherAuthEngine.saveSheetsWebhookUrl(url);
+      }
       setStorage(STORAGE_KEYS.SHEETS_WEBHOOK, (url || '').trim());
       return true;
     },

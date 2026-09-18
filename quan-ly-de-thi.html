@@ -55,6 +55,13 @@
   <script src="geometry_svg_engine.js"></script>
   <script src="exam_export_engine.js"></script>
 
+  <!-- Firebase SDK Compat for Google & Email Auth -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+
+  <!-- Teacher Auth & Cloud API Key Engine -->
+  <script src="teacher_auth_engine.js"></script>
+
   <style>
     body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -114,6 +121,7 @@
           <i data-lucide="book-open" class="w-4 h-4 text-slate-500"></i>
           <span>Studio Nạp Học Liệu</span>
         </a>
+        <div id="teacherAuthSlot"></div>
       </div>
 
     </div>
@@ -690,6 +698,12 @@
     // Khởi tạo
     document.addEventListener('DOMContentLoaded', function() {
       lucide.createIcons();
+
+      // Kích hoạt Auth Guard bảo vệ Cổng Quản Trị Giáo Viên
+      if (typeof TeacherAuthEngine !== 'undefined') {
+        TeacherAuthEngine.initGuard({ badgeContainerId: 'teacherAuthSlot', enforceLogin: true });
+      }
+
       renderExamRepository();
       renderTasksList();
       initDefaultDueDate();
