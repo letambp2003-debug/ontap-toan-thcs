@@ -1,22 +1,20 @@
 # HỆ THỐNG GIA SƯ AI VÀ ÔN TẬP TOÁN THCS (GDPT 2018)
 
-Hệ thống ứng dụng tương tác đa nền tảng (Single Page Web Applications) độc lập 100%, phục vụ việc giảng dạy, ôn tập, bồi dưỡng môn **Toán THCS (Khối 6, 7, 8, 9)** theo chuẩn **Chương trình GDPT 2018**.
+Hệ thống ứng dụng tương tác đa nền tảng (Single Page Web Applications) độc lập 100%, phục vụ việc giảng dạy, ôn tập, bồi dưỡng môn **Toán THCS (Khối 6, 7, 8, 9)** theo chuẩn **Chương trình GDPT 2018** (Bộ sách Kết Nối Tri Thức Với Cuộc Sống).
 
 ---
 
-## 🌟 BỘ BA ỨNG DỤNG TÍCH HỢP
+## 🌟 BỘ TỨ ỨNG DỤNG TÍCH HỢP
 
-### 1. ⚙️ Cổng Quản Trị Giáo Viên (`quan-ly-giao-vien.html`)
-- **Phân loại theo Khối lớp**: Chuyển đổi linh hoạt giữa **Khối 6, Khối 7, Khối 8, Khối 9** và theo đối tượng học sinh (**Đại trà / Củng cố** hoặc **Nâng cao / Bồi dưỡng**).
-- **Bộ tạo câu hỏi trực quan 3 Dạng thức**:
-  - *Phần 1:* Trắc nghiệm nhiều lựa chọn (4 phương án $A, B, C, D$).
-  - *Phần 2:* Trắc nghiệm Đúng / Sai (4 ý khẳng định $a, b, c, d$).
-  - *Phần 3:* Trắc nghiệm Trả lời ngắn (kèm gợi ý từng bước Socratic).
-- **Xem trước công thức Toán tức thì (Live KaTeX Preview)**: Nhập công thức dạng `$x \in \mathbb{N}$` hiển thị ngay lập tức.
-- **Trích xuất tự động từ file Word (.docx) & văn bản thô**: Tích hợp công nghệ `mammoth.js` giúp giáo viên sao chép hoặc tải file Word lên là tự động bóc tách vào ngân hàng đề.
-- **Nạp tài liệu tri thức (`kt.md`) & Hồ sơ nhân cách (`tc.md`)**: Biên soạn hoặc tải file markdown/text trực tiếp vào hệ thống.
-- **Đồng bộ thời gian thực (Real-time LocalSync)**: Chỉ cần bấm **"Lưu & Kích Hoạt Ngay"**, toàn bộ câu hỏi và tài liệu mới được kích hoạt tức thì trên Chatbot của học sinh mà không cần tải lại máy chủ.
-- **Xuất dữ liệu**: Xuất tệp `questions_data.js`, `kt.md`, `tc.md` chỉ với 1 click.
+### 1. 🏆 Đấu Trường Tri Thức OLM (`dautruong.html`)
+- **Mô hình Gamification (Thi đấu & Đua top OLM)**:
+  - Chọn **Khối lớp (Khối 6, 7, 8, 9)** và Bài học theo phân phối SGK Kết Nối Tri Thức.
+  - Phân tầng 4 mức độ nhận thức: **🥉 Khởi Động (NB) | 🥈 Vượt Chướng Ngại (TH) | 🥇 Tăng Tốc (VD) | 👑 Đấu Sĩ Tinh Anh (VDC)**.
+- **3 Chế độ chơi hấp dẫn**:
+  - 🌿 *Luyện Tập Tự Do:* Không giới hạn thời gian, có gợi ý tư duy Socratic và lời giải chi tiết.
+  - 💖 *Vượt Ải Sinh Tồn (3 Trái Tim):* Mỗi lần chọn sai mất 1 ❤️, chuỗi đúng nhân đôi điểm combo streak!
+  - ⚔️ *Đấu Trường OLM:* Đồng hồ đếm ngược 15:00 kịch tính, thưởng tốc độ làm bài.
+- **Bảng Vàng Vinh Danh (Leaderboard) & Thẻ Chứng Nhận (PNG):** Tự động ghi danh Top 10 học sinh xuất sắc nhất và hỗ trợ xuất ảnh Chứng nhận thi đấu qua HTML5 Canvas.
 
 ### 2. 🤖 Chatbot Gia Sư AI Tương Tác 100% (`index.html` / `chatbot.html`)
 - **Phương pháp Socratic sư phạm**: Không đưa đáp án ngay mà khéo léo gợi mở từng bước, kiên nhẫn đồng hành cùng học sinh.
@@ -29,19 +27,30 @@ Hệ thống ứng dụng tương tác đa nền tảng (Single Page Web Applica
 - **3 Chế độ linh hoạt**: Thi Thử (ẩn đáp án), Luyện Tập (xem giải thích từng câu), Bản Giáo Viên (đầy đủ đáp án trình chiếu).
 - **Xuất file Word (.doc) & In ấn A4**: Thiết kế tinh gọn, có sẵn khung điểm, trường lớp và lời phê của giáo viên.
 
+### 4. ⚙️ Cổng Quản Trị Giáo Viên (`quan-ly-giao-vien.html`)
+- **Phân loại theo Khối lớp**: Chuyển đổi linh hoạt giữa **Khối 6, Khối 7, Khối 8, Khối 9** và theo đối tượng học sinh (**Đại trà / Củng cố** hoặc **Nâng cao / Bồi dưỡng**).
+- **Bộ tạo câu hỏi trực quan 3 Dạng thức**:
+  - *Phần 1:* Trắc nghiệm nhiều lựa chọn (4 phương án $A, B, C, D$).
+  - *Phần 2:* Trắc nghiệm Đúng / Sai (4 ý khẳng định $a, b, c, d$).
+  - *Phần 3:* Trắc nghiệm Trả lời ngắn (kèm gợi ý từng bước Socratic).
+- **Trích xuất tự động từ file Word (.docx) & văn bản thô**: Tích hợp công nghệ `mammoth.js` giúp giáo viên tải file Word đề thi để tự động bóc tách vào ngân hàng đề.
+- **Nạp tài liệu tri thức (`kt.md`) & Hồ sơ nhân cách (`tc.md`)**: Biên soạn trực tiếp vào hệ thống.
+- **Đồng bộ thời gian thực (Real-time LocalSync)**: Bấm **"Lưu & Kích Hoạt Ngay"** cập nhật tức thì cho cả Chatbot và Đấu trường OLM.
+
 ---
 
 ## 📁 CẤU TRÚC THƯ MỤC HỆ THỐNG
 
 ```
 d:/WEBAPP AI/CHATBOT/TN-TUONGTAC/
+├── dautruong.html          # ĐẤU TRƯỜNG TRI THỨC OLM (Thi đấu, 3 tim, bảng vàng Top 10)
 ├── index.html              # Ứng dụng Chatbot AI chính (Học sinh)
 ├── chatbot.html            # Bản alias song song của Chatbot AI
 ├── quan-ly-giao-vien.html  # CỔNG QUẢN TRỊ GIÁO VIÊN (Nạp học liệu, thêm câu hỏi Khối 6-9)
 ├── tracnghiem.html         # Bảng đề thi trắc nghiệm bấm giờ 20 phút & xuất Word
 ├── lop-6a1.html            # Trang đóng gói dành riêng cho lớp 6A1 (Đại trà)
 ├── lop-6a2.html            # Trang đóng gói dành riêng cho lớp 6A2 (Nâng cao)
-├── questions_data.js       # Cơ sở dữ liệu 5 bộ đề ôn tập (50 câu hỏi)
+├── questions_data.js       # Ngân hàng đề thi & Cây bài học SGK Kết Nối Tri Thức
 ├── kt.md                   # Hồ sơ Tri thức & Kiến thức trọng tâm Toán 6
 ├── tc.md                   # Hồ sơ Sư phạm & Nguyên tắc ứng xử của Gia Sư AI
 ├── de_thi_goc.md           # Đề thi gốc bản đầy đủ định dạng Markdown

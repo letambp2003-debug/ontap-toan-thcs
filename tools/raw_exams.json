@@ -1,8 +1,4 @@
-// =============================================================================
-// CƠ SỞ DỮ LIỆU ĐỀ THI & ĐẤU TRƯỜNG TOÁN THCS (GDPT 2018 - KẾT NỐI TRI THỨC)
-// =============================================================================
-
-const EXAM_DATA = [
+[
   {
     "id": 1,
     "title": "Đề số 1: Ôn tập Bài 1 đến Bài 4 (Chương I)",
@@ -39,14 +35,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "C",
-            "explanation": "Số 2 là một phần tử thuộc tập hợp $A$, nên kí hiệu $2 \\in A$ là chính xác. Các phương án khác sai vì $0 \\notin A$, $1 \\in A$, $5 \\notin A$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B1",
-            "lessonName": "Bài 1: Tập hợp",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Số 2 là một phần tử thuộc tập hợp $A$, nên kí hiệu $2 \\in A$ là chính xác. Các phương án khác sai vì $0 \\notin A$, $1 \\in A$, $5 \\notin A$."
           },
           {
             "id": "1_2",
@@ -72,14 +61,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Để tìm số tự nhiên liền sau của một số, ta cộng thêm 1 đơn vị: $199 + 1 = 200$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B3",
-            "lessonName": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Để tìm số tự nhiên liền sau của một số, ta cộng thêm 1 đơn vị: $199 + 1 = 200$."
           },
           {
             "id": "1_3",
@@ -105,14 +87,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Chữ số 5 nằm ở hàng chục, vì vậy giá trị của nó là $5 \\times 10 = 50$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Chữ số 5 nằm ở hàng chục, vì vậy giá trị của nó là $5 \\times 10 = 50$."
           },
           {
             "id": "1_4",
@@ -138,14 +113,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "A",
-            "explanation": "Trong hệ số La Mã: X = 10, IX = 9. Do đó $\\text{XIX} = 10 + 9 = 19$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Trong hệ số La Mã: X = 10, IX = 9. Do đó $\\text{XIX} = 10 + 9 = 19$."
           },
           {
             "id": "1_5",
@@ -171,14 +139,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Áp dụng tính chất giao hoán và kết hợp để tính nhanh: $(15 + 85) + 49 = 100 + 49 = 149$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Áp dụng tính chất giao hoán và kết hợp để tính nhanh: $(15 + 85) + 49 = 100 + 49 = 149$."
           },
           {
             "id": "1_6",
@@ -204,14 +165,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "C",
-            "explanation": "Muốn tìm số bị trừ, ta lấy hiệu cộng với số trừ: $x = 20 + 15 = 35$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Muốn tìm số bị trừ, ta lấy hiệu cộng với số trừ: $x = 20 + 15 = 35$."
           }
         ]
       },
@@ -250,14 +204,7 @@ const EXAM_DATA = [
                 "correctAnswer": "S",
                 "explanation": "Sai, các số tự nhiên nhỏ hơn 4 là $0, 1, 2, 3$, trong khi tập $M$ có phần tử 4 và không có phần tử 0."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B1",
-            "lessonName": "Bài 1: Tập hợp",
-            "level": "TH",
-            "xp": 25
+            ]
           },
           {
             "id": "1_8",
@@ -289,14 +236,7 @@ const EXAM_DATA = [
                 "correctAnswer": "Đ",
                 "explanation": "Đúng, vì với mọi số tự nhiên $a$, ta luôn có $a + 0 = 0 + a = a$."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VD",
-            "xp": 35
+            ]
           }
         ]
       },
@@ -316,14 +256,7 @@ const EXAM_DATA = [
               "98 hộp"
             ],
             "unit": "vỏ hộp",
-            "explanation": "Số vỏ hộp cả lớp chuẩn bị được là: $49 \\times 2 = 98$ (vỏ hộp).",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B1",
-            "lessonName": "Bài 1: Tập hợp",
-            "level": "VD",
-            "xp": 35
+            "explanation": "Số vỏ hộp cả lớp chuẩn bị được là: $49 \\times 2 = 98$ (vỏ hộp)."
           },
           {
             "id": "1_10",
@@ -333,21 +266,11 @@ const EXAM_DATA = [
             "correctAnswers": [
               "1827"
             ],
-            "explanation": "Thêm 1 vào số trừ và số bị trừ để làm tròn số trừ thành 200: $(2026 + 1) - (199 + 1) = 2027 - 200 = 1827$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VDC",
-            "xp": 50
+            "explanation": "Thêm 1 vào số trừ và số bị trừ để làm tròn số trừ thành 200: $(2026 + 1) - (199 + 1) = 2027 - 200 = 1827$."
           }
         ]
       }
-    ],
-    "gradeNum": 6,
-    "book": "KNTT",
-    "chapter": 1
+    ]
   },
   {
     "id": 2,
@@ -385,14 +308,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "A",
-            "explanation": "Theo quy ước SGK Toán 6, các chữ cái tiếng Việt lấy theo chữ cái in hoa không dấu: $X = \\{T; O; A; N\\}$, viết trong dấu ngoặc nhọn $\\{\\}$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B1",
-            "lessonName": "Bài 1: Tập hợp",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Theo quy ước SGK Toán 6, các chữ cái tiếng Việt lấy theo chữ cái in hoa không dấu: $X = \\{T; O; A; N\\}$, viết trong dấu ngoặc nhọn $\\{\\}$."
           },
           {
             "id": "2_2",
@@ -418,14 +334,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "$\\mathbb{N} = \\{0; 1; 2; 3; \\dots\\}$ còn $\\mathbb{N}^* = \\{1; 2; 3; \\dots\\}$. Điểm khác biệt duy nhất là $\\mathbb{N}^*$ không chứa số 0.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B1",
-            "lessonName": "Bài 1: Tập hợp",
-            "level": "NB",
-            "xp": 10
+            "explanation": "$\\mathbb{N} = \\{0; 1; 2; 3; \\dots\\}$ còn $\\mathbb{N}^* = \\{1; 2; 3; \\dots\\}$. Điểm khác biệt duy nhất là $\\mathbb{N}^*$ không chứa số 0."
           },
           {
             "id": "2_3",
@@ -451,14 +360,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "C",
-            "explanation": "Số $24 = 20 + 4$. 20 là XX, 4 là IV, do đó viết là XXIV.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Số $24 = 20 + 4$. 20 là XX, 4 là IV, do đó viết là XXIV."
           },
           {
             "id": "2_4",
@@ -484,14 +386,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "So sánh các số: $12 < 15 < 19 < 20$ là thứ tự từ nhỏ đến lớn (tăng dần).",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B3",
-            "lessonName": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "So sánh các số: $12 < 15 < 19 < 20$ là thứ tự từ nhỏ đến lớn (tăng dần)."
           },
           {
             "id": "2_5",
@@ -517,14 +412,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "A",
-            "explanation": "Thực hiện phép tính trong ngoặc trước: $25 + 35 = 60$, sau đó lấy $100 - 60 = 40$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Thực hiện phép tính trong ngoặc trước: $25 + 35 = 60$, sau đó lấy $100 - 60 = 40$."
           },
           {
             "id": "2_6",
@@ -550,14 +438,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Muốn tìm số trừ, ta lấy số bị trừ trừ đi hiệu: $x = 20 - 5 = 15$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Muốn tìm số trừ, ta lấy số bị trừ trừ đi hiệu: $x = 20 - 5 = 15$."
           }
         ]
       },
@@ -596,14 +477,7 @@ const EXAM_DATA = [
                 "correctAnswer": "S",
                 "explanation": "Sai, tập số tự nhiên là vô hạn, tia số kéo dài vô tận về bên phải và không có số tự nhiên lớn nhất."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B3",
-            "lessonName": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "level": "TH",
-            "xp": 25
+            ]
           },
           {
             "id": "2_8",
@@ -635,14 +509,7 @@ const EXAM_DATA = [
                 "correctAnswer": "Đ",
                 "explanation": "Đúng, phân tích theo cấu tạo thập phân: $345 = 300 + 40 + 5$."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "TH",
-            "xp": 25
+            ]
           }
         ]
       },
@@ -659,14 +526,7 @@ const EXAM_DATA = [
             "correctAnswers": [
               "24"
             ],
-            "explanation": "Số tự nhiên lớn nhất nhỏ hơn 25 là số liền trước của 25, tức là $25 - 1 = 24$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B3",
-            "lessonName": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "level": "VD",
-            "xp": 35
+            "explanation": "Số tự nhiên lớn nhất nhỏ hơn 25 là số liền trước của 25, tức là $25 - 1 = 24$."
           },
           {
             "id": "2_10",
@@ -676,21 +536,11 @@ const EXAM_DATA = [
             "correctAnswers": [
               "298"
             ],
-            "explanation": "Nhóm các số có tổng tròn trăm: $(37 + 63) + 198 = 100 + 198 = 298$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VD",
-            "xp": 35
+            "explanation": "Nhóm các số có tổng tròn trăm: $(37 + 63) + 198 = 100 + 198 = 298$."
           }
         ]
       }
-    ],
-    "gradeNum": 6,
-    "book": "KNTT",
-    "chapter": 1
+    ]
   },
   {
     "id": 3,
@@ -728,14 +578,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "$5 < x \\le 8$ nghĩa là $x$ lớn hơn 5 và nhỏ hơn hoặc bằng 8. Các số tự nhiên thỏa mãn là 6, 7, 8. Do đó $A = \\{6; 7; 8\\}$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B1",
-            "lessonName": "Bài 1: Tập hợp",
-            "level": "NB",
-            "xp": 10
+            "explanation": "$5 < x \\le 8$ nghĩa là $x$ lớn hơn 5 và nhỏ hơn hoặc bằng 8. Các số tự nhiên thỏa mãn là 6, 7, 8. Do đó $A = \\{6; 7; 8\\}$."
           },
           {
             "id": "3_2",
@@ -761,14 +604,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Hàng nghìn là 5, hàng trăm khuyết nên là 0, hàng chục là 2, hàng đơn vị là 1. Số viết được là 5021.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Hàng nghìn là 5, hàng trăm khuyết nên là 0, hàng chục là 2, hàng đơn vị là 1. Số viết được là 5021."
           },
           {
             "id": "3_3",
@@ -794,14 +630,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "D",
-            "explanation": "Trong hệ số La Mã cổ điển không có ký tự nào để biểu diễn số 0.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Trong hệ số La Mã cổ điển không có ký tự nào để biểu diễn số 0."
           },
           {
             "id": "3_4",
@@ -827,14 +656,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Số tự nhiên duy nhất nằm giữa 199 và 201 là 200.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B3",
-            "lessonName": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Số tự nhiên duy nhất nằm giữa 199 và 201 là 200."
           },
           {
             "id": "3_5",
@@ -860,14 +682,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Thực hiện theo thứ tự từ trái qua phải: $125 - 25 = 100$, sau đó $100 - 30 = 70$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Thực hiện theo thứ tự từ trái qua phải: $125 - 25 = 100$, sau đó $100 - 30 = 70$."
           },
           {
             "id": "3_6",
@@ -893,14 +708,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết: $x = 100 - 49 = 51$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết: $x = 100 - 49 = 51$."
           }
         ]
       },
@@ -939,14 +747,7 @@ const EXAM_DATA = [
                 "correctAnswer": "S",
                 "explanation": "Sai, quy tắc viết tập hợp là mỗi phần tử chỉ được liệt kê một lần."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B1",
-            "lessonName": "Bài 1: Tập hợp",
-            "level": "TH",
-            "xp": 25
+            ]
           },
           {
             "id": "3_8",
@@ -978,14 +779,7 @@ const EXAM_DATA = [
                 "correctAnswer": "S",
                 "explanation": "Sai, phép trừ số tự nhiên chỉ thực hiện được khi số bị trừ lớn hơn hoặc bằng số trừ."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VD",
-            "xp": 35
+            ]
           }
         ]
       },
@@ -1005,14 +799,7 @@ const EXAM_DATA = [
               "265 nắp chai"
             ],
             "unit": "nắp chai",
-            "explanation": "Tổng số nắp chai cả hai nhóm gom được là: $145 + 120 = 265$ (chiếc).",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VD",
-            "xp": 35
+            "explanation": "Tổng số nắp chai cả hai nhóm gom được là: $145 + 120 = 265$ (chiếc)."
           },
           {
             "id": "3_10",
@@ -1022,21 +809,11 @@ const EXAM_DATA = [
             "correctAnswers": [
               "2199"
             ],
-            "explanation": "Áp dụng giao hoán và kết hợp: $(2026 - 26) + 199 = 2000 + 199 = 2199$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VD",
-            "xp": 35
+            "explanation": "Áp dụng giao hoán và kết hợp: $(2026 - 26) + 199 = 2000 + 199 = 2199$."
           }
         ]
       }
-    ],
-    "gradeNum": 6,
-    "book": "KNTT",
-    "chapter": 1
+    ]
   },
   {
     "id": 4,
@@ -1074,14 +851,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "C",
-            "explanation": "Vì $b$ là một phần tử thuộc tập hợp $P$, nên $b \\in P$ là chính xác.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B1",
-            "lessonName": "Bài 1: Tập hợp",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Vì $b$ là một phần tử thuộc tập hợp $P$, nên $b \\in P$ là chính xác."
           },
           {
             "id": "4_2",
@@ -1107,14 +877,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "D",
-            "explanation": "Hai số chẵn liên tiếp hơn kém nhau 2 đơn vị. Số chẵn liền sau số 10 là $10 + 2 = 12$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B3",
-            "lessonName": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Hai số chẵn liên tiếp hơn kém nhau 2 đơn vị. Số chẵn liền sau số 10 là $10 + 2 = 12$."
           },
           {
             "id": "4_3",
@@ -1140,14 +903,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "C",
-            "explanation": "XX biểu thị 20, IX biểu thị 9. Do đó $\\text{XXIX} = 20 + 9 = 29$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "XX biểu thị 20, IX biểu thị 9. Do đó $\\text{XXIX} = 20 + 9 = 29$."
           },
           {
             "id": "4_4",
@@ -1173,14 +929,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Chữ số hàng trăm nhỏ nhất phải khác 0 nên là 1, chữ số hàng chục nhỏ nhất khác 1 nên là 0, chữ số hàng đơn vị nhỏ nhất khác 1 và 0 là 2. Vậy số đó là 102.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Chữ số hàng trăm nhỏ nhất phải khác 0 nên là 1, chữ số hàng chục nhỏ nhất khác 1 nên là 0, chữ số hàng đơn vị nhỏ nhất khác 1 và 0 là 2. Vậy số đó là 102."
           },
           {
             "id": "4_5",
@@ -1206,14 +955,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "A",
-            "explanation": "Thực hiện phép trừ: $200 - 55 = 145$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Thực hiện phép trừ: $200 - 55 = 145$."
           },
           {
             "id": "4_6",
@@ -1239,14 +981,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Số bị trừ = hiệu + số trừ: $x = 49 + 15 = 64$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Số bị trừ = hiệu + số trừ: $x = 49 + 15 = 64$."
           }
         ]
       },
@@ -1285,14 +1020,7 @@ const EXAM_DATA = [
                 "correctAnswer": "S",
                 "explanation": "Sai, chữ số 0 hoàn toàn có thể đứng ở hàng đơn vị (ví dụ các số tròn chục, tròn trăm: 10, 20, 100)."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "TH",
-            "xp": 25
+            ]
           },
           {
             "id": "4_8",
@@ -1324,14 +1052,7 @@ const EXAM_DATA = [
                 "correctAnswer": "Đ",
                 "explanation": "Đúng, vì $100 > 99$."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B3",
-            "lessonName": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "level": "TH",
-            "xp": 25
+            ]
           }
         ]
       },
@@ -1348,14 +1069,7 @@ const EXAM_DATA = [
             "correctAnswers": [
               "16"
             ],
-            "explanation": "Số tự nhiên duy nhất nằm giữa 15 và 17 là 16.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B3",
-            "lessonName": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "level": "VD",
-            "xp": 35
+            "explanation": "Số tự nhiên duy nhất nằm giữa 15 và 17 là 16."
           },
           {
             "id": "4_10",
@@ -1367,21 +1081,11 @@ const EXAM_DATA = [
               "71 học sinh"
             ],
             "unit": "học sinh",
-            "explanation": "Số học sinh các lớp còn lại của khối 6 là: $120 - 49 = 71$ (học sinh).",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VDC",
-            "xp": 50
+            "explanation": "Số học sinh các lớp còn lại của khối 6 là: $120 - 49 = 71$ (học sinh)."
           }
         ]
       }
-    ],
-    "gradeNum": 6,
-    "book": "KNTT",
-    "chapter": 1
+    ]
   },
   {
     "id": 5,
@@ -1419,14 +1123,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "C",
-            "explanation": "\"Không vượt quá 3\" nghĩa là nhỏ hơn hoặc bằng 3. Trong tập số tự nhiên gồm các số $0, 1, 2, 3$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B1",
-            "lessonName": "Bài 1: Tập hợp",
-            "level": "NB",
-            "xp": 10
+            "explanation": "\"Không vượt quá 3\" nghĩa là nhỏ hơn hoặc bằng 3. Trong tập số tự nhiên gồm các số $0, 1, 2, 3$."
           },
           {
             "id": "5_2",
@@ -1452,14 +1149,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "C",
-            "explanation": "Các số có 2 chữ số chạy từ 10 đến 99, do đó số lớn nhất là 99.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Các số có 2 chữ số chạy từ 10 đến 99, do đó số lớn nhất là 99."
           },
           {
             "id": "5_3",
@@ -1485,14 +1175,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "Số $14 = 10 + 4$. Số 10 là X, số 4 là IV, do đó viết là XIV.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Số $14 = 10 + 4$. Số 10 là X, số 4 là IV, do đó viết là XIV."
           },
           {
             "id": "5_4",
@@ -1518,14 +1201,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "C",
-            "explanation": "Vì $2025$ nhỏ hơn $2026$ nên điền dấu $<$, ta được $2025 < 2026$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B3",
-            "lessonName": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "level": "NB",
-            "xp": 10
+            "explanation": "Vì $2025$ nhỏ hơn $2026$ nên điền dấu $<$, ta được $2025 < 2026$."
           },
           {
             "id": "5_5",
@@ -1551,14 +1227,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "B",
-            "explanation": "$45 + 55 = 100$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "NB",
-            "xp": 10
+            "explanation": "$45 + 55 = 100$."
           },
           {
             "id": "5_6",
@@ -1584,14 +1253,7 @@ const EXAM_DATA = [
               }
             ],
             "correctAnswer": "C",
-            "explanation": "Số trừ = số bị trừ - hiệu: $x = 50 - 10 = 40$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "TH",
-            "xp": 20
+            "explanation": "Số trừ = số bị trừ - hiệu: $x = 50 - 10 = 40$."
           }
         ]
       },
@@ -1630,14 +1292,7 @@ const EXAM_DATA = [
                 "correctAnswer": "S",
                 "explanation": "Sai, quy tắc đúng là: Số trừ = Số bị trừ - Hiệu."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VD",
-            "xp": 35
+            ]
           },
           {
             "id": "5_8",
@@ -1669,14 +1324,7 @@ const EXAM_DATA = [
                 "correctAnswer": "S",
                 "explanation": "Sai, XV là $10 + 5 = 15$."
               }
-            ],
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B2",
-            "lessonName": "Bài 2: Cách ghi số tự nhiên",
-            "level": "TH",
-            "xp": 25
+            ]
           }
         ]
       },
@@ -1695,14 +1343,7 @@ const EXAM_DATA = [
               "9 nhóm"
             ],
             "unit": "nhóm",
-            "explanation": "Thực hiện phép chia có dư: $49 : 5 = 9$ (dư 4). Vậy xếp được nhiều nhất 9 nhóm đủ 5 bạn (còn dư 4 bạn).",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VD",
-            "xp": 35
+            "explanation": "Thực hiện phép chia có dư: $49 : 5 = 9$ (dư 4). Vậy xếp được nhiều nhất 9 nhóm đủ 5 bạn (còn dư 4 bạn)."
           },
           {
             "id": "5_10",
@@ -1712,368 +1353,10 @@ const EXAM_DATA = [
             "correctAnswers": [
               "244"
             ],
-            "explanation": "Áp dụng phương pháp thêm - bớt: $199 + 1 + 44 = 200 + 44 = 244$.",
-            "grade": 6,
-            "book": "KNTT",
-            "chapter": 1,
-            "lessonId": "K6_C1_B4",
-            "lessonName": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "level": "VD",
-            "xp": 35
-          }
-        ]
-      }
-    ],
-    "gradeNum": 6,
-    "book": "KNTT",
-    "chapter": 1
-  }
-];
-
-const KNTT_CURRICULUM_TREE = {
-  "6": {
-    "gradeName": "Toán 6 (Kết nối tri thức với cuộc sống)",
-    "chapters": [
-      {
-        "chapterId": 1,
-        "title": "Chương I: Tập hợp các số tự nhiên",
-        "description": "Tập hợp, hệ thập phân, số La Mã, thứ tự số tự nhiên, phép tính cộng trừ nhân chia",
-        "lessons": [
-          {
-            "lessonId": "K6_C1_B1",
-            "name": "Bài 1: Tập hợp",
-            "questionCount": 9
-          },
-          {
-            "lessonId": "K6_C1_B2",
-            "name": "Bài 2: Cách ghi số tự nhiên",
-            "questionCount": 12
-          },
-          {
-            "lessonId": "K6_C1_B3",
-            "name": "Bài 3: Thứ tự trong tập hợp các số tự nhiên",
-            "questionCount": 9
-          },
-          {
-            "lessonId": "K6_C1_B4",
-            "name": "Bài 4: Phép cộng và phép trừ số tự nhiên",
-            "questionCount": 20
-          },
-          {
-            "lessonId": "K6_C1_B5",
-            "name": "Bài 5: Phép nhân và phép chia số tự nhiên",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C1_B6",
-            "name": "Bài 6: Lũy thừa với số mũ tự nhiên",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C1_B7",
-            "name": "Bài 7: Thứ tự thực hiện các phép tính",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C1_OT",
-            "name": "Ôn tập Chương I",
-            "questionCount": 50
-          }
-        ]
-      },
-      {
-        "chapterId": 2,
-        "title": "Chương II: Tính chia hết trong tập hợp các số tự nhiên",
-        "description": "Quan hệ chia hết, dấu hiệu chia hết cho 2, 3, 5, 9, số nguyên tố, ƯCLN và BCNN",
-        "lessons": [
-          {
-            "lessonId": "K6_C2_B8",
-            "name": "Bài 8: Quan hệ chia hết và tính chất",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C2_B9",
-            "name": "Bài 9: Dấu hiệu chia hết",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C2_B10",
-            "name": "Bài 10: Số nguyên tố",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C2_B11",
-            "name": "Bài 11: Ước chung. Ước chung lớn nhất",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C2_B12",
-            "name": "Bài 12: Bội chung. Bội chung nhỏ nhất",
-            "questionCount": 0
-          }
-        ]
-      },
-      {
-        "chapterId": 3,
-        "title": "Chương III: Số nguyên",
-        "description": "Tập hợp các số nguyên âm, số nguyên dương, trục số và các phép toán",
-        "lessons": [
-          {
-            "lessonId": "K6_C3_B13",
-            "name": "Bài 13: Tập hợp các số nguyên",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C3_B14",
-            "name": "Bài 14: Phép cộng và phép trừ số nguyên",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C3_B15",
-            "name": "Bài 15: Quy tắc dấu ngoặc",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C3_B16",
-            "name": "Bài 16: Phép nhân số nguyên",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C3_B17",
-            "name": "Bài 17: Phép chia hết. Ước và bội của số nguyên",
-            "questionCount": 0
-          }
-        ]
-      },
-      {
-        "chapterId": 4,
-        "title": "Chương IV: Một số hình phẳng trong thực tiễn",
-        "description": "Tam giác đều, hình vuông, lục giác đều, hình chữ nhật, hình thoi, hình bình hành, hình thang cân",
-        "lessons": [
-          {
-            "lessonId": "K6_C4_B18",
-            "name": "Bài 18: Tam giác đều. Hình vuông. Lục giác đều",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C4_B19",
-            "name": "Bài 19: Hình chữ nhật. Hình thoi",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C4_B20",
-            "name": "Bài 20: Hình bình hành. Hình thang cân",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C4_B21",
-            "name": "Bài 21: Chu vi và diện tích các hình phẳng",
-            "questionCount": 0
-          }
-        ]
-      },
-      {
-        "chapterId": 5,
-        "title": "Chương V: Tính đối xứng của hình phẳng trong tự nhiên",
-        "description": "Hình có trục đối xứng, hình có tâm đối xứng trong đời sống và nghệ thuật",
-        "lessons": [
-          {
-            "lessonId": "K6_C5_B22",
-            "name": "Bài 22: Hình có trục đối xứng",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K6_C5_B23",
-            "name": "Bài 23: Hình có tâm đối xứng",
-            "questionCount": 0
-          }
-        ]
-      }
-    ]
-  },
-  "7": {
-    "gradeName": "Toán 7 (Kết nối tri thức với cuộc sống)",
-    "chapters": [
-      {
-        "chapterId": 1,
-        "title": "Chương I: Số hữu tỉ",
-        "description": "Tập hợp các số hữu tỉ, các phép tính với số hữu tỉ và lũy thừa",
-        "lessons": [
-          {
-            "lessonId": "K7_C1_B1",
-            "name": "Bài 1: Tập hợp các số hữu tỉ",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K7_C1_B2",
-            "name": "Bài 2: Cộng, trừ, nhân, chia số hữu tỉ",
-            "questionCount": 0
-          }
-        ]
-      },
-      {
-        "chapterId": 2,
-        "title": "Chương II: Số thực",
-        "description": "Số vô tỉ, căn bậc hai số học và tập hợp số thực",
-        "lessons": [
-          {
-            "lessonId": "K7_C2_B5",
-            "name": "Bài 5: Số vô tỉ. Căn bậc hai số học",
-            "questionCount": 0
-          }
-        ]
-      }
-    ]
-  },
-  "8": {
-    "gradeName": "Toán 8 (Kết nối tri thức với cuộc sống)",
-    "chapters": [
-      {
-        "chapterId": 1,
-        "title": "Chương I: Đa thức",
-        "description": "Đơn thức, đa thức nhiều biến và các phép toán",
-        "lessons": [
-          {
-            "lessonId": "K8_C1_B1",
-            "name": "Bài 1: Đơn thức",
-            "questionCount": 0
-          },
-          {
-            "lessonId": "K8_C1_B2",
-            "name": "Bài 2: Đa thức",
-            "questionCount": 0
-          }
-        ]
-      }
-    ]
-  },
-  "9": {
-    "gradeName": "Toán 9 (Kết nối tri thức với cuộc sống)",
-    "chapters": [
-      {
-        "chapterId": 1,
-        "title": "Chương I: Phương trình và hệ phương trình",
-        "description": "Phương trình bậc nhất hai ẩn, hệ hai phương trình bậc nhất hai ẩn",
-        "lessons": [
-          {
-            "lessonId": "K9_C1_B1",
-            "name": "Bài 1: Khái niệm phương trình bậc nhất hai ẩn",
-            "questionCount": 0
+            "explanation": "Áp dụng phương pháp thêm - bớt: $199 + 1 + 44 = 200 + 44 = 244$."
           }
         ]
       }
     ]
   }
-};
-
-
-/**
- * Hàm truy vấn câu hỏi linh hoạt cho Đấu trường OLM và Luyện tập
- * @param {Object} options - { grade, chapter, lessonId, level, limit, shuffle }
- * @returns {Array} Danh sách câu hỏi phù hợp
- */
-function getQuestionsForArena(options) {
-  options = options || {};
-  var grade = options.grade || 6;
-  var chapter = options.chapter || null;
-  var lessonId = options.lessonId || null;
-  var level = options.level || null;
-  var limit = typeof options.limit === 'number' ? options.limit : 10;
-  var shuffle = options.shuffle !== false;
-
-  var pool = [];
-
-  // 1. Thu thập từ EXAM_DATA mặc định
-  if (Array.isArray(EXAM_DATA)) {
-    EXAM_DATA.forEach(function(exam) {
-      if (exam.gradeNum && exam.gradeNum !== Number(grade)) return;
-      if (exam.parts) {
-        exam.parts.forEach(function(part) {
-          if (part.questions) {
-            part.questions.forEach(function(q) {
-              pool.push(Object.assign({}, q, {
-                examId: exam.id,
-                examTitle: exam.title,
-                partId: part.partId
-              }));
-            });
-          }
-        });
-      }
-    });
-  }
-
-  // 2. Thu thập thêm từ LocalStorage nếu giáo viên nạp câu hỏi mới
-  try {
-    if (typeof localStorage !== 'undefined') {
-      var stored = localStorage.getItem('TN_TOAN_TEACHER_DATA_V2');
-      if (stored) {
-        var customData = JSON.parse(stored);
-        if (Array.isArray(customData)) {
-          customData.forEach(function(exam) {
-            if (exam.gradeNum && exam.gradeNum !== Number(grade)) return;
-            if (exam.parts) {
-              exam.parts.forEach(function(part) {
-                if (part.questions) {
-                  part.questions.forEach(function(q) {
-                    pool.push(Object.assign({}, q, {
-                      examId: exam.id,
-                      examTitle: exam.title,
-                      partId: part.partId,
-                      isCustom: true
-                    }));
-                  });
-                }
-              });
-            }
-          });
-        }
-      }
-    }
-  } catch (e) {
-    console.warn('Không thể nạp dữ liệu câu hỏi tùy chỉnh:', e);
-  }
-
-  // 3. Lọc theo tiêu chí
-  var filtered = pool.filter(function(q) {
-    if (grade && q.grade && q.grade !== Number(grade)) return false;
-    if (chapter && q.chapter && q.chapter !== Number(chapter)) return false;
-    if (lessonId && q.lessonId && q.lessonId !== lessonId) return false;
-    if (level && level !== 'ALL' && q.level && q.level !== level) return false;
-    return true;
-  });
-
-  // Nếu bộ lọc quá hẹp dẫn tới rỗng, lấy từ toàn bộ câu hỏi khối lớp
-  if (filtered.length === 0) {
-    filtered = pool.filter(function(q) {
-      return !grade || (q.grade === Number(grade));
-    });
-  }
-
-  // 4. Trộn ngẫu nhiên
-  if (shuffle) {
-    filtered = filtered.slice().sort(function() { return Math.random() - 0.5; });
-  }
-
-  // 5. Cắt theo số lượng giới hạn
-  if (limit && limit > 0) {
-    return filtered.slice(0, limit);
-  }
-
-  return filtered;
-}
-
-// Hỗ trợ xuất ra môi trường trình duyệt (window) & Node.js
-if (typeof window !== 'undefined') {
-  window.EXAM_DATA = EXAM_DATA;
-  window.KNTT_CURRICULUM_TREE = KNTT_CURRICULUM_TREE;
-  window.getQuestionsForArena = getQuestionsForArena;
-}
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    EXAM_DATA: EXAM_DATA,
-    KNTT_CURRICULUM_TREE: KNTT_CURRICULUM_TREE,
-    getQuestionsForArena: getQuestionsForArena
-  };
-}
+]
