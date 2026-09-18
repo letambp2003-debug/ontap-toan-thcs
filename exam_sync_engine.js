@@ -6148,13 +6148,21 @@
           activePool = lessonFiltered;
         }
       } else if (targetChapter && !targetChapter.includes('tổng hợp') && !targetChapter.includes('toàn bộ') && !targetChapter.includes('all')) {
-        // Lọc theo Chương / Chủ đề
+        // Lọc theo Chương / Chủ đề SGK KNTT
         const keywords = [];
-        if (targetChapter.includes('đa thức')) keywords.push('đa thức', 'đơn thức');
-        if (targetChapter.includes('hằng đẳng thức')) keywords.push('hằng đẳng thức', 'bình phương', 'lập phương');
-        if (targetChapter.includes('tứ giác')) keywords.push('tứ giác', 'hình thang', 'hình bình hành');
-        if (targetChapter.includes('tập hợp')) keywords.push('tập hợp', 'số tự nhiên');
-        if (targetChapter.includes('chia hết')) keywords.push('chia hết', 'nguyên tố', 'ước chung', 'bội chung');
+        const chapLower = targetChapter.toLowerCase();
+        if (chapLower.includes('đa thức')) keywords.push('đa thức', 'đơn thức');
+        if (chapLower.includes('hằng đẳng thức')) keywords.push('hằng đẳng thức', 'bình phương', 'lập phương', 'nhân tử');
+        if (chapLower.includes('tứ giác')) keywords.push('tứ giác', 'hình thang', 'hình bình hành', 'hình chữ nhật', 'hình thoi', 'hình vuông');
+        if (chapLower.includes('thalès') || chapLower.includes('thales')) keywords.push('thalès', 'thales', 'đường trung bình', 'phân giác', 'tỉ lệ');
+        if (chapLower.includes('dữ liệu') || chapLower.includes('biểu đồ')) keywords.push('dữ liệu', 'biểu đồ', 'thống kê', 'phân loại dữ liệu');
+        if (chapLower.includes('phân thức')) keywords.push('phân thức', 'mẫu thức', 'tử thức');
+        if (chapLower.includes('phương trình') || chapLower.includes('hàm số')) keywords.push('phương trình', 'hàm số', 'đồ thị', 'hệ số góc', 'bậc nhất');
+        if (chapLower.includes('biến cố') || chapLower.includes('xác suất')) keywords.push('biến cố', 'xác suất', 'kết quả thuận lợi', 'thực nghiệm');
+        if (chapLower.includes('đồng dạng') || chapLower.includes('pythagore')) keywords.push('đồng dạng', 'pythagore', 'tam giác vuông');
+        if (chapLower.includes('hình khối') || chapLower.includes('hình chóp')) keywords.push('hình chóp', 'tam giác đều', 'tứ giác đều', 'thể tích');
+        if (chapLower.includes('tập hợp')) keywords.push('tập hợp', 'số tự nhiên');
+        if (chapLower.includes('chia hết')) keywords.push('chia hết', 'nguyên tố', 'ước chung', 'bội chung');
 
         const chapterFiltered = questionPool.filter(q => {
           const chapterStr = (q.chapter ? String(q.chapter) : '').toLowerCase();

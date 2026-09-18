@@ -6081,45 +6081,227 @@ const KNTT_CURRICULUM_TREE = {
     ]
   },
     "8": {
-    "gradeName": "Toán 8 (Kết nối tri thức với cuộc sống)",
-    "chapters": [
-      {
-        "chapterId": 1,
-        "title": "Chương I: Đa thức",
-        "description": "Đơn thức, đa thức nhiều biến và các phép toán",
-        "lessons": [
-          { "lessonId": "K8_C1_B1", "name": "Bài 1: Đơn thức", "questionCount": 10 },
-          { "lessonId": "K8_C1_B2", "name": "Bài 2: Đa thức", "questionCount": 10 },
-          { "lessonId": "K8_C1_B3", "name": "Bài 3: Phép cộng và phép trừ đa thức", "questionCount": 8 },
-          { "lessonId": "K8_C1_B4", "name": "Bài 4: Phép nhân đa thức", "questionCount": 8 },
-          { "lessonId": "K8_C1_B5", "name": "Bài 5: Phép chia đa thức cho đơn thức", "questionCount": 6 }
-        ]
-      },
-      {
-        "chapterId": 2,
-        "title": "Chương II: Hằng đẳng thức đáng nhớ & Ứng dụng",
-        "description": "7 hằng đẳng thức đáng nhớ, phân tích đa thức thành nhân tử",
-        "lessons": [
-          { "lessonId": "K8_C2_B6", "name": "Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu", "questionCount": 10 },
-          { "lessonId": "K8_C2_B7", "name": "Bài 7: Lập phương của một tổng. Lập phương của một hiệu", "questionCount": 8 },
-          { "lessonId": "K8_C2_B8", "name": "Bài 8: Tổng và hiệu hai lập phương", "questionCount": 8 },
-          { "lessonId": "K8_C2_B9", "name": "Bài 9: Phân tích đa thức thành nhân tử", "questionCount": 12 }
-        ]
-      },
-      {
-        "chapterId": 3,
-        "title": "Chương III: Tứ giác",
-        "description": "Tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông",
-        "lessons": [
-          { "lessonId": "K8_C3_B10", "name": "Bài 10: Tứ giác", "questionCount": 10 },
-          { "lessonId": "K8_C3_B11", "name": "Bài 11: Hình thang cân", "questionCount": 10 },
-          { "lessonId": "K8_C3_B12", "name": "Bài 12: Hình bình hành", "questionCount": 10 },
-          { "lessonId": "K8_C3_B13", "name": "Bài 13: Hình chữ nhật", "questionCount": 10 },
-          { "lessonId": "K8_C3_B14", "name": "Bài 14: Hình thoi và hình vuông", "questionCount": 10 }
-        ]
-      }
-    ]
-  },
+      "gradeName": "Toán 8 (Kết nối tri thức với cuộc sống)",
+      "totalPeriods": 140,
+      "semesters": [
+        { "semester": 1, "name": "Học kỳ I (72 tiết)", "domains": ["Số và Đại số (29 tiết)", "Hình học và Đo lường (26 tiết)", "Một số yếu tố Thống kê và Xác suất (11 tiết)", "Hoạt động thực hành và trải nghiệm (6 tiết)"] },
+        { "semester": 2, "name": "Học kỳ II (68 tiết)", "domains": ["Số và Đại số (31 tiết)", "Hình học và Đo lường (24 tiết)", "Một số yếu tố Thống kê và Xác suất (9 tiết)", "Hoạt động thực hành và trải nghiệm (4 tiết)"] }
+      ],
+      "chapters": [
+        // ── HỌC KỲ I (72 TIẾT) ──
+        {
+          "chapterId": 1,
+          "semester": 1,
+          "domain": "Số và Đại số",
+          "title": "Chương I: Đa thức",
+          "periods": 16,
+          "description": "Đơn thức, đa thức nhiều biến, phép cộng trừ, nhân đa thức, chia đa thức cho đơn thức",
+          "lessons": [
+            { "lessonId": "K8_C1_B1", "name": "Bài 1. Đơn thức (2 tiết | PPCT 1, 2)", "periods": 2, "ppct": "1, 2", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C1_B2", "name": "Bài 2. Đa thức (2 tiết | PPCT 3, 4)", "periods": 2, "ppct": "3, 4", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C1_B3", "name": "Bài 3. Phép cộng và phép trừ đa thức (2 tiết | PPCT 5, 6)", "periods": 2, "ppct": "5, 6", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C1_LT1", "name": "Luyện tập chung (2 tiết | PPCT 7, 8)", "periods": 2, "ppct": "7, 8", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C1_B4", "name": "Bài 4. Phép nhân đa thức (2 tiết | PPCT 9, 10)", "periods": 2, "ppct": "9, 10", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C1_B5", "name": "Bài 5. Phép chia đa thức cho đơn thức (1 tiết | PPCT 11)", "periods": 1, "ppct": "11", "type": "lesson", "questionCount": 6 },
+            { "lessonId": "K8_C1_LT2", "name": "Luyện tập chung (2 tiết | PPCT 12, 13)", "periods": 2, "ppct": "12, 13", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C1_BT", "name": "Bài tập cuối chương I (1 tiết | PPCT 14)", "periods": 1, "ppct": "14", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C1_OT_GK1", "name": "Ôn tập giữa HKI (1 tiết | PPCT 15)", "periods": 1, "ppct": "15", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C1_KT_GK1", "name": "Kiểm tra giữa HKI (1 tiết | PPCT 16)", "periods": 1, "ppct": "16", "type": "exam", "questionCount": 10 }
+          ]
+        },
+        {
+          "chapterId": 2,
+          "semester": 1,
+          "domain": "Số và Đại số",
+          "title": "Chương II: Hằng đẳng thức đáng nhớ và ứng dụng",
+          "periods": 13,
+          "description": "7 hằng đẳng thức đáng nhớ, phân tích đa thức thành nhân tử và ứng dụng",
+          "lessons": [
+            { "lessonId": "K8_C2_B6", "name": "Bài 6. Hiệu hai bình phương. Bình phương của một tổng hay một hiệu (2 tiết | PPCT 17, 18)", "periods": 2, "ppct": "17, 18", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C2_B7", "name": "Bài 7. Lập phương của một tổng hay một hiệu (2 tiết | PPCT 19, 20)", "periods": 2, "ppct": "19, 20", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C2_B8", "name": "Bài 8. Tổng và hiệu hai lập phương (2 tiết | PPCT 21, 22)", "periods": 2, "ppct": "21, 22", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C2_LT1", "name": "Luyện tập chung (1 tiết | PPCT 23)", "periods": 1, "ppct": "23", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C2_B9", "name": "Bài 9. Phân tích đa thức thành nhân tử (2 tiết | PPCT 24, 25)", "periods": 2, "ppct": "24, 25", "type": "lesson", "questionCount": 12 },
+            { "lessonId": "K8_C2_LT2", "name": "Luyện tập chung (1 tiết | PPCT 26)", "periods": 1, "ppct": "26", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C2_BT", "name": "Bài tập cuối chương II (1 tiết | PPCT 27)", "periods": 1, "ppct": "27", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C2_OT_CK1", "name": "Ôn tập cuối HKI (2 tiết | PPCT 28, 29)", "periods": 2, "ppct": "28, 29", "type": "review", "questionCount": 12 }
+          ]
+        },
+        {
+          "chapterId": 3,
+          "semester": 1,
+          "domain": "Hình học và Đo lường",
+          "title": "Chương III: Tứ giác",
+          "periods": 18,
+          "description": "Tứ giác, hình thang cân, hình bình hành, hình chữ nhật, hình thoi và hình vuông",
+          "lessons": [
+            { "lessonId": "K8_C3_B10", "name": "Bài 10. Tứ giác (1 tiết | PPCT 1)", "periods": 1, "ppct": "1", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C3_B11", "name": "Bài 11. Hình thang cân (2 tiết | PPCT 2, 3)", "periods": 2, "ppct": "2, 3", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C3_LT1", "name": "Luyện tập chung (1 tiết | PPCT 4)", "periods": 1, "ppct": "4", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C3_B12", "name": "Bài 12. Hình bình hành (2 tiết | PPCT 5, 6)", "periods": 2, "ppct": "5, 6", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C3_LT2", "name": "Luyện tập chung (2 tiết | PPCT 7, 8)", "periods": 2, "ppct": "7, 8", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C3_B13", "name": "Bài 13. Hình chữ nhật (2 tiết | PPCT 9, 10)", "periods": 2, "ppct": "9, 10", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C3_B14", "name": "Bài 14. Hình thoi và hình vuông (2 tiết | PPCT 11, 12)", "periods": 2, "ppct": "11, 12", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C3_LT3", "name": "Luyện tập chung (2 tiết | PPCT 13, 14)", "periods": 2, "ppct": "13, 14", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C3_BT", "name": "Bài tập cuối chương III (1 tiết | PPCT 15)", "periods": 1, "ppct": "15", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C3_OT_GK1", "name": "Ôn tập giữa HKI (2 tiết | PPCT 16, 17)", "periods": 2, "ppct": "16, 17", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C3_KT_GK1", "name": "Kiểm tra giữa HKI (1 tiết | PPCT 18)", "periods": 1, "ppct": "18", "type": "exam", "questionCount": 10 }
+          ]
+        },
+        {
+          "chapterId": 4,
+          "semester": 1,
+          "domain": "Hình học và Đo lường",
+          "title": "Chương IV: Định lí Thalès",
+          "periods": 8,
+          "description": "Định lí Thalès trong tam giác, đường trung bình và tính chất đường phân giác của tam giác",
+          "lessons": [
+            { "lessonId": "K8_C4_B15", "name": "Bài 15. Định lí Thalès trong tam giác (3 tiết | PPCT 19, 20, 21)", "periods": 3, "ppct": "19, 20, 21", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C4_B16", "name": "Bài 16. Đường trung bình của tam giác (1 tiết | PPCT 22)", "periods": 1, "ppct": "22", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C4_B17", "name": "Bài 17. Tính chất đường phân giác của tam giác (1 tiết | PPCT 23)", "periods": 1, "ppct": "23", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C4_LT", "name": "Luyện tập chung (2 tiết | PPCT 24, 25)", "periods": 2, "ppct": "24, 25", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C4_BT", "name": "Bài tập cuối chương IV (1 tiết | PPCT 26)", "periods": 1, "ppct": "26", "type": "review", "questionCount": 10 }
+          ]
+        },
+        {
+          "chapterId": 5,
+          "semester": 1,
+          "domain": "Một số yếu tố Thống kê và Xác suất",
+          "title": "Chương V: Dữ liệu và biểu đồ",
+          "periods": 11,
+          "description": "Thu thập và phân loại dữ liệu, biểu diễn bằng bảng biểu đồ, phân tích số liệu thống kê",
+          "lessons": [
+            { "lessonId": "K8_C5_B18", "name": "Bài 18. Thu thập và phân loại dữ liệu (1 tiết | PPCT 1)", "periods": 1, "ppct": "1", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C5_B19", "name": "Bài 19. Biểu diễn dữ liệu bằng bảng, biểu đồ (2 tiết | PPCT 2, 3)", "periods": 2, "ppct": "2, 3", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C5_B20", "name": "Bài 20. Phân tích số liệu thống kê dựa vào biểu đồ (2 tiết | PPCT 4, 5)", "periods": 2, "ppct": "4, 5", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C5_LT", "name": "Luyện tập chung (2 tiết | PPCT 6, 7)", "periods": 2, "ppct": "6, 7", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C5_BT", "name": "Bài tập cuối chương V (1 tiết | PPCT 8)", "periods": 1, "ppct": "8", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C5_OT_CK1", "name": "Ôn tập cuối HKI (1 tiết | PPCT 9)", "periods": 1, "ppct": "9", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C5_KT_CK1", "name": "Kiểm tra cuối HKI (2 tiết | PPCT 10, 11)", "periods": 2, "ppct": "10, 11", "type": "exam", "questionCount": 10 }
+          ]
+        },
+        {
+          "chapterId": 101,
+          "semester": 1,
+          "domain": "Hoạt động thực hành và trải nghiệm",
+          "title": "Hoạt động thực hành và trải nghiệm (HKI)",
+          "periods": 6,
+          "description": "Lãi kép, đầu tư cá nhân, vẽ hình GeoGebra, tính toán đa thức, phân tích khí hậu Việt Nam",
+          "lessons": [
+            { "lessonId": "K8_EXP1_CD1", "name": "Chủ đề 1: Công thức tính lãi kép / Bài toán đầu tư cá nhân (1 tiết | PPCT 1)", "periods": 1, "ppct": "1", "type": "practice", "questionCount": 6 },
+            { "lessonId": "K8_EXP1_CD2", "name": "Chủ đề 2: Vẽ hình đơn giản với phần mềm GeoGebra (1 tiết | PPCT 2)", "periods": 1, "ppct": "2", "type": "practice", "questionCount": 6 },
+            { "lessonId": "K8_EXP1_CD3", "name": "Chủ đề 3: Tính toán trên đa thức với phần mềm GeoGebra (2 tiết | PPCT 3, 4)", "periods": 2, "ppct": "3, 4", "type": "practice", "questionCount": 6 },
+            { "lessonId": "K8_EXP1_CD4", "name": "Chủ đề 4: Phân tích đặc điểm khí hậu Việt Nam (2 tiết | PPCT 5, 6)", "periods": 2, "ppct": "5, 6", "type": "practice", "questionCount": 6 }
+          ]
+        },
+
+        // ── HỌC KỲ II (68 TIẾT) ──
+        {
+          "chapterId": 6,
+          "semester": 2,
+          "domain": "Số và Đại số",
+          "title": "Chương VI: Phân thức đại số",
+          "periods": 16,
+          "description": "Định nghĩa, tính chất cơ bản, cộng, trừ, nhân, chia phân thức đại số",
+          "lessons": [
+            { "lessonId": "K8_C6_B21", "name": "Bài 21. Phân thức đại số (1 tiết | PPCT 30)", "periods": 1, "ppct": "30", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C6_B22", "name": "Bài 22. Tính chất cơ bản của phân thức đại số (3 tiết | PPCT 31, 32, 33)", "periods": 3, "ppct": "31, 32, 33", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C6_LT1", "name": "Luyện tập chung (2 tiết | PPCT 34, 35)", "periods": 2, "ppct": "34, 35", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C6_B23", "name": "Bài 23. Phép cộng và phép trừ phân thức đại số (3 tiết | PPCT 36, 37, 38)", "periods": 3, "ppct": "36, 37, 38", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C6_B24", "name": "Bài 24. Phép nhân và phép chia phân thức đại số (2 tiết | PPCT 39, 40)", "periods": 2, "ppct": "39, 40", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C6_LT2", "name": "Luyện tập chung (2 tiết | PPCT 41, 42)", "periods": 2, "ppct": "41, 42", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C6_BT", "name": "Bài tập cuối chương VI (1 tiết | PPCT 43)", "periods": 1, "ppct": "43", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C6_OT_GK2", "name": "Ôn tập giữa HKII (1 tiết | PPCT 44)", "periods": 1, "ppct": "44", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C6_KT_GK2", "name": "Kiểm tra giữa HKII (1 tiết | PPCT 45)", "periods": 1, "ppct": "45", "type": "exam", "questionCount": 10 }
+          ]
+        },
+        {
+          "chapterId": 7,
+          "semester": 2,
+          "domain": "Số và Đại số",
+          "title": "Chương VII: Phương trình bậc nhất và hàm số bậc nhất",
+          "periods": 15,
+          "description": "Phương trình bậc nhất một ẩn, giải bài toán lập PT, khái niệm hàm số, hàm số bậc nhất, hệ số góc",
+          "lessons": [
+            { "lessonId": "K8_C7_B25", "name": "Bài 25. Phương trình bậc nhất một ẩn (2 tiết | PPCT 46, 47)", "periods": 2, "ppct": "46, 47", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C7_B26", "name": "Bài 26. Giải bài toán bằng cách lập phương trình (2 tiết | PPCT 48, 49)", "periods": 2, "ppct": "48, 49", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C7_LT1", "name": "Luyện tập chung (2 tiết | PPCT 50, 51)", "periods": 2, "ppct": "50, 51", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C7_B27", "name": "Bài 27. Khái niệm hàm số và đồ thị của hàm số (2 tiết | PPCT 52, 53)", "periods": 2, "ppct": "52, 53", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C7_B28", "name": "Bài 28. Hàm số bậc nhất và đồ thị của hàm số bậc nhất (2 tiết | PPCT 54, 55)", "periods": 2, "ppct": "54, 55", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C7_B29", "name": "Bài 29. Hệ số góc của đường thẳng (2 tiết | PPCT 56, 57)", "periods": 2, "ppct": "56, 57", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C7_LT2", "name": "Luyện tập chung (2 tiết | PPCT 58, 59)", "periods": 2, "ppct": "58, 59", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C7_BT", "name": "Bài tập cuối chương VII (1 tiết | PPCT 60)", "periods": 1, "ppct": "60", "type": "review", "questionCount": 10 }
+          ]
+        },
+        {
+          "chapterId": 8,
+          "semester": 2,
+          "domain": "Một số yếu tố Thống kê và Xác suất",
+          "title": "Chương VIII: Làm quen với biến cố và xác suất của biến cố",
+          "periods": 9,
+          "description": "Kết quả có thể và kết quả thuận lợi, tính xác suất bằng tỉ số, xác suất thực nghiệm",
+          "lessons": [
+            { "lessonId": "K8_C8_B30", "name": "Bài 30. Kết quả có thể và kết quả thuận lợi (1 tiết | PPCT 12)", "periods": 1, "ppct": "12", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C8_B31", "name": "Bài 31. Cách tính xác suất của biến cố bằng tỉ số (2 tiết | PPCT 13, 14)", "periods": 2, "ppct": "13, 14", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C8_B32", "name": "Bài 32. Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng (2 tiết | PPCT 15, 16)", "periods": 2, "ppct": "15, 16", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C8_LT", "name": "Luyện tập chung (1 tiết | PPCT 17)", "periods": 1, "ppct": "17", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C8_OT_CK2", "name": "Ôn tập cuối HKII (1 tiết | PPCT 18)", "periods": 1, "ppct": "18", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C8_KT_CK2", "name": "Kiểm tra cuối HKII (1 tiết | PPCT 19)", "periods": 1, "ppct": "19", "type": "exam", "questionCount": 10 },
+            { "lessonId": "K8_C8_BT", "name": "Bài tập cuối chương VIII (1 tiết | PPCT 20)", "periods": 1, "ppct": "20", "type": "review", "questionCount": 10 }
+          ]
+        },
+        {
+          "chapterId": 9,
+          "semester": 2,
+          "domain": "Hình học và Đo lường",
+          "title": "Chương IX: Tam giác đồng dạng",
+          "periods": 16,
+          "description": "Hai tam giác đồng dạng, 3 trường hợp đồng dạng, định lí Pythagore, tam giác vuông đồng dạng, hình đồng dạng",
+          "lessons": [
+            { "lessonId": "K8_C9_B33", "name": "Bài 33. Hai tam giác đồng dạng (1 tiết | PPCT 27)", "periods": 1, "ppct": "27", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C9_B34", "name": "Bài 34. Ba trường hợp đồng dạng của hai tam giác (3 tiết | PPCT 28, 29, 30)", "periods": 3, "ppct": "28, 29, 30", "type": "lesson", "questionCount": 12 },
+            { "lessonId": "K8_C9_LT1", "name": "Luyện tập chung (2 tiết | PPCT 31, 32)", "periods": 2, "ppct": "31, 32", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C9_B35", "name": "Bài 35. Định lí Pythagore và ứng dụng (2 tiết | PPCT 33, 34)", "periods": 2, "ppct": "33, 34", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C9_B36", "name": "Bài 36. Các trường hợp đồng dạng của hai tam giác vuông (2 tiết | PPCT 35, 36)", "periods": 2, "ppct": "35, 36", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C9_B37", "name": "Bài 37. Hình đồng dạng (1 tiết | PPCT 37)", "periods": 1, "ppct": "37", "type": "lesson", "questionCount": 8 },
+            { "lessonId": "K8_C9_LT2", "name": "Luyện tập chung (2 tiết | PPCT 38, 41)", "periods": 2, "ppct": "38, 41", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C9_OT_GK2", "name": "Ôn tập giữa HKII (1 tiết | PPCT 39)", "periods": 1, "ppct": "39", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C9_KT_GK2", "name": "Kiểm tra giữa HKII (1 tiết | PPCT 40)", "periods": 1, "ppct": "40", "type": "exam", "questionCount": 10 },
+            { "lessonId": "K8_C9_BT", "name": "Bài tập cuối chương IX (1 tiết | PPCT 42)", "periods": 1, "ppct": "42", "type": "review", "questionCount": 10 }
+          ]
+        },
+        {
+          "chapterId": 10,
+          "semester": 2,
+          "domain": "Hình học và Đo lường",
+          "title": "Chương X: Một số hình khối trong thực tiễn",
+          "periods": 8,
+          "description": "Hình chóp tam giác đều, hình chóp tứ giác đều, diện tích xung quanh và thể tích",
+          "lessons": [
+            { "lessonId": "K8_C10_B38", "name": "Bài 38. Hình chóp tam giác đều (2 tiết | PPCT 43, 44)", "periods": 2, "ppct": "43, 44", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C10_B39", "name": "Bài 39. Hình chóp tứ giác đều (2 tiết | PPCT 45, 46)", "periods": 2, "ppct": "45, 46", "type": "lesson", "questionCount": 10 },
+            { "lessonId": "K8_C10_LT", "name": "Luyện tập chung (1 tiết | PPCT 47)", "periods": 1, "ppct": "47", "type": "practice", "questionCount": 8 },
+            { "lessonId": "K8_C10_OT_CK2", "name": "Ôn tập cuối HKII (1 tiết | PPCT 48)", "periods": 1, "ppct": "48", "type": "review", "questionCount": 10 },
+            { "lessonId": "K8_C10_KT_CK2", "name": "Kiểm tra cuối HKII (1 tiết | PPCT 49)", "periods": 1, "ppct": "49", "type": "exam", "questionCount": 10 },
+            { "lessonId": "K8_C10_BT", "name": "Bài tập cuối chương X (1 tiết | PPCT 50)", "periods": 1, "ppct": "50", "type": "review", "questionCount": 10 }
+          ]
+        },
+        {
+          "chapterId": 102,
+          "semester": 2,
+          "domain": "Hoạt động thực hành và trải nghiệm",
+          "title": "Hoạt động thực hành và trải nghiệm (HKII)",
+          "periods": 4,
+          "description": "Ứng dụng hàm số trong tài chính, đo chiều cao với Thales & Pythagore, GeoGebra, mô tả ngẫu nhiên Excel",
+          "lessons": [
+            { "lessonId": "K8_EXP2_CD1", "name": "Chủ đề 1: Một vài ứng dụng của hàm số bậc nhất trong tài chính (1 tiết | PPCT 7)", "periods": 1, "ppct": "7", "type": "practice", "questionCount": 6 },
+            { "lessonId": "K8_EXP2_CD2", "name": "Chủ đề 2: Ứng dụng định lí Thales, định lí Pythagore và tam giác đồng dạng để đo chiều cao (1 tiết | PPCT 8)", "periods": 1, "ppct": "8", "type": "practice", "questionCount": 6 },
+            { "lessonId": "K8_EXP2_CD3", "name": "Chủ đề 3: Thực hiện tính toán trên phân thức đại số và vẽ đồ thị với phần mềm GeoGebra (1 tiết | PPCT 9)", "periods": 1, "ppct": "9", "type": "practice", "questionCount": 6 },
+            { "lessonId": "K8_EXP2_CD4", "name": "Chủ đề 4: Mô tả thí nghiệm ngẫu nhiên với phần mềm Excel (1 tiết | PPCT 10)", "periods": 1, "ppct": "10", "type": "practice", "questionCount": 6 }
+          ]
+        }
+      ]
+    },
     "9": {
     "gradeName": "Toán 9 (Kết nối tri thức với cuộc sống)",
     "chapters": [

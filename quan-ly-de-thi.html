@@ -226,10 +226,23 @@
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Chương / Chủ Đề SGK</label>
             <select id="genChapter" onchange="onGeneratorChapterChange()" class="w-full text-xs rounded-xl border border-slate-200 p-2.5 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
-              <option value="Chương I: Đa thức">Chương I: Đa thức (Đơn thức, Đa thức nhiều biến, Phép tính)</option>
-              <option value="Chương II: Hằng đẳng thức đáng nhớ">Chương II: Hằng đẳng thức đáng nhớ & Ứng dụng</option>
-              <option value="Chương III: Tứ giác">Chương III: Tứ giác (Hình thang, Hình bình hành, Hình chữ nhật)</option>
-              <option value="Tổng hợp toàn bộ chương trình">Tổng hợp toàn bộ chương trình</option>
+              <optgroup label="── HỌC KỲ I (72 tiết) ──">
+                <option value="Chương I: Đa thức" selected>Chương I: Đa thức (16 tiết | Bài 1 - Bài 5)</option>
+                <option value="Chương II: Hằng đẳng thức đáng nhớ và ứng dụng">Chương II: Hằng đẳng thức đáng nhớ & Ứng dụng (13 tiết | Bài 6 - Bài 9)</option>
+                <option value="Chương III: Tứ giác">Chương III: Tứ giác (18 tiết | Bài 10 - Bài 14)</option>
+                <option value="Chương IV: Định lí Thalès">Chương IV: Định lí Thalès trong tam giác (8 tiết | Bài 15 - Bài 17)</option>
+                <option value="Chương V: Dữ liệu và biểu đồ">Chương V: Dữ liệu và biểu đồ (11 tiết | Bài 18 - Bài 20)</option>
+                <option value="Hoạt động thực hành và trải nghiệm (HKI)">Thực hành & Trải nghiệm HKI (6 tiết | Chủ đề 1 - 4)</option>
+              </optgroup>
+              <optgroup label="── HỌC KỲ II (68 tiết) ──">
+                <option value="Chương VI: Phân thức đại số">Chương VI: Phân thức đại số (16 tiết | Bài 21 - Bài 24)</option>
+                <option value="Chương VII: Phương trình bậc nhất và hàm số bậc nhất">Chương VII: Phương trình bậc nhất & Hàm số (15 tiết | Bài 25 - Bài 29)</option>
+                <option value="Chương VIII: Làm quen với biến cố và xác suất của biến cố">Chương VIII: Biến cố & Xác suất (9 tiết | Bài 30 - Bài 32)</option>
+                <option value="Chương IX: Tam giác đồng dạng">Chương IX: Tam giác đồng dạng (16 tiết | Bài 33 - Bài 37)</option>
+                <option value="Chương X: Một số hình khối trong thực tiễn">Chương X: Hình chóp tam giác đều & Tứ giác đều (8 tiết | Bài 38 - Bài 39)</option>
+                <option value="Hoạt động thực hành và trải nghiệm (HKII)">Thực hành & Trải nghiệm HKII (4 tiết | Chủ đề 1 - 4)</option>
+              </optgroup>
+              <option value="Tổng hợp toàn bộ chương trình">Tổng hợp toàn bộ chương trình Toán 8 (KNTT)</option>
             </select>
           </div>
 
@@ -239,7 +252,7 @@
               <label class="text-xs font-bold text-slate-700">Bài Học Cụ Thể</label>
               <span class="text-[10px] text-slate-400 font-normal">Tùy chọn tạo đề 15p riêng từng bài</span>
             </div>
-            <select id="genLesson" class="w-full text-xs rounded-xl border border-slate-200 p-2.5 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
+            <select id="genLesson" onchange="onGeneratorLessonChange()" class="w-full text-xs rounded-xl border border-slate-200 p-2.5 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
               <option value="ALL">-- Toàn bộ chương (Tổng hợp) --</option>
             </select>
           </div>
@@ -884,12 +897,28 @@
       const lessonSelect = document.getElementById('genLesson');
       if (!lessonSelect) return;
 
-      const currentChapter = chapterSelect.value;
+      const currentChapter = chapterSelect.value.trim().toLowerCase();
       let lessons = [];
 
       if (typeof KNTT_CURRICULUM_TREE !== 'undefined' && KNTT_CURRICULUM_TREE[grade]) {
         const gradeTree = KNTT_CURRICULUM_TREE[grade];
-        const foundChap = gradeTree.chapters.find(c => currentChapter.includes(c.title) || c.title.includes(currentChapter) || (currentChapter.includes('Chương I') && c.chapterId === 1) || (currentChapter.includes('Chương II') && c.chapterId === 2) || (currentChapter.includes('Chương III') && c.chapterId === 3));
+        const foundChap = gradeTree.chapters.find(c => {
+          if (!c.title) return false;
+          const t = c.title.toLowerCase().trim();
+          return currentChapter.includes(t) || t.includes(currentChapter) ||
+                 (currentChapter.includes('chương i:') && t.includes('chương i:')) ||
+                 (currentChapter.includes('chương ii:') && t.includes('chương ii:')) ||
+                 (currentChapter.includes('chương iii:') && t.includes('chương iii:')) ||
+                 (currentChapter.includes('chương iv:') && t.includes('chương iv:')) ||
+                 (currentChapter.includes('chương v:') && t.includes('chương v:')) ||
+                 (currentChapter.includes('chương vi:') && t.includes('chương vi:')) ||
+                 (currentChapter.includes('chương vii:') && t.includes('chương vii:')) ||
+                 (currentChapter.includes('chương viii:') && t.includes('chương viii:')) ||
+                 (currentChapter.includes('chương ix:') && t.includes('chương ix:')) ||
+                 (currentChapter.includes('chương x:') && t.includes('chương x:')) ||
+                 (currentChapter.includes('hki') && t.includes('hki')) ||
+                 (currentChapter.includes('hkii') && t.includes('hkii'));
+        });
         if (foundChap && Array.isArray(foundChap.lessons)) {
           lessons = foundChap.lessons;
         }
@@ -905,6 +934,28 @@
 
     function onGeneratorChapterChange() {
       updateLessonDropdown();
+      const chapterSelect = document.getElementById('genChapter');
+      const titleInput = document.getElementById('genTitle');
+      const grade = document.getElementById('genGrade').value;
+      if (chapterSelect && chapterSelect.selectedIndex >= 0) {
+        const chapText = chapterSelect.options[chapterSelect.selectedIndex].text.split('(')[0].trim();
+        titleInput.value = `Đề kiểm tra định kỳ Toán ${grade}: ${chapText}`;
+      }
+    }
+
+    function onGeneratorLessonChange() {
+      const lessonSelect = document.getElementById('genLesson');
+      const titleInput = document.getElementById('genTitle');
+      const grade = document.getElementById('genGrade').value;
+      if (lessonSelect && lessonSelect.value !== 'ALL' && lessonSelect.selectedIndex >= 0) {
+        const lessonText = lessonSelect.options[lessonSelect.selectedIndex].text;
+        const cleanName = lessonText.split('(')[0].trim();
+        titleInput.value = `Đề kiểm tra 15 phút Toán ${grade}: ${cleanName}`;
+      } else {
+        const chapterSelect = document.getElementById('genChapter');
+        const chapText = chapterSelect.options[chapterSelect.selectedIndex].text.split('(')[0].trim();
+        titleInput.value = `Đề kiểm tra Toán ${grade}: ${chapText}`;
+      }
     }
 
     function onGeneratorGradeChange() {
@@ -914,12 +965,25 @@
 
       if (grade === '8') {
         chapterSelect.innerHTML = `
-          <option value="Chương I: Đa thức" selected>Chương I: Đa thức (Đơn thức, Đa thức nhiều biến, Phép tính)</option>
-          <option value="Chương II: Hằng đẳng thức đáng nhớ">Chương II: Hằng đẳng thức đáng nhớ & Ứng dụng</option>
-          <option value="Chương III: Tứ giác">Chương III: Tứ giác (Hình thang, Hình bình hành, Hình chữ nhật)</option>
-          <option value="Tổng hợp toàn bộ chương trình">Tổng hợp toàn bộ chương trình</option>
+          <optgroup label="── HỌC KỲ I (72 tiết) ──">
+            <option value="Chương I: Đa thức" selected>Chương I: Đa thức (16 tiết | Bài 1 - Bài 5)</option>
+            <option value="Chương II: Hằng đẳng thức đáng nhớ và ứng dụng">Chương II: Hằng đẳng thức đáng nhớ & Ứng dụng (13 tiết | Bài 6 - Bài 9)</option>
+            <option value="Chương III: Tứ giác">Chương III: Tứ giác (18 tiết | Bài 10 - Bài 14)</option>
+            <option value="Chương IV: Định lí Thalès">Chương IV: Định lí Thalès trong tam giác (8 tiết | Bài 15 - Bài 17)</option>
+            <option value="Chương V: Dữ liệu và biểu đồ">Chương V: Dữ liệu và biểu đồ (11 tiết | Bài 18 - Bài 20)</option>
+            <option value="Hoạt động thực hành và trải nghiệm (HKI)">Thực hành & Trải nghiệm HKI (6 tiết | Chủ đề 1 - 4)</option>
+          </optgroup>
+          <optgroup label="── HỌC KỲ II (68 tiết) ──">
+            <option value="Chương VI: Phân thức đại số">Chương VI: Phân thức đại số (16 tiết | Bài 21 - Bài 24)</option>
+            <option value="Chương VII: Phương trình bậc nhất và hàm số bậc nhất">Chương VII: Phương trình bậc nhất & Hàm số (15 tiết | Bài 25 - Bài 29)</option>
+            <option value="Chương VIII: Làm quen với biến cố và xác suất của biến cố">Chương VIII: Biến cố & Xác suất (9 tiết | Bài 30 - Bài 32)</option>
+            <option value="Chương IX: Tam giác đồng dạng">Chương IX: Tam giác đồng dạng (16 tiết | Bài 33 - Bài 37)</option>
+            <option value="Chương X: Một số hình khối trong thực tiễn">Chương X: Hình chóp tam giác đều & Tứ giác đều (8 tiết | Bài 38 - Bài 39)</option>
+            <option value="Hoạt động thực hành và trải nghiệm (HKII)">Thực hành & Trải nghiệm HKII (4 tiết | Chủ đề 1 - 4)</option>
+          </optgroup>
+          <option value="Tổng hợp toàn bộ chương trình">Tổng hợp toàn bộ chương trình Toán 8 (KNTT)</option>
         `;
-        titleInput.value = "Đề kiểm tra nhanh Toán 8: Đơn thức & Đa thức nhiều biến";
+        titleInput.value = "Đề kiểm tra 15 phút Toán 8: Đơn thức & Đa thức nhiều biến";
       } else if (grade === '6') {
         chapterSelect.innerHTML = `
           <option value="Chương I: Tập hợp các số tự nhiên" selected>Chương I: Tập hợp các số tự nhiên (Bài 1 - Bài 4)</option>
