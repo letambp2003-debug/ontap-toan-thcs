@@ -857,14 +857,19 @@
           'VDC': '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-rose-50 text-rose-700">Vận dụng cao</span>'
         };
 
-        const optionsHtml = q.options.map(opt => `
-          <div class="p-2 rounded-lg border border-slate-200 bg-slate-50 text-xs flex items-center gap-2 ${opt.key === q.correctAnswer ? 'border-emerald-300 bg-emerald-50/60 font-bold' : ''}">
-            <span class="w-5 h-5 rounded-full ${opt.key === q.correctAnswer ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'} flex items-center justify-center text-[10px] font-bold shrink-0">
-              ${opt.key}
-            </span>
-            <span>${opt.text}</span>
-          </div>
-        `).join('');
+        const qContent = window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.content) : q.content;
+        const qExpl = q.explanation ? (window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.explanation) : q.explanation) : '';
+        const optionsHtml = q.options.map(opt => {
+          const optText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(opt.text) : opt.text;
+          return `
+            <div class="p-2 rounded-lg border border-slate-200 bg-slate-50 text-xs flex items-center gap-2 ${opt.key === q.correctAnswer ? 'border-emerald-300 bg-emerald-50/60 font-bold' : ''}">
+              <span class="w-5 h-5 rounded-full ${opt.key === q.correctAnswer ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'} flex items-center justify-center text-[10px] font-bold shrink-0">
+                ${opt.key}
+              </span>
+              <span>${optText}</span>
+            </div>
+          `;
+        }).join('');
 
         return `
           <div class="border border-slate-200 rounded-xl p-4 bg-white flex flex-col gap-2.5">
@@ -872,13 +877,13 @@
               <span class="text-xs font-black text-slate-800">Câu ${idx + 1}:</span>
               ${levelBadgeMap[q.level] || ''}
             </div>
-            <p class="text-xs font-medium text-slate-800">${q.content}</p>
+            <p class="text-xs font-medium text-slate-800">${qContent}</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
               ${optionsHtml}
             </div>
-            ${q.explanation ? `
+            ${qExpl ? `
               <div class="mt-2 p-2.5 bg-slate-50 border-l-2 border-indigo-500 text-[11px] text-slate-600">
-                <strong>Lời giải:</strong> ${q.explanation}
+                <strong>Lời giải:</strong> ${qExpl}
               </div>
             ` : ''}
           </div>
@@ -1106,14 +1111,19 @@
 
       const contentDiv = document.getElementById('modalExamContent');
       contentDiv.innerHTML = (exam.questions || []).map((q, idx) => {
-        const opts = (q.options || []).map(o => `
-          <div class="p-2 rounded-lg border border-slate-200 text-xs flex items-center gap-2 ${o.key === q.correctAnswer ? 'bg-emerald-50 border-emerald-300 font-bold' : 'bg-slate-50'}">
-            <span class="w-5 h-5 rounded-full ${o.key === q.correctAnswer ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'} flex items-center justify-center text-[10px] font-bold">
-              ${o.key}
-            </span>
-            <span>${o.text}</span>
-          </div>
-        `).join('');
+        const qContent = window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.content) : q.content;
+        const qExpl = q.explanation ? (window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.explanation) : q.explanation) : '';
+        const opts = (q.options || []).map(o => {
+          const optText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(o.text) : o.text;
+          return `
+            <div class="p-2 rounded-lg border border-slate-200 text-xs flex items-center gap-2 ${o.key === q.correctAnswer ? 'bg-emerald-50 border-emerald-300 font-bold' : 'bg-slate-50'}">
+              <span class="w-5 h-5 rounded-full ${o.key === q.correctAnswer ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'} flex items-center justify-center text-[10px] font-bold">
+                ${o.key}
+              </span>
+              <span>${optText}</span>
+            </div>
+          `;
+        }).join('');
 
         return `
           <div class="border border-slate-200 rounded-xl p-4 bg-white flex flex-col gap-2">
@@ -1121,13 +1131,13 @@
               <span class="text-xs font-black text-slate-900">Câu ${idx + 1} (${q.level || 'NB'}):</span>
               <span class="text-[10px] font-bold text-emerald-700">Đáp án: ${q.correctAnswer}</span>
             </div>
-            <p class="text-xs font-medium text-slate-800">${q.content}</p>
+            <p class="text-xs font-medium text-slate-800">${qContent}</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
               ${opts}
             </div>
-            ${q.explanation ? `
+            ${qExpl ? `
               <div class="mt-2 p-2.5 bg-slate-50 border-l-2 border-indigo-500 text-[11px] text-slate-600">
-                <strong>Giải thích:</strong> ${q.explanation}
+                <strong>Giải thích:</strong> ${qExpl}
               </div>
             ` : ''}
           </div>

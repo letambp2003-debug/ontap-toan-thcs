@@ -2063,17 +2063,325 @@ function getQuestionsForArena(options) {
   return filtered;
 }
 
+// =============================================================================
+// BỘ CÔNG CỤ CHUẨN HÓA CÔNG THỨC KATEX & BÓC TÁCH ĐỀ THI TỰ ĐỘNG
+// =============================================================================
+
+const VN_DIACRITICS = /[àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđÀÁẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬÈÉẺẼẸÊẾỀỂỄỆÌÍỈĨỊÒÓỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÙÚỦŨỤƯỨỪỬỮỰỲÝỶỸỴĐ]/i;
+
+const VN_COMMON_WORDS = new Set([
+  'cho', 'biết', 'tìm', 'tính', 'hãy', 'các', 'sau', 'khi', 'thu', 'gọn', 'bậc', 'số', 'phần', 'hệ',
+  'đa', 'thức', 'đơn', 'là', 'nào', 'dưới', 'đây', 'đúng', 'sai', 'giá', 'trị', 'tại', 'với', 'trong',
+  'kết', 'quả', 'phép', 'tổng', 'hiệu', 'tích', 'thương', 'rút', 'khẳng', 'định', 'tập', 'hợp', 'tự', 'nhiên'
+]);
+
+function isVietnameseWord(word) {
+  if (!word) return false;
+  var clean = word.toLowerCase().replace(/^[^\p{L}]+|[^\p{L}]+$/gu, '');
+  if (!clean) return false;
+  if (VN_DIACRITICS.test(clean)) return true;
+  if (VN_COMMON_WORDS.has(clean)) return true;
+  if (clean.length >= 3 && /^[a-zA-Z]+$/.test(clean) && !['sin', 'cos', 'tan', 'cot', 'log', 'lim', 'deg'].includes(clean)) {
+    return true;
+  }
+  return false;
+}
+
+function normalizeMath(text) {
+  if (!text) return '';
+  text = String(text).trim();
+
+  // Nếu chuỗi đã chứa kí hiệu KaTeX thì giữ nguyên
+  if (text.includes('$') || text.includes('\\(') || text.includes('\\[') || text.includes('$$')) {
+    return text;
+  }
+
+  // 1. Nếu toàn bộ chuỗi là phương án trắc nghiệm toán / công thức thuần (không chứa tiếng Việt)
+  var words = text.split(/\s+/);
+  var hasVn = words.some(function(w) { return isVietnameseWord(w); });
+
+  if (!hasVn && /[0-9a-zA-Z\^\_\+\-\*\/\(\)\{\}\=\>\<]/.test(text)) {
+    var math = text;
+    math = math.replace(/(^|\s|\()(-?\d+)\/(\d+)($|\s|\))/g, '$1\\frac{$2}{$3}$4');
+    math = math.replace(/\s*\*\s*/g, ' \\cdot ');
+    return '$' + math.trim() + '$';
+  }
+
+  // 2. Nếu là câu tiếng Việt chứa công thức toán xen kẽ
+  var tokens = text.split(/(\s+)/);
+  var mathBuffer = [];
+  var resultTokens = [];
+
+  function flushMath() {
+    if (mathBuffer.length > 0) {
+      var mathStr = mathBuffer.join('');
+      var trailingPunct = '';
+      var punctMatch = mathStr.match(/([;:,.\?!]+)$/);
+      if (punctMatch) {
+        trailingPunct = punctMatch[1];
+        mathStr = mathStr.substring(0, mathStr.length - trailingPunct.length);
+      }
+
+      mathStr = mathStr.trim();
+      if (mathStr) {
+        mathStr = mathStr.replace(/\((-?\d+)\/(\d+)\)/g, '\\frac{$1}{$2}');
+        mathStr = mathStr.replace(/(^|\s)(-?\d+)\/(\d+)($|\s)/g, '$1\\frac{$2}{$3}$4');
+        mathStr = mathStr.replace(/\s*\*\s*/g, ' \\cdot ');
+        resultTokens.push('$' + mathStr + '$' + (trailingPunct ? trailingPunct + ' ' : ' '));
+      } else if (trailingPunct) {
+        resultTokens.push(trailingPunct + ' ');
+      }
+      mathBuffer = [];
+    }
+  }
+
+  for (var i = 0; i < tokens.length; i++) {
+    var tok = tokens[i];
+    if (/^\s+$/.test(tok)) {
+      if (mathBuffer.length > 0) {
+        mathBuffer.push(tok);
+      } else {
+        resultTokens.push(tok);
+      }
+      continue;
+    }
+
+    if (isVietnameseWord(tok)) {
+      flushMath();
+      resultTokens.push(tok);
+    } else if (/[0-9\^\_\+\-\*\/\(\)\{\}\=\>\<]/.test(tok) || /^[xyzabckmnpqrABCDEFMNPQR][;:,.\?!]?$/.test(tok)) {
+      mathBuffer.push(tok);
+    } else {
+      flushMath();
+      resultTokens.push(tok);
+    }
+  }
+  flushMath();
+
+  return resultTokens.join('').replace(/\s+/g, ' ').trim();
+}
+
+function splitOptions(text) {
+  if (!text) return [];
+  var re = /(?:^|\s+|[\t]+)(?:\[([A-D])\]|([A-D])[\.\:\)])\s*/g;
+  var matches = [];
+  var m;
+  while ((m = re.exec(text)) !== null) {
+    matches.push({ key: (m[1] || m[2]).toUpperCase(), index: m.index, matchLength: m[0].length });
+  }
+  if (matches.length === 0) return [];
+  var options = [];
+  for (var i = 0; i < matches.length; i++) {
+    var cur = matches[i];
+    var next = matches[i + 1];
+    var start = cur.index + cur.matchLength;
+    var end = next ? next.index : text.length;
+    var optText = text.substring(start, end).trim();
+    optText = normalizeMath(optText);
+    options.push({ key: cur.key, text: optText });
+  }
+  return options;
+}
+
+function parseExamQuestions(rawText) {
+  if (!rawText) return [];
+  rawText = rawText.replace(/\r\n/g, '\n').replace(/\r/g, '\n').replace(/\u00A0/g, ' ').trim();
+
+  // 1. Trường hợp nạp chuỗi JSON
+  if (rawText.startsWith('[')) {
+    try {
+      var parsed = JSON.parse(rawText);
+      if (Array.isArray(parsed)) {
+        return parsed.map(function(item, idx) {
+          var content = normalizeMath(item.content || item.question || item.prompt || '');
+          var options = [];
+          if (Array.isArray(item.options)) {
+            options = item.options.map(function(opt) {
+              if (typeof opt === 'string') {
+                var sp = splitOptions(opt);
+                return sp.length > 0 ? sp[0] : { key: 'A', text: normalizeMath(opt) };
+              }
+              return { key: opt.key || 'A', text: normalizeMath(opt.text || '') };
+            });
+          }
+          return {
+            id: item.id || ('q_' + Date.now() + '_' + idx),
+            type: item.type || 'mcq',
+            level: (item.level || 'NB').toUpperCase(),
+            content: content,
+            options: options,
+            correctAnswer: (item.correctAnswer || item.answer || 'A').toUpperCase(),
+            explanation: normalizeMath(item.explanation || item.explain || ''),
+            hint: item.hint || ''
+          };
+        });
+      }
+    } catch (e) {
+      console.warn('JSON parse fallback:', e);
+    }
+  }
+
+  // 2. Trường hợp nạp văn bản thô / trích xuất từ Word (.docx)
+  var lines = rawText.split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
+  var questions = [];
+  var currentQ = null;
+
+  function pushCurrent() {
+    if (currentQ && currentQ.content) {
+      currentQ.content = normalizeMath(currentQ.content);
+      if (currentQ.explanation) {
+        currentQ.explanation = normalizeMath(currentQ.explanation);
+      }
+      questions.push(currentQ);
+      currentQ = null;
+    }
+  }
+
+  lines.forEach(function(line) {
+    var qMatch = line.match(/^(?:Câu|Bài|Q|Question)\s*(\d+)[\.\:]?\s*(.*)/i);
+    if (qMatch) {
+      pushCurrent();
+      currentQ = {
+        id: 'q_' + Date.now() + '_' + (questions.length + 1),
+        number: parseInt(qMatch[1]) || (questions.length + 1),
+        type: 'mcq',
+        level: 'NB',
+        content: qMatch[2] || '',
+        options: [],
+        correctAnswer: 'A',
+        explanation: '',
+        hint: ''
+      };
+      return;
+    }
+
+    if (!currentQ) return;
+
+    var ansMatch = line.match(/^(?:Đáp\s*án|Đáp\s*án\s*đúng|Chọn|Key|Answer)[\.\:\s]+([A-D]|Đúng|Sai|[0-9\/\-\.]+)/i);
+    if (ansMatch) {
+      currentQ.correctAnswer = ansMatch[1].toUpperCase();
+      return;
+    }
+
+    var expMatch = line.match(/^(?:Lời\s*giải|Hướng\s*dẫn\s*giải|Giải\s*thích|HDG|Explanation)[\.\:\s]+(.*)/i);
+    if (expMatch) {
+      currentQ.explanation = expMatch[1];
+      return;
+    }
+
+    var opts = splitOptions(line);
+    if (opts && opts.length > 0) {
+      opts.forEach(function(o) {
+        var exists = currentQ.options.find(function(ex) { return ex.key === o.key; });
+        if (!exists) {
+          currentQ.options.push(o);
+        }
+      });
+      return;
+    }
+
+    if (currentQ.options.length === 0) {
+      currentQ.content += ' ' + line;
+    } else {
+      currentQ.explanation += (currentQ.explanation ? ' ' : '') + line;
+    }
+  });
+
+  pushCurrent();
+  return questions;
+}
+
+function autoRepairQuestions(exams) {
+  if (!Array.isArray(exams)) return exams;
+  var modified = false;
+
+  exams.forEach(function(exam) {
+    if (!exam.parts) return;
+    exam.parts.forEach(function(part) {
+      if (!part.questions) return;
+      part.questions.forEach(function(q) {
+        // 1. Tự động sửa chữa các phương án A/B/C/D bị dính vào một ô
+        if (q.type === 'mcq' && Array.isArray(q.options)) {
+          if (q.options.length === 1 && q.options[0] && q.options[0].text) {
+            var rawText = q.options[0].text;
+            if (/(?:^|\s+)[B-D][\.\:\)]\s*/.test(rawText)) {
+              var fullText = (q.options[0].key ? q.options[0].key + '. ' : '') + rawText;
+              var splitOpts = splitOptions(fullText);
+              if (splitOpts && splitOpts.length >= 2) {
+                q.options = splitOpts;
+                modified = true;
+              }
+            }
+          } else if (q.options.length > 1) {
+            var mergedText = q.options.map(function(o) { return (o.key ? o.key + '. ' : '') + (o.text || o); }).join(' ');
+            if (/(?:^|\s+)B[\.\:\)]\s*/.test(mergedText) && /(?:^|\s+)C[\.\:\)]\s*/.test(mergedText)) {
+              var splitOpts = splitOptions(mergedText);
+              if (splitOpts && splitOpts.length === 4) {
+                q.options = splitOpts;
+                modified = true;
+              }
+            }
+          }
+
+          q.options.forEach(function(opt) {
+            if (opt && opt.text) {
+              var norm = normalizeMath(opt.text);
+              if (norm !== opt.text) {
+                opt.text = norm;
+                modified = true;
+              }
+            }
+          });
+        }
+
+        // 2. Chuẩn hóa KaTeX cho nội dung câu hỏi
+        if (q.content) {
+          var normContent = normalizeMath(q.content);
+          if (normContent !== q.content) {
+            q.content = normContent;
+            modified = true;
+          }
+        }
+
+        // 3. Chuẩn hóa KaTeX cho lời giải
+        if (q.explanation) {
+          var normExplain = normalizeMath(q.explanation);
+          if (normExplain !== q.explanation) {
+            q.explanation = normExplain;
+            modified = true;
+          }
+        }
+      });
+    });
+  });
+
+  return exams;
+}
+
 // Hỗ trợ xuất ra môi trường trình duyệt (window) & Node.js
 if (typeof window !== 'undefined') {
   window.EXAM_DATA = EXAM_DATA;
   window.KNTT_CURRICULUM_TREE = KNTT_CURRICULUM_TREE;
   window.getQuestionsForArena = getQuestionsForArena;
+  window.MathNormalizer = {
+    normalizeMath: normalizeMath,
+    splitOptions: splitOptions
+  };
+  window.QuestionParser = {
+    parseExamQuestions: parseExamQuestions,
+    autoRepairQuestions: autoRepairQuestions
+  };
 }
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     EXAM_DATA: EXAM_DATA,
     KNTT_CURRICULUM_TREE: KNTT_CURRICULUM_TREE,
-    getQuestionsForArena: getQuestionsForArena
+    getQuestionsForArena: getQuestionsForArena,
+    normalizeMath: normalizeMath,
+    splitOptions: splitOptions,
+    parseExamQuestions: parseExamQuestions,
+    autoRepairQuestions: autoRepairQuestions
   };
 }
+

@@ -450,7 +450,11 @@
   const Engine = {
     // 1. QUẢN LÝ KHO ĐỀ THI (EXAM REPOSITORY)
     getAllExams: function() {
-      return getStorage(STORAGE_KEYS.EXAMS, DEFAULT_EXAMS);
+      let exams = getStorage(STORAGE_KEYS.EXAMS, DEFAULT_EXAMS);
+      if (typeof window !== 'undefined' && window.QuestionParser && typeof window.QuestionParser.autoRepairQuestions === 'function') {
+        exams = window.QuestionParser.autoRepairQuestions(exams);
+      }
+      return exams;
     },
 
     getExamById: function(examId) {

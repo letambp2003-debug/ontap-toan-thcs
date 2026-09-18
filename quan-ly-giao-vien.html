@@ -651,6 +651,14 @@
       } catch (e) {
         console.warn(e);
       }
+
+      // Tự động kiểm tra và sửa lỗi công thức KaTeX & tách các đáp án bị dính trên cùng một dòng
+      if (window.QuestionParser && typeof window.QuestionParser.autoRepairQuestions === 'function') {
+        localExamsData = window.QuestionParser.autoRepairQuestions(localExamsData);
+        try {
+          localStorage.setItem(LS_KEY, JSON.stringify(localExamsData));
+        } catch (err) {}
+      }
     }
 
     /**
@@ -778,16 +786,17 @@
 
     function handleLivePreview() {
       const previewBox = document.getElementById('preview-card');
-      const promptText = document.getElementById('form-prompt').value.trim() || '<em>(Chưa có nội dung đề bài)</em>';
+      const rawPrompt = document.getElementById('form-prompt').value.trim() || '<em>(Chưa có nội dung đề bài)</em>';
+      const promptText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(rawPrompt) : rawPrompt;
       const explainText = document.getElementById('form-explain').value.trim();
 
       let html = `<div class="font-bold text-slate-900 mb-2">${promptText}</div>`;
 
       if (activeType === 'mcq') {
-        const a = document.getElementById('form-mcq-a').value.trim() || 'Phương án A';
-        const b = document.getElementById('form-mcq-b').value.trim() || 'Phương án B';
-        const c = document.getElementById('form-mcq-c').value.trim() || 'Phương án C';
-        const d = document.getElementById('form-mcq-d').value.trim() || 'Phương án D';
+        const a = window.MathNormalizer ? window.MathNormalizer.normalizeMath(document.getElementById('form-mcq-a').value.trim() || 'Phương án A') : (document.getElementById('form-mcq-a').value.trim() || 'Phương án A');
+        const b = window.MathNormalizer ? window.MathNormalizer.normalizeMath(document.getElementById('form-mcq-b').value.trim() || 'Phương án B') : (document.getElementById('form-mcq-b').value.trim() || 'Phương án B');
+        const c = window.MathNormalizer ? window.MathNormalizer.normalizeMath(document.getElementById('form-mcq-c').value.trim() || 'Phương án C') : (document.getElementById('form-mcq-c').value.trim() || 'Phương án C');
+        const d = window.MathNormalizer ? window.MathNormalizer.normalizeMath(document.getElementById('form-mcq-d').value.trim() || 'Phương án D') : (document.getElementById('form-mcq-d').value.trim() || 'Phương án D');
         const correctChoice = document.querySelector('input[name="mcq-correct-choice"]:checked')?.value || 'A';
 
         html += `
@@ -799,9 +808,11 @@
           </div>
         `;
       } else if (activeType === 'tf') {
-        const aText = document.getElementById('form-tf-a-text').value.trim() || 'Mệnh đề a';
+        const rawA = document.getElementById('form-tf-a-text').value.trim() || 'Mệnh đề a';
+        const aText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(rawA) : rawA;
         const aVal = document.getElementById('form-tf-a-val').value;
-        const bText = document.getElementById('form-tf-b-text').value.trim() || 'Mệnh đề b';
+        const rawB = document.getElementById('form-tf-b-text').value.trim() || 'Mệnh đề b';
+        const bText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(rawB) : rawB;
         const bVal = document.getElementById('form-tf-b-val').value;
 
         html += `
@@ -815,12 +826,13 @@
           </div>
         `;
       } else if (activeType === 'short') {
-        const ans = document.getElementById('form-short-ans').value.trim() || '...';
+        const rawAns = document.getElementById('form-short-ans').value.trim() || '...';
+        const ans = window.MathNormalizer ? window.MathNormalizer.normalizeMath(rawAns) : rawAns;
         const hint = document.getElementById('form-short-hint').value.trim();
 
         html += `
           <div class="mt-2 p-2.5 rounded-xl bg-white border border-slate-200">
-            <div>Đáp số chuẩn: <strong class="text-emerald-600">${ans}</strong></div>
+            <div>Đáp số chuẩn: <strong class="text-emerald-600 font-mono">${ans}</strong></div>
             ${hint ? `<div class="mt-1 text-amber-800 italic">💡 Gợi ý: ${hint}</div>` : ''}
           </div>
         `;
@@ -973,41 +985,64 @@
         else if (q.type === 'tf') typeBadge = '<span class="px-2 py-0.5 rounded-md bg-purple-100 text-purple-800 font-bold">Đúng / Sai</span>';
         else typeBadge = '<span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-bold">Trả lời ngắn</span>';
 
-        let body = `<div class="font-bold text-slate-900 leading-relaxed">${q.content || q.prompt}</div>`;
+        const qContent = (window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.content || q.prompt || '') : (q.content || q.prompt || ''));
+        let body = `<div class="font-bold text-slate-900 leading-relaxed">${qContent}</div>`;
 
         if (q.type === 'mcq' && q.options) {
+          // Kiểm tra nếu các phương án bị dính trên cùng 1 dòng thì tách ngay lập tức
+          let opts = q.options;
+          if (opts.length === 1 && opts[0] && /(?:^|\s+)[B-D][\.\:\)]\s*/.test(opts[0].text || '')) {
+            const raw = (opts[0].key ? opts[0].key + '. ' : '') + opts[0].text;
+            if (window.MathNormalizer && window.MathNormalizer.splitOptions) {
+              opts = window.MathNormalizer.splitOptions(raw);
+            }
+          }
+
           body += `
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] pt-1">
-              ${q.options.map(opt => `
-                <div class="p-1.5 rounded-lg border ${opt.key === q.correctAnswer ? 'border-emerald-500 bg-emerald-50 font-bold text-emerald-900' : 'border-slate-200 bg-white text-slate-700'}">
-                  ${opt.key}. ${opt.text || opt}
-                </div>
-              `).join('')}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-[11px] pt-1">
+              ${opts.map(opt => {
+                const optText = (window.MathNormalizer ? window.MathNormalizer.normalizeMath(opt.text || opt) : (opt.text || opt));
+                const isCorrect = opt.key === q.correctAnswer;
+                return `
+                  <div class="p-2 rounded-xl border transition flex items-start gap-2 ${isCorrect ? 'border-emerald-500 bg-emerald-50 font-bold text-emerald-950 ring-1 ring-emerald-400 shadow-2xs' : 'border-slate-200 bg-white text-slate-700'}">
+                    <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${isCorrect ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600'}">
+                      ${opt.key}
+                    </span>
+                    <span class="flex-1 leading-snug">${optText}</span>
+                  </div>
+                `;
+              }).join('')}
             </div>
           `;
         } else if (q.type === 'tf' && q.items) {
           body += `
-            <div class="space-y-1 text-[11px] pt-1">
-              ${q.items.map(it => `
-                <div class="flex justify-between p-1 rounded bg-white border border-slate-200">
-                  <span><strong>${it.label || it.key})</strong> ${it.text}</span>
-                  <strong class="${it.correctAnswer === 'Đ' || it.answer === 'D' ? 'text-emerald-700' : 'text-rose-700'}">[${it.correctAnswer === 'Đ' || it.answer === 'D' ? 'Đúng' : 'Sai'}]</strong>
-                </div>
-              `).join('')}
+            <div class="space-y-1.5 text-[11px] pt-1">
+              ${q.items.map(it => {
+                const itemText = (window.MathNormalizer ? window.MathNormalizer.normalizeMath(it.text || '') : (it.text || ''));
+                const isTrue = it.correctAnswer === 'Đ' || it.answer === 'D';
+                return `
+                  <div class="flex items-center justify-between p-2 rounded-xl bg-white border border-slate-200">
+                    <span><strong>${it.label || it.key})</strong> ${itemText}</span>
+                    <strong class="${isTrue ? 'text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded' : 'text-rose-700 bg-rose-50 px-2 py-0.5 rounded'}">[${isTrue ? 'Đúng' : 'Sai'}]</strong>
+                  </div>
+                `;
+              }).join('')}
             </div>
           `;
         } else if (q.type === 'short') {
           const ans = q.correctAnswers ? q.correctAnswers[0] : (q.answer || '');
+          const normAns = (window.MathNormalizer ? window.MathNormalizer.normalizeMath(ans) : ans);
           body += `
-            <div class="p-2 rounded-lg bg-white border border-slate-200 text-[11px]">
-              Đáp số: <strong class="text-emerald-700">${ans}</strong>
-              ${q.hint ? ` · <span class="text-amber-800 italic">Gợi ý: ${q.hint}</span>` : ''}
+            <div class="p-2.5 rounded-xl bg-white border border-slate-200 text-[11px]">
+              Đáp số: <strong class="text-emerald-700 font-mono text-xs">${normAns}</strong>
+              ${q.hint ? ` · <span class="text-amber-800 italic">💡 Gợi ý: ${q.hint}</span>` : ''}
             </div>
           `;
         }
 
         if (q.explanation || q.explain) {
-          body += `<div class="text-slate-500 italic text-[11px]">Lời giải: ${q.explanation || q.explain}</div>`;
+          const exp = (window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.explanation || q.explain) : (q.explanation || q.explain));
+          body += `<div class="text-slate-600 text-[11px] bg-slate-100/70 p-2.5 rounded-xl border-l-2 border-indigo-500"><strong>Lời giải chi tiết:</strong> ${exp}</div>`;
         }
 
         item.innerHTML = `
@@ -1092,64 +1127,43 @@
     }
 
     function parseAndLoadQuestions(rawText) {
-      // Basic regex parser for Questions: "Câu X: ... A. ... B. ... C. ... D. ... Đáp án: ..."
-      const lines = rawText.split('\n').map(l => l.trim()).filter(Boolean);
-      let addedCount = 0;
-      let currentQ = null;
+      if (!rawText || !rawText.trim()) {
+        alert("Vui lòng cung cấp nội dung đề thi!");
+        return;
+      }
 
       const exam = localExamsData.find(e => e.id === activeExamId);
       if (!exam) return;
 
-      lines.forEach(line => {
-        const câuMatch = line.match(/^Câu\s+(\d+)[:\.]\s*(.*)/i);
-        if (câuMatch) {
-          if (currentQ && currentQ.content) {
-            pushParsedQuestion(exam, currentQ);
-            addedCount++;
-          }
-          currentQ = {
-            id: `${activeExamId}_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
-            content: câuMatch[2] || '',
-            type: 'mcq',
-            options: [],
-            correctAnswer: 'A',
-            explanation: ''
-          };
-        } else if (currentQ) {
-          const optMatch = line.match(/^([A-D])[\.\:]\s*(.*)/i);
-          if (optMatch) {
-            currentQ.options.push({ key: optMatch[1].toUpperCase(), text: optMatch[2] });
-          } else if (line.match(/^Đáp án[:\.]\s*([A-D])/i)) {
-            currentQ.correctAnswer = line.match(/^Đáp án[:\.]\s*([A-D])/i)[1].toUpperCase();
-          } else if (line.match(/^Lời giải[:\.]\s*(.*)/i)) {
-            currentQ.explanation = line.match(/^Lời giải[:\.]\s*(.*)/i)[1];
-          } else {
-            if (currentQ.options.length === 0) {
-              currentQ.content += ' ' + line;
-            }
-          }
-        }
-      });
-
-      if (currentQ && currentQ.content) {
-        pushParsedQuestion(exam, currentQ);
-        addedCount++;
+      let parsedQuestions = [];
+      if (window.QuestionParser && typeof window.QuestionParser.parseExamQuestions === 'function') {
+        parsedQuestions = window.QuestionParser.parseExamQuestions(rawText);
       }
 
-      if (addedCount > 0) {
+      if (parsedQuestions.length > 0) {
+        parsedQuestions.forEach(q => {
+          pushParsedQuestion(exam, q);
+        });
         saveToLocalStorage();
         renderQuestionList();
         updateScopeBadge();
-        alert(`Đã nhận diện và nạp thành công ${addedCount} câu hỏi từ tài liệu vào Đề số ${activeExamId}!`);
+        alert(`Đã nhận diện và nạp thành công ${parsedQuestions.length} câu hỏi chuẩn KaTeX vào Đề số ${activeExamId}!`);
       } else {
         alert("Không nhận diện được cấu trúc câu hỏi. Thầy/Cô hãy kiểm tra lại định dạng văn bản (VD: Câu 1: ... A. ... B. ... Đáp án: A).");
       }
     }
 
     function pushParsedQuestion(exam, q) {
-      let part = exam.parts.find(p => p.partId === 1);
+      let targetPartId = 1;
+      if (q.type === 'tf') targetPartId = 2;
+      else if (q.type === 'short') targetPartId = 3;
+
+      let part = exam.parts.find(p => p.partId === targetPartId);
       if (!part) {
-        part = { partId: 1, title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN", questions: [] };
+        let title = "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN";
+        if (targetPartId === 2) title = "PHẦN 2: TRẮC NGHIỆM ĐÚNG / SAI";
+        if (targetPartId === 3) title = "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN";
+        part = { partId: targetPartId, title: title, questions: [] };
         exam.parts.push(part);
       }
       q.number = part.questions.length + 1;
