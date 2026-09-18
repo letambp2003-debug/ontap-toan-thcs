@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trắc Nghiệm Tương Tác Toán 6 - Bộ 5 Đề Ôn Tập Chương I</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            emerald: {
+              50: '#ecfdf5',
+              500: '#10b981',
+              600: '#059669',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03)',
+            'soft-lg': '0 10px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04)',
+            'glow-blue': '0 0 20px -3px rgba(37, 99, 235, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- KaTeX for Math Formatting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Canvas Confetti for Celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      .card-print {
+        box-shadow: none !important;
+        border: 1px solid #e2e8f0 !important;
+        margin-bottom: 1rem !important;
+        break-inside: avoid;
+      }
+    }
+    @media screen {
+      .print-only {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- TOP APP BAR -->
+  <header class="no-print sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Exam Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-black text-lg shadow-glow-blue flex-shrink-0">
+          <i data-lucide="book-open-check" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-extrabold text-slate-900 dark:text-white text-base sm:text-lg tracking-tight leading-tight">
+              Ôn Tập Toán 6 <span class="text-blue-600 dark:text-blue-400">Chương I</span>
+            </h1>
+            <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+              Bài 1 – Bài 4
+            </span>
+            <span class="hidden md:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+              Cấu trúc mới GDPT 2018
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 truncate max-w-[260px] sm:max-w-md">
+            Hệ thống bài kiểm tra & trắc nghiệm tương tác thông minh
+          </p>
+        </div>
+      </div>
+
+      <!-- Action controls & Tools -->
+      <div class="flex items-center gap-2">
+        <!-- Timer Badge (Exam Mode) -->
+        <div id="timerContainer" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800/80 text-amber-800 dark:text-amber-300 font-mono font-bold text-sm shadow-sm">
+          <i data-lucide="timer" class="w-4 h-4 text-amber-600 dark:text-amber-400 animate-pulse"></i>
+          <span id="timerDisplay">20:00</span>
+        </div>
+
+        <!-- Mode Dropdown / Switcher -->
+        <div class="relative hidden sm:block">
+          <select id="modeSelect" onchange="changeMode(this.value)" class="text-xs font-medium bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer text-slate-700 dark:text-slate-200">
+            <option value="exam">⏱️ Chế độ Thi Thử (Bấm giờ)</option>
+            <option value="practice">💡 Chế độ Luyện Tập (Hiện gợi ý ngay)</option>
+            <option value="teacher">👨‍🏫 Bản Giáo Viên (Hiện đầy đủ đáp án)</option>
+          </select>
+        </div>
+
+        <!-- Action Menu (Export / Print / Dark mode) -->
+        <button onclick="openPrintModal()" title="In hoặc Tải Đề" class="p-2 text-slate-600 dark:text-slate-300 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+          <i data-lucide="printer" class="w-5 h-5"></i>
+        </button>
+
+        <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-sm transition" title="Chuyển sang giao diện Chatbot Gia Sư AI tương tác 1:1">
+          <i data-lucide="bot" class="w-4 h-4"></i>
+          <span>Chatbot Gia Sư</span>
+        </a>
+
+        <button onclick="downloadWordDoc()" title="Tải file Word (.doc)" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 rounded-xl border border-blue-200 dark:border-blue-800 transition">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>Xuất Word</span>
+        </button>
+
+        <!-- Toggle Theme -->
+        <button onclick="toggleDarkMode()" title="Chuyển chế độ sáng/tối" class="p-2 text-slate-600 dark:text-slate-300 hover:text-amber-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+          <i data-lucide="sun" id="themeSunIcon" class="w-5 h-5 hidden dark:block"></i>
+          <i data-lucide="moon" id="themeMoonIcon" class="w-5 h-5 block dark:hidden"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Exam Selector Tabs -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-100 dark:border-slate-800/80">
+      <div class="flex items-center gap-2 overflow-x-auto py-2.5 custom-scrollbar" id="examTabsContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- PRINT HEADER (Only visible when printing) -->
+  <div class="print-only p-6 border-b-2 border-slate-800 mb-6">
+    <div class="flex justify-between items-start">
+      <div class="text-center w-5/12">
+        <p class="text-xs uppercase font-bold tracking-wider">PHÒNG GIÁO DỤC VÀ ĐÀO TẠO</p>
+        <p class="text-xs font-bold uppercase">TRƯỜNG THCS ........................</p>
+        <div class="border-b border-black w-24 mx-auto my-1"></div>
+        <p class="text-xs italic">Năm học: 2025 - 2026</p>
+      </div>
+      <div class="text-center w-7/12">
+        <h2 class="text-base font-extrabold uppercase">ĐỀ KIỂM TRA ÔN TẬP TOÁN 6 - CHƯƠNG I</h2>
+        <p class="text-xs font-medium" id="printExamTitle">ĐỀ SỐ 1: TẬP HỢP - SỐ TỰ NHIÊN - PHÉP CỘNG TRỪ</p>
+        <p class="text-xs italic">Thời gian làm bài: 20 phút (Không kể thời gian phát đề)</p>
+      </div>
+    </div>
+
+    <div class="mt-4 flex border border-black text-xs">
+      <div class="w-7/12 p-2 border-r border-black space-y-1">
+        <p><strong>Họ và tên học sinh:</strong> ................................................................</p>
+        <p><strong>Lớp:</strong> 6/...... &nbsp;&nbsp;&nbsp;&nbsp; <strong>STT:</strong> .......... &nbsp;&nbsp;&nbsp;&nbsp; <strong>Ngày kiểm tra:</strong> ....../....../202...</p>
+      </div>
+      <div class="w-2/12 p-2 border-r border-black text-center flex flex-col justify-between">
+        <p class="font-bold">ĐIỂM</p>
+        <div class="h-8"></div>
+      </div>
+      <div class="w-3/12 p-2 text-center flex flex-col justify-between">
+        <p class="font-bold">LỜI PHÊ CỦA THẦY/CÔ</p>
+        <div class="h-8"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- LEFT: QUESTION AREA (8 COLS) -->
+      <div class="lg:col-span-8 space-y-6">
+        
+        <!-- Header Info Card -->
+        <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 rounded-3xl p-6 text-white shadow-soft-lg no-print">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md mb-2">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span id="bannerExamGrade">Toán 6 - Chương I</span>
+              </div>
+              <h2 id="bannerExamTitle" class="text-xl sm:text-2xl font-black tracking-tight">
+                Đề số 1: Ôn tập Bài 1 đến Bài 4
+              </h2>
+              <p id="bannerExamSub" class="text-blue-100 text-xs sm:text-sm mt-1">
+                Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ
+              </p>
+            </div>
+            <div class="flex items-center sm:flex-col items-end justify-between sm:justify-center border-t sm:border-t-0 sm:border-l border-white/20 pt-3 sm:pt-0 sm:pl-6">
+              <div class="text-left sm:text-right">
+                <span class="text-xs text-blue-200 uppercase font-semibold">Quy mô đề</span>
+                <p class="text-lg font-bold">10 Câu / 10 Điểm</p>
+              </div>
+              <div class="text-right mt-1">
+                <span class="text-xs text-blue-200">Thời gian: <strong>20 phút</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode banner alert if Practice or Teacher mode -->
+        <div id="modeAlertBanner" class="hidden no-print p-4 rounded-2xl border text-xs sm:text-sm flex items-center justify-between gap-3">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- QUESTIONS LIST CONTAINER -->
+        <div id="questionsContainer" class="space-y-6">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- BOTTOM ACTION BUTTONS (EXAM MODE) -->
+        <div class="no-print pt-6 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-200 dark:border-slate-800">
+          <button onclick="resetExamAnswers()" class="w-full sm:w-auto px-5 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm transition flex items-center justify-center gap-2">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+            <span>Làm Lại Đề Này</span>
+          </button>
+
+          <button id="btnSubmitExam" onclick="submitExam()" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm shadow-soft-lg hover:shadow-glow-blue transition flex items-center justify-center gap-2">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>Nộp Bài & Xem Điểm Chi Tiết</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: STICKY PROGRESS & QUESTION NAVIGATOR (4 COLS) -->
+      <div class="lg:col-span-4 no-print sticky top-24 space-y-5">
+        
+        <!-- Score & Progress Card -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-soft">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
+              <i data-lucide="list-checks" class="w-4 h-4 text-blue-600"></i>
+              Tiến Độ Làm Bài
+            </h3>
+            <span id="answeredCountBadge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300">
+              0 / 10 câu
+            </span>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="w-full bg-slate-100 dark:bg-slate-800 h-2.5 rounded-full overflow-hidden mb-6">
+            <div id="examProgressBar" class="bg-gradient-to-r from-blue-500 to-indigo-600 h-full rounded-full transition-all duration-300 w-0"></div>
+          </div>
+
+          <!-- Question Grid Numbers -->
+          <div class="space-y-3">
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Danh Sách Câu Hỏi</p>
+            
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Phần 1: Nhiều lựa chọn (6 câu)</div>
+            <div class="grid grid-cols-6 gap-2" id="gridPart1">
+              <!-- C1 - C6 -->
+            </div>
+
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium pt-2">Phần 2: Đúng / Sai (2 câu - 8 ý)</div>
+            <div class="grid grid-cols-2 gap-2" id="gridPart2">
+              <!-- C7 - C8 -->
+            </div>
+
+            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium pt-2">Phần 3: Trả lời ngắn (2 câu)</div>
+            <div class="grid grid-cols-2 gap-2" id="gridPart3">
+              <!-- C9 - C10 -->
+            </div>
+          </div>
+
+          <!-- Quick Navigation Legend -->
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 grid grid-cols-2 gap-2">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></span>
+              <span>Chưa làm</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-blue-600"></span>
+              <span>Đã trả lời</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+              <span>Trả lời đúng</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+              <span>Cần xem lại</span>
+            </div>
+          </div>
+
+          <!-- Quick submit button on sidebar -->
+          <div class="mt-5">
+            <button onclick="submitExam()" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition shadow-sm flex items-center justify-center gap-1.5">
+              <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+              <span>Hoàn Thành & Chấm Điểm</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pedagogy Notes & Quick Help Card -->
+        <div class="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-900 dark:to-indigo-950/30 rounded-3xl p-5 border border-indigo-100 dark:border-indigo-900/50 shadow-soft">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-indigo-900 dark:text-indigo-300 flex items-center gap-2 mb-2">
+            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
+            Trợ LÝ GHI NHỚ TOÁN 6
+          </h4>
+          <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc pl-4">
+            <li><strong>$\mathbb{N}^*$:</strong> Tập hợp các số tự nhiên khác $0$ ($1, 2, 3, \dots$).</li>
+            <li><strong>Chữ số La Mã:</strong> I=1, V=5, X=10, IV=4, IX=9, XIX=19, XXIV=24, XXIX=29.</li>
+            <li><strong>Phép trừ trong $\mathbb{N}$:</strong> Chỉ trừ được khi Số bị trừ $\ge$ Số trừ.</li>
+            <li><strong>Tính nhanh:</strong> Gom nhóm tròn chục, tròn trăm: $(a+b)+c$ hoặc thêm bớt $(a+k) - (b+k)$.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- RESULT MODAL (Dialog popup after submission) -->
+  <div id="resultModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 transform transition-all scale-95 opacity-0 duration-200" id="resultModalCard">
+      
+      <!-- Trophy Icon & Header -->
+      <div class="text-center">
+        <div id="modalIconContainer" class="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto mb-3 shadow-soft">
+          <i data-lucide="award" class="w-9 h-9"></i>
+        </div>
+        <h3 class="text-2xl font-black text-slate-900 dark:text-white" id="modalTitle">Kết Quả Bài Kiểm Tra</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1" id="modalSubTitle">Đề số 1: Ôn tập Bài 1 đến Bài 4</p>
+      </div>
+
+      <!-- Score Highlight Box -->
+      <div class="my-6 p-5 rounded-2xl bg-gradient-to-tr from-blue-50 via-indigo-50 to-emerald-50 dark:from-slate-800 dark:via-slate-800 dark:to-indigo-950/50 border border-blue-100 dark:border-slate-700 text-center">
+        <span class="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider">Tổng Điểm Đạt Được</span>
+        <div class="text-5xl font-black text-blue-600 dark:text-blue-400 my-1 tracking-tight" id="modalScoreDisplay">
+          8.5 <span class="text-2xl font-bold text-slate-400">/ 10.0</span>
+        </div>
+        <div class="inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase mt-1 shadow-sm" id="modalRankBadge">
+          Xuất sắc
+        </div>
+      </div>
+
+      <!-- Breakdown stats by Parts -->
+      <div class="space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
+        <div class="flex justify-between items-center p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60">
+          <span class="font-medium">Phần 1 (Nhiều lựa chọn - 6 câu):</span>
+          <span class="font-bold text-slate-900 dark:text-white" id="modalPart1Score">3.0 / 3.0 điểm</span>
+        </div>
+        <div class="flex justify-between items-center p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60">
+          <span class="font-medium">Phần 2 (Đúng / Sai - 8 ý):</span>
+          <span class="font-bold text-slate-900 dark:text-white" id="modalPart2Score">3.5 / 4.0 điểm</span>
+        </div>
+        <div class="flex justify-between items-center p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60">
+          <span class="font-medium">Phần 3 (Trả lời ngắn - 2 câu):</span>
+          <span class="font-bold text-slate-900 dark:text-white" id="modalPart3Score">3.0 / 3.0 điểm</span>
+        </div>
+        <div class="flex justify-between items-center p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 text-slate-500">
+          <span>Thời gian hoàn thành:</span>
+          <span class="font-semibold text-slate-700 dark:text-slate-300" id="modalTimeSpent">08:42</span>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <button onclick="closeResultModal()" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-soft transition flex items-center justify-center gap-1.5">
+          <i data-lucide="eye" class="w-4 h-4"></i>
+          <span>Xem Lại Bài & Lời Giải Chi Tiết</span>
+        </button>
+        <button onclick="restartCurrentExam()" class="w-full sm:w-auto px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-xs transition flex items-center justify-center gap-1.5">
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          <span>Làm Lại</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRINT / EXPORT SETTINGS MODAL -->
+  <div id="printModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
+          <i data-lucide="printer" class="w-5 h-5 text-blue-600"></i>
+          Tuỳ Chọn In & Xuất Đề Thi
+        </h3>
+        <button onclick="closePrintModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+        Chọn định dạng và phiên bản đề bạn muốn in ra giấy hoặc lưu thành tài liệu:
+      </p>
+
+      <div class="space-y-3">
+        <!-- Print Student Version -->
+        <button onclick="executePrint('student')" class="w-full text-left p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 hover:bg-blue-50/50 dark:hover:bg-slate-800/60 transition group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="user" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-blue-600 transition">
+              In Bản Học Sinh (Đề trống để làm bài)
+            </h4>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">
+              Có khung điểm, lời phê giáo viên, ô điền thông tin, ẩn toàn bộ đáp án.
+            </p>
+          </div>
+        </button>
+
+        <!-- Print Teacher Version -->
+        <button onclick="executePrint('teacher')" class="w-full text-left p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-emerald-500 hover:bg-emerald-50/50 dark:hover:bg-slate-800/60 transition group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-emerald-600 transition">
+              In Bản Giáo Viên (Kèm đáp án & lời giải)
+            </h4>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">
+              Đầy đủ ma trận đáp án, hướng dẫn chấm điểm và lời giải chi tiết.
+            </p>
+          </div>
+        </button>
+
+        <!-- Download Word (.doc) -->
+        <button onclick="downloadWordDoc()" class="w-full text-left p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-indigo-500 hover:bg-indigo-50/50 dark:hover:bg-slate-800/60 transition group flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="file-down" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-indigo-600 transition">
+              Tải Xuất File Word (.doc)
+            </h4>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400">
+              Tải trọn bộ 5 đề thi hoặc đề hiện tại về máy để mở và chỉnh sửa trong Microsoft Word.
+            </p>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EMBEDDED EXAM DATA & ENGINE LOGIC -->
+  <script>
+const EXAM_DATA = [
+  {
+    id: 1,
+    title: "Đề số 1: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "1_1",
+            number: 1,
+            type: "mcq",
+            content: "Cho tập hợp $A = \\{1; 2; 3; 4\\}$. Khẳng định nào sau đây là đúng?",
+            options: [
+              { key: "A", text: "$0 \\in A$" },
+              { key: "B", text: "$1 \\notin A$" },
+              { key: "C", text: "$2 \\in A$" },
+              { key: "D", text: "$5 \\in A$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Số 2 là một phần tử thuộc tập hợp $A$, nên kí hiệu $2 \\in A$ là chính xác. Các phương án khác sai vì $0 \\notin A$, $1 \\in A$, $5 \\notin A$."
+          },
+          {
+            id: "1_2",
+            number: 2,
+            type: "mcq",
+            content: "Số tự nhiên liền sau của số 199 là:",
+            options: [
+              { key: "A", text: "198" },
+              { key: "B", text: "200" },
+              { key: "C", text: "190" },
+              { key: "D", text: "201" }
+            ],
+            correctAnswer: "B",
+            explanation: "Để tìm số tự nhiên liền sau của một số, ta cộng thêm 1 đơn vị: $199 + 1 = 200$."
+          },
+          {
+            id: "1_3",
+            number: 3,
+            type: "mcq",
+            content: "Trong số 250, chữ số 5 có giá trị bằng bao nhiêu?",
+            options: [
+              { key: "A", text: "5" },
+              { key: "B", text: "50" },
+              { key: "C", text: "500" },
+              { key: "D", text: "0" }
+            ],
+            correctAnswer: "B",
+            explanation: "Chữ số 5 nằm ở hàng chục, vì vậy giá trị của nó là $5 \\times 10 = 50$."
+          },
+          {
+            id: "1_4",
+            number: 4,
+            type: "mcq",
+            content: "Số La Mã XIX biểu diễn số tự nhiên nào trong hệ thập phân?",
+            options: [
+              { key: "A", text: "19" },
+              { key: "B", text: "21" },
+              { key: "C", text: "11" },
+              { key: "D", text: "9" }
+            ],
+            correctAnswer: "A",
+            explanation: "Trong hệ số La Mã: X = 10, IX = 9. Do đó $\\text{XIX} = 10 + 9 = 19$."
+          },
+          {
+            id: "1_5",
+            number: 5,
+            type: "mcq",
+            content: "Kết quả của phép tính $15 + 49 + 85$ là:",
+            options: [
+              { key: "A", text: "139" },
+              { key: "B", text: "149" },
+              { key: "C", text: "159" },
+              { key: "D", text: "169" }
+            ],
+            correctAnswer: "B",
+            explanation: "Áp dụng tính chất giao hoán và kết hợp để tính nhanh: $(15 + 85) + 49 = 100 + 49 = 149$."
+          },
+          {
+            id: "1_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm số tự nhiên $x$, biết: $x - 15 = 20$.",
+            options: [
+              { key: "A", text: "$x = 5$" },
+              { key: "B", text: "$x = 25$" },
+              { key: "C", text: "$x = 35$" },
+              { key: "D", text: "$x = 300$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Muốn tìm số bị trừ, ta lấy hiệu cộng với số trừ: $x = 20 + 15 = 35$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "1_7",
+            number: 7,
+            type: "tf",
+            content: "Cho tập hợp $M = \\{1; 2; 3; 4\\}$.",
+            items: [
+              {
+                key: "a",
+                text: "Tập hợp $M$ có thể viết bằng dấu hiệu đặc trưng là: $M = \\{x \\in \\mathbb{N}^* \\mid x \\le 4\\}$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì $\\mathbb{N}^* = \\{1; 2; 3; \\dots\\}$, kết hợp $x \\le 4$ cho ta chính xác các số $1, 2, 3, 4$."
+              },
+              {
+                key: "b",
+                text: "Phần tử $0 \\in M$.",
+                correctAnswer: "S",
+                explanation: "Sai, vì trong tập hợp $M$ không chứa phần tử số 0."
+              },
+              {
+                key: "c",
+                text: "Số phần tử của tập hợp $M$ là 4.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, tập $M$ gồm đúng 4 phần tử là $1, 2, 3, 4$."
+              },
+              {
+                key: "d",
+                text: "Tập hợp $M$ gồm các số tự nhiên nhỏ hơn 4.",
+                correctAnswer: "S",
+                explanation: "Sai, các số tự nhiên nhỏ hơn 4 là $0, 1, 2, 3$, trong khi tập $M$ có phần tử 4 và không có phần tử 0."
+              }
+            ]
+          },
+          {
+            id: "1_8",
+            number: 8,
+            type: "tf",
+            content: "Xét các phép tính và tính chất sau trong tập hợp số tự nhiên:",
+            items: [
+              {
+                key: "a",
+                text: "Tính chất giao hoán của phép cộng là $a + b = b + a$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng theo định nghĩa tính chất giao hoán phép cộng."
+              },
+              {
+                key: "b",
+                text: "$(a + b) + c = a + (b + c)$ là tính chất kết hợp.",
+                correctAnswer: "Đ",
+                explanation: "Đúng theo định nghĩa tính chất kết hợp phép cộng."
+              },
+              {
+                key: "c",
+                text: "Phép tính $15 - 20$ có thể thực hiện được trong tập hợp số tự nhiên.",
+                correctAnswer: "S",
+                explanation: "Sai, trong tập số tự nhiên $\\mathbb{N}$, phép trừ $a - b$ chỉ thực hiện được khi $a \\ge b$."
+              },
+              {
+                key: "d",
+                text: "Khi cộng một số với 0, kết quả bằng chính số đó.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì với mọi số tự nhiên $a$, ta luôn có $a + 0 = 0 + a = a$."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "1_9",
+            number: 9,
+            type: "short",
+            content: "Để chuẩn bị vật liệu làm \"Trạm thao tác vi mô\", 49 học sinh của lớp 6A mỗi bạn mang đến 2 vỏ hộp giấy. Hỏi cả lớp đã chuẩn bị được tất cả bao nhiêu vỏ hộp giấy?",
+            correctAnswers: ["98", "98 vỏ hộp", "98 hộp"],
+            unit: "vỏ hộp",
+            explanation: "Số vỏ hộp cả lớp chuẩn bị được là: $49 \\times 2 = 98$ (vỏ hộp)."
+          },
+          {
+            id: "1_10",
+            number: 10,
+            type: "short",
+            content: "Tính nhanh giá trị của biểu thức: $2026 - 199$.",
+            correctAnswers: ["1827"],
+            explanation: "Thêm 1 vào số trừ và số bị trừ để làm tròn số trừ thành 200: $(2026 + 1) - (199 + 1) = 2027 - 200 = 1827$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: "Đề số 2: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "2_1",
+            number: 1,
+            type: "mcq",
+            content: "Tập hợp $X$ gồm các chữ cái tiếng Việt trong từ \"TOÁN\" là:",
+            options: [
+              { key: "A", text: "$X = \\{T; O; A; N\\}$" },
+              { key: "B", text: "$X = \\{T; O; Á; N\\}$" },
+              { key: "C", text: "$X = (T; O; A; N)$" },
+              { key: "D", text: "$X = [T; O; A; N]$" }
+            ],
+            correctAnswer: "A",
+            explanation: "Theo quy ước SGK Toán 6, các chữ cái tiếng Việt lấy theo chữ cái in hoa không dấu: $X = \\{T; O; A; N\\}$, viết trong dấu ngoặc nhọn $\\{\\}$."
+          },
+          {
+            id: "2_2",
+            number: 2,
+            type: "mcq",
+            content: "Sự khác biệt giữa tập hợp $\\mathbb{N}$ và tập hợp $\\mathbb{N}^*$ là:",
+            options: [
+              { key: "A", text: "Tập $\\mathbb{N}^*$ không chứa số 1." },
+              { key: "B", text: "Tập $\\mathbb{N}^*$ không chứa số 0." },
+              { key: "C", text: "Tập $\\mathbb{N}$ không chứa số 0." },
+              { key: "D", text: "Không có sự khác biệt." }
+            ],
+            correctAnswer: "B",
+            explanation: "$\\mathbb{N} = \\{0; 1; 2; 3; \\dots\\}$ còn $\\mathbb{N}^* = \\{1; 2; 3; \\dots\\}$. Điểm khác biệt duy nhất là $\\mathbb{N}^*$ không chứa số 0."
+          },
+          {
+            id: "2_3",
+            number: 3,
+            type: "mcq",
+            content: "Viết số 24 bằng chữ số La Mã:",
+            options: [
+              { key: "A", text: "XXIIII" },
+              { key: "B", text: "XIV" },
+              { key: "C", text: "XXIV" },
+              { key: "D", text: "XXVI" }
+            ],
+            correctAnswer: "C",
+            explanation: "Số $24 = 20 + 4$. 20 là XX, 4 là IV, do đó viết là XXIV."
+          },
+          {
+            id: "2_4",
+            number: 4,
+            type: "mcq",
+            content: "Sắp xếp các số $15; 12; 19; 20$ theo thứ tự tăng dần:",
+            options: [
+              { key: "A", text: "$20 < 19 < 15 < 12$" },
+              { key: "B", text: "$12 < 15 < 19 < 20$" },
+              { key: "C", text: "$12 < 19 < 15 < 20$" },
+              { key: "D", text: "$15 < 12 < 19 < 20$" }
+            ],
+            correctAnswer: "B",
+            explanation: "So sánh các số: $12 < 15 < 19 < 20$ là thứ tự từ nhỏ đến lớn (tăng dần)."
+          },
+          {
+            id: "2_5",
+            number: 5,
+            type: "mcq",
+            content: "Kết quả của phép tính $100 - (25 + 35)$ là:",
+            options: [
+              { key: "A", text: "40" },
+              { key: "B", text: "110" },
+              { key: "C", text: "50" },
+              { key: "D", text: "60" }
+            ],
+            correctAnswer: "A",
+            explanation: "Thực hiện phép tính trong ngoặc trước: $25 + 35 = 60$, sau đó lấy $100 - 60 = 40$."
+          },
+          {
+            id: "2_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm số tự nhiên $x$, biết $20 - x = 5$:",
+            options: [
+              { key: "A", text: "$x = 25$" },
+              { key: "B", text: "$x = 15$" },
+              { key: "C", text: "$x = 10$" },
+              { key: "D", text: "$x = 100$" }
+            ],
+            correctAnswer: "B",
+            explanation: "Muốn tìm số trừ, ta lấy số bị trừ trừ đi hiệu: $x = 20 - 5 = 15$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "2_7",
+            number: 7,
+            type: "tf",
+            content: "Xét tia số gốc $O$ nằm ngang (chiều dương từ trái sang phải):",
+            items: [
+              {
+                key: "a",
+                text: "Điểm biểu diễn số 0 là gốc của tia số.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, gốc $O$ của tia số ứng với số 0."
+              },
+              {
+                key: "b",
+                text: "Điểm biểu diễn số 5 nằm bên trái điểm biểu diễn số 3.",
+                correctAnswer: "S",
+                explanation: "Sai, vì $5 > 3$ nên điểm 5 nằm bên phải điểm 3."
+              },
+              {
+                key: "c",
+                text: "Hai số tự nhiên liên tiếp luôn hơn kém nhau 1 đơn vị.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, hai số tự nhiên liên tiếp có dạng $n$ và $n + 1$."
+              },
+              {
+                key: "d",
+                text: "Có một số tự nhiên lớn nhất nằm ở cuối tia số.",
+                correctAnswer: "S",
+                explanation: "Sai, tập số tự nhiên là vô hạn, tia số kéo dài vô tận về bên phải và không có số tự nhiên lớn nhất."
+              }
+            ]
+          },
+          {
+            id: "2_8",
+            number: 8,
+            type: "tf",
+            content: "Cấu tạo của số tự nhiên 345:",
+            items: [
+              {
+                key: "a",
+                text: "Số 345 có 3 chữ số.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, 345 gồm ba chữ số: 3, 4 và 5."
+              },
+              {
+                key: "b",
+                text: "Chữ số hàng chục là số 4 và có giá trị là 40.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, chữ số 4 ở hàng chục có giá trị $4 \\times 10 = 40$."
+              },
+              {
+                key: "c",
+                text: "Chữ số hàng trăm là 3 và có giá trị là 30.",
+                correctAnswer: "S",
+                explanation: "Sai, chữ số 3 ở hàng trăm có giá trị là 300, không phải 30."
+              },
+              {
+                key: "d",
+                text: "Số 345 có thể viết thành tổng: $300 + 40 + 5$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, phân tích theo cấu tạo thập phân: $345 = 300 + 40 + 5$."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "2_9",
+            number: 9,
+            type: "short",
+            content: "Viết số tự nhiên $x$ lớn nhất thoả mãn: $x < 25$.",
+            correctAnswers: ["24"],
+            explanation: "Số tự nhiên lớn nhất nhỏ hơn 25 là số liền trước của 25, tức là $25 - 1 = 24$."
+          },
+          {
+            id: "2_10",
+            number: 10,
+            type: "short",
+            content: "Tính nhanh tổng: $37 + 198 + 63$.",
+            correctAnswers: ["298"],
+            explanation: "Nhóm các số có tổng tròn trăm: $(37 + 63) + 198 = 100 + 198 = 298$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "Đề số 3: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "3_1",
+            number: 1,
+            type: "mcq",
+            content: "Cách viết liệt kê các phần tử của tập hợp $A = \\{x \\in \\mathbb{N} \\mid 5 < x \\le 8\\}$ là:",
+            options: [
+              { key: "A", text: "$A = \\{5; 6; 7; 8\\}$" },
+              { key: "B", text: "$A = \\{6; 7; 8\\}$" },
+              { key: "C", text: "$A = \\{6; 7\\}$" },
+              { key: "D", text: "$A = \\{5; 6; 7\\}$" }
+            ],
+            correctAnswer: "B",
+            explanation: "$5 < x \\le 8$ nghĩa là $x$ lớn hơn 5 và nhỏ hơn hoặc bằng 8. Các số tự nhiên thỏa mãn là 6, 7, 8. Do đó $A = \\{6; 7; 8\\}$."
+          },
+          {
+            id: "3_2",
+            number: 2,
+            type: "mcq",
+            content: "Số gồm 5 nghìn, 2 chục và 1 đơn vị được viết là:",
+            options: [
+              { key: "A", text: "521" },
+              { key: "B", text: "5021" },
+              { key: "C", text: "5201" },
+              { key: "D", text: "5210" }
+            ],
+            correctAnswer: "B",
+            explanation: "Hàng nghìn là 5, hàng trăm khuyết nên là 0, hàng chục là 2, hàng đơn vị là 1. Số viết được là 5021."
+          },
+          {
+            id: "3_3",
+            number: 3,
+            type: "mcq",
+            content: "Khẳng định nào sau đây sai khi nói về chữ số La Mã?",
+            options: [
+              { key: "A", text: "Chữ I biểu diễn số 1." },
+              { key: "B", text: "Chữ V biểu diễn số 5." },
+              { key: "C", text: "Chữ X biểu diễn số 10." },
+              { key: "D", text: "Có kí tự La Mã biểu diễn số 0." }
+            ],
+            correctAnswer: "D",
+            explanation: "Trong hệ số La Mã cổ điển không có ký tự nào để biểu diễn số 0."
+          },
+          {
+            id: "3_4",
+            number: 4,
+            type: "mcq",
+            content: "Số tự nhiên $x$ thoả mãn $199 < x < 201$ là:",
+            options: [
+              { key: "A", text: "198" },
+              { key: "B", text: "200" },
+              { key: "C", text: "202" },
+              { key: "D", text: "199" }
+            ],
+            correctAnswer: "B",
+            explanation: "Số tự nhiên duy nhất nằm giữa 199 và 201 là 200."
+          },
+          {
+            id: "3_5",
+            number: 5,
+            type: "mcq",
+            content: "Tính giá trị biểu thức: $125 - 25 - 30$.",
+            options: [
+              { key: "A", text: "130" },
+              { key: "B", text: "70" },
+              { key: "C", text: "100" },
+              { key: "D", text: "80" }
+            ],
+            correctAnswer: "B",
+            explanation: "Thực hiện theo thứ tự từ trái qua phải: $125 - 25 = 100$, sau đó $100 - 30 = 70$."
+          },
+          {
+            id: "3_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm số tự nhiên $x$, biết: $x + 49 = 100$.",
+            options: [
+              { key: "A", text: "$x = 149$" },
+              { key: "B", text: "$x = 51$" },
+              { key: "C", text: "$x = 41$" },
+              { key: "D", text: "$x = 61$" }
+            ],
+            correctAnswer: "B",
+            explanation: "Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết: $x = 100 - 49 = 51$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "3_7",
+            number: 7,
+            type: "tf",
+            content: "Cho các tập hợp và phần tử:",
+            items: [
+              {
+                key: "a",
+                text: "$0 \\in \\mathbb{N}^*$.",
+                correctAnswer: "S",
+                explanation: "Sai, vì $\\mathbb{N}^*$ là tập các số tự nhiên khác 0."
+              },
+              {
+                key: "b",
+                text: "Tập hợp các số tự nhiên $\\mathbb{N} = \\{0; 1; 2; 3; \\dots\\}$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng theo định nghĩa tập số tự nhiên $\\mathbb{N}$."
+              },
+              {
+                key: "c",
+                text: "Hai chữ số 3 và 5 ghép được thành hai số có hai chữ số khác nhau là 35 và 53.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, các số có 2 chữ số khác nhau tạo từ 3 và 5 là 35 và 53."
+              },
+              {
+                key: "d",
+                text: "Khi viết tập hợp bằng cách liệt kê, mỗi phần tử có thể viết lặp lại nhiều lần.",
+                correctAnswer: "S",
+                explanation: "Sai, quy tắc viết tập hợp là mỗi phần tử chỉ được liệt kê một lần."
+              }
+            ]
+          },
+          {
+            id: "3_8",
+            number: 8,
+            type: "tf",
+            content: "Xét các mối quan hệ trong phép cộng và phép trừ:",
+            items: [
+              {
+                key: "a",
+                text: "Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết.",
+                correctAnswer: "Đ",
+                explanation: "Đúng theo quy tắc tìm thành phần chưa biết của phép cộng."
+              },
+              {
+                key: "b",
+                text: "Trong phép tính $a - b = c$, $b$ được gọi là số bị trừ.",
+                correctAnswer: "S",
+                explanation: "Sai, trong phép tính $a - b = c$, $a$ là số bị trừ, còn $b$ là số trừ."
+              },
+              {
+                key: "c",
+                text: "Nếu $x - 5 = 10$ thì $x = 15$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì $x = 10 + 5 = 15$."
+              },
+              {
+                key: "d",
+                text: "Phép trừ hai số tự nhiên luôn luôn thực hiện được.",
+                correctAnswer: "S",
+                explanation: "Sai, phép trừ số tự nhiên chỉ thực hiện được khi số bị trừ lớn hơn hoặc bằng số trừ."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "3_9",
+            number: 9,
+            type: "short",
+            content: "Trong buổi thu gom nắp chai tái chế, Nhóm 1 gom được 145 chiếc, Nhóm 2 gom được 120 chiếc. Cả hai nhóm thu được tổng cộng bao nhiêu nắp chai?",
+            correctAnswers: ["265", "265 chiếc", "265 nắp chai"],
+            unit: "nắp chai",
+            explanation: "Tổng số nắp chai cả hai nhóm gom được là: $145 + 120 = 265$ (chiếc)."
+          },
+          {
+            id: "3_10",
+            number: 10,
+            type: "short",
+            content: "Tính nhanh: $2026 + 199 - 26$.",
+            correctAnswers: ["2199"],
+            explanation: "Áp dụng giao hoán và kết hợp: $(2026 - 26) + 199 = 2000 + 199 = 2199$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 4,
+    title: "Đề số 4: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "4_1",
+            number: 1,
+            type: "mcq",
+            content: "Cho tập hợp $P = \\{a; b; c\\}$. Kí hiệu nào sau đây đúng?",
+            options: [
+              { key: "A", text: "$a \\notin P$" },
+              { key: "B", text: "$d \\in P$" },
+              { key: "C", text: "$b \\in P$" },
+              { key: "D", text: "$P \\in c$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Vì $b$ là một phần tử thuộc tập hợp $P$, nên $b \\in P$ là chính xác."
+          },
+          {
+            id: "4_2",
+            number: 2,
+            type: "mcq",
+            content: "Số chẵn liền sau của số 10 là:",
+            options: [
+              { key: "A", text: "8" },
+              { key: "B", text: "9" },
+              { key: "C", text: "11" },
+              { key: "D", text: "12" }
+            ],
+            correctAnswer: "D",
+            explanation: "Hai số chẵn liên tiếp hơn kém nhau 2 đơn vị. Số chẵn liền sau số 10 là $10 + 2 = 12$."
+          },
+          {
+            id: "4_3",
+            number: 3,
+            type: "mcq",
+            content: "Số La Mã XXIX có giá trị là:",
+            options: [
+              { key: "A", text: "21" },
+              { key: "B", text: "19" },
+              { key: "C", text: "29" },
+              { key: "D", text: "31" }
+            ],
+            correctAnswer: "C",
+            explanation: "XX biểu thị 20, IX biểu thị 9. Do đó $\\text{XXIX} = 20 + 9 = 29$."
+          },
+          {
+            id: "4_4",
+            number: 4,
+            type: "mcq",
+            content: "Số tự nhiên nhỏ nhất có 3 chữ số khác nhau là:",
+            options: [
+              { key: "A", text: "100" },
+              { key: "B", text: "102" },
+              { key: "C", text: "123" },
+              { key: "D", text: "987" }
+            ],
+            correctAnswer: "B",
+            explanation: "Chữ số hàng trăm nhỏ nhất phải khác 0 nên là 1, chữ số hàng chục nhỏ nhất khác 1 nên là 0, chữ số hàng đơn vị nhỏ nhất khác 1 và 0 là 2. Vậy số đó là 102."
+          },
+          {
+            id: "4_5",
+            number: 5,
+            type: "mcq",
+            content: "Tính $200 - 55$:",
+            options: [
+              { key: "A", text: "145" },
+              { key: "B", text: "155" },
+              { key: "C", text: "135" },
+              { key: "D", text: "255" }
+            ],
+            correctAnswer: "A",
+            explanation: "Thực hiện phép trừ: $200 - 55 = 145$."
+          },
+          {
+            id: "4_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm $x$, biết: $x - 15 = 49$.",
+            options: [
+              { key: "A", text: "$x = 34$" },
+              { key: "B", text: "$x = 64$" },
+              { key: "C", text: "$x = 54$" },
+              { key: "D", text: "$x = 74$" }
+            ],
+            correctAnswer: "B",
+            explanation: "Số bị trừ = hiệu + số trừ: $x = 49 + 15 = 64$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "4_7",
+            number: 7,
+            type: "tf",
+            content: "Quy tắc ghi số tự nhiên:",
+            items: [
+              {
+                key: "a",
+                text: "Số tự nhiên được ghi bởi 10 chữ số từ 0 đến 9.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, hệ thập phân sử dụng 10 chữ số: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9."
+              },
+              {
+                key: "b",
+                text: "Giá trị của một chữ số không thay đổi dù đứng ở bất kì vị trí nào.",
+                correctAnswer: "S",
+                explanation: "Sai, hệ thập phân là hệ ghi số theo vị trí; giá trị của mỗi chữ số phụ thuộc vào hàng mà nó đứng."
+              },
+              {
+                key: "c",
+                text: "Số tự nhiên có hai chữ số thì chữ số hàng chục phải khác 0.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, chữ số đầu tiên của một số tự nhiên luôn phải khác 0."
+              },
+              {
+                key: "d",
+                text: "Chữ số 0 không được phép đứng cuối cùng của một số.",
+                correctAnswer: "S",
+                explanation: "Sai, chữ số 0 hoàn toàn có thể đứng ở hàng đơn vị (ví dụ các số tròn chục, tròn trăm: 10, 20, 100)."
+              }
+            ]
+          },
+          {
+            id: "4_8",
+            number: 8,
+            type: "tf",
+            content: "Thứ tự các số trên tia số:",
+            items: [
+              {
+                key: "a",
+                text: "Nếu $a < b$ thì điểm $a$ nằm bên phải điểm $b$.",
+                correctAnswer: "S",
+                explanation: "Sai, nếu $a < b$ thì điểm $a$ phải nằm bên trái điểm $b$ trên tia số nằm ngang."
+              },
+              {
+                key: "b",
+                text: "Số liền trước của một số luôn nhỏ hơn số đó 1 đơn vị.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, số liền trước của $n$ (với $n > 0$) là $n - 1$."
+              },
+              {
+                key: "c",
+                text: "Tính chất bắc cầu: Nếu $a < b$ và $b < c$ thì $a < c$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, đây là tính chất bắc cầu của quan hệ so sánh thứ tự."
+              },
+              {
+                key: "d",
+                text: "Điểm biểu diễn số 100 luôn nằm bên phải điểm biểu diễn số 99.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì $100 > 99$."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "4_9",
+            number: 9,
+            type: "short",
+            content: "Tìm số tự nhiên $x$ thỏa mãn điều kiện $15 < x < 17$.",
+            correctAnswers: ["16"],
+            explanation: "Số tự nhiên duy nhất nằm giữa 15 và 17 là 16."
+          },
+          {
+            id: "4_10",
+            number: 10,
+            type: "short",
+            content: "Khối 6 của trường THCS Đặng Thúc Vịnh có tổng cộng 120 học sinh. Biết riêng lớp 6A có 49 học sinh. Hỏi các lớp còn lại của khối 6 có tổng cộng bao nhiêu học sinh?",
+            correctAnswers: ["71", "71 học sinh"],
+            unit: "học sinh",
+            explanation: "Số học sinh các lớp còn lại của khối 6 là: $120 - 49 = 71$ (học sinh)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Đề số 5: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "5_1",
+            number: 1,
+            type: "mcq",
+            content: "Tập hợp các số tự nhiên không vượt quá 3 được liệt kê là:",
+            options: [
+              { key: "A", text: "$\\{1; 2; 3\\}$" },
+              { key: "B", text: "$\\{0; 1; 2\\}$" },
+              { key: "C", text: "$\\{0; 1; 2; 3\\}$" },
+              { key: "D", text: "$\\{1; 2\\}$" }
+            ],
+            correctAnswer: "C",
+            explanation: "\"Không vượt quá 3\" nghĩa là nhỏ hơn hoặc bằng 3. Trong tập số tự nhiên gồm các số $0, 1, 2, 3$."
+          },
+          {
+            id: "5_2",
+            number: 2,
+            type: "mcq",
+            content: "Số tự nhiên lớn nhất có 2 chữ số là:",
+            options: [
+              { key: "A", text: "90" },
+              { key: "B", text: "98" },
+              { key: "C", text: "99" },
+              { key: "D", text: "100" }
+            ],
+            correctAnswer: "C",
+            explanation: "Các số có 2 chữ số chạy từ 10 đến 99, do đó số lớn nhất là 99."
+          },
+          {
+            id: "5_3",
+            number: 3,
+            type: "mcq",
+            content: "Viết số 14 bằng chữ số La Mã:",
+            options: [
+              { key: "A", text: "XIIII" },
+              { key: "B", text: "XIV" },
+              { key: "C", text: "XVI" },
+              { key: "D", text: "VIX" }
+            ],
+            correctAnswer: "B",
+            explanation: "Số $14 = 10 + 4$. Số 10 là X, số 4 là IV, do đó viết là XIV."
+          },
+          {
+            id: "5_4",
+            number: 4,
+            type: "mcq",
+            content: "Điền kí hiệu thích hợp vào chỗ trống: $2025 \\dots 2026$.",
+            options: [
+              { key: "A", text: "$>$" },
+              { key: "B", text: "$=$" },
+              { key: "C", text: "$<$" },
+              { key: "D", text: "$\\ge$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Vì $2025$ nhỏ hơn $2026$ nên điền dấu $<$, ta được $2025 < 2026$."
+          },
+          {
+            id: "5_5",
+            number: 5,
+            type: "mcq",
+            content: "Tính: $45 + 55$.",
+            options: [
+              { key: "A", text: "90" },
+              { key: "B", text: "100" },
+              { key: "C", text: "110" },
+              { key: "D", text: "80" }
+            ],
+            correctAnswer: "B",
+            explanation: "$45 + 55 = 100$."
+          },
+          {
+            id: "5_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm số tự nhiên $x$, biết $50 - x = 10$.",
+            options: [
+              { key: "A", text: "$x = 60$" },
+              { key: "B", text: "$x = 500$" },
+              { key: "C", text: "$x = 40$" },
+              { key: "D", text: "$x = 5$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Số trừ = số bị trừ - hiệu: $x = 50 - 10 = 40$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "5_7",
+            number: 7,
+            type: "tf",
+            content: "Mối quan hệ giữa phép cộng và phép trừ:",
+            items: [
+              {
+                key: "a",
+                text: "Nếu $a + b = c$ thì $c - a = b$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, đây là mối liên hệ nghịch đảo giữa phép cộng và phép trừ."
+              },
+              {
+                key: "b",
+                text: "Số bị trừ = Số trừ - Hiệu.",
+                correctAnswer: "S",
+                explanation: "Sai, quy tắc đúng là: Số bị trừ = Số trừ + Hiệu."
+              },
+              {
+                key: "c",
+                text: "Tổng của hai số tự nhiên luôn lớn hơn hoặc bằng mỗi số hạng của tổng.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì $a, b \\ge 0$ nên $a + b \\ge a$ và $a + b \\ge b$."
+              },
+              {
+                key: "d",
+                text: "Muốn tìm số trừ, ta lấy số bị trừ cộng với hiệu.",
+                correctAnswer: "S",
+                explanation: "Sai, quy tắc đúng là: Số trừ = Số bị trừ - Hiệu."
+              }
+            ]
+          },
+          {
+            id: "5_8",
+            number: 8,
+            type: "tf",
+            content: "Kí hiệu chữ số La Mã:",
+            items: [
+              {
+                key: "a",
+                text: "Chữ V có giá trị là 5.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, trong ký tự La Mã, V đại diện cho số 5."
+              },
+              {
+                key: "b",
+                text: "Chữ IX có giá trị là 11.",
+                correctAnswer: "S",
+                explanation: "Sai, IX có giá trị là 9 (10 - 1), còn 11 là XI."
+              },
+              {
+                key: "c",
+                text: "Cụm IV có giá trị là 4.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, IV có giá trị là 4 (5 - 1)."
+              },
+              {
+                key: "d",
+                text: "Chữ X đứng trước chữ V thì giá trị giảm đi (XV là 5).",
+                correctAnswer: "S",
+                explanation: "Sai, XV là $10 + 5 = 15$."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "5_9",
+            number: 9,
+            type: "short",
+            content: "Để chia nhóm thực hành môn Toán, giáo viên yêu cầu mỗi nhóm có đúng 5 bạn. Nếu một lớp có 49 học sinh, lớp đó sẽ xếp được nhiều nhất bao nhiêu nhóm đủ 5 bạn?",
+            correctAnswers: ["9", "9 nhóm"],
+            unit: "nhóm",
+            explanation: "Thực hiện phép chia có dư: $49 : 5 = 9$ (dư 4). Vậy xếp được nhiều nhất 9 nhóm đủ 5 bạn (còn dư 4 bạn)."
+          },
+          {
+            id: "5_10",
+            number: 10,
+            type: "short",
+            content: "Tính nhẩm giá trị biểu thức: $199 + 45$.",
+            correctAnswers: ["244"],
+            explanation: "Áp dụng phương pháp thêm - bớt: $199 + 1 + 44 = 200 + 44 = 244$."
+          }
+        ]
+      }
+    ]
+  }
+];
+
+</script>
+  <script>
+    // Fallback data if questions_data.js is blocked by file:// CORS in older browsers
+    if (typeof EXAM_DATA === 'undefined') {
+      console.warn("EXAM_DATA not loaded from file, using inline data.");
+    }
+  </script>
+
+  <script>
+    /**
+     * APPLICATION STATE
+     */
+    let currentExamId = 1;
+    let currentMode = 'exam'; // 'exam' | 'practice' | 'teacher'
+    let userAnswers = {}; // Format: { questionId: value }
+    let isSubmitted = false;
+    let timerSeconds = 20 * 60; // 20 minutes default
+    let timerInterval = null;
+    let timeSpentSeconds = 0;
+
+    // Local Storage Keys
+    const STORAGE_PREFIX = "TN_TOAN6_";
+
+    /**
+     * INITIALIZATION ON PAGE LOAD
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      renderExamTabs();
+      loadExam(1);
+      startTimer();
+      lucide.createIcons();
+    });
+
+    /**
+     * THEME MANAGEMENT (Dark / Light)
+     */
+    function initTheme() {
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      lucide.createIcons();
+    }
+
+    /**
+     * EXAM TABS RENDERING
+     */
+    function renderExamTabs() {
+      const container = document.getElementById('examTabsContainer');
+      container.innerHTML = '';
+
+      EXAM_DATA.forEach((exam) => {
+        const isActive = exam.id === currentExamId;
+        const btn = document.createElement('button');
+        btn.className = `flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+          isActive 
+            ? 'bg-blue-600 text-white shadow-sm' 
+            : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
+        }`;
+        btn.innerHTML = `
+          <span>🎯 Đề số ${exam.id}</span>
+        `;
+        btn.onclick = () => switchExam(exam.id);
+        container.appendChild(btn);
+      });
+    }
+
+    function switchExam(examId) {
+      if (examId === currentExamId) return;
+      
+      // Save current answers before switching
+      saveAnswersToStorage();
+
+      currentExamId = examId;
+      isSubmitted = false;
+      renderExamTabs();
+      loadExam(examId);
+      resetTimer();
+    }
+
+    /**
+     * LOAD & RENDER AN EXAM
+     */
+    function loadExam(examId) {
+      const exam = EXAM_DATA.find(e => e.id === examId) || EXAM_DATA[0];
+      
+      // Restore answers from localStorage if available
+      loadAnswersFromStorage();
+
+      // Update banner info
+      document.getElementById('bannerExamTitle').textContent = exam.title;
+      document.getElementById('bannerExamSub').textContent = exam.subtitle;
+      document.getElementById('printExamTitle').textContent = exam.title.toUpperCase();
+
+      updateModeBanner();
+
+      // Render Questions Container
+      const qContainer = document.getElementById('questionsContainer');
+      qContainer.innerHTML = '';
+
+      exam.parts.forEach(part => {
+        const partEl = document.createElement('div');
+        partEl.className = 'space-y-4';
+        
+        // Part title header
+        partEl.innerHTML = `
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-2">
+            <h3 class="font-extrabold text-slate-900 dark:text-white text-base sm:text-lg flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+              ${part.title}
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">${part.instruction}</p>
+          </div>
+          <div class="space-y-4" id="part_list_${part.partId}"></div>
+        `;
+        qContainer.appendChild(partEl);
+
+        const listEl = partEl.querySelector(`#part_list_${part.partId}`);
+
+        part.questions.forEach(q => {
+          const card = createQuestionCard(q, exam.id);
+          listEl.appendChild(card);
+        });
+      });
+
+      // Render Question Navigator on Sidebar
+      renderQuestionNavigator(exam);
+
+      // Render KaTeX Math Expressions
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true }
+        ],
+        throwOnError: false
+      });
+
+      updateProgressStats();
+      lucide.createIcons();
+    }
+
+    /**
+     * QUESTION CARD BUILDER
+     */
+    function createQuestionCard(q, examId) {
+      const card = document.createElement('div');
+      card.id = `card_q_${q.id}`;
+      card.className = "bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-soft transition-all duration-200 card-print";
+
+      let bodyHtml = '';
+
+      // 1. PART 1: MCQ (Nhiều lựa chọn)
+      if (q.type === 'mcq') {
+        const currentAns = userAnswers[q.id];
+        bodyHtml = `
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-3 py-1 rounded-xl text-xs font-black bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60">
+              Câu ${q.number}
+            </span>
+            <span class="text-xs font-semibold text-slate-400">0.5 điểm</span>
+          </div>
+          <div class="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100 mb-4 leading-relaxed">
+            ${q.content}
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            ${q.options.map(opt => {
+              const isSelected = currentAns === opt.key;
+              let extraClasses = 'border-slate-200 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-700 bg-slate-50/50 dark:bg-slate-800/40 text-slate-700 dark:text-slate-200';
+              
+              if (isSelected) {
+                extraClasses = 'border-blue-600 bg-blue-50 dark:bg-blue-950/70 text-blue-900 dark:text-blue-100 font-bold shadow-sm';
+              }
+
+              // After submission or teacher mode styling
+              if (isSubmitted || currentMode === 'teacher') {
+                if (opt.key === q.correctAnswer) {
+                  extraClasses = 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-100 font-bold';
+                } else if (isSelected && opt.key !== q.correctAnswer) {
+                  extraClasses = 'border-rose-500 bg-rose-50 dark:bg-rose-950/70 text-rose-900 dark:text-rose-100 font-bold';
+                }
+              }
+
+              return `
+                <button type="button" onclick="selectMcqAnswer('${q.id}', '${opt.key}')" 
+                  class="w-full text-left p-3.5 rounded-2xl border ${extraClasses} transition-all duration-150 flex items-center gap-3">
+                  <span class="w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black flex-shrink-0 ${
+                    isSelected ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200'
+                  }">
+                    ${opt.key}
+                  </span>
+                  <span class="text-sm">${opt.text}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      // 2. PART 2: TRUE / FALSE (Đúng / Sai 4 ý a, b, c, d)
+      else if (q.type === 'tf') {
+        bodyHtml = `
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-3 py-1 rounded-xl text-xs font-black bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900/60">
+              Câu ${q.number}
+            </span>
+            <span class="text-xs font-semibold text-slate-400">2.0 điểm (4 ý a, b, c, d)</span>
+          </div>
+          <div class="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100 mb-4 leading-relaxed">
+            ${q.content}
+          </div>
+          <div class="space-y-3">
+            ${q.items.map(item => {
+              const subId = `${q.id}_${item.key}`;
+              const userVal = userAnswers[subId]; // 'Đ' or 'S'
+              
+              const isD = userVal === 'Đ';
+              const isS = userVal === 'S';
+
+              let dStyle = isD ? 'bg-blue-600 text-white font-bold border-blue-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700';
+              let sStyle = isS ? 'bg-blue-600 text-white font-bold border-blue-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700';
+
+              if (isSubmitted || currentMode === 'teacher') {
+                if (item.correctAnswer === 'Đ') {
+                  dStyle = 'bg-emerald-600 text-white font-black border-emerald-600 ring-2 ring-emerald-300';
+                } else if (isD) {
+                  dStyle = 'bg-rose-600 text-white font-black border-rose-600 ring-2 ring-rose-300';
+                }
+                if (item.correctAnswer === 'S') {
+                  sStyle = 'bg-emerald-600 text-white font-black border-emerald-600 ring-2 ring-emerald-300';
+                } else if (isS) {
+                  sStyle = 'bg-rose-600 text-white font-black border-rose-600 ring-2 ring-rose-300';
+                }
+              }
+
+              return `
+                <div class="p-3.5 rounded-2xl bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div class="text-sm font-medium text-slate-800 dark:text-slate-200 flex-1">
+                    <strong class="font-bold text-blue-600 mr-1">${item.key})</strong> ${item.text}
+                  </div>
+                  <div class="flex items-center gap-2 flex-shrink-0">
+                    <button type="button" onclick="selectTfAnswer('${subId}', 'Đ')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold border transition ${dStyle}">
+                      Đúng (Đ)
+                    </button>
+                    <button type="button" onclick="selectTfAnswer('${subId}', 'S')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold border transition ${sStyle}">
+                      Sai (S)
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      }
+
+      // 3. PART 3: SHORT ANSWER (Trả lời ngắn)
+      else if (q.type === 'short') {
+        const currentAns = userAnswers[q.id] || '';
+        let inputBorder = 'border-slate-300 dark:border-slate-700 focus:border-blue-500';
+
+        if (isSubmitted || currentMode === 'teacher') {
+          const isCorrect = checkShortAnswerCorrect(q, currentAns);
+          inputBorder = isCorrect ? 'border-emerald-500 bg-emerald-50/30 text-emerald-900 dark:text-emerald-200' : 'border-rose-500 bg-rose-50/30 text-rose-900 dark:text-rose-200';
+        }
+
+        bodyHtml = `
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <span class="inline-flex items-center px-3 py-1 rounded-xl text-xs font-black bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60">
+              Câu ${q.number}
+            </span>
+            <span class="text-xs font-semibold text-slate-400">1.5 điểm</span>
+          </div>
+          <div class="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100 mb-4 leading-relaxed">
+            ${q.content}
+          </div>
+          <div class="max-w-md">
+            <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">
+              Kết quả của em:
+            </label>
+            <div class="relative">
+              <input type="text" id="input_${q.id}" value="${currentAns}" 
+                oninput="handleShortAnswerInput('${q.id}', this.value)"
+                placeholder="Nhập kết quả số (ví dụ: 1827)..." 
+                class="w-full text-base font-bold text-slate-900 dark:text-white bg-slate-50 dark:bg-slate-800/80 border ${inputBorder} rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition shadow-inner">
+              ${q.unit ? `<span class="absolute right-3.5 top-3.5 text-xs font-bold text-slate-400 uppercase">${q.unit}</span>` : ''}
+            </div>
+          </div>
+        `;
+      }
+
+      // EXPLANATION / HINT SECTION (Visible in Practice Mode or after Submission or Teacher Mode)
+      const showExplanation = isSubmitted || currentMode === 'teacher' || (currentMode === 'practice' && isQuestionAnswered(q));
+      
+      let explanationHtml = '';
+      if (showExplanation) {
+        explanationHtml = `
+          <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs sm:text-sm bg-blue-50/50 dark:bg-slate-800/60 p-4 rounded-2xl border border-blue-100 dark:border-blue-900/40">
+            <div class="flex items-center gap-1.5 font-bold text-blue-700 dark:text-blue-300 mb-1">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+              <span>Đáp án đúng & Hướng dẫn giải:</span>
+            </div>
+            <div class="text-slate-700 dark:text-slate-300 leading-relaxed pl-5">
+              ${q.explanation || ''}
+            </div>
+            ${q.items ? `
+              <div class="mt-2 pl-5 space-y-1">
+                ${q.items.map(it => `<div><strong>${it.key})</strong> ${it.correctAnswer === 'Đ' ? 'Đúng' : 'Sai'} — <span class="text-slate-500 dark:text-slate-400">${it.explanation || ''}</span></div>`).join('')}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }
+
+      card.innerHTML = bodyHtml + explanationHtml;
+      return card;
+    }
+
+    /**
+     * ANSWER HANDLERS
+     */
+    function selectMcqAnswer(qId, key) {
+      userAnswers[qId] = key;
+      saveAnswersToStorage();
+      refreshSingleCard(qId);
+      updateProgressStats();
+    }
+
+    function selectTfAnswer(subId, val) {
+      userAnswers[subId] = val;
+      saveAnswersToStorage();
+      const parentQId = subId.substring(0, subId.lastIndexOf('_'));
+      refreshSingleCard(parentQId);
+      updateProgressStats();
+    }
+
+    function handleShortAnswerInput(qId, val) {
+      userAnswers[qId] = val;
+      saveAnswersToStorage();
+      updateProgressStats();
+    }
+
+    function refreshSingleCard(qId) {
+      const exam = EXAM_DATA.find(e => e.id === currentExamId);
+      let foundQ = null;
+      for (const part of exam.parts) {
+        for (const q of part.questions) {
+          if (q.id === qId) {
+            foundQ = q;
+            break;
+          }
+        }
+        if (foundQ) break;
+      }
+      if (!foundQ) return;
+
+      const oldCard = document.getElementById(`card_q_${qId}`);
+      if (oldCard) {
+        const newCard = createQuestionCard(foundQ, exam.id);
+        oldCard.replaceWith(newCard);
+        
+        // Re-render KaTeX on new card
+        renderMathInElement(newCard, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true }
+          ],
+          throwOnError: false
+        });
+        lucide.createIcons();
+      }
+    }
+
+    /**
+     * QUESTION NAVIGATOR SIDEBAR
+     */
+    function renderQuestionNavigator(exam) {
+      const g1 = document.getElementById('gridPart1');
+      const g2 = document.getElementById('gridPart2');
+      const g3 = document.getElementById('gridPart3');
+
+      g1.innerHTML = '';
+      g2.innerHTML = '';
+      g3.innerHTML = '';
+
+      exam.parts.forEach(part => {
+        part.questions.forEach(q => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.id = `nav_btn_${q.id}`;
+          btn.className = `w-full h-9 rounded-xl text-xs font-bold transition flex items-center justify-center border`;
+          btn.textContent = `C${q.number}`;
+          btn.onclick = () => scrollToQuestion(q.id);
+
+          if (part.partId === 1) g1.appendChild(btn);
+          else if (part.partId === 2) g2.appendChild(btn);
+          else if (part.partId === 3) g3.appendChild(btn);
+        });
+      });
+
+      updateNavButtonsState();
+    }
+
+    function updateNavButtonsState() {
+      const exam = EXAM_DATA.find(e => e.id === currentExamId);
+      if (!exam) return;
+
+      exam.parts.forEach(part => {
+        part.questions.forEach(q => {
+          const btn = document.getElementById(`nav_btn_${q.id}`);
+          if (!btn) return;
+
+          const answered = isQuestionAnswered(q);
+
+          if (isSubmitted || currentMode === 'teacher') {
+            const correct = isQuestionFullyCorrect(q);
+            if (correct) {
+              btn.className = `w-full h-9 rounded-xl text-xs font-black transition flex items-center justify-center bg-emerald-500 text-white border-emerald-600 shadow-sm`;
+            } else {
+              btn.className = `w-full h-9 rounded-xl text-xs font-black transition flex items-center justify-center bg-rose-500 text-white border-rose-600 shadow-sm`;
+            }
+          } else {
+            if (answered) {
+              btn.className = `w-full h-9 rounded-xl text-xs font-bold transition flex items-center justify-center bg-blue-600 text-white border-blue-700 shadow-sm`;
+            } else {
+              btn.className = `w-full h-9 rounded-xl text-xs font-medium transition flex items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-blue-400`;
+            }
+          }
+        });
+      });
+    }
+
+    function isQuestionAnswered(q) {
+      if (q.type === 'mcq') {
+        return !!userAnswers[q.id];
+      } else if (q.type === 'tf') {
+        // At least one sub-item answered
+        return q.items.some(item => !!userAnswers[`${q.id}_${item.key}`]);
+      } else if (q.type === 'short') {
+        return !!(userAnswers[q.id] && userAnswers[q.id].trim() !== '');
+      }
+      return false;
+    }
+
+    function isQuestionFullyCorrect(q) {
+      if (q.type === 'mcq') {
+        return userAnswers[q.id] === q.correctAnswer;
+      } else if (q.type === 'tf') {
+        return q.items.every(it => userAnswers[`${q.id}_${it.key}`] === it.correctAnswer);
+      } else if (q.type === 'short') {
+        return checkShortAnswerCorrect(q, userAnswers[q.id]);
+      }
+      return false;
+    }
+
+    function checkShortAnswerCorrect(q, inputVal) {
+      if (!inputVal) return false;
+      const clean = inputVal.trim().toLowerCase().replace(/\s+/g, ' ');
+      return q.correctAnswers.some(ans => {
+        const cleanAns = ans.toLowerCase();
+        return clean === cleanAns || clean.startsWith(cleanAns);
+      });
+    }
+
+    function scrollToQuestion(qId) {
+      const el = document.getElementById(`card_q_${qId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('ring-2', 'ring-blue-500');
+        setTimeout(() => el.classList.remove('ring-2', 'ring-blue-500'), 1200);
+      }
+    }
+
+    function updateProgressStats() {
+      const exam = EXAM_DATA.find(e => e.id === currentExamId);
+      if (!exam) return;
+
+      let answeredCount = 0;
+      let totalQuestions = 0;
+
+      exam.parts.forEach(part => {
+        part.questions.forEach(q => {
+          totalQuestions++;
+          if (isQuestionAnswered(q)) {
+            answeredCount++;
+          }
+        });
+      });
+
+      const pct = Math.round((answeredCount / totalQuestions) * 100);
+      document.getElementById('answeredCountBadge').textContent = `${answeredCount} / ${totalQuestions} câu`;
+      document.getElementById('examProgressBar').style.width = `${pct}%`;
+
+      updateNavButtonsState();
+    }
+
+    /**
+     * MODE SWITCHING
+     */
+    function changeMode(mode) {
+      currentMode = mode;
+      updateModeBanner();
+      loadExam(currentExamId);
+    }
+
+    function updateModeBanner() {
+      const banner = document.getElementById('modeAlertBanner');
+      const modeSelect = document.getElementById('modeSelect');
+      modeSelect.value = currentMode;
+
+      if (currentMode === 'practice') {
+        banner.className = "no-print p-4 rounded-2xl border text-xs sm:text-sm flex items-center justify-between gap-3 bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-200";
+        banner.innerHTML = `
+          <div class="flex items-center gap-2">
+            <i data-lucide="lightbulb" class="w-5 h-5 text-amber-600 flex-shrink-0"></i>
+            <span><strong>Chế độ Luyện Tập Tức Thì:</strong> Bạn sẽ thấy ngay đáp án và lời giải chi tiết sau khi chọn phương án trả lời.</span>
+          </div>
+          <button onclick="changeMode('exam')" class="px-3 py-1 rounded-xl bg-amber-200 dark:bg-amber-800 text-amber-900 dark:text-amber-100 font-bold text-xs">Về Thi Thử</button>
+        `;
+        banner.classList.remove('hidden');
+      } else if (currentMode === 'teacher') {
+        banner.className = "no-print p-4 rounded-2xl border text-xs sm:text-sm flex items-center justify-between gap-3 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200";
+        banner.innerHTML = `
+          <div class="flex items-center gap-2">
+            <i data-lucide="graduation-cap" class="w-5 h-5 text-emerald-600 flex-shrink-0"></i>
+            <span><strong>Chế độ Bản Giáo Viên:</strong> Đang hiển thị toàn bộ đáp án chuẩn và lời giải chi tiết cho tất cả câu hỏi.</span>
+          </div>
+          <button onclick="changeMode('exam')" class="px-3 py-1 rounded-xl bg-emerald-200 dark:bg-emerald-800 text-emerald-900 dark:text-emerald-100 font-bold text-xs">Về Thi Thử</button>
+        `;
+        banner.classList.remove('hidden');
+      } else {
+        banner.classList.add('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    /**
+     * TIMER CONTROLS
+     */
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (currentMode === 'exam' && !isSubmitted) {
+          timeSpentSeconds++;
+          if (timerSeconds > 0) {
+            timerSeconds--;
+            updateTimerDisplay();
+          } else {
+            // Auto submit when time is up
+            clearInterval(timerInterval);
+            alert("Đã hết 20 phút làm bài! Hệ thống đang tự động nộp bài và chấm điểm.");
+            submitExam();
+          }
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      timerSeconds = 20 * 60;
+      timeSpentSeconds = 0;
+      updateTimerDisplay();
+    }
+
+    function updateTimerDisplay() {
+      const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+      const s = (timerSeconds % 60).toString().padStart(2, '0');
+      document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+    }
+
+    /**
+     * SUBMIT & SCORING ALGORITHM
+     */
+    function submitExam() {
+      const exam = EXAM_DATA.find(e => e.id === currentExamId);
+      if (!exam) return;
+
+      isSubmitted = true;
+
+      // Scoring Breakdown:
+      // Part 1: 6 questions * 0.5 = 3.0 pts
+      let part1Score = 0;
+      exam.parts[0].questions.forEach(q => {
+        if (userAnswers[q.id] === q.correctAnswer) {
+          part1Score += 0.5;
+        }
+      });
+
+      // Part 2: 2 questions = 4.0 pts (each question has 4 items: 1 item = 0.2pt, 2 items = 0.5pt, 3 items = 1.0pt, 4 items = 2.0pts)
+      let part2Score = 0;
+      exam.parts[1].questions.forEach(q => {
+        let correctSubCount = 0;
+        q.items.forEach(it => {
+          if (userAnswers[`${q.id}_${it.key}`] === it.correctAnswer) {
+            correctSubCount++;
+          }
+        });
+        if (correctSubCount === 1) part2Score += 0.2;
+        else if (correctSubCount === 2) part2Score += 0.5;
+        else if (correctSubCount === 3) part2Score += 1.0;
+        else if (correctSubCount === 4) part2Score += 2.0;
+      });
+
+      // Part 3: 2 questions * 1.5 = 3.0 pts
+      let part3Score = 0;
+      exam.parts[2].questions.forEach(q => {
+        if (checkShortAnswerCorrect(q, userAnswers[q.id])) {
+          part3Score += 1.5;
+        }
+      });
+
+      const totalScore = Math.min(10.0, Math.round((part1Score + part2Score + part3Score) * 10) / 10);
+
+      // Re-render questions to show green/red colors and explanations
+      loadExam(currentExamId);
+
+      // Show Result Modal
+      showResultModal(totalScore, part1Score, part2Score, part3Score);
+
+      // Confetti celebration if high score!
+      if (totalScore >= 7.0 && typeof confetti === 'function') {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+    }
+
+    function showResultModal(total, p1, p2, p3) {
+      const modal = document.getElementById('resultModal');
+      const card = document.getElementById('resultModalCard');
+
+      document.getElementById('modalScoreDisplay').innerHTML = `${total.toFixed(1)} <span class="text-2xl font-bold text-slate-400">/ 10.0</span>`;
+      document.getElementById('modalPart1Score').textContent = `${p1.toFixed(1)} / 3.0 điểm`;
+      document.getElementById('modalPart2Score').textContent = `${p2.toFixed(1)} / 4.0 điểm`;
+      document.getElementById('modalPart3Score').textContent = `${p3.toFixed(1)} / 3.0 điểm`;
+
+      const spentM = Math.floor(timeSpentSeconds / 60).toString().padStart(2, '0');
+      const spentS = (timeSpentSeconds % 60).toString().padStart(2, '0');
+      document.getElementById('modalTimeSpent').textContent = `${spentM} phút ${spentS} giây`;
+
+      // Rank evaluation
+      const badge = document.getElementById('modalRankBadge');
+      if (total >= 9.0) {
+        badge.className = "inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300";
+        badge.textContent = "🏆 Xuất Sắc";
+      } else if (total >= 8.0) {
+        badge.className = "inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase bg-blue-100 text-blue-800 border border-blue-300";
+        badge.textContent = "🌟 Giỏi";
+      } else if (total >= 6.5) {
+        badge.className = "inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase bg-indigo-100 text-indigo-800 border border-indigo-300";
+        badge.textContent = "👍 Khá";
+      } else if (total >= 5.0) {
+        badge.className = "inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase bg-amber-100 text-amber-800 border border-amber-300";
+        badge.textContent = "⚠️ Đạt (Trung Bình)";
+      } else {
+        badge.className = "inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase bg-rose-100 text-rose-800 border border-rose-300";
+        badge.textContent = "💪 Cần Cố Gắng Thêm";
+      }
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeResultModal() {
+      const modal = document.getElementById('resultModal');
+      const card = document.getElementById('resultModalCard');
+      card.classList.add('scale-95', 'opacity-0');
+      card.classList.remove('scale-100', 'opacity-100');
+      setTimeout(() => modal.classList.add('hidden'), 200);
+    }
+
+    function restartCurrentExam() {
+      closeResultModal();
+      resetExamAnswers();
+    }
+
+    function resetExamAnswers() {
+      if (!confirm("Bạn có chắc chắn muốn xóa toàn bộ câu trả lời để làm lại đề này?")) return;
+      
+      const exam = EXAM_DATA.find(e => e.id === currentExamId);
+      exam.parts.forEach(part => {
+        part.questions.forEach(q => {
+          delete userAnswers[q.id];
+          if (q.items) {
+            q.items.forEach(it => delete userAnswers[`${q.id}_${it.key}`]);
+          }
+        });
+      });
+      
+      isSubmitted = false;
+      saveAnswersToStorage();
+      resetTimer();
+      loadExam(currentExamId);
+    }
+
+    /**
+     * LOCAL STORAGE PERSISTENCE
+     */
+    function saveAnswersToStorage() {
+      try {
+        localStorage.setItem(`${STORAGE_PREFIX}ANS_${currentExamId}`, JSON.stringify(userAnswers));
+      } catch (e) {
+        console.warn("Storage write failed", e);
+      }
+    }
+
+    function loadAnswersFromStorage() {
+      try {
+        const raw = localStorage.getItem(`${STORAGE_PREFIX}ANS_${currentExamId}`);
+        if (raw) {
+          userAnswers = JSON.parse(raw);
+        } else {
+          userAnswers = {};
+        }
+      } catch (e) {
+        userAnswers = {};
+      }
+    }
+
+    /**
+     * PRINT & EXPORT
+     */
+    function openPrintModal() {
+      document.getElementById('printModal').classList.remove('hidden');
+    }
+
+    function closePrintModal() {
+      document.getElementById('printModal').classList.add('hidden');
+    }
+
+    function executePrint(type) {
+      closePrintModal();
+      const prevMode = currentMode;
+
+      if (type === 'student') {
+        currentMode = 'exam';
+        isSubmitted = false;
+      } else {
+        currentMode = 'teacher';
+        isSubmitted = true;
+      }
+
+      loadExam(currentExamId);
+
+      setTimeout(() => {
+        window.print();
+        // Restore previous state after printing dialog closes
+        setTimeout(() => {
+          currentMode = prevMode;
+          loadExam(currentExamId);
+        }, 500);
+      }, 300);
+    }
+
+    /**
+     * EXPORT TO WORD (.DOC)
+     */
+    function downloadWordDoc() {
+      const exam = EXAM_DATA.find(e => e.id === currentExamId) || EXAM_DATA[0];
+      
+      let htmlContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head>
+          <meta charset='utf-8'>
+          <title>${exam.title}</title>
+          <style>
+            body { font-family: 'Times New Roman', serif; font-size: 13pt; line-height: 1.4; }
+            h1 { font-size: 16pt; font-weight: bold; text-align: center; }
+            h2 { font-size: 14pt; font-weight: bold; }
+            h3 { font-size: 13pt; font-weight: bold; }
+            p { margin: 4pt 0; }
+            .header-table { width: 100%; border: none; margin-bottom: 20px; }
+            .header-table td { vertical-align: top; }
+            .score-box { border: 1px solid black; width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            .score-box td { border: 1px solid black; padding: 6px; }
+            .question-title { font-weight: bold; margin-top: 8pt; }
+            .options-table { width: 100%; margin: 4pt 0; }
+            .options-table td { width: 50%; padding: 3pt; }
+            .answer-key { margin-top: 25pt; border-top: 2px dashed #666; padding-top: 15pt; }
+          </style>
+        </head>
+        <body>
+          <table class="header-table">
+            <tr>
+              <td style="width: 40%; text-align: center;">
+                <strong>PHÒNG GD&ĐT ....................</strong><br>
+                <strong>TRƯỜNG THCS ....................</strong><br>
+                -------------------
+              </td>
+              <td style="width: 60%; text-align: center;">
+                <strong>ĐỀ ÔN TẬP TOÁN 6 - CHƯƠNG I</strong><br>
+                <strong>${exam.title.toUpperCase()}</strong><br>
+                <em>Thời gian: 20 phút (Không kể phát đề)</em>
+              </td>
+            </tr>
+          </table>
+
+          <table class="score-box">
+            <tr>
+              <td style="width: 60%;">
+                Họ và tên: ..............................................................<br>
+                Lớp: 6/...... &nbsp;&nbsp;&nbsp; STT: ...... &nbsp;&nbsp;&nbsp; Ngày: ....../....../202...
+              </td>
+              <td style="width: 15%; text-align: center;">
+                <strong>ĐIỂM</strong>
+              </td>
+              <td style="width: 25%; text-align: center;">
+                <strong>LỜI PHÊ GIÁO VIÊN</strong>
+              </td>
+            </tr>
+          </table>
+      `;
+
+      exam.parts.forEach(part => {
+        htmlContent += `<h3>${part.title}</h3><p><em>${part.instruction}</em></p>`;
+        
+        part.questions.forEach(q => {
+          htmlContent += `<p class="question-title"><strong>Câu ${q.number}:</strong> ${q.content.replace(/\$/g, '')}</p>`;
+          
+          if (q.type === 'mcq') {
+            htmlContent += `<table class="options-table"><tr>`;
+            q.options.forEach((opt, idx) => {
+              htmlContent += `<td><strong>${opt.key}.</strong> ${opt.text.replace(/\$/g, '')}</td>`;
+              if (idx % 2 === 1 && idx < q.options.length - 1) {
+                htmlContent += `</tr><tr>`;
+              }
+            });
+            htmlContent += `</tr></table>`;
+          } else if (q.type === 'tf') {
+            q.items.forEach(it => {
+              htmlContent += `<p style="margin-left: 20px;"><strong>${it.key})</strong> ${it.text.replace(/\$/g, '')} &nbsp;&nbsp;&nbsp; [ Đ ] &nbsp;&nbsp;&nbsp; [ S ]</p>`;
+            });
+          } else if (q.type === 'short') {
+            htmlContent += `<p style="margin-left: 20px;"><em>Đáp số:</em> .....................................................................</p>`;
+          }
+        });
+      });
+
+      // Add Answer Key & Solutions at the end
+      htmlContent += `
+        <div class="answer-key">
+          <h2>ĐÁP ÁN VÀ HƯỚNG DẪN GIẢI CHI TIẾT (BẢN GIÁO VIÊN)</h2>
+      `;
+
+      exam.parts.forEach(part => {
+        htmlContent += `<h4>${part.title}</h4>`;
+        part.questions.forEach(q => {
+          if (q.type === 'mcq') {
+            htmlContent += `<p><strong>Câu ${q.number}:</strong> Đáp án đúng: <strong>${q.correctAnswer}</strong>. ${q.explanation.replace(/\$/g, '')}</p>`;
+          } else if (q.type === 'tf') {
+            htmlContent += `<p><strong>Câu ${q.number}:</strong> ` + q.items.map(it => `<strong>${it.key})</strong> ${it.correctAnswer}`).join(' | ') + `</p>`;
+          } else if (q.type === 'short') {
+            htmlContent += `<p><strong>Câu ${q.number}:</strong> Đáp số: <strong>${q.correctAnswers[0]}</strong>. ${q.explanation.replace(/\$/g, '')}</p>`;
+          }
+        });
+      });
+
+      htmlContent += `</div></body></html>`;
+
+      const blob = new Blob(['\ufeff', htmlContent], {
+        type: 'application/msword;charset=utf-8'
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `De_On_Tap_Toan_6_De_${exam.id}.doc`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,976 @@
+const EXAM_DATA = [
+  {
+    id: 1,
+    title: "Đề số 1: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "1_1",
+            number: 1,
+            type: "mcq",
+            content: "Cho tập hợp $A = \\{1; 2; 3; 4\\}$. Khẳng định nào sau đây là đúng?",
+            options: [
+              { key: "A", text: "$0 \\in A$" },
+              { key: "B", text: "$1 \\notin A$" },
+              { key: "C", text: "$2 \\in A$" },
+              { key: "D", text: "$5 \\in A$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Số 2 là một phần tử thuộc tập hợp $A$, nên kí hiệu $2 \\in A$ là chính xác. Các phương án khác sai vì $0 \\notin A$, $1 \\in A$, $5 \\notin A$."
+          },
+          {
+            id: "1_2",
+            number: 2,
+            type: "mcq",
+            content: "Số tự nhiên liền sau của số 199 là:",
+            options: [
+              { key: "A", text: "198" },
+              { key: "B", text: "200" },
+              { key: "C", text: "190" },
+              { key: "D", text: "201" }
+            ],
+            correctAnswer: "B",
+            explanation: "Để tìm số tự nhiên liền sau của một số, ta cộng thêm 1 đơn vị: $199 + 1 = 200$."
+          },
+          {
+            id: "1_3",
+            number: 3,
+            type: "mcq",
+            content: "Trong số 250, chữ số 5 có giá trị bằng bao nhiêu?",
+            options: [
+              { key: "A", text: "5" },
+              { key: "B", text: "50" },
+              { key: "C", text: "500" },
+              { key: "D", text: "0" }
+            ],
+            correctAnswer: "B",
+            explanation: "Chữ số 5 nằm ở hàng chục, vì vậy giá trị của nó là $5 \\times 10 = 50$."
+          },
+          {
+            id: "1_4",
+            number: 4,
+            type: "mcq",
+            content: "Số La Mã XIX biểu diễn số tự nhiên nào trong hệ thập phân?",
+            options: [
+              { key: "A", text: "19" },
+              { key: "B", text: "21" },
+              { key: "C", text: "11" },
+              { key: "D", text: "9" }
+            ],
+            correctAnswer: "A",
+            explanation: "Trong hệ số La Mã: X = 10, IX = 9. Do đó $\\text{XIX} = 10 + 9 = 19$."
+          },
+          {
+            id: "1_5",
+            number: 5,
+            type: "mcq",
+            content: "Kết quả của phép tính $15 + 49 + 85$ là:",
+            options: [
+              { key: "A", text: "139" },
+              { key: "B", text: "149" },
+              { key: "C", text: "159" },
+              { key: "D", text: "169" }
+            ],
+            correctAnswer: "B",
+            explanation: "Áp dụng tính chất giao hoán và kết hợp để tính nhanh: $(15 + 85) + 49 = 100 + 49 = 149$."
+          },
+          {
+            id: "1_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm số tự nhiên $x$, biết: $x - 15 = 20$.",
+            options: [
+              { key: "A", text: "$x = 5$" },
+              { key: "B", text: "$x = 25$" },
+              { key: "C", text: "$x = 35$" },
+              { key: "D", text: "$x = 300$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Muốn tìm số bị trừ, ta lấy hiệu cộng với số trừ: $x = 20 + 15 = 35$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "1_7",
+            number: 7,
+            type: "tf",
+            content: "Cho tập hợp $M = \\{1; 2; 3; 4\\}$.",
+            items: [
+              {
+                key: "a",
+                text: "Tập hợp $M$ có thể viết bằng dấu hiệu đặc trưng là: $M = \\{x \\in \\mathbb{N}^* \\mid x \\le 4\\}$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì $\\mathbb{N}^* = \\{1; 2; 3; \\dots\\}$, kết hợp $x \\le 4$ cho ta chính xác các số $1, 2, 3, 4$."
+              },
+              {
+                key: "b",
+                text: "Phần tử $0 \\in M$.",
+                correctAnswer: "S",
+                explanation: "Sai, vì trong tập hợp $M$ không chứa phần tử số 0."
+              },
+              {
+                key: "c",
+                text: "Số phần tử của tập hợp $M$ là 4.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, tập $M$ gồm đúng 4 phần tử là $1, 2, 3, 4$."
+              },
+              {
+                key: "d",
+                text: "Tập hợp $M$ gồm các số tự nhiên nhỏ hơn 4.",
+                correctAnswer: "S",
+                explanation: "Sai, các số tự nhiên nhỏ hơn 4 là $0, 1, 2, 3$, trong khi tập $M$ có phần tử 4 và không có phần tử 0."
+              }
+            ]
+          },
+          {
+            id: "1_8",
+            number: 8,
+            type: "tf",
+            content: "Xét các phép tính và tính chất sau trong tập hợp số tự nhiên:",
+            items: [
+              {
+                key: "a",
+                text: "Tính chất giao hoán của phép cộng là $a + b = b + a$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng theo định nghĩa tính chất giao hoán phép cộng."
+              },
+              {
+                key: "b",
+                text: "$(a + b) + c = a + (b + c)$ là tính chất kết hợp.",
+                correctAnswer: "Đ",
+                explanation: "Đúng theo định nghĩa tính chất kết hợp phép cộng."
+              },
+              {
+                key: "c",
+                text: "Phép tính $15 - 20$ có thể thực hiện được trong tập hợp số tự nhiên.",
+                correctAnswer: "S",
+                explanation: "Sai, trong tập số tự nhiên $\\mathbb{N}$, phép trừ $a - b$ chỉ thực hiện được khi $a \\ge b$."
+              },
+              {
+                key: "d",
+                text: "Khi cộng một số với 0, kết quả bằng chính số đó.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì với mọi số tự nhiên $a$, ta luôn có $a + 0 = 0 + a = a$."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "1_9",
+            number: 9,
+            type: "short",
+            content: "Để chuẩn bị vật liệu làm \"Trạm thao tác vi mô\", 49 học sinh của lớp 6A mỗi bạn mang đến 2 vỏ hộp giấy. Hỏi cả lớp đã chuẩn bị được tất cả bao nhiêu vỏ hộp giấy?",
+            correctAnswers: ["98", "98 vỏ hộp", "98 hộp"],
+            unit: "vỏ hộp",
+            explanation: "Số vỏ hộp cả lớp chuẩn bị được là: $49 \\times 2 = 98$ (vỏ hộp)."
+          },
+          {
+            id: "1_10",
+            number: 10,
+            type: "short",
+            content: "Tính nhanh giá trị của biểu thức: $2026 - 199$.",
+            correctAnswers: ["1827"],
+            explanation: "Thêm 1 vào số trừ và số bị trừ để làm tròn số trừ thành 200: $(2026 + 1) - (199 + 1) = 2027 - 200 = 1827$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: "Đề số 2: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "2_1",
+            number: 1,
+            type: "mcq",
+            content: "Tập hợp $X$ gồm các chữ cái tiếng Việt trong từ \"TOÁN\" là:",
+            options: [
+              { key: "A", text: "$X = \\{T; O; A; N\\}$" },
+              { key: "B", text: "$X = \\{T; O; Á; N\\}$" },
+              { key: "C", text: "$X = (T; O; A; N)$" },
+              { key: "D", text: "$X = [T; O; A; N]$" }
+            ],
+            correctAnswer: "A",
+            explanation: "Theo quy ước SGK Toán 6, các chữ cái tiếng Việt lấy theo chữ cái in hoa không dấu: $X = \\{T; O; A; N\\}$, viết trong dấu ngoặc nhọn $\\{\\}$."
+          },
+          {
+            id: "2_2",
+            number: 2,
+            type: "mcq",
+            content: "Sự khác biệt giữa tập hợp $\\mathbb{N}$ và tập hợp $\\mathbb{N}^*$ là:",
+            options: [
+              { key: "A", text: "Tập $\\mathbb{N}^*$ không chứa số 1." },
+              { key: "B", text: "Tập $\\mathbb{N}^*$ không chứa số 0." },
+              { key: "C", text: "Tập $\\mathbb{N}$ không chứa số 0." },
+              { key: "D", text: "Không có sự khác biệt." }
+            ],
+            correctAnswer: "B",
+            explanation: "$\\mathbb{N} = \\{0; 1; 2; 3; \\dots\\}$ còn $\\mathbb{N}^* = \\{1; 2; 3; \\dots\\}$. Điểm khác biệt duy nhất là $\\mathbb{N}^*$ không chứa số 0."
+          },
+          {
+            id: "2_3",
+            number: 3,
+            type: "mcq",
+            content: "Viết số 24 bằng chữ số La Mã:",
+            options: [
+              { key: "A", text: "XXIIII" },
+              { key: "B", text: "XIV" },
+              { key: "C", text: "XXIV" },
+              { key: "D", text: "XXVI" }
+            ],
+            correctAnswer: "C",
+            explanation: "Số $24 = 20 + 4$. 20 là XX, 4 là IV, do đó viết là XXIV."
+          },
+          {
+            id: "2_4",
+            number: 4,
+            type: "mcq",
+            content: "Sắp xếp các số $15; 12; 19; 20$ theo thứ tự tăng dần:",
+            options: [
+              { key: "A", text: "$20 < 19 < 15 < 12$" },
+              { key: "B", text: "$12 < 15 < 19 < 20$" },
+              { key: "C", text: "$12 < 19 < 15 < 20$" },
+              { key: "D", text: "$15 < 12 < 19 < 20$" }
+            ],
+            correctAnswer: "B",
+            explanation: "So sánh các số: $12 < 15 < 19 < 20$ là thứ tự từ nhỏ đến lớn (tăng dần)."
+          },
+          {
+            id: "2_5",
+            number: 5,
+            type: "mcq",
+            content: "Kết quả của phép tính $100 - (25 + 35)$ là:",
+            options: [
+              { key: "A", text: "40" },
+              { key: "B", text: "110" },
+              { key: "C", text: "50" },
+              { key: "D", text: "60" }
+            ],
+            correctAnswer: "A",
+            explanation: "Thực hiện phép tính trong ngoặc trước: $25 + 35 = 60$, sau đó lấy $100 - 60 = 40$."
+          },
+          {
+            id: "2_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm số tự nhiên $x$, biết $20 - x = 5$:",
+            options: [
+              { key: "A", text: "$x = 25$" },
+              { key: "B", text: "$x = 15$" },
+              { key: "C", text: "$x = 10$" },
+              { key: "D", text: "$x = 100$" }
+            ],
+            correctAnswer: "B",
+            explanation: "Muốn tìm số trừ, ta lấy số bị trừ trừ đi hiệu: $x = 20 - 5 = 15$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "2_7",
+            number: 7,
+            type: "tf",
+            content: "Xét tia số gốc $O$ nằm ngang (chiều dương từ trái sang phải):",
+            items: [
+              {
+                key: "a",
+                text: "Điểm biểu diễn số 0 là gốc của tia số.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, gốc $O$ của tia số ứng với số 0."
+              },
+              {
+                key: "b",
+                text: "Điểm biểu diễn số 5 nằm bên trái điểm biểu diễn số 3.",
+                correctAnswer: "S",
+                explanation: "Sai, vì $5 > 3$ nên điểm 5 nằm bên phải điểm 3."
+              },
+              {
+                key: "c",
+                text: "Hai số tự nhiên liên tiếp luôn hơn kém nhau 1 đơn vị.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, hai số tự nhiên liên tiếp có dạng $n$ và $n + 1$."
+              },
+              {
+                key: "d",
+                text: "Có một số tự nhiên lớn nhất nằm ở cuối tia số.",
+                correctAnswer: "S",
+                explanation: "Sai, tập số tự nhiên là vô hạn, tia số kéo dài vô tận về bên phải và không có số tự nhiên lớn nhất."
+              }
+            ]
+          },
+          {
+            id: "2_8",
+            number: 8,
+            type: "tf",
+            content: "Cấu tạo của số tự nhiên 345:",
+            items: [
+              {
+                key: "a",
+                text: "Số 345 có 3 chữ số.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, 345 gồm ba chữ số: 3, 4 và 5."
+              },
+              {
+                key: "b",
+                text: "Chữ số hàng chục là số 4 và có giá trị là 40.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, chữ số 4 ở hàng chục có giá trị $4 \\times 10 = 40$."
+              },
+              {
+                key: "c",
+                text: "Chữ số hàng trăm là 3 và có giá trị là 30.",
+                correctAnswer: "S",
+                explanation: "Sai, chữ số 3 ở hàng trăm có giá trị là 300, không phải 30."
+              },
+              {
+                key: "d",
+                text: "Số 345 có thể viết thành tổng: $300 + 40 + 5$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, phân tích theo cấu tạo thập phân: $345 = 300 + 40 + 5$."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "2_9",
+            number: 9,
+            type: "short",
+            content: "Viết số tự nhiên $x$ lớn nhất thoả mãn: $x < 25$.",
+            correctAnswers: ["24"],
+            explanation: "Số tự nhiên lớn nhất nhỏ hơn 25 là số liền trước của 25, tức là $25 - 1 = 24$."
+          },
+          {
+            id: "2_10",
+            number: 10,
+            type: "short",
+            content: "Tính nhanh tổng: $37 + 198 + 63$.",
+            correctAnswers: ["298"],
+            explanation: "Nhóm các số có tổng tròn trăm: $(37 + 63) + 198 = 100 + 198 = 298$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "Đề số 3: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "3_1",
+            number: 1,
+            type: "mcq",
+            content: "Cách viết liệt kê các phần tử của tập hợp $A = \\{x \\in \\mathbb{N} \\mid 5 < x \\le 8\\}$ là:",
+            options: [
+              { key: "A", text: "$A = \\{5; 6; 7; 8\\}$" },
+              { key: "B", text: "$A = \\{6; 7; 8\\}$" },
+              { key: "C", text: "$A = \\{6; 7\\}$" },
+              { key: "D", text: "$A = \\{5; 6; 7\\}$" }
+            ],
+            correctAnswer: "B",
+            explanation: "$5 < x \\le 8$ nghĩa là $x$ lớn hơn 5 và nhỏ hơn hoặc bằng 8. Các số tự nhiên thỏa mãn là 6, 7, 8. Do đó $A = \\{6; 7; 8\\}$."
+          },
+          {
+            id: "3_2",
+            number: 2,
+            type: "mcq",
+            content: "Số gồm 5 nghìn, 2 chục và 1 đơn vị được viết là:",
+            options: [
+              { key: "A", text: "521" },
+              { key: "B", text: "5021" },
+              { key: "C", text: "5201" },
+              { key: "D", text: "5210" }
+            ],
+            correctAnswer: "B",
+            explanation: "Hàng nghìn là 5, hàng trăm khuyết nên là 0, hàng chục là 2, hàng đơn vị là 1. Số viết được là 5021."
+          },
+          {
+            id: "3_3",
+            number: 3,
+            type: "mcq",
+            content: "Khẳng định nào sau đây sai khi nói về chữ số La Mã?",
+            options: [
+              { key: "A", text: "Chữ I biểu diễn số 1." },
+              { key: "B", text: "Chữ V biểu diễn số 5." },
+              { key: "C", text: "Chữ X biểu diễn số 10." },
+              { key: "D", text: "Có kí tự La Mã biểu diễn số 0." }
+            ],
+            correctAnswer: "D",
+            explanation: "Trong hệ số La Mã cổ điển không có ký tự nào để biểu diễn số 0."
+          },
+          {
+            id: "3_4",
+            number: 4,
+            type: "mcq",
+            content: "Số tự nhiên $x$ thoả mãn $199 < x < 201$ là:",
+            options: [
+              { key: "A", text: "198" },
+              { key: "B", text: "200" },
+              { key: "C", text: "202" },
+              { key: "D", text: "199" }
+            ],
+            correctAnswer: "B",
+            explanation: "Số tự nhiên duy nhất nằm giữa 199 và 201 là 200."
+          },
+          {
+            id: "3_5",
+            number: 5,
+            type: "mcq",
+            content: "Tính giá trị biểu thức: $125 - 25 - 30$.",
+            options: [
+              { key: "A", text: "130" },
+              { key: "B", text: "70" },
+              { key: "C", text: "100" },
+              { key: "D", text: "80" }
+            ],
+            correctAnswer: "B",
+            explanation: "Thực hiện theo thứ tự từ trái qua phải: $125 - 25 = 100$, sau đó $100 - 30 = 70$."
+          },
+          {
+            id: "3_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm số tự nhiên $x$, biết: $x + 49 = 100$.",
+            options: [
+              { key: "A", text: "$x = 149$" },
+              { key: "B", text: "$x = 51$" },
+              { key: "C", text: "$x = 41$" },
+              { key: "D", text: "$x = 61$" }
+            ],
+            correctAnswer: "B",
+            explanation: "Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết: $x = 100 - 49 = 51$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "3_7",
+            number: 7,
+            type: "tf",
+            content: "Cho các tập hợp và phần tử:",
+            items: [
+              {
+                key: "a",
+                text: "$0 \\in \\mathbb{N}^*$.",
+                correctAnswer: "S",
+                explanation: "Sai, vì $\\mathbb{N}^*$ là tập các số tự nhiên khác 0."
+              },
+              {
+                key: "b",
+                text: "Tập hợp các số tự nhiên $\\mathbb{N} = \\{0; 1; 2; 3; \\dots\\}$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng theo định nghĩa tập số tự nhiên $\\mathbb{N}$."
+              },
+              {
+                key: "c",
+                text: "Hai chữ số 3 và 5 ghép được thành hai số có hai chữ số khác nhau là 35 và 53.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, các số có 2 chữ số khác nhau tạo từ 3 và 5 là 35 và 53."
+              },
+              {
+                key: "d",
+                text: "Khi viết tập hợp bằng cách liệt kê, mỗi phần tử có thể viết lặp lại nhiều lần.",
+                correctAnswer: "S",
+                explanation: "Sai, quy tắc viết tập hợp là mỗi phần tử chỉ được liệt kê một lần."
+              }
+            ]
+          },
+          {
+            id: "3_8",
+            number: 8,
+            type: "tf",
+            content: "Xét các mối quan hệ trong phép cộng và phép trừ:",
+            items: [
+              {
+                key: "a",
+                text: "Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng đã biết.",
+                correctAnswer: "Đ",
+                explanation: "Đúng theo quy tắc tìm thành phần chưa biết của phép cộng."
+              },
+              {
+                key: "b",
+                text: "Trong phép tính $a - b = c$, $b$ được gọi là số bị trừ.",
+                correctAnswer: "S",
+                explanation: "Sai, trong phép tính $a - b = c$, $a$ là số bị trừ, còn $b$ là số trừ."
+              },
+              {
+                key: "c",
+                text: "Nếu $x - 5 = 10$ thì $x = 15$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì $x = 10 + 5 = 15$."
+              },
+              {
+                key: "d",
+                text: "Phép trừ hai số tự nhiên luôn luôn thực hiện được.",
+                correctAnswer: "S",
+                explanation: "Sai, phép trừ số tự nhiên chỉ thực hiện được khi số bị trừ lớn hơn hoặc bằng số trừ."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "3_9",
+            number: 9,
+            type: "short",
+            content: "Trong buổi thu gom nắp chai tái chế, Nhóm 1 gom được 145 chiếc, Nhóm 2 gom được 120 chiếc. Cả hai nhóm thu được tổng cộng bao nhiêu nắp chai?",
+            correctAnswers: ["265", "265 chiếc", "265 nắp chai"],
+            unit: "nắp chai",
+            explanation: "Tổng số nắp chai cả hai nhóm gom được là: $145 + 120 = 265$ (chiếc)."
+          },
+          {
+            id: "3_10",
+            number: 10,
+            type: "short",
+            content: "Tính nhanh: $2026 + 199 - 26$.",
+            correctAnswers: ["2199"],
+            explanation: "Áp dụng giao hoán và kết hợp: $(2026 - 26) + 199 = 2000 + 199 = 2199$."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 4,
+    title: "Đề số 4: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "4_1",
+            number: 1,
+            type: "mcq",
+            content: "Cho tập hợp $P = \\{a; b; c\\}$. Kí hiệu nào sau đây đúng?",
+            options: [
+              { key: "A", text: "$a \\notin P$" },
+              { key: "B", text: "$d \\in P$" },
+              { key: "C", text: "$b \\in P$" },
+              { key: "D", text: "$P \\in c$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Vì $b$ là một phần tử thuộc tập hợp $P$, nên $b \\in P$ là chính xác."
+          },
+          {
+            id: "4_2",
+            number: 2,
+            type: "mcq",
+            content: "Số chẵn liền sau của số 10 là:",
+            options: [
+              { key: "A", text: "8" },
+              { key: "B", text: "9" },
+              { key: "C", text: "11" },
+              { key: "D", text: "12" }
+            ],
+            correctAnswer: "D",
+            explanation: "Hai số chẵn liên tiếp hơn kém nhau 2 đơn vị. Số chẵn liền sau số 10 là $10 + 2 = 12$."
+          },
+          {
+            id: "4_3",
+            number: 3,
+            type: "mcq",
+            content: "Số La Mã XXIX có giá trị là:",
+            options: [
+              { key: "A", text: "21" },
+              { key: "B", text: "19" },
+              { key: "C", text: "29" },
+              { key: "D", text: "31" }
+            ],
+            correctAnswer: "C",
+            explanation: "XX biểu thị 20, IX biểu thị 9. Do đó $\\text{XXIX} = 20 + 9 = 29$."
+          },
+          {
+            id: "4_4",
+            number: 4,
+            type: "mcq",
+            content: "Số tự nhiên nhỏ nhất có 3 chữ số khác nhau là:",
+            options: [
+              { key: "A", text: "100" },
+              { key: "B", text: "102" },
+              { key: "C", text: "123" },
+              { key: "D", text: "987" }
+            ],
+            correctAnswer: "B",
+            explanation: "Chữ số hàng trăm nhỏ nhất phải khác 0 nên là 1, chữ số hàng chục nhỏ nhất khác 1 nên là 0, chữ số hàng đơn vị nhỏ nhất khác 1 và 0 là 2. Vậy số đó là 102."
+          },
+          {
+            id: "4_5",
+            number: 5,
+            type: "mcq",
+            content: "Tính $200 - 55$:",
+            options: [
+              { key: "A", text: "145" },
+              { key: "B", text: "155" },
+              { key: "C", text: "135" },
+              { key: "D", text: "255" }
+            ],
+            correctAnswer: "A",
+            explanation: "Thực hiện phép trừ: $200 - 55 = 145$."
+          },
+          {
+            id: "4_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm $x$, biết: $x - 15 = 49$.",
+            options: [
+              { key: "A", text: "$x = 34$" },
+              { key: "B", text: "$x = 64$" },
+              { key: "C", text: "$x = 54$" },
+              { key: "D", text: "$x = 74$" }
+            ],
+            correctAnswer: "B",
+            explanation: "Số bị trừ = hiệu + số trừ: $x = 49 + 15 = 64$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "4_7",
+            number: 7,
+            type: "tf",
+            content: "Quy tắc ghi số tự nhiên:",
+            items: [
+              {
+                key: "a",
+                text: "Số tự nhiên được ghi bởi 10 chữ số từ 0 đến 9.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, hệ thập phân sử dụng 10 chữ số: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9."
+              },
+              {
+                key: "b",
+                text: "Giá trị của một chữ số không thay đổi dù đứng ở bất kì vị trí nào.",
+                correctAnswer: "S",
+                explanation: "Sai, hệ thập phân là hệ ghi số theo vị trí; giá trị của mỗi chữ số phụ thuộc vào hàng mà nó đứng."
+              },
+              {
+                key: "c",
+                text: "Số tự nhiên có hai chữ số thì chữ số hàng chục phải khác 0.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, chữ số đầu tiên của một số tự nhiên luôn phải khác 0."
+              },
+              {
+                key: "d",
+                text: "Chữ số 0 không được phép đứng cuối cùng của một số.",
+                correctAnswer: "S",
+                explanation: "Sai, chữ số 0 hoàn toàn có thể đứng ở hàng đơn vị (ví dụ các số tròn chục, tròn trăm: 10, 20, 100)."
+              }
+            ]
+          },
+          {
+            id: "4_8",
+            number: 8,
+            type: "tf",
+            content: "Thứ tự các số trên tia số:",
+            items: [
+              {
+                key: "a",
+                text: "Nếu $a < b$ thì điểm $a$ nằm bên phải điểm $b$.",
+                correctAnswer: "S",
+                explanation: "Sai, nếu $a < b$ thì điểm $a$ phải nằm bên trái điểm $b$ trên tia số nằm ngang."
+              },
+              {
+                key: "b",
+                text: "Số liền trước của một số luôn nhỏ hơn số đó 1 đơn vị.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, số liền trước của $n$ (với $n > 0$) là $n - 1$."
+              },
+              {
+                key: "c",
+                text: "Tính chất bắc cầu: Nếu $a < b$ và $b < c$ thì $a < c$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, đây là tính chất bắc cầu của quan hệ so sánh thứ tự."
+              },
+              {
+                key: "d",
+                text: "Điểm biểu diễn số 100 luôn nằm bên phải điểm biểu diễn số 99.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì $100 > 99$."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "4_9",
+            number: 9,
+            type: "short",
+            content: "Tìm số tự nhiên $x$ thỏa mãn điều kiện $15 < x < 17$.",
+            correctAnswers: ["16"],
+            explanation: "Số tự nhiên duy nhất nằm giữa 15 và 17 là 16."
+          },
+          {
+            id: "4_10",
+            number: 10,
+            type: "short",
+            content: "Khối 6 của trường THCS Đặng Thúc Vịnh có tổng cộng 120 học sinh. Biết riêng lớp 6A có 49 học sinh. Hỏi các lớp còn lại của khối 6 có tổng cộng bao nhiêu học sinh?",
+            correctAnswers: ["71", "71 học sinh"],
+            unit: "học sinh",
+            explanation: "Số học sinh các lớp còn lại của khối 6 là: $120 - 49 = 71$ (học sinh)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Đề số 5: Ôn tập Bài 1 đến Bài 4 (Chương I)",
+    subtitle: "Tập hợp - Số tự nhiên - Thứ tự số tự nhiên - Phép cộng và trừ",
+    grade: "Toán 6",
+    timeMinutes: 20,
+    parts: [
+      {
+        partId: 1,
+        title: "PHẦN 1: TRẮC NGHIỆM NHIỀU LỰA CHỌN (6 câu)",
+        instruction: "Chọn một phương án đúng nhất. Mỗi câu đúng được 0.5 điểm.",
+        questions: [
+          {
+            id: "5_1",
+            number: 1,
+            type: "mcq",
+            content: "Tập hợp các số tự nhiên không vượt quá 3 được liệt kê là:",
+            options: [
+              { key: "A", text: "$\\{1; 2; 3\\}$" },
+              { key: "B", text: "$\\{0; 1; 2\\}$" },
+              { key: "C", text: "$\\{0; 1; 2; 3\\}$" },
+              { key: "D", text: "$\\{1; 2\\}$" }
+            ],
+            correctAnswer: "C",
+            explanation: "\"Không vượt quá 3\" nghĩa là nhỏ hơn hoặc bằng 3. Trong tập số tự nhiên gồm các số $0, 1, 2, 3$."
+          },
+          {
+            id: "5_2",
+            number: 2,
+            type: "mcq",
+            content: "Số tự nhiên lớn nhất có 2 chữ số là:",
+            options: [
+              { key: "A", text: "90" },
+              { key: "B", text: "98" },
+              { key: "C", text: "99" },
+              { key: "D", text: "100" }
+            ],
+            correctAnswer: "C",
+            explanation: "Các số có 2 chữ số chạy từ 10 đến 99, do đó số lớn nhất là 99."
+          },
+          {
+            id: "5_3",
+            number: 3,
+            type: "mcq",
+            content: "Viết số 14 bằng chữ số La Mã:",
+            options: [
+              { key: "A", text: "XIIII" },
+              { key: "B", text: "XIV" },
+              { key: "C", text: "XVI" },
+              { key: "D", text: "VIX" }
+            ],
+            correctAnswer: "B",
+            explanation: "Số $14 = 10 + 4$. Số 10 là X, số 4 là IV, do đó viết là XIV."
+          },
+          {
+            id: "5_4",
+            number: 4,
+            type: "mcq",
+            content: "Điền kí hiệu thích hợp vào chỗ trống: $2025 \\dots 2026$.",
+            options: [
+              { key: "A", text: "$>$" },
+              { key: "B", text: "$=$" },
+              { key: "C", text: "$<$" },
+              { key: "D", text: "$\\ge$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Vì $2025$ nhỏ hơn $2026$ nên điền dấu $<$, ta được $2025 < 2026$."
+          },
+          {
+            id: "5_5",
+            number: 5,
+            type: "mcq",
+            content: "Tính: $45 + 55$.",
+            options: [
+              { key: "A", text: "90" },
+              { key: "B", text: "100" },
+              { key: "C", text: "110" },
+              { key: "D", text: "80" }
+            ],
+            correctAnswer: "B",
+            explanation: "$45 + 55 = 100$."
+          },
+          {
+            id: "5_6",
+            number: 6,
+            type: "mcq",
+            content: "Tìm số tự nhiên $x$, biết $50 - x = 10$.",
+            options: [
+              { key: "A", text: "$x = 60$" },
+              { key: "B", text: "$x = 500$" },
+              { key: "C", text: "$x = 40$" },
+              { key: "D", text: "$x = 5$" }
+            ],
+            correctAnswer: "C",
+            explanation: "Số trừ = số bị trừ - hiệu: $x = 50 - 10 = 40$."
+          }
+        ]
+      },
+      {
+        partId: 2,
+        title: "PHẦN 2: TRẮC NGHIỆM ĐÚNG/SAI (2 câu)",
+        instruction: "Đánh dấu Đúng (Đ) hoặc Sai (S) cho mỗi ý a, b, c, d.",
+        questions: [
+          {
+            id: "5_7",
+            number: 7,
+            type: "tf",
+            content: "Mối quan hệ giữa phép cộng và phép trừ:",
+            items: [
+              {
+                key: "a",
+                text: "Nếu $a + b = c$ thì $c - a = b$.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, đây là mối liên hệ nghịch đảo giữa phép cộng và phép trừ."
+              },
+              {
+                key: "b",
+                text: "Số bị trừ = Số trừ - Hiệu.",
+                correctAnswer: "S",
+                explanation: "Sai, quy tắc đúng là: Số bị trừ = Số trừ + Hiệu."
+              },
+              {
+                key: "c",
+                text: "Tổng của hai số tự nhiên luôn lớn hơn hoặc bằng mỗi số hạng của tổng.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, vì $a, b \\ge 0$ nên $a + b \\ge a$ và $a + b \\ge b$."
+              },
+              {
+                key: "d",
+                text: "Muốn tìm số trừ, ta lấy số bị trừ cộng với hiệu.",
+                correctAnswer: "S",
+                explanation: "Sai, quy tắc đúng là: Số trừ = Số bị trừ - Hiệu."
+              }
+            ]
+          },
+          {
+            id: "5_8",
+            number: 8,
+            type: "tf",
+            content: "Kí hiệu chữ số La Mã:",
+            items: [
+              {
+                key: "a",
+                text: "Chữ V có giá trị là 5.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, trong ký tự La Mã, V đại diện cho số 5."
+              },
+              {
+                key: "b",
+                text: "Chữ IX có giá trị là 11.",
+                correctAnswer: "S",
+                explanation: "Sai, IX có giá trị là 9 (10 - 1), còn 11 là XI."
+              },
+              {
+                key: "c",
+                text: "Cụm IV có giá trị là 4.",
+                correctAnswer: "Đ",
+                explanation: "Đúng, IV có giá trị là 4 (5 - 1)."
+              },
+              {
+                key: "d",
+                text: "Chữ X đứng trước chữ V thì giá trị giảm đi (XV là 5).",
+                correctAnswer: "S",
+                explanation: "Sai, XV là $10 + 5 = 15$."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        partId: 3,
+        title: "PHẦN 3: TRẮC NGHIỆM TRẢ LỜI NGẮN (2 câu)",
+        instruction: "Ghi kết quả cuối cùng (số nguyên hoặc giá trị cần tìm). Mỗi câu đúng 1.5 điểm.",
+        questions: [
+          {
+            id: "5_9",
+            number: 9,
+            type: "short",
+            content: "Để chia nhóm thực hành môn Toán, giáo viên yêu cầu mỗi nhóm có đúng 5 bạn. Nếu một lớp có 49 học sinh, lớp đó sẽ xếp được nhiều nhất bao nhiêu nhóm đủ 5 bạn?",
+            correctAnswers: ["9", "9 nhóm"],
+            unit: "nhóm",
+            explanation: "Thực hiện phép chia có dư: $49 : 5 = 9$ (dư 4). Vậy xếp được nhiều nhất 9 nhóm đủ 5 bạn (còn dư 4 bạn)."
+          },
+          {
+            id: "5_10",
+            number: 10,
+            type: "short",
+            content: "Tính nhẩm giá trị biểu thức: $199 + 45$.",
+            correctAnswers: ["244"],
+            explanation: "Áp dụng phương pháp thêm - bớt: $199 + 1 + 44 = 200 + 44 = 244$."
+          }
+        ]
+      }
+    ]
+  }
+];
