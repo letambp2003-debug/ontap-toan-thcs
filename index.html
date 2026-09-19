@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ Thống Ôn Tập & Khảo Thí Toán THCS - KNTT GDPT 2018</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49'
+            },
+            edu: {
+              navy: '#0f172a',
+              card: '#ffffff',
+              accent: '#0284c7',
+              success: '#059669',
+              warning: '#d97706'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          boxShadow: {
+            'card-hover': '0 20px 35px -8px rgba(2, 132, 199, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.06)',
+            'portal': '0 10px 30px -5px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- KaTeX for Math Equations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Engines & Data -->
+  <script src="questions_data.js"></script>
+  <script src="exam_sync_engine.js"></script>
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    
+    /* Animation pulse for live status */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .status-dot {
+      animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-sky-100 selection:text-sky-900">
+
+  <!-- ================= TOP NOTIFICATION BAR ================= -->
+  <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-sky-500/20 text-sky-400 border border-sky-500/30">GDPT 2018</span>
+        <span class="text-slate-400">Bộ Sách Kết Nối Tri Thức Với Cuộc Sống — Môn Toán THCS (Khối 6, 7, 8, 9)</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 status-dot"></span>Hệ thống máy chủ trực tuyến</span>
+        <span class="hidden sm:inline text-slate-600">•</span>
+        <span class="hidden sm:inline">Phiên bản 2.5 Pro Sư Phạm</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN HEADER NAVIGATION ================= -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 transition-all shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-700 via-sky-600 to-blue-700 flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform duration-200">
+          <i data-lucide="calculator" class="w-6 h-6 stroke-[2.2]"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-slate-900 text-lg tracking-tight group-hover:text-sky-600 transition-colors">TOÁN THCS PRO</span>
+            <span class="px-2 py-0.5 text-[11px] font-bold rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">KNTT 2018</span>
+          </div>
+          <p class="text-xs font-medium text-slate-500">Cổng Điều Hành Ôn Tập & Khảo Thí Trực Tuyến</p>
+        </div>
+      </a>
+
+      <!-- Navigation Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-1.5 text-sm font-semibold text-slate-600">
+        <a href="#cong-trai-nghiem" class="px-3 py-2 rounded-lg hover:text-sky-600 hover:bg-slate-100 transition-colors">Cổng Ứng Dụng</a>
+        <a href="#chuong-trinh-toan8" class="px-3 py-2 rounded-lg hover:text-sky-600 hover:bg-slate-100 transition-colors">Khung Toán 8 (89 Bài)</a>
+        <a href="#tinh-nang-noi-bat" class="px-3 py-2 rounded-lg hover:text-sky-600 hover:bg-slate-100 transition-colors">Tính Năng Anti-Cheat</a>
+        <a href="dautruong.html" class="px-3 py-2 rounded-lg hover:text-amber-600 hover:bg-amber-50 text-amber-700 flex items-center gap-1.5 transition-colors">
+          <i data-lucide="trophy" class="w-4 h-4 text-amber-500"></i> Đấu Trường OLM
+        </a>
+      </nav>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center gap-2.5">
+        <a href="hoc-sinh.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold bg-sky-600 text-white hover:bg-sky-700 shadow-sm hover:shadow transition-all">
+          <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+          <span>Vào Phòng Thi</span>
+        </a>
+        <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold bg-slate-900 text-white hover:bg-slate-800 shadow-sm hover:shadow transition-all">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+          <span>Quản Trị Viên</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/40 to-slate-50 border-b border-slate-200 py-12 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      
+      <!-- Sub-badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-sky-200 shadow-xs mb-6">
+        <span class="flex h-2 w-2 rounded-full bg-sky-600"></span>
+        <span class="text-xs font-bold text-sky-800 tracking-wide uppercase">Hệ sinh thái khảo thí thông minh 4 trong 1</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-4xl">
+        Hệ Thống Ôn Tập & Khảo Thí <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">Toán THCS</span>
+      </h1>
+      
+      <p class="mt-4 text-base sm:text-xl text-slate-600 max-w-3xl leading-relaxed">
+        Phần mềm khảo thí trực tuyến chuẩn <strong>Chương trình GDPT 2018 — Bộ sách Kết Nối Tri Thức Với Cuộc Sống</strong>. Tích hợp Gia sư AI Socratic, công nghệ chống gian lận Fullscreen F11, còi hú cảnh báo Web Audio, tạo 4 mã đề hoán vị và xuất Word/PDF mẫu Bộ GD&ĐT.
+      </p>
+
+      <!-- Quick Launch Badges / Stats -->
+      <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl">
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="text-2xl font-black text-sky-600">Khối 6 — 9</div>
+          <div class="text-xs font-semibold text-slate-500 mt-1">Trọng tâm Toán 8 KNTT</div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="text-2xl font-black text-emerald-600">89 Bài Học</div>
+          <div class="text-xs font-semibold text-slate-500 mt-1">140 Tiết chuẩn PPCT</div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="text-2xl font-black text-blue-600">4 Mã Đề</div>
+          <div class="text-xs font-semibold text-slate-500 mt-1">101, 102, 103, 104 tự hoán vị</div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+          <div class="text-2xl font-black text-amber-600">Anti-Cheat</div>
+          <div class="text-xs font-semibold text-slate-500 mt-1">Toàn màn hình & Còi hú</div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-8 flex flex-wrap items-center gap-3.5">
+        <a href="hoc-sinh.html" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-extrabold text-base bg-sky-600 hover:bg-sky-700 text-white shadow-md shadow-sky-600/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+          <i data-lucide="laptop" class="w-5 h-5"></i>
+          <span>Vào Phòng Thi Học Sinh (F11)</span>
+        </a>
+        <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-extrabold text-base bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 shadow-xs hover:border-slate-400 hover:scale-[1.02] active:scale-[0.98] transition-all">
+          <i data-lucide="settings" class="w-5 h-5 text-slate-600"></i>
+          <span>Cổng Quản Trị Giáo Viên & Tạo Đề AI</span>
+        </a>
+        <a href="dautruong.html" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-extrabold text-base bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 shadow-xs hover:scale-[1.02] active:scale-[0.98] transition-all">
+          <i data-lucide="swords" class="w-5 h-5 text-amber-600"></i>
+          <span>Đấu Trường OLM (3 Tim)</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= BỘ TỨ CỔNG TRẢI NGHIỆM CHÍNH ================= -->
+  <section id="cong-trai-nghiem" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-xs font-bold text-sky-600 tracking-wider uppercase bg-sky-50 px-3 py-1 rounded-full border border-sky-200">Hệ Sinh Thái Toàn Diện</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-2">Bốn Cổng Ứng Dụng Chuyên Biệt</h2>
+        <p class="text-slate-600 text-sm sm:text-base mt-2">Được thiết kế tối ưu hóa cho từng đối tượng sử dụng: Giáo viên ra đề, Học sinh làm bài thi, Thi đấu phong trào và Ôn tập tương tác.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Card 1: Học Sinh Khảo Thí -->
+        <div class="group bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-sky-400 shadow-xs hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-sky-600 text-white flex items-center justify-center shadow-md shadow-sky-600/20 mb-5 group-hover:scale-110 transition-transform">
+              <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+            </div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800">Dành cho Học sinh</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">F11 Bắt buộc</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">Phòng Khảo Thí Trực Tuyến</h3>
+            <p class="text-xs text-slate-600 mt-2.5 leading-relaxed">
+              Làm bài thi trắc nghiệm chuẩn 3 phần GDPT 2018 (Nhiều lựa chọn, Đúng/Sai, Trả lời ngắn). Chế độ toàn màn hình bắt buộc, còi hú cảnh báo khi rời tab, gia sư AI đồng hành và xuất thẻ kết quả điểm số.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Bắt buộc toàn màn hình F11</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Còi hú âm thanh Web Audio API</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Xin mã giám thị mở khóa sự cố</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Nộp bài tức thì & xuất ảnh thẻ điểm</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200">
+            <a href="hoc-sinh.html" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-sky-600 hover:bg-sky-700 text-white shadow-xs transition-colors">
+              <span>Vào Làm Bài Thi Ngay</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Quản Trị Giáo Viên -->
+        <div class="group bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-slate-800 shadow-xs hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-md shadow-slate-900/20 mb-5 group-hover:scale-110 transition-transform">
+              <i data-lucide="file-spreadsheet" class="w-6 h-6 text-emerald-400"></i>
+            </div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 text-slate-800">Dành cho Giáo viên</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">Gemini AI</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-slate-800 transition-colors">Quản Trị Khảo Thí & Tạo Đề</h3>
+            <p class="text-xs text-slate-600 mt-2.5 leading-relaxed">
+              Tạo đề tự động bám sát khung 89 bài học Toán 8 KNTT, trộn 4 mã đề hoán vị 101 - 104, xuất file Word/PDF chuẩn A4, duyệt yêu cầu mở khóa thi sự cố và đồng bộ Google Sheets.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Ma trận 89 bài học chuẩn 140 tiết</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Xuất Word (.doc) & PDF chuẩn Bộ</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Trộn 4 mã đề kèm bảng soi đáp án</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Duyệt mở khóa sự cố & Giám sát thi</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200">
+            <a href="quan-ly-de-thi.html" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-slate-900 hover:bg-slate-800 text-white shadow-xs transition-colors">
+              <span>Đăng Nhập Quản Trị Đề</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Đấu Trường OLM -->
+        <div class="group bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-amber-400 shadow-xs hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-md shadow-amber-500/20 mb-5 group-hover:scale-110 transition-transform">
+              <i data-lucide="trophy" class="w-6 h-6"></i>
+            </div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">Gamification</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-800">3 Trái Tim ❤️</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">Đấu Trường Tri Thức OLM</h3>
+            <p class="text-xs text-slate-600 mt-2.5 leading-relaxed">
+              Sân chơi thi đấu trực tuyến kịch tính với 3 chế độ: Luyện tập tự do, Vượt ải sinh tồn 3 tim và Đua top 15 phút. Chuỗi combo điểm thưởng, Bảng vàng Top 10 và cấp chứng nhận PNG.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Phân tầng 4 cấp độ NB - TH - VD - VDC</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Vượt ải 3 tim sai trừ mạng sống</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Combo đúng liên hoàn nhân điểm</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Bảng vàng xếp hạng vinh danh Top 10</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200">
+            <a href="dautruong.html" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-amber-600 hover:bg-amber-700 text-white shadow-xs transition-colors">
+              <span>Tham Gia Đấu Trường</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: Gia Sư AI Tương Tác -->
+        <div class="group bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-emerald-400 shadow-xs hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-600/20 mb-5 group-hover:scale-110 transition-transform">
+              <i data-lucide="bot" class="w-6 h-6"></i>
+            </div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">Trợ Lý AI 24/7</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-800">Socratic</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Gia Sư AI Socratic 1-kèm-1</h3>
+            <p class="text-xs text-slate-600 mt-2.5 leading-relaxed">
+              Trợ lý thông minh hướng dẫn học sinh tư duy giải bài theo phương pháp Socratic gợi mở. Không giải hộ đáp án ngay, phản hồi âm thanh trực quan và tổng kết năng lực học tập.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Gợi mở từng bước tư duy toán</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Âm thanh chúc mừng và nhắc nhở</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Hỗ trợ công thức KaTeX toán học chuẩn</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Phiếu học tập xuất ảnh nộp Zalo</li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200">
+            <a href="chatbot.html" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-colors">
+              <span>Học Cùng Gia Sư AI</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Sub Link: Luyện Trắc Nghiệm 20 phút -->
+      <div class="mt-8 p-4 rounded-2xl bg-sky-50/70 border border-sky-100 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-sky-200/70 text-sky-800 flex items-center justify-center">
+            <i data-lucide="timer" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">Bảng Đề Thi & Bấm Giờ Trắc Nghiệm 20 Phút</h4>
+            <p class="text-xs text-slate-500">Chế độ ôn luyện nhanh tính giờ tự động nộp bài và xem lời giải chi tiết</p>
+          </div>
+        </div>
+        <a href="tracnghiem.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-white text-sky-700 hover:bg-sky-100 border border-sky-200 shadow-xs transition-colors">
+          <span>Luyện Đề 20 Phút</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= KHUNG CHƯƠNG TRÌNH TOÁN 8 KNTT ================= -->
+  <section id="chuong-trinh-toan8" class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-bold text-sky-600 tracking-wider uppercase bg-sky-100 px-3 py-1 rounded-full">Phân Phối Chương Trình SGK KNTT</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">Chương Trình Toán 8 KNTT — 10 Chương (89 Bài Học, 140 Tiết)</h2>
+          <p class="text-slate-600 text-sm mt-1">Toàn bộ cây bài học bám sát khung kế hoạch giáo dục môn Toán THCS GDPT 2018.</p>
+        </div>
+
+        <!-- Semester Switcher Buttons -->
+        <div class="inline-flex p-1 bg-white rounded-xl border border-slate-200 shadow-xs self-start md:self-auto">
+          <button id="btnTabHk1" onclick="switchSemester('hk1')" class="px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-600 text-white shadow-xs">
+            Học Kỳ I (72 Tiết)
+          </button>
+          <button id="btnTabHk2" onclick="switchSemester('hk2')" class="px-4 py-2 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition-all">
+            Học Kỳ II (68 Tiết)
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab HK1 Container -->
+      <div id="tabHk1Content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Chương I -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:border-sky-300 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200">16 Tiết (PPCT 1 - 16)</span>
+            <span class="text-xs font-bold text-slate-400">Số & Đại Số</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương I: Đa thức</h3>
+          <ul class="text-xs text-slate-600 space-y-1.5 mb-4">
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Bài 1: Đơn thức (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Bài 2: Đa thức (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Bài 3: Phép cộng và phép trừ đa thức (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Bài 4: Phép nhân đa thức (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Bài 5: Phép chia đa thức cho đơn thức (1 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Luyện tập chung & Bài tập cuối chương I (3 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Ôn tập & Kiểm tra giữa HKI (2 tiết)</li>
+          </ul>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-800">
+            <span>Tạo đề theo Chương I</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Chương II -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:border-sky-300 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200">13 Tiết (PPCT 17 - 29)</span>
+            <span class="text-xs font-bold text-slate-400">Số & Đại Số</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương II: Hằng đẳng thức & Ứng dụng</h3>
+          <ul class="text-xs text-slate-600 space-y-1.5 mb-4">
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Bài 6: Hiệu hai bình phương. Bình phương của tổng/hiệu</li>
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Bài 7: Lập phương của một tổng hay một hiệu</li>
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Bài 8: Tổng và hiệu hai lập phương</li>
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Bài 9: Phân tích đa thức thành nhân tử</li>
+            <li class="flex items-start gap-1.5"><span class="text-sky-500 font-bold">•</span> Luyện tập chung & Bài tập cuối chương II</li>
+          </ul>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-800">
+            <span>Tạo đề theo Chương II</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Chương III -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:border-sky-300 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">13 Tiết (PPCT 30 - 42)</span>
+            <span class="text-xs font-bold text-slate-400">Hình Học Phẳng</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương III: Tứ giác</h3>
+          <ul class="text-xs text-slate-600 space-y-1.5 mb-4">
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Bài 10: Tứ giác (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Bài 11: Hình thang cân (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Bài 12: Hình bình hành (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Bài 13: Hình chữ nhật (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Bài 14: Hình thoi và hình vuông (3 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Luyện tập chung & Bài tập cuối chương III</li>
+          </ul>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-800">
+            <span>Tạo đề theo Chương III</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Chương IV -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:border-sky-300 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">13 Tiết (PPCT 43 - 55)</span>
+            <span class="text-xs font-bold text-slate-400">Hình Học Phẳng</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương IV: Định lí Thalès</h3>
+          <ul class="text-xs text-slate-600 space-y-1.5 mb-4">
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Bài 15: Định lí Thalès trong tam giác (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Bài 16: Đường trung bình của tam giác (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Bài 17: Tính chất đường phân giác tam giác (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold">•</span> Luyện tập chung & Bài tập cuối chương IV</li>
+          </ul>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-800">
+            <span>Tạo đề theo Chương IV</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Chương V -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:border-sky-300 transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">14 Tiết (PPCT 56 - 69)</span>
+            <span class="text-xs font-bold text-slate-400">Thống Kê & Xác Suất</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương V: Dữ liệu & Biểu đồ</h3>
+          <ul class="text-xs text-slate-600 space-y-1.5 mb-4">
+            <li class="flex items-start gap-1.5"><span class="text-blue-500 font-bold">•</span> Bài 18: Thu thập và phân loại dữ liệu (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-blue-500 font-bold">•</span> Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-blue-500 font-bold">•</span> Bài 20: Phân tích số liệu thống kê (2 tiết)</li>
+            <li class="flex items-start gap-1.5"><span class="text-blue-500 font-bold">•</span> Luyện tập chung & Bài tập cuối chương V</li>
+          </ul>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-800">
+            <span>Tạo đề theo Chương V</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Ôn tập & Kiểm tra Cuối HKI -->
+        <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-5 border border-sky-200 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-white text-sky-800 border border-sky-200">3 Tiết (PPCT 70 - 72)</span>
+              <span class="text-xs font-bold text-sky-700">Khảo Thí Học Kỳ I</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-2">Ôn Tập & Kiểm Tra Học Kỳ I</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              Tổng hợp toàn bộ kiến thức Số - Đại số, Hình học và Thống kê Học kỳ I. Đề kiểm tra chuẩn ma trận 50 câu 3 phần GDPT 2018, sẵn sàng hoán vị 4 mã đề.
+            </p>
+          </div>
+          <a href="hoc-sinh.html" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-sky-600 hover:bg-sky-700 text-white shadow-xs transition-colors">
+            <span>Thi Thử Đề Cuối HKI</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Tab HK2 Container (Hidden by default) -->
+      <div id="tabHk2Content" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Chương VI -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200">14 Tiết (PPCT 73 - 86)</span>
+            <span class="text-xs font-bold text-slate-400">Số & Đại Số</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương VI: Phân thức đại số</h3>
+          <p class="text-xs text-slate-600 mb-4">Phân thức đại số, tính chất cơ bản, các phép toán cộng, trừ, nhân, chia phân thức.</p>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600"><span>Xem chi tiết bài học</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+        </div>
+
+        <!-- Chương VII -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700 border border-sky-200">14 Tiết (PPCT 87 - 100)</span>
+            <span class="text-xs font-bold text-slate-400">Số & Đại Số</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương VII: Phương trình bậc nhất</h3>
+          <p class="text-xs text-slate-600 mb-4">Phương trình bậc nhất một ẩn, giải bài toán bằng cách lập phương trình, hàm số và đồ thị.</p>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600"><span>Xem chi tiết bài học</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+        </div>
+
+        <!-- Chương VIII -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">10 Tiết (PPCT 101 - 110)</span>
+            <span class="text-xs font-bold text-slate-400">Xác Suất</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương VIII: Xác suất biến cố</h3>
+          <p class="text-xs text-slate-600 mb-4">Mở đầu về tính xác suất của biến cố ngẫu nhiên trong một số trò chơi đơn giản.</p>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600"><span>Xem chi tiết bài học</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+        </div>
+
+        <!-- Chương IX -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">16 Tiết (PPCT 111 - 126)</span>
+            <span class="text-xs font-bold text-slate-400">Hình Học Phẳng</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương IX: Tam giác đồng dạng</h3>
+          <p class="text-xs text-slate-600 mb-4">Hai tam giác đồng dạng, các trường hợp đồng dạng của tam giác và tam giác vuông.</p>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600"><span>Xem chi tiết bài học</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+        </div>
+
+        <!-- Chương X -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">10 Tiết (PPCT 127 - 136)</span>
+            <span class="text-xs font-bold text-slate-400">Hình Học Trực Quan</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-2">Chương X: Hình khối thực tiễn</h3>
+          <p class="text-xs text-slate-600 mb-4">Hình chóp tam giác đều, hình chóp tứ giác đều, diện tích xung quanh và thể tích.</p>
+          <a href="quan-ly-de-thi.html" class="inline-flex items-center gap-1 text-xs font-bold text-sky-600"><span>Xem chi tiết bài học</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></a>
+        </div>
+
+        <!-- Ôn tập & Kiểm tra Cuối HKII -->
+        <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-5 border border-sky-200 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-white text-sky-800 border border-sky-200">4 Tiết (PPCT 137 - 140)</span>
+              <span class="text-xs font-bold text-sky-700">Khảo Thí Học Kỳ II</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 mb-2">Ôn Tập & Kiểm Tra Cuối Năm</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              Đánh giá toàn diện năng lực Toán 8 cả năm. Ma trận đề thi kết hợp Đại số, Hình học và Thống kê xác suất.
+            </p>
+          </div>
+          <a href="hoc-sinh.html" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-sky-600 hover:bg-sky-700 text-white shadow-xs transition-colors">
+            <span>Thi Thử Cuối Năm</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CÔNG NGHỆ CHỐNG GIAN LẬN & KHẢO THÍ ================= -->
+  <section id="tinh-nang-noi-bat" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Left: Text Features -->
+        <div>
+          <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Khảo Thí Minh Bạch</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-3 leading-tight">Công Nghệ Giám Sát Phòng Thi Trực Tuyến Thế Hệ Mới</h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+            Được xây dựng nhằm đảm bảo tính công bằng và nghiêm túc tối đa cho các kỳ kiểm tra 15 phút, giữa kỳ và cuối kỳ mà không cần cài đặt phần mềm bên thứ ba.
+          </p>
+
+          <div class="mt-8 space-y-4">
+            <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="w-9 h-9 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center shrink-0">
+                <i data-lucide="maximize" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900">Bắt buộc Toàn màn hình (Enforced Fullscreen F11)</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Yêu cầu học sinh vào toàn màn hình mới hiển thị câu hỏi. Thoát màn hình bị ghi nhận vi phạm.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="w-9 h-9 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center shrink-0">
+                <i data-lucide="volume-2" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900">Còi Hú Báo Động (Web Audio API Synthesizer)</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Tự động phát chuỗi âm thanh cảnh báo tần số cao khi phát hiện học sinh chuyển tab hoặc thoát F11.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                <i data-lucide="key-round" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900">Cơ Chế Mở Khóa Sự Cố Khẩn Cấp</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Nếu học sinh mất điện hoặc rớt mạng, hệ thống tạo mã gửi Thầy/Cô cấp quyền mở khóa làm tiếp thời gian còn lại.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                <i data-lucide="file-text" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900">Xuất Biên Bản Vi Phạm Chuẩn A4 / Word (.doc)</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Tự động kết xuất biên bản xử lý vi phạm quy chế thi chuẩn mẫu Bộ GD&ĐT kèm chi tiết thời gian và bằng chứng.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Preview Box -->
+        <div class="bg-slate-900 text-white rounded-3xl p-8 shadow-2xl border border-slate-800 relative overflow-hidden">
+          <div class="absolute -right-16 -top-16 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div class="flex items-center justify-between pb-6 border-b border-slate-800 mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+              <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+              <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+              <span class="text-xs font-mono text-slate-400 ml-2">Phòng Thi Giám Sát #THCS-101</span>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[11px] font-mono bg-sky-500/20 text-sky-300 border border-sky-500/30">
+              ANTI-CHEAT ACTIVE
+            </span>
+          </div>
+
+          <div class="space-y-4 font-mono text-xs">
+            <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+              <span class="text-emerald-400 font-bold">[READY]</span> Đã nạp đề thi số 1: Đơn thức & Đa thức (10 câu)
+            </div>
+            <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+              <span class="text-sky-400 font-bold">[LOCK]</span> Chế độ Toàn màn hình F11: <span class="text-emerald-400">BẬT (Enforced)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+              <span class="text-amber-400 font-bold">[AUDIO]</span> Còi hú Web Audio API cảnh báo: <span class="text-emerald-400">SẴN SÀNG</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700">
+              <span class="text-blue-400 font-bold">[AI SOCRATIC]</span> Gia sư trợ giúp: <span class="text-emerald-400">Sẵn sàng phản hồi</span>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
+            <div class="text-slate-400 text-xs">
+              Sẵn sàng làm bài thi ngay bây giờ?
+            </div>
+            <a href="hoc-sinh.html" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-sky-500 hover:bg-sky-400 text-slate-950 transition-colors">
+              <span>Trải Nghiệm Phòng Thi</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900 text-slate-400 text-xs py-10 mt-auto border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        <!-- Col 1: System Info -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 text-white font-extrabold text-base mb-3">
+            <div class="w-8 h-8 rounded-lg bg-sky-600 flex items-center justify-center text-white">
+              <i data-lucide="calculator" class="w-4 h-4"></i>
+            </div>
+            <span>HỆ THỐNG ÔN TẬP & KHẢO THÍ TOÁN THCS PRO</span>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed max-w-md">
+            Phần mềm phục vụ đổi mới phương pháp dạy học và kiểm tra đánh giá định kỳ môn Toán THCS (Khối 6, 7, 8, 9) theo định hướng phát triển phẩm chất, năng lực học sinh chuẩn Chương trình Giáo dục Phổ thông 2018.
+          </p>
+          <div class="mt-3 flex items-center gap-2 text-[11px] text-slate-500">
+            <span>© 2026 Bản quyền thuộc Bộ Sách Kết Nối Tri Thức Với Cuộc Sống</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Truy cập nhanh -->
+        <div>
+          <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Cổng Truy Cập</h5>
+          <ul class="space-y-2">
+            <li><a href="hoc-sinh.html" class="hover:text-sky-400 transition-colors">Phòng Khảo Thí Học Sinh (F11)</a></li>
+            <li><a href="quan-ly-de-thi.html" class="hover:text-sky-400 transition-colors">Cổng Quản Trị Giáo Viên & AI</a></li>
+            <li><a href="dautruong.html" class="hover:text-sky-400 transition-colors">Đấu Trường Tri Thức OLM</a></li>
+            <li><a href="chatbot.html" class="hover:text-sky-400 transition-colors">Gia Sư AI Toán THCS</a></li>
+            <li><a href="tracnghiem.html" class="hover:text-sky-400 transition-colors">Luyện Đề Bấm Giờ 20 Phút</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Khối Lớp -->
+        <div>
+          <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Khối Lớp GDPT 2018</h5>
+          <ul class="space-y-2">
+            <li><a href="quan-ly-de-thi.html" class="hover:text-sky-400 transition-colors">Toán 8 KNTT (10 Chương 89 Bài)</a></li>
+            <li><a href="quan-ly-de-thi.html" class="hover:text-sky-400 transition-colors">Toán 6 KNTT (Số học & Hình trực quan)</a></li>
+            <li><a href="quan-ly-de-thi.html" class="hover:text-sky-400 transition-colors">Toán 7 KNTT (Số hữu tỉ & Tam giác)</a></li>
+            <li><a href="quan-ly-de-thi.html" class="hover:text-sky-400 transition-colors">Toán 9 KNTT (Căn bậc hai & Đường tròn)</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-500">
+        <div>Hệ thống chạy trên nền tảng Web tĩnh độc lập (Single Page App) — Tương thích mọi thiết bị PC, Laptop, Tablet, Mobile.</div>
+        <div class="flex items-center gap-3">
+          <span class="hover:text-slate-400 cursor-pointer">Bảo mật API Key</span>
+          <span>•</span>
+          <span class="hover:text-slate-400 cursor-pointer">Sao lưu Google Drive</span>
+          <span>•</span>
+          <span class="hover:text-slate-400 cursor-pointer">Đồng bộ Google Sheets</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    });
+
+    // Semester Switcher
+    function switchSemester(sem) {
+      const tabHk1 = document.getElementById('tabHk1Content');
+      const tabHk2 = document.getElementById('tabHk2Content');
+      const btnHk1 = document.getElementById('btnTabHk1');
+      const btnHk2 = document.getElementById('btnTabHk2');
+
+      if (sem === 'hk1') {
+        tabHk1.classList.remove('hidden');
+        tabHk2.classList.add('hidden');
+        btnHk1.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-600 text-white shadow-xs";
+        btnHk2.className = "px-4 py-2 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition-all";
+      } else {
+        tabHk1.classList.add('hidden');
+        tabHk2.classList.remove('hidden');
+        btnHk2.className = "px-4 py-2 rounded-lg text-xs font-bold transition-all bg-sky-600 text-white shadow-xs";
+        btnHk1.className = "px-4 py-2 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition-all";
+      }
+
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    }
+  </script>
+</body>
+</html>
