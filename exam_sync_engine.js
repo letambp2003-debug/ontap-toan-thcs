@@ -6574,6 +6574,11 @@
       submissionData.submissionId = "SUB-" + Date.now();
       submissionData.submittedAt = new Date().toISOString();
 
+      // Xử lý chỉ số giám sát thi chống gian lận (Anti-Cheat Proctoring Metrics)
+      submissionData.tabSwitchCount = Number(submissionData.tabSwitchCount) || 0;
+      submissionData.violationLogs = Array.isArray(submissionData.violationLogs) ? submissionData.violationLogs : [];
+      submissionData.cheatFlag = submissionData.tabSwitchCount >= 3 ? 'flagged' : (submissionData.tabSwitchCount > 0 ? 'warning' : 'safe');
+
       // Thêm vào đầu danh sách
       subs.unshift(submissionData);
       setStorage(STORAGE_KEYS.SUBMISSIONS, subs);
@@ -6593,6 +6598,28 @@
           }).catch(err => console.warn('[ExamSyncEngine] Webhook error:', err));
         } catch (e) {
           console.warn('[ExamSyncEngine] Cannot send webhook:', e);
+        }
+      }
+
+      // Tự động gửi thông báo điểm qua Telegram Bot nếu giáo viên đã bật
+      if (typeof TeacherAuthEngine !== 'undefined' && TeacherAuthEngine.sendTelegramNotification) {
+        try {
+          const tgCfg = TeacherAuthEngine.getTelegramConfig();
+          if (tgCfg.enabled && tgCfg.token && tgCfg.chatId) {
+            const cheatStatusText = submissionData.tabSwitchCount > 0 
+              ? `⚠️ <b>Cảnh báo thi:</b> Rời màn hình ${submissionData.tabSwitchCount} lần!` 
+              : `✅ <b>Giám sát:</b> Nghiêm túc (0 vi phạm)`;
+            const tgMsg = `🔔 <b>[BÀI NỘP MỚI - TOÁN THCS]</b>\n` +
+              `👤 <b>Học sinh:</b> ${submissionData.studentName} (Lớp ${submissionData.className})\n` +
+              `📝 <b>Đề thi:</b> ${submissionData.examTitle || submissionData.taskId}\n` +
+              `🎯 <b>Điểm số:</b> <code>${submissionData.score} / 10</code> (${submissionData.correctCount}/${submissionData.totalQuestions} câu đúng)\n` +
+              `⏱ <b>Thời gian làm:</b> ${Math.floor(submissionData.timeSpentSeconds / 60)}p ${submissionData.timeSpentSeconds % 60}s\n` +
+              `${cheatStatusText}\n` +
+              `💡 <b>Nhận xét AI:</b> ${submissionData.aiFeedback || 'Hoàn thành bài thi'}`;
+            TeacherAuthEngine.sendTelegramNotification(tgMsg).catch(() => {});
+          }
+        } catch (err) {
+          console.warn('[ExamSyncEngine] Telegram alert error:', err);
         }
       }
 

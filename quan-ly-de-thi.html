@@ -121,6 +121,10 @@
           <i data-lucide="book-open" class="w-4 h-4 text-slate-500"></i>
           <span>Studio Nạp Học Liệu</span>
         </a>
+        <button onclick="TeacherAuthEngine.handleExportBackup()" title="Sao lưu toàn bộ kho đề, nhiệm vụ và bảng điểm ra file JSON" class="px-3 py-1.5 text-xs font-bold rounded-xl border border-sky-200 bg-sky-50 hover:bg-sky-100 text-sky-900 transition flex items-center gap-1.5 shadow-2xs cursor-pointer">
+          <i data-lucide="hard-drive-download" class="w-4 h-4 text-sky-600"></i>
+          <span>Sao Lưu Đề (.json)</span>
+        </button>
         <div id="teacherAuthSlot"></div>
       </div>
 
@@ -530,6 +534,7 @@
                     <th class="p-3 text-center">Điểm Số</th>
                     <th class="p-3 text-center">Đúng / Tổng</th>
                     <th class="p-3 text-center">Thời Gian Làm</th>
+                    <th class="p-3 text-center">Giám Sát (Anti-Cheat)</th>
                     <th class="p-3">Thời Điểm Nộp</th>
                     <th class="p-3 text-center">Chi Tiết</th>
                   </tr>
@@ -850,6 +855,10 @@
                   <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-600"></i>
                   <strong>${exam.timeMinutes || 15}</strong> phút
                 </span>
+                <span class="flex items-center gap-1 text-[11px] text-slate-400 ml-auto">
+                  <i data-lucide="user" class="w-3 h-3 text-slate-400"></i>
+                  <span>${exam.createdBy || 'Tổ Toán THCS'}</span>
+                </span>
               </div>
             </div>
 
@@ -886,6 +895,14 @@
     }
 
     function deleteExam(examId) {
+      if (typeof TeacherAuthEngine !== 'undefined' && TeacherAuthEngine.isTeacher()) {
+        const session = TeacherAuthEngine.getSession();
+        const exam = ExamSyncEngine.getExamById(examId);
+        if (exam && exam.createdBy && session && exam.createdBy !== session.name && !TeacherAuthEngine.isAdmin()) {
+          alert('⚠️ Bạn đang ở vai trò Giáo Viên Bộ Môn. Chỉ Trưởng Bộ Môn (Admin) hoặc tác giả biên soạn mới có quyền xóa đề thi dùng chung của tổ!');
+          return;
+        }
+      }
       if (confirm('Thầy/Cô có chắc chắn muốn xóa đề thi này khỏi kho lưu trữ không?')) {
         ExamSyncEngine.deleteExam(examId);
         renderExamRepository();
@@ -1480,7 +1497,7 @@
       if (subs.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="7" class="p-6 text-center text-slate-400">
+            <td colspan="8" class="p-6 text-center text-slate-400">
               Chưa có học sinh nào nộp bài cho nhiệm vụ này. Hãy sao chép link gửi cho học sinh làm bài.
             </td>
           </tr>
@@ -1492,6 +1509,22 @@
         const scoreColor = sub.score >= 8.5 ? 'text-emerald-600' : (sub.score >= 6.5 ? 'text-blue-600' : (sub.score >= 5.0 ? 'text-amber-600' : 'text-rose-600'));
         const timeFormatted = Math.floor(sub.timeSpentSeconds / 60) + 'p ' + (sub.timeSpentSeconds % 60) + 's';
         const dateFormatted = new Date(sub.submittedAt).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) + ' ' + new Date(sub.submittedAt).toLocaleDateString('vi-VN');
+
+        const tabSwitches = Number(sub.tabSwitchCount) || 0;
+        let cheatBadge = '';
+        if (tabSwitches >= 3) {
+          cheatBadge = `<button onclick="showAntiCheatLogModal('${sub.submissionId}')" title="Bấm xem chi tiết vi phạm" class="px-2 py-0.5 rounded-md font-black text-[10px] bg-rose-100 text-rose-700 border border-rose-300 hover:bg-rose-200 transition flex items-center gap-1 mx-auto cursor-pointer shadow-2xs">
+            <span>🚨 ${tabSwitches} lần rời tab</span>
+          </button>`;
+        } else if (tabSwitches > 0) {
+          cheatBadge = `<button onclick="showAntiCheatLogModal('${sub.submissionId}')" title="Bấm xem chi tiết vi phạm" class="px-2 py-0.5 rounded-md font-bold text-[10px] bg-amber-100 text-amber-800 border border-amber-300 hover:bg-amber-200 transition flex items-center gap-1 mx-auto cursor-pointer shadow-2xs">
+            <span>⚠️ ${tabSwitches} lần rời tab</span>
+          </button>`;
+        } else {
+          cheatBadge = `<span class="px-2 py-0.5 rounded-md font-bold text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 inline-flex items-center gap-1">
+            <span>✓ Nghiêm túc</span>
+          </span>`;
+        }
 
         return `
           <tr class="hover:bg-slate-50 transition">
@@ -1505,6 +1538,7 @@
             <td class="p-3 text-center font-black ${scoreColor} text-sm">${sub.score}</td>
             <td class="p-3 text-center text-slate-700 font-bold">${sub.correctCount} / ${sub.totalQuestions}</td>
             <td class="p-3 text-center text-slate-500">${timeFormatted}</td>
+            <td class="p-3 text-center">${cheatBadge}</td>
             <td class="p-3 text-slate-500 text-[11px]">${dateFormatted}</td>
             <td class="p-3 text-center">
               <button onclick="viewSubmissionDetail('${sub.submissionId}')" class="px-2 py-1 rounded-lg border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold transition">
@@ -1728,7 +1762,43 @@
         `).join('');
       }
 
+      const tabSwitches = Number(sub.tabSwitchCount) || 0;
+      let cheatBanner = '';
+      if (tabSwitches >= 3) {
+        cheatBanner = `
+          <div class="bg-rose-50 border border-rose-300 rounded-xl p-3 text-rose-900 flex items-start gap-2.5">
+            <i data-lucide="alert-triangle" class="w-5 h-5 text-rose-600 shrink-0 mt-0.5"></i>
+            <div>
+              <strong class="font-black text-rose-700">🚨 CẢNH BÁO GIAN LẬN:</strong> Học sinh đã rời màn hình làm bài <strong>${tabSwitches} lần</strong>!
+              <div class="mt-1 text-[11px] text-rose-800 space-y-0.5 font-mono">
+                ${(sub.violationLogs || []).map(l => `<div>• ${l}</div>`).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (tabSwitches > 0) {
+        cheatBanner = `
+          <div class="bg-amber-50 border border-amber-300 rounded-xl p-3 text-amber-900 flex items-start gap-2.5">
+            <i data-lucide="info" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+            <div>
+              <strong class="font-bold text-amber-800">⚠️ Lưu ý giám sát:</strong> Học sinh rời màn hình ${tabSwitches} lần.
+              <div class="mt-1 text-[11px] text-amber-700 space-y-0.5 font-mono">
+                ${(sub.violationLogs || []).map(l => `<div>• ${l}</div>`).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        cheatBanner = `
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-2.5 text-emerald-800 text-xs flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+            <span>Giám sát thi trực tuyến: <strong>Nghiêm túc 100%</strong> (Không phát hiện hành vi rời tab hay sao chép).</span>
+          </div>
+        `;
+      }
+
       body.innerHTML = `
+        ${cheatBanner}
         <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-3 text-indigo-900">
           <strong>Đánh giá của AI:</strong> ${sub.aiFeedback || 'Đã hoàn thành bài kiểm tra.'}
         </div>
@@ -1739,6 +1809,11 @@
       `;
 
       document.getElementById('submissionDetailModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function showAntiCheatLogModal(submissionId) {
+      viewSubmissionDetail(submissionId);
     }
 
     function closeSubmissionDetailModal() {
