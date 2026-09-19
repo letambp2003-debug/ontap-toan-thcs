@@ -196,6 +196,101 @@
   </div>
 
   <!-- ===================================================================== -->
+  <!-- SCREEN 1.5: CỔNG CHUẨN BỊ VÀO PHÒNG THI TOÀN MÀN HÌNH (FULLSCREEN GATE) -->
+  <!-- ===================================================================== -->
+  <div id="fullscreenGateModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 flex flex-col border border-slate-100">
+      
+      <!-- Gate Header -->
+      <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white p-6 relative overflow-hidden">
+        <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl"></div>
+        <div class="flex items-center gap-3.5 relative z-10">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-white">
+            <i data-lucide="shield-alert" class="w-6 h-6 text-indigo-300"></i>
+          </div>
+          <div>
+            <span class="text-[10px] font-black uppercase tracking-wider bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 px-2.5 py-0.5 rounded-md">
+              QUY CHẾ PHÒNG THI TRỰC TUYẾN
+            </span>
+            <h2 class="text-lg font-black tracking-tight mt-1">Xác Nhận Vào Thi Toàn Màn Hình</h2>
+            <p class="text-xs text-slate-300 mt-0.5">Vui lòng đọc kỹ quy định trước khi hệ thống kích hoạt tính giờ</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gate Body -->
+      <div class="p-6 flex flex-col gap-4">
+        
+        <!-- Exam Meta Summary -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col gap-2.5 text-xs">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <span class="text-slate-500">Đề kiểm tra:</span>
+            <strong class="text-slate-900 font-black text-right max-w-[240px] truncate" id="gateExamTitle">Đề kiểm tra Toán 8</strong>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-[11px]">
+            <div class="flex items-center gap-1.5 text-slate-600">
+              <i data-lucide="user" class="w-3.5 h-3.5 text-indigo-600"></i>
+              <span>Thí sinh:</span>
+              <strong class="text-slate-900" id="gateStudentName">Nguyễn Văn An</strong>
+            </div>
+            <div class="flex items-center gap-1.5 text-slate-600">
+              <i data-lucide="users" class="w-3.5 h-3.5 text-indigo-600"></i>
+              <span>Lớp:</span>
+              <strong class="text-slate-900" id="gateClassName">8A1</strong>
+            </div>
+            <div class="flex items-center gap-1.5 text-slate-600">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-600"></i>
+              <span>Thời gian:</span>
+              <strong class="text-slate-900" id="gateExamDuration">15 phút</strong>
+            </div>
+            <div class="flex items-center gap-1.5 text-slate-600">
+              <i data-lucide="help-circle" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span>Số lượng câu:</span>
+              <strong class="text-slate-900" id="gateExamQuestionsCount">5 câu</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anti-Cheat Requirements List -->
+        <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-4 flex flex-col gap-2.5">
+          <span class="text-xs font-black text-amber-900 flex items-center gap-1.5 uppercase">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i>
+            Yêu cầu bắt buộc trong suốt quá trình làm bài:
+          </span>
+          
+          <ul class="text-xs text-slate-700 space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-md bg-white border border-amber-300 text-amber-800 font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">1</span>
+              <span><strong>Chế độ Toàn màn hình bắt buộc:</strong> Hệ thống mở toàn màn hình. <em>Tuyệt đối không bấm Esc hoặc chuyển cửa sổ</em>.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-md bg-white border border-amber-300 text-amber-800 font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">2</span>
+              <span><strong>Tự động làm mờ và khóa đề thi:</strong> Nếu thoát toàn màn hình hoặc chuyển tab, đề thi sẽ bị mờ và khóa tương tác tức thì.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-5 h-5 rounded-md bg-white border border-amber-300 text-amber-800 font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">3</span>
+              <span><strong>Tự động nộp bài khi vi phạm quá 3 lần:</strong> Mọi thao tác rời màn hình, nhấp chuột phải hay sao chép đều được ghi nhật ký gửi về Giáo viên.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Gate Footer -->
+      <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-3">
+        <button onclick="backToLoginScreen()" class="px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-200 rounded-xl transition cursor-pointer">
+          Quay lại chọn đề khác
+        </button>
+        <button onclick="enterFullscreenAndStart()" class="px-5 py-3 text-xs font-black rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white transition flex items-center gap-2 shadow-lg shadow-indigo-200 cursor-pointer">
+          <i data-lucide="maximize" class="w-4 h-4"></i>
+          <span>VÀO PHÒNG THI TOÀN MÀN HÌNH</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
   <!-- SCREEN 2: GIAO DIỆN LÀM BÀI TẬP TRUNG (FOCUS WORKSPACE) -->
   <!-- Chỉ gồm: Cột Trái (Câu hỏi trả lời) & Cột Phải (Chatbot hỏi đáp) -->
   <!-- ===================================================================== -->
@@ -222,12 +317,18 @@
         </div>
       </div>
 
-      <!-- Exam Title & Countdown Timer -->
-      <div class="flex items-center gap-4">
+      <!-- Exam Title, Fullscreen Toggle & Countdown Timer -->
+      <div class="flex items-center gap-3 sm:gap-4">
         <div class="hidden md:flex flex-col text-right">
           <span class="text-xs font-black text-slate-800 line-clamp-1 max-w-xs" id="headerExamTitle">Đề kiểm tra 15 phút Toán 8</span>
           <span class="text-[10px] text-slate-500" id="headerExamSubtitle">Đã làm <strong id="progressAnsweredCount" class="text-indigo-600">0</strong>/<span id="progressTotalCount">5</span> câu</span>
         </div>
+
+        <!-- Fullscreen Manual Toggle Button -->
+        <button id="headerBtnFullscreen" onclick="toggleFullscreenManual()" title="Bật/Tắt Toàn Màn Hình" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-bold text-slate-700 transition cursor-pointer shadow-2xs">
+          <i data-lucide="maximize" id="headerFsIcon" class="w-4 h-4 text-indigo-600"></i>
+          <span id="headerFsText" class="hidden sm:inline">Toàn Màn Hình</span>
+        </button>
 
         <!-- Timer Pill -->
         <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 shadow-2xs">
@@ -236,7 +337,7 @@
         </div>
 
         <!-- Submit Button -->
-        <button onclick="confirmSubmitExam()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition flex items-center gap-1.5 shadow-sm shadow-emerald-200">
+        <button onclick="confirmSubmitExam()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition flex items-center gap-1.5 shadow-sm shadow-emerald-200 cursor-pointer">
           <i data-lucide="check-circle" class="w-4 h-4"></i>
           <span>NỘP BÀI</span>
         </button>
@@ -608,6 +709,41 @@
       currentExam = targetExam;
       ExamSyncEngine.saveStudentSession(activeStudent);
 
+      // Cập nhật thông tin vào Modal Cổng Chuẩn Bị Vào Phòng Thi Toàn Màn Hình
+      document.getElementById('gateExamTitle').innerText = currentExam.title;
+      document.getElementById('gateStudentName').innerText = activeStudent.name;
+      document.getElementById('gateClassName').innerText = activeStudent.className;
+      document.getElementById('gateExamDuration').innerText = `${currentExam.timeMinutes || 15} phút`;
+      document.getElementById('gateExamQuestionsCount').innerText = `${(currentExam.questions || []).length} câu`;
+
+      // Ẩn modal đăng nhập, hiển thị modal Cổng Chuẩn Bị Toàn Màn Hình
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('fullscreenGateModal').classList.remove('hidden');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function backToLoginScreen() {
+      document.getElementById('fullscreenGateModal').classList.add('hidden');
+      document.getElementById('loginScreen').classList.remove('hidden');
+    }
+
+    function enterFullscreenAndStart() {
+      // Kích hoạt toàn màn hình và bắt đầu làm bài
+      requestAppFullscreen()
+        .then(() => {
+          launchExamWorkspace();
+        })
+        .catch((err) => {
+          console.warn('Yêu cầu Toàn màn hình:', err);
+          showAntiCheatToast('⚠️ Trình duyệt chặn toàn màn hình tự động. Em hãy nhấn phím F11 để vào toàn màn hình nhé!');
+          launchExamWorkspace();
+        });
+    }
+
+    function launchExamWorkspace() {
+      document.getElementById('fullscreenGateModal').classList.add('hidden');
+      document.getElementById('loginScreen').classList.add('hidden');
+
       // Cập nhật Header
       document.getElementById('headerStudentName').innerText = activeStudent.name;
       document.getElementById('headerClassName').innerText = 'Lớp ' + activeStudent.className;
@@ -616,13 +752,93 @@
       document.getElementById('bannerTitle').innerText = currentExam.title;
       document.getElementById('bannerGradeBadge').innerText = `Toán ${currentExam.grade} KNTT`;
 
-      // Ẩn modal đăng nhập
-      document.getElementById('loginScreen').classList.add('hidden');
-
-      // Khởi chạy đề thi & Giám sát trực tuyến
+      // Khởi chạy đề thi, bộ đếm giờ & Giám sát trực tuyến
       initExamQuestions();
       startTimer(currentExam.timeMinutes || 15);
       startAntiCheatProctor();
+      updateFullscreenBtnUI(isCurrentlyFullscreen());
+    }
+
+    // =========================================================================
+    // FULLSCREEN HELPER FUNCTIONS (CHẾ ĐỘ TOÀN MÀN HÌNH BẮT BUỘC)
+    // =========================================================================
+    function isCurrentlyFullscreen() {
+      return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+    }
+
+    function requestAppFullscreen() {
+      const elem = document.documentElement;
+      const requestFs = elem.requestFullscreen || elem.webkitRequestFullscreen || elem.mozRequestFullScreen || elem.msRequestFullscreen;
+      if (requestFs) {
+        return requestFs.call(elem);
+      }
+      return Promise.reject(new Error('Fullscreen API không được hỗ trợ trên trình duyệt này.'));
+    }
+
+    function exitAppFullscreen() {
+      if (!isCurrentlyFullscreen()) return;
+      const exitFs = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+      if (exitFs) {
+        exitFs.call(document).catch(() => {});
+      }
+    }
+
+    function toggleFullscreenManual() {
+      if (isCurrentlyFullscreen()) {
+        if (isAntiCheatActive && !isSubmitted) {
+          const confirmExit = confirm('⚠️ CẢNH BÁO PHÒNG THI:\nRời khỏi chế độ toàn màn hình sẽ bị hệ thống tính là 1 lần vi phạm quy chế Anti-Cheat và làm mờ đề thi.\n\nEm có chắc chắn muốn thu nhỏ không?');
+          if (!confirmExit) return;
+        }
+        exitAppFullscreen();
+      } else {
+        requestAppFullscreen().then(() => {
+          setExamBlurred(false);
+          dismissAntiCheatModal();
+        }).catch(err => {
+          showAntiCheatToast('⚠️ Không thể tự động phóng to. Vui lòng bấm phím F11 trên bàn phím!');
+        });
+      }
+    }
+
+    function updateFullscreenBtnUI(isFullscreen) {
+      const btn = document.getElementById('headerBtnFullscreen');
+      const text = document.getElementById('headerFsText');
+      const icon = document.getElementById('headerFsIcon');
+      if (!btn) return;
+      if (isFullscreen) {
+        if (text) text.innerText = 'Toàn Màn Hình';
+        btn.classList.remove('bg-rose-50', 'text-rose-700', 'border-rose-300', 'animate-pulse');
+        btn.classList.add('bg-emerald-50', 'text-emerald-700', 'border-emerald-300');
+        btn.title = 'Đang trong chế độ toàn màn hình an toàn';
+        if (icon) {
+          icon.classList.remove('text-rose-600');
+          icon.classList.add('text-emerald-600');
+        }
+      } else {
+        if (text) text.innerText = 'Bật Toàn Màn Hình!';
+        btn.classList.remove('bg-emerald-50', 'text-emerald-700', 'border-emerald-300');
+        btn.classList.add('bg-rose-50', 'text-rose-700', 'border-rose-300', 'animate-pulse');
+        btn.title = 'Cảnh báo: Bấm để khôi phục chế độ toàn màn hình';
+        if (icon) {
+          icon.classList.remove('text-emerald-600');
+          icon.classList.add('text-rose-600');
+        }
+      }
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function setExamBlurred(blurred) {
+      const examWorkspace = document.querySelector('main');
+      if (!examWorkspace) return;
+      if (blurred) {
+        examWorkspace.style.filter = 'blur(12px)';
+        examWorkspace.style.pointerEvents = 'none';
+        examWorkspace.style.userSelect = 'none';
+      } else {
+        examWorkspace.style.filter = 'none';
+        examWorkspace.style.pointerEvents = 'auto';
+        examWorkspace.style.userSelect = 'auto';
+      }
     }
 
     // =========================================================================
@@ -888,6 +1104,10 @@
 
       document.addEventListener('visibilitychange', handleVisibilityChange);
       window.addEventListener('blur', handleWindowBlur);
+      document.addEventListener('fullscreenchange', handleFullscreenChange);
+      document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.addEventListener('MSFullscreenChange', handleFullscreenChange);
       document.addEventListener('contextmenu', preventContextMenu);
       document.addEventListener('copy', preventCopyPaste);
       document.addEventListener('cut', preventCopyPaste);
@@ -899,18 +1119,41 @@
       isAntiCheatActive = false;
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('blur', handleWindowBlur);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
       document.removeEventListener('contextmenu', preventContextMenu);
       document.removeEventListener('copy', preventCopyPaste);
       document.removeEventListener('cut', preventCopyPaste);
       document.removeEventListener('paste', preventCopyPaste);
       document.removeEventListener('keydown', preventKeyShortcuts);
+      setExamBlurred(false);
       dismissAntiCheatModal();
+    }
+
+    function handleFullscreenChange() {
+      const isFs = isCurrentlyFullscreen();
+      updateFullscreenBtnUI(isFs);
+
+      if (!isAntiCheatActive || isSubmitted) return;
+
+      if (!isFs) {
+        // Đang thi mà bị thoát toàn màn hình -> Che mờ đề thi ngay lập tức
+        setExamBlurred(true);
+        recordViolation('Thoát chế độ toàn màn hình (Bấm phím Esc hoặc chuyển ứng dụng)', true);
+      } else {
+        // Đã kích hoạt lại toàn màn hình
+        setExamBlurred(false);
+        dismissAntiCheatModal();
+      }
     }
 
     function handleVisibilityChange() {
       if (!isAntiCheatActive || isSubmitted) return;
       if (document.hidden) {
-        recordViolation('Rời tab làm bài thi (Chuyển sang ứng dụng khác)');
+        setExamBlurred(true);
+        recordViolation('Rời tab làm bài thi (Chuyển sang ứng dụng hoặc tab khác)', true);
       }
     }
 
@@ -918,7 +1161,8 @@
       if (!isAntiCheatActive || isSubmitted) return;
       setTimeout(() => {
         if (!document.hasFocus() && isAntiCheatActive && !isSubmitted) {
-          recordViolation('Mất tiêu điểm cửa sổ làm bài thi');
+          setExamBlurred(true);
+          recordViolation('Mất tiêu điểm cửa sổ làm bài thi', true);
         }
       }, 500);
     }
@@ -974,27 +1218,30 @@
       let modal = document.getElementById('antiCheatWarningModal');
       if (!modal) {
         const modalHtml = `
-          <div id="antiCheatWarningModal" class="fixed inset-0 z-[99999] bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
+          <div id="antiCheatWarningModal" class="fixed inset-0 z-[99999] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
             <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border-2 border-rose-500 text-center animate-in zoom-in-95 duration-150 space-y-4">
-              <div class="w-16 h-16 rounded-full bg-rose-100 text-rose-600 mx-auto flex items-center justify-center">
-                <i data-lucide="alert-triangle" class="w-9 h-9 text-rose-600 animate-bounce"></i>
+              <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 mx-auto flex items-center justify-center shadow-inner">
+                <i data-lucide="shield-alert" class="w-9 h-9 text-rose-600 animate-bounce"></i>
               </div>
               <div>
                 <span class="text-[10px] font-black uppercase tracking-wider bg-rose-100 text-rose-800 px-2.5 py-1 rounded-full">
                   Cảnh Báo Vi Phạm Thi Trực Tuyến
                 </span>
-                <h3 class="text-lg font-black text-slate-900 mt-2">Em Vừa Rời Màn Hình Làm Bài!</h3>
+                <h3 class="text-lg font-black text-slate-900 mt-2">Em Vừa Rời Khỏi Toàn Màn Hình!</h3>
                 <p id="antiCheatReasonText" class="text-xs text-slate-600 mt-1"></p>
               </div>
-              <div class="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 text-xs text-amber-900 font-semibold text-left space-y-1">
+              <div class="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 text-xs text-amber-900 font-semibold text-left space-y-1.5">
                 <div class="flex items-center justify-between">
                   <span>Số lần vi phạm đã ghi nhận:</span>
                   <span id="antiCheatViolationBadge" class="px-2 py-0.5 rounded-md font-black bg-rose-600 text-white">1 / 3</span>
                 </div>
-                <p class="text-[11px] text-amber-700">⚠️ Nếu vi phạm quá 3 lần, hệ thống sẽ <strong>tự động khóa bài và nộp ngay lập tức</strong> về cho Giáo viên.</p>
+                <p class="text-[11px] text-amber-700 leading-normal">
+                  ⚠️ Đề thi đã bị <strong>làm mờ và khóa tương tác</strong> để bảo mật. Nếu vi phạm quá 3 lần, hệ thống sẽ <strong>tự động khóa bài và nộp ngay</strong> về cho Giáo viên phụ trách.
+                </p>
               </div>
-              <button onclick="dismissAntiCheatModal()" id="btnDismissAntiCheat" class="w-full py-3 bg-slate-900 hover:bg-black text-white text-xs font-bold rounded-xl transition cursor-pointer">
-                Em Đã Hiểu & Tiếp Tục Làm Bài
+              <button id="btnDismissAntiCheat" class="w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-indigo-200">
+                <i data-lucide="maximize" class="w-4 h-4"></i>
+                <span>Bật Lại Toàn Màn Hình Để Tiếp Tục</span>
               </button>
             </div>
           </div>
@@ -1006,18 +1253,33 @@
       document.getElementById('antiCheatReasonText').innerText = reason;
       document.getElementById('antiCheatViolationBadge').innerText = `${tabSwitchCount} / ${MAX_TAB_SWITCH_ALLOWED}`;
 
+      const btn = document.getElementById('btnDismissAntiCheat');
+
       if (tabSwitchCount >= MAX_TAB_SWITCH_ALLOWED) {
-        document.getElementById('btnDismissAntiCheat').innerText = 'Đã quá số lần cho phép - Tự động nộp bài!';
-        document.getElementById('btnDismissAntiCheat').onclick = function() {
+        btn.innerHTML = '<span>⚠️ Đã vi phạm quá 3 lần - Tự động nộp bài!</span>';
+        btn.className = 'w-full py-3.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-2';
+        btn.onclick = function() {
           modal.classList.add('hidden');
+          setExamBlurred(false);
           submitExam();
         };
         setTimeout(() => {
           modal.classList.add('hidden');
+          setExamBlurred(false);
           submitExam();
         }, 2000);
       } else {
-        document.getElementById('btnDismissAntiCheat').onclick = dismissAntiCheatModal;
+        btn.innerHTML = '<span class="flex items-center justify-center gap-2"><i data-lucide="maximize" class="w-4 h-4"></i><span>Bật Lại Toàn Màn Hình Để Tiếp Tục</span></span>';
+        btn.className = 'w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-indigo-200';
+        btn.onclick = function() {
+          requestAppFullscreen().then(() => {
+            setExamBlurred(false);
+            dismissAntiCheatModal();
+          }).catch(() => {
+            setExamBlurred(false);
+            dismissAntiCheatModal();
+          });
+        };
       }
 
       modal.classList.remove('hidden');
@@ -1027,6 +1289,9 @@
     function dismissAntiCheatModal() {
       const modal = document.getElementById('antiCheatWarningModal');
       if (modal) modal.classList.add('hidden');
+      if (isCurrentlyFullscreen()) {
+        setExamBlurred(false);
+      }
     }
 
     // =========================================================================
@@ -1099,6 +1364,8 @@
       isSubmitted = true;
       clearInterval(timerInterval);
       stopAntiCheatProctor();
+      setExamBlurred(false);
+      exitAppFullscreen();
 
       const questions = currentExam.questions || [];
       let correctCount = 0;
