@@ -1,0 +1,6 @@
+﻿{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/quan-ly-de-thi.html" }
+  ]
+}

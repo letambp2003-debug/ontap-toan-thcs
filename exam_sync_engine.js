@@ -22,7 +22,9 @@
     SUBMISSIONS: 'TN_TOAN_STUDENT_SUBMISSIONS_V1',
     ACTIVE_STUDENT: 'TN_TOAN_ACTIVE_STUDENT_SESSION_V1',
     CLASS_HISTORY: 'TN_TOAN_CLASS_HISTORY_V1',
-    SHEETS_WEBHOOK: 'TN_TOAN_GOOGLE_SHEETS_WEBHOOK_V1'
+    SHEETS_WEBHOOK: 'TN_TOAN_GOOGLE_SHEETS_WEBHOOK_V1',
+    UNLOCK_REQUESTS: 'TN_TOAN_EXAM_UNLOCK_REQUESTS_V1',
+    EXAM_PROGRESS: 'TN_TOAN_ACTIVE_EXAM_PROGRESS_V1'
   };
 
   const SYNC_CHANNEL_NAME = 'TN_TOAN_EXAM_BROADCAST_CHANNEL';
@@ -6267,6 +6269,7 @@
         timeMinutes: timeMinutes,
         levelTarget: (vdcCount > 0 || vdCount >= 4) ? "advanced" : "standard",
         description: `Đề thi tự động chuẩn KNTT gồm ${finalQuestions.length} câu: ${nbCount} NB, ${thCount} TH, ${vdCount} VD, ${vdcCount} VDC.`,
+        enforceFullscreen: options.enforceFullscreen !== undefined ? !!options.enforceFullscreen : true,
         createdAt: new Date().toISOString(),
         createdBy: createdBy,
         questions: finalQuestions
@@ -6698,6 +6701,90 @@
           callback(event.data);
         };
       }
+    },
+
+    // 8. QUẢN LÝ TIẾN ĐỘ BÀI THI DỞ DANG (EXAM PROGRESS RECOVERY)
+    saveExamProgress: function(progressData) {
+      if (!progressData || !progressData.studentName || !progressData.examId) return null;
+      let allProgress = getStorage(STORAGE_KEYS.EXAM_PROGRESS, {});
+      const key = `${progressData.studentName}_${progressData.examId}`;
+      allProgress[key] = {
+        ...progressData,
+        updatedAt: new Date().toISOString()
+      };
+      setStorage(STORAGE_KEYS.EXAM_PROGRESS, allProgress);
+      return allProgress[key];
+    },
+
+    getActiveExamProgress: function(studentName, examId) {
+      if (!studentName || !examId) return null;
+      let allProgress = getStorage(STORAGE_KEYS.EXAM_PROGRESS, {});
+      const key = `${studentName}_${examId}`;
+      return allProgress[key] || null;
+    },
+
+    clearExamProgress: function(studentName, examId) {
+      let allProgress = getStorage(STORAGE_KEYS.EXAM_PROGRESS, {});
+      const key = `${studentName}_${examId}`;
+      if (allProgress[key]) {
+        delete allProgress[key];
+        setStorage(STORAGE_KEYS.EXAM_PROGRESS, allProgress);
+      }
+      return true;
+    },
+
+    // 9. QUẢN LÝ YÊU CẦU XIN MỞ KHÓA BÀI THI (EXAM UNLOCK REQUESTS)
+    createUnlockRequest: function(reqData) {
+      let requests = getStorage(STORAGE_KEYS.UNLOCK_REQUESTS, []);
+      const newReq = {
+        requestId: 'REQ-' + Date.now() + '-' + Math.floor(100 + Math.random() * 900),
+        studentName: reqData.studentName || 'Học sinh',
+        className: reqData.className || '8A1',
+        teacherName: reqData.teacherName || 'Thầy/Cô',
+        examId: reqData.examId,
+        examTitle: reqData.examTitle || 'Đề kiểm tra',
+        reason: reqData.reason || 'Mất điện / Tắt máy đột ngột',
+        answersCount: typeof reqData.answers === 'object' ? Object.keys(reqData.answers || {}).length : 0,
+        timeRemaining: Number(reqData.timeRemaining) || 0,
+        tabSwitchCount: Number(reqData.tabSwitchCount) || 0,
+        status: 'pending', // 'pending' | 'approved' | 'rejected'
+        createdAt: new Date().toISOString(),
+        resolvedAt: null,
+        reviewedBy: null
+      };
+
+      // Giữ duy nhất 1 yêu cầu pending cho cùng học sinh và đề
+      requests = requests.filter(r => !(r.studentName === newReq.studentName && r.examId === newReq.examId && r.status === 'pending'));
+      requests.unshift(newReq);
+      setStorage(STORAGE_KEYS.UNLOCK_REQUESTS, requests);
+      broadcast('NEW_UNLOCK_REQUEST', newReq);
+      return newReq;
+    },
+
+    getAllUnlockRequests: function() {
+      return getStorage(STORAGE_KEYS.UNLOCK_REQUESTS, []);
+    },
+
+    getPendingUnlockRequests: function() {
+      return this.getAllUnlockRequests().filter(r => r.status === 'pending');
+    },
+
+    getUnlockRequestByStudent: function(studentName, examId) {
+      const requests = this.getAllUnlockRequests();
+      return requests.find(r => r.studentName === studentName && r.examId === examId) || null;
+    },
+
+    resolveUnlockRequest: function(requestId, status, reviewerName) {
+      let requests = this.getAllUnlockRequests();
+      const req = requests.find(r => r.requestId === requestId);
+      if (!req) return { success: false, message: 'Không tìm thấy yêu cầu mở khóa.' };
+
+      req.status = status; // 'approved' | 'rejected'
+      req.resolvedAt = new Date().toISOString();
+      req.reviewedBy = reviewerName || 'Giáo viên phụ trách';
+      setStorage(STORAGE_KEYS.UNLOCK_REQUESTS, requests);
+      broadcast('UNLOCK_REQUEST_RESOLVED', req);
+      return { success: true, request: req };
     }
   };
 
