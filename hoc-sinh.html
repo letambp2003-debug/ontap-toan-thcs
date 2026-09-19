@@ -716,6 +716,13 @@
       document.getElementById('gateExamDuration').innerText = `${currentExam.timeMinutes || 15} phút`;
       document.getElementById('gateExamQuestionsCount').innerText = `${(currentExam.questions || []).length} câu`;
 
+      // Nếu đề thi cho phép làm bài tự do (không bắt buộc toàn màn hình)
+      if (currentExam.enforceFullscreen === false) {
+        document.getElementById('loginScreen').classList.add('hidden');
+        launchExamWorkspace();
+        return;
+      }
+
       // Ẩn modal đăng nhập, hiển thị modal Cổng Chuẩn Bị Toàn Màn Hình
       document.getElementById('loginScreen').classList.add('hidden');
       document.getElementById('fullscreenGateModal').classList.remove('hidden');
@@ -728,6 +735,9 @@
     }
 
     function enterFullscreenAndStart() {
+      // Khởi tạo hệ thống âm thanh còi hú khi có tương tác người dùng
+      ExamAudioAlert.init();
+
       // Kích hoạt toàn màn hình và bắt đầu làm bài
       requestAppFullscreen()
         .then(() => {
@@ -741,6 +751,7 @@
     }
 
     function launchExamWorkspace() {
+      ExamAudioAlert.init();
       document.getElementById('fullscreenGateModal').classList.add('hidden');
       document.getElementById('loginScreen').classList.add('hidden');
 
@@ -752,12 +763,69 @@
       document.getElementById('bannerTitle').innerText = currentExam.title;
       document.getElementById('bannerGradeBadge').innerText = `Toán ${currentExam.grade} KNTT`;
 
-      // Khởi chạy đề thi, bộ đếm giờ & Giám sát trực tuyến
+      // Khởi chạy câu hỏi đề thi
       initExamQuestions();
-      startTimer(currentExam.timeMinutes || 15);
+
+      // Khôi phục tiến độ dở dang nếu có (sự cố mất điện / rớt mạng trước đó)
+      restoreExamProgressUI();
+
+      // Bắt đầu bộ đếm giờ với thời gian còn lại
+      const initialMinutes = (typeof timeRemaining === 'number' && timeRemaining > 0)
+        ? Math.ceil(timeRemaining / 60)
+        : (currentExam.timeMinutes || 15);
+      startTimer(initialMinutes);
+
       startAntiCheatProctor();
       updateFullscreenBtnUI(isCurrentlyFullscreen());
+
+      // Nếu số lần vi phạm đã chạm ngưỡng tối đa từ phiên trước, hiển thị cổng xin mở khóa
+      if (tabSwitchCount >= MAX_TAB_SWITCH_ALLOWED) {
+        showAntiCheatWarningModal('Hệ thống phát hiện bài thi của em đã bị tạm khóa do vi phạm quy chế trước đó.');
+      }
     }
+
+    // =========================================================================
+    // HỆ THỐNG ÂM THANH CẢNH BÁO CÒI HÚ (WEB AUDIO API SIREN ALERT)
+    // =========================================================================
+    const ExamAudioAlert = {
+      audioCtx: null,
+      init: function() {
+        if (!this.audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+          this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (this.audioCtx && this.audioCtx.state === 'suspended') {
+          this.audioCtx.resume();
+        }
+      },
+      playSirenBeep: function() {
+        try {
+          this.init();
+          if (!this.audioCtx) return;
+          const now = this.audioCtx.currentTime;
+          const osc = this.audioCtx.createOscillator();
+          const gain = this.audioCtx.createGain();
+
+          osc.type = 'sawtooth';
+          // Tần số còi hú cảnh báo biến thiên đanh gọn 650Hz -> 950Hz
+          osc.frequency.setValueAtTime(650, now);
+          osc.frequency.exponentialRampToValueAtTime(950, now + 0.15);
+          osc.frequency.exponentialRampToValueAtTime(650, now + 0.3);
+          osc.frequency.exponentialRampToValueAtTime(950, now + 0.45);
+          osc.frequency.exponentialRampToValueAtTime(650, now + 0.6);
+
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.7);
+
+          osc.connect(gain);
+          gain.connect(this.audioCtx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.7);
+        } catch (e) {
+          console.warn('Web Audio alert error:', e);
+        }
+      }
+    };
 
     // =========================================================================
     // FULLSCREEN HELPER FUNCTIONS (CHẾ ĐỘ TOÀN MÀN HÌNH BẮT BUỘC)
@@ -865,7 +933,7 @@
         const qContent = window.MathNormalizer ? window.MathNormalizer.normalizeMath(q.content) : q.content;
 
         if (q.type === 'tf' || (q.items && q.items.length > 0)) {
-          typeBadge = '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-purple-50 text-purple-700">Đúng / Sai</span>';
+          typeBadge = '<span class="text-[10px] font-black px-2 py-0.5 rounded bg-sky-50 text-sky-700">Đúng / Sai</span>';
           const tfAnswers = studentAnswers[q.id] || {};
           const itemsHtml = (q.items || []).map(it => {
             const itText = window.MathNormalizer ? window.MathNormalizer.normalizeMath(it.text) : it.text;
@@ -1087,6 +1155,90 @@
 
       const percent = total > 0 ? Math.round((answered / total) * 100) : 0;
       document.getElementById('progressBarFill').style.width = percent + '%';
+
+      // Tự động lưu tiến độ vào LocalStorage
+      persistActiveExamProgress();
+    }
+
+    // =========================================================================
+    // LƯU & PHỤC HỒI TIẾN ĐỘ THI (EXAM PROGRESS PERSISTENCE & RECOVERY)
+    // =========================================================================
+    function persistActiveExamProgress() {
+      if (!currentExam || !activeStudent || isSubmitted) return;
+      if (typeof ExamSyncEngine !== 'undefined' && ExamSyncEngine.saveExamProgress) {
+        ExamSyncEngine.saveExamProgress({
+          studentName: activeStudent.name,
+          className: activeStudent.className,
+          teacherName: activeStudent.teacherName,
+          examId: currentExam.id,
+          examTitle: currentExam.title,
+          studentAnswers: studentAnswers,
+          timeRemaining: timeRemaining,
+          tabSwitchCount: tabSwitchCount,
+          violationLogs: violationLogs
+        });
+      }
+    }
+
+    function restoreExamProgressUI() {
+      if (!currentExam || !activeStudent) return;
+      if (typeof ExamSyncEngine === 'undefined' || !ExamSyncEngine.getActiveExamProgress) return;
+      const progress = ExamSyncEngine.getActiveExamProgress(activeStudent.name, currentExam.id);
+      if (!progress) return;
+
+      console.log('[AntiCheatRecovery] Phát hiện phiên thi dở dang:', progress);
+
+      if (progress.studentAnswers && typeof progress.studentAnswers === 'object') {
+        studentAnswers = progress.studentAnswers;
+        // Khôi phục giao diện các câu trả lời
+        Object.entries(studentAnswers).forEach(([qId, ans]) => {
+          const q = (currentExam.questions || []).find(x => x.id === qId);
+          if (!q) return;
+
+          if (q.type === 'tf' || (q.items && q.items.length > 0)) {
+            if (typeof ans === 'object') {
+              Object.entries(ans).forEach(([itemKey, val]) => {
+                const dungBtn = document.getElementById(`tfBtn_${qId}_${itemKey}_Đ`);
+                const saiBtn = document.getElementById(`tfBtn_${qId}_${itemKey}_S`);
+                if (val === 'Đ' && dungBtn) {
+                  dungBtn.className = 'tf-btn px-3 py-1.5 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-700 font-black ring-2 ring-emerald-500/20 shadow-xs text-xs';
+                  if (saiBtn) saiBtn.className = 'tf-btn px-3 py-1.5 rounded-lg border border-slate-200 text-slate-500 bg-white hover:border-rose-300 font-bold text-xs';
+                } else if (val === 'S' && saiBtn) {
+                  saiBtn.className = 'tf-btn px-3 py-1.5 rounded-lg border border-rose-500 bg-rose-50 text-rose-700 font-black ring-2 ring-rose-500/20 shadow-xs text-xs';
+                  if (dungBtn) dungBtn.className = 'tf-btn px-3 py-1.5 rounded-lg border border-slate-200 text-slate-500 bg-white hover:border-emerald-300 font-bold text-xs';
+                }
+              });
+            }
+          } else if (q.type === 'short' || q.correctAnswers) {
+            const inp = document.getElementById(`shortInp_${qId}`);
+            if (inp) inp.value = ans;
+          } else {
+            // MCQ
+            const optBtn = document.getElementById(`optBtn_${qId}_${ans}`);
+            const optBadge = document.getElementById(`optBadge_${qId}_${ans}`);
+            if (optBtn) {
+              optBtn.classList.remove('bg-slate-50', 'border-slate-200');
+              optBtn.classList.add('border-indigo-600', 'bg-indigo-50', 'ring-2', 'ring-indigo-500/20');
+            }
+            if (optBadge) {
+              optBadge.classList.remove('bg-slate-200', 'text-slate-700');
+              optBadge.classList.add('bg-indigo-600', 'text-white');
+            }
+          }
+        });
+      }
+
+      if (typeof progress.timeRemaining === 'number' && progress.timeRemaining > 0) {
+        timeRemaining = progress.timeRemaining;
+      }
+      if (typeof progress.tabSwitchCount === 'number') {
+        tabSwitchCount = progress.tabSwitchCount;
+      }
+      if (Array.isArray(progress.violationLogs)) {
+        violationLogs = progress.violationLogs;
+      }
+
+      updateProgress();
     }
 
     // =========================================================================
@@ -1099,7 +1251,7 @@
 
     function startAntiCheatProctor() {
       isAntiCheatActive = true;
-      tabSwitchCount = 0;
+      tabSwitchCount = tabSwitchCount || 0;
       violationLogs = [];
 
       document.addEventListener('visibilitychange', handleVisibilityChange);
@@ -1200,6 +1352,11 @@
       const timeStr = new Date().toTimeString().slice(0, 8);
       violationLogs.push(`[${timeStr}] ${reason}`);
 
+      // Phát âm thanh còi hú cảnh báo bằng Web Audio API
+      if (typeof ExamAudioAlert !== 'undefined') {
+        ExamAudioAlert.playSirenBeep();
+      }
+
       if (countsTowardLimit) {
         tabSwitchCount++;
         showAntiCheatWarningModal(reason);
@@ -1227,7 +1384,7 @@
                 <span class="text-[10px] font-black uppercase tracking-wider bg-rose-100 text-rose-800 px-2.5 py-1 rounded-full">
                   Cảnh Báo Vi Phạm Thi Trực Tuyến
                 </span>
-                <h3 class="text-lg font-black text-slate-900 mt-2">Em Vừa Rời Khỏi Toàn Màn Hình!</h3>
+                <h3 class="text-lg font-black text-slate-900 mt-2" id="antiCheatTitleText">Em Vừa Rời Khỏi Toàn Màn Hình!</h3>
                 <p id="antiCheatReasonText" class="text-xs text-slate-600 mt-1"></p>
               </div>
               <div class="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 text-xs text-amber-900 font-semibold text-left space-y-1.5">
@@ -1235,14 +1392,18 @@
                   <span>Số lần vi phạm đã ghi nhận:</span>
                   <span id="antiCheatViolationBadge" class="px-2 py-0.5 rounded-md font-black bg-rose-600 text-white">1 / 3</span>
                 </div>
-                <p class="text-[11px] text-amber-700 leading-normal">
-                  ⚠️ Đề thi đã bị <strong>làm mờ và khóa tương tác</strong> để bảo mật. Nếu vi phạm quá 3 lần, hệ thống sẽ <strong>tự động khóa bài và nộp ngay</strong> về cho Giáo viên phụ trách.
+                <p id="antiCheatDescText" class="text-[11px] text-amber-700 leading-normal">
+                  ⚠️ Đề thi đã bị <strong>làm mờ và khóa tương tác</strong> để bảo mật. Nếu vi phạm quá 3 lần, hệ thống sẽ <strong>tự động khóa bài</strong>.
                 </p>
               </div>
-              <button id="btnDismissAntiCheat" class="w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-indigo-200">
-                <i data-lucide="maximize" class="w-4 h-4"></i>
-                <span>Bật Lại Toàn Màn Hình Để Tiếp Tục</span>
-              </button>
+
+              <!-- Action buttons area -->
+              <div id="antiCheatActionContainer" class="space-y-2">
+                <button id="btnDismissAntiCheat" class="w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-indigo-200">
+                  <i data-lucide="maximize" class="w-4 h-4"></i>
+                  <span>Bật Lại Toàn Màn Hình Để Tiếp Tục</span>
+                </button>
+              </div>
             </div>
           </div>
         `;
@@ -1253,37 +1414,51 @@
       document.getElementById('antiCheatReasonText').innerText = reason;
       document.getElementById('antiCheatViolationBadge').innerText = `${tabSwitchCount} / ${MAX_TAB_SWITCH_ALLOWED}`;
 
-      const btn = document.getElementById('btnDismissAntiCheat');
+      const actionContainer = document.getElementById('antiCheatActionContainer');
 
       if (tabSwitchCount >= MAX_TAB_SWITCH_ALLOWED) {
-        btn.innerHTML = '<span>⚠️ Đã vi phạm quá 3 lần - Tự động nộp bài!</span>';
-        btn.className = 'w-full py-3.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-2';
-        btn.onclick = function() {
-          modal.classList.add('hidden');
-          setExamBlurred(false);
-          submitExam();
-        };
-        setTimeout(() => {
-          modal.classList.add('hidden');
-          setExamBlurred(false);
-          submitExam();
-        }, 2000);
+        document.getElementById('antiCheatTitleText').innerText = 'Bài Thi Đã Bị Khóa Tự Động!';
+        document.getElementById('antiCheatDescText').innerHTML = '⚠️ Em đã vi phạm quy chế quá 3 lần. Nếu em gặp sự cố ngoài ý muốn (mất điện, rớt mạng hoặc bấm nhầm phím), em có thể <strong>gửi yêu cầu xin Giám thị mở khóa</strong> để làm tiếp.';
+        
+        actionContainer.innerHTML = `
+          <button onclick="openUnlockRequestModal()" class="w-full py-3.5 bg-amber-600 hover:bg-amber-700 text-white text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-amber-200">
+            <i data-lucide="unlock" class="w-4 h-4"></i>
+            <span>🚨 Xin Giám Thị Mở Khóa Thi Lại</span>
+          </button>
+          <button onclick="dismissAntiCheatAndSubmit()" class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition cursor-pointer">
+            Chấp nhận nộp bài với kết quả hiện tại
+          </button>
+        `;
       } else {
-        btn.innerHTML = '<span class="flex items-center justify-center gap-2"><i data-lucide="maximize" class="w-4 h-4"></i><span>Bật Lại Toàn Màn Hình Để Tiếp Tục</span></span>';
-        btn.className = 'w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-indigo-200';
-        btn.onclick = function() {
-          requestAppFullscreen().then(() => {
-            setExamBlurred(false);
-            dismissAntiCheatModal();
-          }).catch(() => {
-            setExamBlurred(false);
-            dismissAntiCheatModal();
-          });
-        };
+        document.getElementById('antiCheatTitleText').innerText = 'Em Vừa Rời Khỏi Toàn Màn Hình!';
+        document.getElementById('antiCheatDescText').innerHTML = '⚠️ Đề thi đã bị <strong>làm mờ và khóa tương tác</strong> để bảo mật. Nếu vi phạm quá 3 lần, hệ thống sẽ <strong>tự động khóa bài</strong>.';
+        actionContainer.innerHTML = `
+          <button id="btnDismissAntiCheat" onclick="resumeExamFullscreen()" class="w-full py-3.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-black rounded-xl transition cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-indigo-200">
+            <i data-lucide="maximize" class="w-4 h-4"></i>
+            <span>Bật Lại Toàn Màn Hình Để Tiếp Tục</span>
+          </button>
+        `;
       }
 
       modal.classList.remove('hidden');
       if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function resumeExamFullscreen() {
+      requestAppFullscreen().then(() => {
+        setExamBlurred(false);
+        dismissAntiCheatModal();
+      }).catch(() => {
+        setExamBlurred(false);
+        dismissAntiCheatModal();
+      });
+    }
+
+    function dismissAntiCheatAndSubmit() {
+      const modal = document.getElementById('antiCheatWarningModal');
+      if (modal) modal.classList.add('hidden');
+      setExamBlurred(false);
+      submitExam();
     }
 
     function dismissAntiCheatModal() {
@@ -1295,16 +1470,225 @@
     }
 
     // =========================================================================
+    // YÊU CẦU MỞ KHÓA BÀI THI KHI GẶP SỰ CỐ / VI PHẠM (STUDENT UNLOCK REQUEST)
+    // =========================================================================
+    let unlockCheckInterval = null;
+
+    function openUnlockRequestModal() {
+      let modal = document.getElementById('examUnlockRequestModal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'examUnlockRequestModal';
+        modal.className = 'fixed inset-0 z-50 bg-slate-900/75 backdrop-blur-sm flex items-center justify-center p-4';
+        modal.innerHTML = `
+          <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 text-center animate-in fade-in zoom-in-95 duration-200">
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 mx-auto flex items-center justify-center mb-3">
+              <i data-lucide="unlock" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-base font-black text-slate-900">Gửi Yêu Cầu Xin Mở Khóa Bài Thi</h3>
+            <p class="text-xs text-slate-500 mt-1">
+              Bài làm và thời gian của em vẫn được hệ thống lưu trữ an toàn. Hãy chọn lý do sự cố để Thầy/Cô xem xét mở khóa tiếp tục thi.
+            </p>
+
+            <div id="unlockFormContainer" class="mt-4 text-left space-y-3 text-xs">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Lý do gặp sự cố:</label>
+                <select id="unlockReasonSelect" class="w-full text-xs rounded-xl border border-slate-300 p-2.5 bg-slate-50 font-semibold focus:bg-white focus:border-indigo-600 focus:outline-none">
+                  <option value="Mất điện / Tắt máy tính đột ngột">⚡ Mất điện / Tắt máy tính đột ngột</option>
+                  <option value="Rớt mạng Internet / Gián đoạn kết nối">🌐 Rớt mạng Internet / Gián đoạn kết nối</option>
+                  <option value="Vô tình bấm nhầm phím hoặc thoát toàn màn hình">⌨️ Vô tình bấm nhầm phím / thoát toàn màn hình</option>
+                  <option value="Trình duyệt bị treo / lỗi thiết bị">💻 Trình duyệt bị treo / lỗi thiết bị</option>
+                  <option value="Lý do bất khả kháng khác">❓ Lý do bất khả kháng khác</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Ghi chú thêm cho Thầy/Cô (nếu có):</label>
+                <textarea id="unlockNoteInp" rows="2" placeholder="Ví dụ: Em vừa bị sập nguồn máy tính, em xin Thầy mở khóa để làm nốt..." class="w-full text-xs rounded-xl border border-slate-300 p-2.5 bg-slate-50 font-medium focus:bg-white focus:border-indigo-600 focus:outline-none"></textarea>
+              </div>
+
+              <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-[11px] text-slate-600 space-y-1">
+                <div class="flex justify-between"><span>Học sinh:</span><strong class="text-slate-800" id="unlockStudentLabel"></strong></div>
+                <div class="flex justify-between"><span>Thời gian còn lại:</span><strong class="text-indigo-700" id="unlockTimeLabel"></strong></div>
+                <div class="flex justify-between"><span>Số câu đã làm:</span><strong class="text-emerald-700" id="unlockAnsweredLabel"></strong></div>
+              </div>
+
+              <div class="flex items-center gap-2 pt-1">
+                <button type="button" onclick="closeUnlockModal()" class="flex-1 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-bold transition cursor-pointer">
+                  Quay Lại
+                </button>
+                <button type="button" onclick="submitUnlockRequest()" id="btnSubmitUnlockReq" class="flex-1 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-black transition flex items-center justify-center gap-1.5 shadow-md shadow-amber-200 cursor-pointer">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>Gửi Yêu Cầu</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Khung trạng thái khi đã gửi -->
+            <div id="unlockWaitingContainer" class="mt-4 text-center space-y-3 hidden">
+              <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto animate-spin">
+                <i data-lucide="loader-2" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-black text-slate-900">Đã gửi yêu cầu tới Thầy/Cô!</h4>
+                <p class="text-[11px] text-slate-500 mt-0.5">
+                  Đang chờ Thầy/Cô phê duyệt... Hệ thống sẽ tự động mở khóa ngay khi Thầy/Cô xác nhận.
+                </p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-800 font-medium">
+                Vui lòng không tắt trang web này.
+              </div>
+              <button type="button" onclick="dismissAntiCheatAndSubmit()" class="text-xs text-slate-500 hover:text-slate-700 underline font-medium cursor-pointer">
+                Hoặc chấp nhận nộp bài với kết quả hiện tại
+              </button>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+      }
+
+      const stName = activeStudent ? activeStudent.name : 'Học sinh';
+      const stClass = activeStudent ? activeStudent.className : '';
+      document.getElementById('unlockStudentLabel').innerText = `${stName} (${stClass})`;
+      const mins = Math.floor(timeRemaining / 60);
+      const secs = timeRemaining % 60;
+      document.getElementById('unlockTimeLabel').innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      document.getElementById('unlockAnsweredLabel').innerText = `${Object.keys(studentAnswers || {}).length} câu`;
+
+      // Kiểm tra xem đã có yêu cầu pending trước đó chưa
+      if (typeof ExamSyncEngine !== 'undefined' && currentExam) {
+        const existingReq = ExamSyncEngine.getUnlockRequestByStudent(stName, currentExam.id);
+        if (existingReq && existingReq.status === 'pending') {
+          document.getElementById('unlockFormContainer').classList.add('hidden');
+          document.getElementById('unlockWaitingContainer').classList.remove('hidden');
+          startListeningUnlockApproval(existingReq.requestId);
+        } else {
+          document.getElementById('unlockFormContainer').classList.remove('hidden');
+          document.getElementById('unlockWaitingContainer').classList.add('hidden');
+        }
+      }
+
+      modal.classList.remove('hidden');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function closeUnlockModal() {
+      const modal = document.getElementById('examUnlockRequestModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function submitUnlockRequest() {
+      const reasonSelect = document.getElementById('unlockReasonSelect');
+      const noteInp = document.getElementById('unlockNoteInp');
+      let reason = reasonSelect.value;
+      if (noteInp && noteInp.value.trim()) {
+        reason += ` - ${noteInp.value.trim()}`;
+      }
+
+      // Lưu tiến độ ngay trước khi gửi yêu cầu
+      persistActiveExamProgress();
+
+      if (typeof ExamSyncEngine !== 'undefined') {
+        const newReq = ExamSyncEngine.createUnlockRequest({
+          studentName: activeStudent ? activeStudent.name : 'Học sinh',
+          className: activeStudent ? activeStudent.className : '',
+          teacherName: activeStudent ? activeStudent.teacherName : 'Thầy/Cô',
+          examId: currentExam.id,
+          examTitle: currentExam.title,
+          reason: reason,
+          answers: studentAnswers,
+          timeRemaining: timeRemaining,
+          tabSwitchCount: tabSwitchCount
+        });
+
+        document.getElementById('unlockFormContainer').classList.add('hidden');
+        document.getElementById('unlockWaitingContainer').classList.remove('hidden');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+
+        startListeningUnlockApproval(newReq.requestId);
+      }
+    }
+
+    function startListeningUnlockApproval(requestId) {
+      if (unlockCheckInterval) clearInterval(unlockCheckInterval);
+
+      const checkApproval = () => {
+        if (typeof ExamSyncEngine === 'undefined') return;
+        const requests = ExamSyncEngine.getAllUnlockRequests();
+        const req = requests.find(r => r.requestId === requestId);
+        if (req) {
+          if (req.status === 'approved') {
+            clearInterval(unlockCheckInterval);
+            unlockCheckInterval = null;
+            handleUnlockApproved(req);
+          } else if (req.status === 'rejected') {
+            clearInterval(unlockCheckInterval);
+            unlockCheckInterval = null;
+            handleUnlockRejected(req);
+          }
+        }
+      };
+
+      unlockCheckInterval = setInterval(checkApproval, 1500);
+
+      // Đồng thời lắng nghe qua BroadcastChannel
+      if (typeof ExamSyncEngine !== 'undefined') {
+        ExamSyncEngine.onSyncEvent(function(data) {
+          if (data.type === 'UNLOCK_REQUEST_RESOLVED' && data.payload && data.payload.requestId === requestId) {
+            if (data.payload.status === 'approved') {
+              if (unlockCheckInterval) clearInterval(unlockCheckInterval);
+              unlockCheckInterval = null;
+              handleUnlockApproved(data.payload);
+            } else if (data.payload.status === 'rejected') {
+              if (unlockCheckInterval) clearInterval(unlockCheckInterval);
+              unlockCheckInterval = null;
+              handleUnlockRejected(data.payload);
+            }
+          }
+        });
+      }
+    }
+
+    function handleUnlockApproved(req) {
+      closeUnlockModal();
+      dismissAntiCheatModal();
+
+      // Đặt lại số lần vi phạm về 0
+      tabSwitchCount = 0;
+      setExamBlurred(false);
+
+      alert(`🎉 Thầy/Cô (${req.reviewedBy || 'Giám thị'}) đã chấp thuận mở khóa bài thi!\nEm hãy tiếp tục hoàn thành bài thi với thời gian còn lại nhé.`);
+
+      // Bật lại fullscreen nếu đề thi yêu cầu
+      if (currentExam.enforceFullscreen !== false) {
+        requestAppFullscreen().catch(() => {});
+      }
+    }
+
+    function handleUnlockRejected(req) {
+      closeUnlockModal();
+      alert(`⚠️ Thầy/Cô (${req.reviewedBy || 'Giám thị'}) từ chối yêu cầu mở khóa bài thi.\nHệ thống sẽ nộp bài với kết quả hiện tại.`);
+      dismissAntiCheatAndSubmit();
+    }
+
+    // =========================================================================
     // BỘ ĐẾM GIỜ
     // =========================================================================
     function startTimer(minutes) {
-      timeRemaining = minutes * 60;
+      if (!timeRemaining || timeRemaining <= 0) {
+        timeRemaining = minutes * 60;
+      }
       timeSpentSeconds = 0;
       const timerDisplay = document.getElementById('countdownTimer');
 
       timerInterval = setInterval(() => {
         timeRemaining--;
         timeSpentSeconds++;
+
+        // Định kỳ lưu tiến độ thi mỗi 5 giây
+        if (timeSpentSeconds % 5 === 0) {
+          persistActiveExamProgress();
+        }
 
         if (timeRemaining <= 0) {
           clearInterval(timerInterval);
@@ -1469,6 +1853,11 @@
 
       // GỬI VÀ ĐỒNG BỘ VỀ KHO GIÁO VIÊN
       ExamSyncEngine.submitStudentExam(submissionPayload);
+
+      // Xóa tiến độ bài thi dở dang vì đã nộp thành công
+      if (typeof ExamSyncEngine.clearExamProgress === 'function' && activeStudent) {
+        ExamSyncEngine.clearExamProgress(activeStudent.name, currentExam.id);
+      }
 
       // Hiển thị Modal Kết Quả
       showResultModal(submissionPayload);

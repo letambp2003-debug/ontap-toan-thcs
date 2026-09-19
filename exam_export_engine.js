@@ -434,6 +434,261 @@
       `);
 
       printWindow.document.close();
+    },
+
+    // 4. XUẤT BIÊN BẢN VI PHẠM QUY CHẾ THI TRỰC TUYẾN CHUẨN A4 / WORD (.DOC)
+    generateViolationReportHtml: function(sub, teacherName) {
+      if (!sub) return '';
+      const now = new Date();
+      const dateStr = `ngày ${now.getDate()} tháng ${now.getMonth() + 1} năm ${now.getFullYear()}`;
+      const timeStr = `${now.getHours()} giờ ${String(now.getMinutes()).padStart(2, '0')} phút`;
+      const submittedAtStr = sub.submittedAt ? new Date(sub.submittedAt).toLocaleString('vi-VN') : 'Không xác định';
+      const violations = Array.isArray(sub.violationLogs) ? sub.violationLogs : [];
+      const tabSwitches = Number(sub.tabSwitchCount) || violations.length || 0;
+      const tName = teacherName || 'Thầy/Cô Giáo Viên';
+
+      let rows = '';
+      if (violations.length === 0) {
+        rows = `<tr><td colspan="3" style="text-align:center; padding: 12px; color: #166534;">Không ghi nhận hành vi vi phạm nào trong suốt quá trình làm bài.</td></tr>`;
+      } else {
+        rows = violations.map((log, index) => {
+          let timePart = '';
+          let reasonPart = log;
+          const match = log.match(/^\[(.*?)\]\s*(.*)$/);
+          if (match) {
+            timePart = match[1];
+            reasonPart = match[2];
+          }
+          return `
+            <tr>
+              <td style="text-align: center; padding: 8px; border: 1px solid #333;">${index + 1}</td>
+              <td style="text-align: center; padding: 8px; border: 1px solid #333; font-family: monospace;">${timePart || submittedAtStr}</td>
+              <td style="padding: 8px; border: 1px solid #333;">${reasonPart}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      return `
+        <div style="font-family: 'Times New Roman', Times, serif; font-size: 14pt; line-height: 1.4; color: #000; padding: 20px;">
+          <table style="width: 100%; margin-bottom: 20px; border: none; border-collapse: collapse;">
+            <tr>
+              <td style="width: 45%; text-align: center; vertical-align: top; border: none;">
+                <strong>PHÒNG GIÁO DỤC VÀ ĐÀO TẠO</strong><br>
+                <strong>TRƯỜNG THCS CHUYÊN MÔN TOÁN</strong><br>
+                <span>Hệ Thống Khảo Thí Trực Tuyến</span><br>
+                <div style="width: 100px; height: 1px; background: #000; margin: 4px auto;"></div>
+              </td>
+              <td style="width: 55%; text-align: center; vertical-align: top; border: none;">
+                <strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong><br>
+                <strong>Độc lập - Tự do - Hạnh phúc</strong><br>
+                <div style="width: 160px; height: 1px; background: #000; margin: 4px auto;"></div>
+                <div style="font-style: italic; font-size: 13pt; margin-top: 6px;">..., ${dateStr}</div>
+              </td>
+            </tr>
+          </table>
+
+          <div style="text-align: center; margin: 25px 0 15px 0;">
+            <h2 style="font-size: 16pt; font-weight: bold; margin: 0; text-transform: uppercase;">BIÊN BẢN GHI NHẬN SỰ CỐ & VI PHẠM QUY CHẾ THI TRỰC TUYẾN</h2>
+            <p style="font-size: 13pt; font-style: italic; margin: 5px 0 0 0;">(Ban hành kèm theo Quy chế Khảo thí Trực tuyến GDPT 2018)</p>
+          </div>
+
+          <p style="margin: 8px 0;">Hôm nay, vào hồi <strong>${timeStr}</strong>, ${dateStr}, tại Hệ thống Giám sát & Khảo thí Trực tuyến.</p>
+          <p style="margin: 8px 0;">Chúng tôi gồm có:</p>
+          <ul style="margin: 4px 0 10px 20px;">
+            <li><strong>Giáo viên / Giám thị phụ trách:</strong> ${tName}</li>
+            <li><strong>Thí sinh:</strong> <strong>${sub.studentName || 'Học sinh'}</strong> &nbsp;&nbsp;&bull;&nbsp;&nbsp; <strong>Lớp:</strong> ${sub.className || '8A1'}</li>
+            <li><strong>Môn thi / Chuyên đề:</strong> Môn Toán THCS (Chương trình GDPT 2018)</li>
+            <li><strong>Đề thi thực hiện:</strong> ${sub.examTitle || 'Đề kiểm tra trực tuyến'}</li>
+            <li><strong>Thời điểm nộp bài:</strong> ${submittedAtStr}</li>
+            <li><strong>Điểm số ghi nhận:</strong> <strong style="font-size: 15pt; color: #b91c1c;">${sub.score !== undefined ? sub.score : 0} / 10</strong></li>
+          </ul>
+
+          <h3 style="font-size: 14pt; font-weight: bold; margin: 16px 0 6px 0;">I. NỘI DUNG SỰ CỐ / HÀNH VI GHI NHẬN TỰ ĐỘNG BỞI HỆ THỐNG:</h3>
+          <p style="margin: 6px 0;">
+            Hệ thống giám sát thi tự động ghi nhận thí sinh có <strong>${tabSwitches}</strong> lần rời khỏi màn hình làm bài bắt buộc (thoát chế độ toàn màn hình, chuyển ứng dụng hoặc thao tác phím cấm).
+          </p>
+
+          <table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13pt;">
+            <thead>
+              <tr style="background-color: #f1f5f9;">
+                <th style="border: 1px solid #333; padding: 8px; width: 8%;">STT</th>
+                <th style="border: 1px solid #333; padding: 8px; width: 22%;">Thời gian</th>
+                <th style="border: 1px solid #333; padding: 8px; width: 70%;">Hành vi / Sự cố chi tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows}
+            </tbody>
+          </table>
+
+          <h3 style="font-size: 14pt; font-weight: bold; margin: 18px 0 6px 0;">II. KẾT LUẬN VÀ ĐỀ XUẤT HÌNH THỨC XỬ LÝ:</h3>
+          <p style="margin: 6px 0;">
+            - <strong>Tình trạng bài thi:</strong> ${tabSwitches >= 3 ? '<span style="color:#b91c1c; font-weight:bold;">Đã kích hoạt khóa tự động do vượt quá 3 lần cảnh báo quy chế.</span>' : 'Đã hoàn tất thời gian làm bài.'}
+          </p>
+          <p style="margin: 6px 0;">
+            - <strong>Nhận xét chuyên môn của AI:</strong> <em>${sub.aiFeedback || 'Học sinh cần tuân thủ nghiêm túc các quy định khảo thí trực tuyến.'}</em>
+          </p>
+          <p style="margin: 6px 0;">
+            - <strong>Biện pháp xử lý của Giám thị / Giáo viên bộ môn:</strong> ............................................................................................
+          </p>
+          <p style="margin: 6px 0;">
+            ..............................................................................................................................................................................
+          </p>
+
+          <p style="margin-top: 14px; font-style: italic;">
+            Biên bản được lập thành 02 bản có giá trị như nhau, 01 bản lưu hồ sơ khảo thí bộ môn và 01 bản gửi cho Phụ huynh học sinh.
+          </p>
+
+          <table style="width: 100%; margin-top: 30px; border: none; border-collapse: collapse; text-align: center;">
+            <tr>
+              <td style="width: 33%; border: none; vertical-align: top;">
+                <strong>THÍ SINH</strong><br>
+                <span style="font-size: 11pt; font-style: italic;">(Ký và ghi rõ họ tên)</span>
+                <div style="height: 70px;"></div>
+                <strong>${sub.studentName || ''}</strong>
+              </td>
+              <td style="width: 33%; border: none; vertical-align: top;">
+                <strong>PHỤ HUYNH HỌC SINH</strong><br>
+                <span style="font-size: 11pt; font-style: italic;">(Ký và ghi rõ họ tên)</span>
+                <div style="height: 70px;"></div>
+              </td>
+              <td style="width: 33%; border: none; vertical-align: top;">
+                <strong>GIÁM THỊ / GIÁO VIÊN</strong><br>
+                <span style="font-size: 11pt; font-style: italic;">(Ký và ghi rõ họ tên)</span>
+                <div style="height: 70px;"></div>
+                <strong>${tName}</strong>
+              </td>
+            </tr>
+          </table>
+        </div>
+      `;
+    },
+
+    exportViolationReportToWord: function(sub, teacherName) {
+      if (!sub) return;
+      const htmlBody = this.generateViolationReportHtml(sub, teacherName);
+      const studentSlug = (sub.studentName || 'hoc-sinh').toLowerCase().replace(/\s+/g, '-');
+      const filename = `bien-ban-vi-pham-${studentSlug}-${Date.now().toString().slice(-4)}.doc`;
+
+      const wordDoc = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head>
+          <meta charset='utf-8'>
+          <title>Biên Bản Vi Phạm Quy Chế Thi</title>
+          <!--[if gte mso 9]>
+          <xml>
+            <w:WordDocument>
+              <w:View>Print</w:View>
+              <w:Zoom>100</w:Zoom>
+              <w:DoNotOptimizeForBrowser/>
+            </w:WordDocument>
+          </xml>
+          <![endif]-->
+          <style>
+            @page {
+              size: 21cm 29.7cm;
+              margin: 2cm 2cm 2cm 2cm;
+              mso-page-orientation: portrait;
+            }
+            body {
+              font-family: 'Times New Roman', serif;
+              font-size: 14pt;
+              line-height: 1.35;
+              color: #000;
+            }
+          </style>
+        </head>
+        <body>
+          ${htmlBody}
+        </body>
+        </html>
+      `;
+
+      const blob = new Blob(['\ufeff' + wordDoc], { type: 'application/msword;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    },
+
+    printViolationReportPdf: function(sub, teacherName) {
+      if (!sub) return;
+      const htmlBody = this.generateViolationReportHtml(sub, teacherName);
+      const printWindow = window.open('', '_blank');
+      if (!printWindow) {
+        alert('Trình duyệt đã chặn cửa sổ pop-up. Vui lòng cho phép pop-up để in biên bản!');
+        return;
+      }
+
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="vi">
+        <head>
+          <meta charset="UTF-8">
+          <title>Biên Bản Vi Phạm - ${sub.studentName || 'Học sinh'}</title>
+          <style>
+            @page {
+              size: A4 portrait;
+              margin: 15mm 15mm 15mm 15mm;
+            }
+            @media print {
+              .no-print { display: none !important; }
+              body { margin: 0; padding: 0; }
+            }
+            body {
+              background: #fff;
+              margin: 0;
+              padding: 0;
+              font-family: 'Times New Roman', Times, serif;
+            }
+            .print-toolbar {
+              background: #0f172a;
+              color: #fff;
+              padding: 10px 20px;
+              position: sticky;
+              top: 0;
+              z-index: 100;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              font-family: system-ui, sans-serif;
+            }
+            .btn {
+              padding: 8px 16px;
+              font-weight: bold;
+              border-radius: 8px;
+              cursor: pointer;
+              font-size: 13px;
+              border: none;
+            }
+            .btn-primary { background: #2563eb; color: #fff; }
+            .btn-secondary { background: #e2e8f0; color: #334155; margin-right: 8px; }
+          </style>
+        </head>
+        <body>
+          <div class="print-toolbar no-print">
+            <div>
+              <strong>Biên Bản Ghi Nhận Vi Phạm Quy Chế Thi</strong>
+              <span style="color: #94a3b8; font-size: 12px; margin-left: 10px;">Thí sinh: ${sub.studentName} &bull; Lớp ${sub.className}</span>
+            </div>
+            <div>
+              <button onclick="window.close()" class="btn btn-secondary">Đóng</button>
+              <button onclick="window.print()" class="btn btn-primary">🖨️ In Ngay / Lưu PDF (A4)</button>
+            </div>
+          </div>
+          <div id="printContent">
+            ${htmlBody}
+          </div>
+        </body>
+        </html>
+      `);
+
+      printWindow.document.close();
     }
   };
 
